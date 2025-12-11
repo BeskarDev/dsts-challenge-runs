@@ -6,6 +6,7 @@
 	import { challengeStore } from '$lib/stores/challenge';
 	import { RandomizerService } from '$lib/services/randomizer';
 	import type { ChallengeRunState } from '$lib/types/challenge';
+	import type { Digimon, EvolutionStage } from '$lib/types/digimon';
 
 	let { data }: { data: PageData } = $props();
 
@@ -23,18 +24,22 @@
 
 	onMount(() => {
 		// Load existing challenge state
-		challengeStore.load(data.challenge.id);
+		if (data.challenge) {
+			challengeStore.load(data.challenge.id);
+		}
 	});
 
 	function startNewChallenge() {
+		if (!data.challenge || !data.digimon) return;
+
 		const seed = seedInput || randomizer.generateSeed();
 		randomizer.setSeed(seed);
 
-		const initialStage = data.challenge.evolutionCheckpoints[0].unlockedStage;
+		const initialStage = data.challenge.evolutionCheckpoints[0].unlockedStage as EvolutionStage;
 		const teamSize = data.challenge.settings.teamSize;
 		
 		const initialTeam = randomizer
-			.getRandomDigimon(data.digimon, initialStage, teamSize, [])
+			.getRandomDigimon(data.digimon as Digimon[], initialStage, teamSize, [])
 			.map((digimon, index) => ({
 				digimonId: digimon.id,
 				slotIndex: index,
@@ -56,7 +61,7 @@
 	}
 
 	function advanceBoss() {
-		if (!challengeState) return;
+		if (!challengeState || !data.challenge) return;
 		
 		const nextBoss = challengeState.currentBossOrder + 1;
 		const nextCheckpoint = data.challenge.evolutionCheckpoints.find(
@@ -69,7 +74,7 @@
 				return {
 					...state,
 					currentBossOrder: nextBoss,
-					currentStage: nextCheckpoint.unlockedStage,
+					currentStage: nextCheckpoint.unlockedStage as EvolutionStage,
 					updatedAt: new Date().toISOString()
 				};
 			});
@@ -78,31 +83,35 @@
 		}
 	}
 
-	function getTeamDigimon() {
-		if (!challengeState) return [];
-		return challengeState.team.map((member) => {
-			const digimon = data.digimon.find((d) => d.id === member.digimonId);
-			return digimon || null;
-		}).filter((d) => d !== null);
+	function getTeamDigimon(): Digimon[] {
+		if (!challengeState || !data.digimon) return [];
+		return challengeState.team
+			.map((member) => {
+				const digimon = data.digimon?.find((d) => d.id === member.digimonId);
+				return digimon ? ({ ...digimon } as Digimon) : null;
+			})
+			.filter((d): d is Digimon => d !== null);
 	}
 
 	function getCurrentBoss() {
+		if (!data.bosses) return undefined;
 		return data.bosses.find((b) => b.order === challengeState?.currentBossOrder);
 	}
 
 	function getNextBoss() {
-		if (!challengeState) return null;
-		return data.bosses.find((b) => b.order === challengeState.currentBossOrder + 1);
+		if (!challengeState || !data.bosses) return null;
+		const nextBossOrder = challengeState.currentBossOrder + 1;
+		return data.bosses.find((b) => b.order === nextBossOrder);
 	}
 </script>
 
 <div class="max-w-6xl mx-auto">
-	<h1 class="text-4xl font-bold text-gray-900 mb-8">{data.challenge.name}</h1>
+	<h1 class="text-4xl font-bold text-gray-900 mb-8">{data.challenge?.name || 'Challenge'}</h1>
 
 	{#if !challengeState}
 		<Card>
 			<h2 class="text-2xl font-bold text-gray-900 mb-4">Start New Challenge</h2>
-			<p class="text-gray-700 mb-4">{data.challenge.description}</p>
+			<p class="text-gray-700 mb-4">{data.challenge?.description || ''}</p>
 
 			<div class="mb-4">
 				<label for="seed" class="block text-sm font-medium text-gray-700 mb-2">
@@ -158,7 +167,7 @@
 			<Card>
 				<h2 class="text-xl font-bold text-gray-900 mb-4">Challenge Rules</h2>
 				<ul class="list-disc list-inside space-y-2 text-gray-700">
-					{#each data.challenge.rules as rule}
+					{#each data.challenge?.rules || [] as rule}
 						<li>
 							<strong>{rule.title}:</strong> {rule.description}
 						</li>
