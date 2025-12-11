@@ -15,7 +15,7 @@ interface Digimon {
   id: string;                    // Unique identifier (slug)
   name: string;                  // Display name
   stage: EvolutionStage;         // Evolution tier
-  imageUrl: string;              // Path to icon/image
+  imageUrl?: string;             // Optional path to icon/image (fallback to placeholder)
   // Future extensibility
   attributes?: DigimonAttribute[];
   types?: DigimonType[];
@@ -49,7 +49,7 @@ interface Boss {
   id: string;                    // Unique identifier
   name: string;                  // Display name
   level: number;                 // Boss level
-  order: number;                 // Story progression order (0-indexed)
+  order: number;                 // Story progression order (0 = first boss, 1 = second boss, etc.)
   location?: string;             // Where the boss is encountered
   imageUrl?: string;             // Optional boss image
 }
@@ -153,7 +153,7 @@ Stored in browser LocalStorage.
 interface ChallengeRunState {
   challengeId: string;           // Reference to challenge config
   seed: string;                  // Current seed for randomization
-  currentBossOrder: number;      // Current boss checkpoint (0-indexed progression)
+  currentBossOrder: number;      // Current story progression position (0-indexed)
   currentStage: EvolutionStage;  // Current max evolution stage
   team: TeamMember[];            // Current team composition
   rerollHistory: RerollEvent[];  // History of re-rolls
