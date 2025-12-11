@@ -1,0 +1,39 @@
+{
+	"id": "random-evolution",
+	"name": "Random Evolution Challenge",
+	"description": "Build your team from randomly selected Digimon that unlock as you progress through the story.",
+	"rules": [
+		{
+			"id": "hard-mode",
+			"title": "Hard Mode",
+			"description": "Play on hard difficulty"
+		},
+		{
+			"id": "level-cap",
+			"title": "Level Cap",
+			"description": "Max level restricted to upcoming boss level"
+		},
+		{
+			"id": "random-team",
+			"title": "Random Team",
+			"description": "Team must be built from randomly determined Digimon"
+		},
+		{
+			"id": "stage-restriction",
+			"title": "Evolution Restriction",
+			"description": "Only use Digimon up to your current unlocked evolution stage"
+		}
+	],
+	"evolutionCheckpoints": [
+		{ "bossOrder": 0, "unlockedStage": "Baby", "allowReroll": true },
+		{ "bossOrder": 3, "unlockedStage": "Rookie", "allowReroll": true },
+		{ "bossOrder": 6, "unlockedStage": "Champion", "allowReroll": true },
+		{ "bossOrder": 10, "unlockedStage": "Ultimate", "allowReroll": true },
+		{ "bossOrder": 15, "unlockedStage": "Mega", "allowReroll": true }
+	],
+	"settings": {
+		"teamSize": 6,
+		"hardModeRequired": true,
+		"allowDuplicates": false
+	}
+}

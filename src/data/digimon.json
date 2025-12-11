@@ -1,0 +1,86 @@
+[
+	{
+		"id": "agumon",
+		"name": "Agumon",
+		"stage": "Rookie",
+		"imageUrl": "/images/digimon/agumon.png"
+	},
+	{
+		"id": "gabumon",
+		"name": "Gabumon",
+		"stage": "Rookie",
+		"imageUrl": "/images/digimon/gabumon.png"
+	},
+	{
+		"id": "patamon",
+		"name": "Patamon",
+		"stage": "Rookie",
+		"imageUrl": "/images/digimon/patamon.png"
+	},
+	{
+		"id": "tentomon",
+		"name": "Tentomon",
+		"stage": "Rookie",
+		"imageUrl": "/images/digimon/tentomon.png"
+	},
+	{
+		"id": "palmon",
+		"name": "Palmon",
+		"stage": "Rookie",
+		"imageUrl": "/images/digimon/palmon.png"
+	},
+	{
+		"id": "gomamon",
+		"name": "Gomamon",
+		"stage": "Rookie",
+		"imageUrl": "/images/digimon/gomamon.png"
+	},
+	{
+		"id": "koromon",
+		"name": "Koromon",
+		"stage": "Baby",
+		"imageUrl": "/images/digimon/koromon.png"
+	},
+	{
+		"id": "tsunomon",
+		"name": "Tsunomon",
+		"stage": "Baby",
+		"imageUrl": "/images/digimon/tsunomon.png"
+	},
+	{
+		"id": "greymon",
+		"name": "Greymon",
+		"stage": "Champion",
+		"imageUrl": "/images/digimon/greymon.png"
+	},
+	{
+		"id": "garurumon",
+		"name": "Garurumon",
+		"stage": "Champion",
+		"imageUrl": "/images/digimon/garurumon.png"
+	},
+	{
+		"id": "metalgreymon",
+		"name": "MetalGreymon",
+		"stage": "Ultimate",
+		"imageUrl": "/images/digimon/metalgreymon.png"
+	},
+	{
+		"id": "weregarurumon",
+		"name": "WereGarurumon",
+		"stage": "Ultimate",
+		"imageUrl": "/images/digimon/weregarurumon.png"
+	},
+	{
+		"id": "wargreymon",
+		"name": "WarGreymon",
+		"stage": "Mega",
+		"imageUrl": "/images/digimon/wargreymon.png"
+	},
+	{
+		"id": "metalgarurumon",
+		"name": "MetalGarurumon",
+		"stage": "Mega",
+		"imageUrl": "/images/digimon/metalgarurumon.png"
+	}
+]

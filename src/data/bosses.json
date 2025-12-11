@@ -1,0 +1,114 @@
+[
+	{
+		"id": "boss-0",
+		"name": "First Boss",
+		"level": 10,
+		"order": 0,
+		"location": "Starting Area"
+	},
+	{
+		"id": "boss-1",
+		"name": "Second Boss",
+		"level": 15,
+		"order": 1,
+		"location": "Forest Area"
+	},
+	{
+		"id": "boss-2",
+		"name": "Third Boss",
+		"level": 20,
+		"order": 2,
+		"location": "Mountain Area"
+	},
+	{
+		"id": "boss-3",
+		"name": "Fourth Boss",
+		"level": 25,
+		"order": 3,
+		"location": "Desert Area"
+	},
+	{
+		"id": "boss-4",
+		"name": "Fifth Boss",
+		"level": 30,
+		"order": 4,
+		"location": "Water Area"
+	},
+	{
+		"id": "boss-5",
+		"name": "Sixth Boss",
+		"level": 35,
+		"order": 5,
+		"location": "Ice Area"
+	},
+	{
+		"id": "boss-6",
+		"name": "Seventh Boss",
+		"level": 40,
+		"order": 6,
+		"location": "Fire Area"
+	},
+	{
+		"id": "boss-7",
+		"name": "Eighth Boss",
+		"level": 45,
+		"order": 7,
+		"location": "Electric Area"
+	},
+	{
+		"id": "boss-8",
+		"name": "Ninth Boss",
+		"level": 50,
+		"order": 8,
+		"location": "Dark Area"
+	},
+	{
+		"id": "boss-9",
+		"name": "Tenth Boss",
+		"level": 55,
+		"order": 9,
+		"location": "Light Area"
+	},
+	{
+		"id": "boss-10",
+		"name": "Eleventh Boss",
+		"level": 60,
+		"order": 10,
+		"location": "Steel Area"
+	},
+	{
+		"id": "boss-11",
+		"name": "Twelfth Boss",
+		"level": 65,
+		"order": 11,
+		"location": "Nature Area"
+	},
+	{
+		"id": "boss-12",
+		"name": "Thirteenth Boss",
+		"level": 70,
+		"order": 12,
+		"location": "Sky Area"
+	},
+	{
+		"id": "boss-13",
+		"name": "Fourteenth Boss",
+		"level": 75,
+		"order": 13,
+		"location": "Underground Area"
+	},
+	{
+		"id": "boss-14",
+		"name": "Fifteenth Boss",
+		"level": 80,
+		"order": 14,
+		"location": "Crystal Area"
+	},
+	{
+		"id": "boss-15",
+		"name": "Sixteenth Boss",
+		"level": 85,
+		"order": 15,
+		"location": "Final Area"
+	}
+]
