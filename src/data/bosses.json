@@ -1,114 +1,242 @@
 [
-	{
-		"id": "boss-0",
-		"name": "First Boss",
-		"level": 10,
-		"order": 0,
-		"location": "Starting Area"
-	},
-	{
-		"id": "boss-1",
-		"name": "Second Boss",
-		"level": 15,
-		"order": 1,
-		"location": "Forest Area"
-	},
-	{
-		"id": "boss-2",
-		"name": "Third Boss",
-		"level": 20,
-		"order": 2,
-		"location": "Mountain Area"
-	},
-	{
-		"id": "boss-3",
-		"name": "Fourth Boss",
-		"level": 25,
-		"order": 3,
-		"location": "Desert Area"
-	},
-	{
-		"id": "boss-4",
-		"name": "Fifth Boss",
-		"level": 30,
-		"order": 4,
-		"location": "Water Area"
-	},
-	{
-		"id": "boss-5",
-		"name": "Sixth Boss",
-		"level": 35,
-		"order": 5,
-		"location": "Ice Area"
-	},
-	{
-		"id": "boss-6",
-		"name": "Seventh Boss",
-		"level": 40,
-		"order": 6,
-		"location": "Fire Area"
-	},
-	{
-		"id": "boss-7",
-		"name": "Eighth Boss",
-		"level": 45,
-		"order": 7,
-		"location": "Electric Area"
-	},
-	{
-		"id": "boss-8",
-		"name": "Ninth Boss",
-		"level": 50,
-		"order": 8,
-		"location": "Dark Area"
-	},
-	{
-		"id": "boss-9",
-		"name": "Tenth Boss",
-		"level": 55,
-		"order": 9,
-		"location": "Light Area"
-	},
-	{
-		"id": "boss-10",
-		"name": "Eleventh Boss",
-		"level": 60,
-		"order": 10,
-		"location": "Steel Area"
-	},
-	{
-		"id": "boss-11",
-		"name": "Twelfth Boss",
-		"level": 65,
-		"order": 11,
-		"location": "Nature Area"
-	},
-	{
-		"id": "boss-12",
-		"name": "Thirteenth Boss",
-		"level": 70,
-		"order": 12,
-		"location": "Sky Area"
-	},
-	{
-		"id": "boss-13",
-		"name": "Fourteenth Boss",
-		"level": 75,
-		"order": 13,
-		"location": "Underground Area"
-	},
-	{
-		"id": "boss-14",
-		"name": "Fifteenth Boss",
-		"level": 80,
-		"order": 14,
-		"location": "Crystal Area"
-	},
-	{
-		"id": "boss-15",
-		"name": "Sixteenth Boss",
-		"level": 85,
-		"order": 15,
-		"location": "Final Area"
-	}
+  {
+    "id": "boss-0",
+    "name": "Chaosdramon",
+    "level": 12,
+    "order": 0,
+    "location": "Signs of an Anomaly",
+    "imageUrl": "/images/bosses/chaosdramon.png"
+  },
+  {
+    "id": "boss-1",
+    "name": "Kuwagamon",
+    "level": 15,
+    "order": 1,
+    "location": "Signs of an Anomaly",
+    "imageUrl": "/images/bosses/kuwagamon.png"
+  },
+  {
+    "id": "boss-2",
+    "name": "Raremon",
+    "level": 17,
+    "order": 2,
+    "location": "Reunions Bring Trouble",
+    "imageUrl": "/images/bosses/raremon.png"
+  },
+  {
+    "id": "boss-3",
+    "name": "Cyclonemon",
+    "level": 19,
+    "order": 3,
+    "location": "Resonating Thoughts",
+    "imageUrl": "/images/bosses/cyclonemon.png"
+  },
+  {
+    "id": "boss-4",
+    "name": "Vademon",
+    "level": 21,
+    "order": 4,
+    "location": "A Vow Made on a Starry Sky",
+    "imageUrl": "/images/bosses/vademon.png"
+  },
+  {
+    "id": "boss-5",
+    "name": "Greymon (Blue)",
+    "level": 23,
+    "order": 5,
+    "location": "Shinjuku Rhapsody",
+    "imageUrl": "/images/bosses/greymon-blue.png"
+  },
+  {
+    "id": "boss-6",
+    "name": "Titamon",
+    "level": 25,
+    "order": 6,
+    "location": "Truth Born from an Egg",
+    "imageUrl": "/images/bosses/titamon.png"
+  },
+  {
+    "id": "boss-7",
+    "name": "Fugamon & Ogremon & Hyogamon",
+    "level": 25,
+    "order": 7,
+    "location": "Rumble in the Underground",
+    "imageUrl": "/images/bosses/fugamon-ogremon-hyogamon.png"
+  },
+  {
+    "id": "boss-8",
+    "name": "Parrotmon",
+    "level": 27,
+    "order": 8,
+    "location": "Gathering Storm Clouds",
+    "imageUrl": "/images/bosses/parrotmon.png"
+  },
+  {
+    "id": "boss-9",
+    "name": "UltimateBrachiomon & Volcanomon",
+    "level": 30,
+    "order": 9,
+    "location": "Incoming Conflict",
+    "imageUrl": "/images/bosses/ultimatebrachiomon-volcanomon.png"
+  },
+  {
+    "id": "boss-10",
+    "name": "Sharkmon",
+    "level": 32,
+    "order": 10,
+    "location": "On the Shores of Another World",
+    "imageUrl": "/images/bosses/sharkmon.png"
+  },
+  {
+    "id": "boss-11",
+    "name": "Cherrymon & Okuwamon",
+    "level": 35,
+    "order": 11,
+    "location": "The World Tree's Cry",
+    "imageUrl": "/images/bosses/cherrymon-okuwamon.png"
+  },
+  {
+    "id": "boss-12",
+    "name": "Titamon & SkullBaluchimon",
+    "level": 38,
+    "order": 12,
+    "location": "The Defense of Nishi-Shinjuku",
+    "imageUrl": "/images/bosses/titamon-skullbaluchimon.png"
+  },
+  {
+    "id": "boss-13",
+    "name": "SkullSeadramon",
+    "level": 38,
+    "order": 13,
+    "location": "Red Seas and Regret",
+    "imageUrl": "/images/bosses/skullseadramon.png"
+  },
+  {
+    "id": "boss-14",
+    "name": "Calmaramon & Witchmon",
+    "level": 40,
+    "order": 14,
+    "location": "A Promise on a Scarf",
+    "imageUrl": "/images/bosses/calmaramon-witchmon.png"
+  },
+  {
+    "id": "boss-15",
+    "name": "TyrantKabuterimon & Callismon",
+    "level": 42,
+    "order": 15,
+    "location": "The Titans' Grudge / The Paradise Colosseum",
+    "imageUrl": "/images/bosses/tyrantkabuterimon-callismon.png"
+  },
+  {
+    "id": "boss-16",
+    "name": "VenomMyotismon",
+    "level": 45,
+    "order": 16,
+    "location": "The God of Speed's Wish",
+    "imageUrl": "/images/bosses/venommyotismon.png"
+  },
+  {
+    "id": "boss-17",
+    "name": "Zombie Plutomon",
+    "level": 50,
+    "order": 17,
+    "location": "Throne of the Underworld",
+    "imageUrl": "/images/bosses/zombie-plutomon.png"
+  },
+  {
+    "id": "boss-18",
+    "name": "Power Loader",
+    "level": 50,
+    "order": 18,
+    "location": "No Cure for Stupidity",
+    "imageUrl": "/images/bosses/power-loader.png"
+  },
+  {
+    "id": "boss-19",
+    "name": "Apollomon & Dianamon",
+    "level": 52,
+    "order": 19,
+    "location": "Fire and Ice at War",
+    "imageUrl": "/images/bosses/apollomon-dianamon.png"
+  },
+  {
+    "id": "boss-20",
+    "name": "Junomon HM",
+    "level": 55,
+    "order": 20,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/junomon-hm.png"
+  },
+  {
+    "id": "boss-21",
+    "name": "Barbamon",
+    "level": 56,
+    "order": 21,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/barbamon.png"
+  },
+  {
+    "id": "boss-22",
+    "name": "Creepymon",
+    "level": 57,
+    "order": 22,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/creepymon.png"
+  },
+  {
+    "id": "boss-23",
+    "name": "Lilithmon",
+    "level": 58,
+    "order": 23,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/lilithmon.png"
+  },
+  {
+    "id": "boss-24",
+    "name": "Leviamon",
+    "level": 59,
+    "order": 24,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/leviamon.png"
+  },
+  {
+    "id": "boss-25",
+    "name": "Lucemon SM",
+    "level": 60,
+    "order": 25,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/lucemon-sm.png"
+  },
+  {
+    "id": "boss-26",
+    "name": "Beelzemon BM",
+    "level": 61,
+    "order": 26,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/beelzemon-bm.png"
+  },
+  {
+    "id": "boss-27",
+    "name": "Belphemon RM",
+    "level": 62,
+    "order": 27,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/belphemon-rm.png"
+  },
+  {
+    "id": "boss-28",
+    "name": "Chronomon (Holy)",
+    "level": 65,
+    "order": 28,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/chronomon-holy.png"
+  },
+  {
+    "id": "boss-29",
+    "name": "Chronomon (Destroy)",
+    "level": 70,
+    "order": 29,
+    "location": "The Final Battle Over the Natural Order",
+    "imageUrl": "/images/bosses/chronomon-destroy.png"
+  }
 ]
