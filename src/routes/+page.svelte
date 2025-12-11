@@ -27,7 +27,7 @@
 			<div class="mb-4">
 				<h3 class="font-semibold text-gray-900 mb-2">Rules:</h3>
 				<ul class="list-disc list-inside space-y-1 text-gray-700">
-					{#each challengeConfig.rules as rule}
+					{#each challengeConfig.rules as rule (rule.id)}
 						<li>
 							<strong>{rule.title}:</strong> {rule.description}
 						</li>

@@ -150,9 +150,9 @@
 			<Card>
 				<h2 class="text-xl font-bold text-gray-900 mb-4">Current Team</h2>
 				<div class="space-y-2">
-					{#each getTeamDigimon() as digimon, index}
+					{#each getTeamDigimon() as digimon (digimon.id)}
 						<div class="flex items-center gap-3 p-2 bg-gray-50 rounded">
-							<span class="font-medium text-gray-700">{index + 1}.</span>
+							<span class="font-medium text-gray-700">{getTeamDigimon().indexOf(digimon) + 1}.</span>
 							<div>
 								<p class="font-semibold text-gray-900">{digimon.name}</p>
 								<p class="text-sm text-gray-600">{digimon.stage}</p>
@@ -167,7 +167,7 @@
 			<Card>
 				<h2 class="text-xl font-bold text-gray-900 mb-4">Challenge Rules</h2>
 				<ul class="list-disc list-inside space-y-2 text-gray-700">
-					{#each data.challenge?.rules || [] as rule}
+					{#each data.challenge?.rules || [] as rule (rule.id)}
 						<li>
 							<strong>{rule.title}:</strong> {rule.description}
 						</li>
