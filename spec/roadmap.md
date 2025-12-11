@@ -229,6 +229,7 @@ Finalize the MVP with polish, testing, and deployment.
 | Risk | Mitigation |
 |------|------------|
 | Scraped data incomplete | Manual verification, fallback to placeholder data |
+| Missing Digimon images | Provide placeholder images, use optional chaining for imageUrl |
 | Complex state management | Start simple, iterate based on needs |
 | Scope creep | Strict MVP scope, document stretch goals separately |
 | Browser compatibility | Test in major browsers early |

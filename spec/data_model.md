@@ -49,7 +49,7 @@ interface Boss {
   id: string;                    // Unique identifier
   name: string;                  // Display name
   level: number;                 // Boss level
-  order: number;                 // Story progression order (1-indexed)
+  order: number;                 // Story progression order (0-indexed)
   location?: string;             // Where the boss is encountered
   imageUrl?: string;             // Optional boss image
 }
@@ -58,10 +58,10 @@ interface Boss {
 **Example:**
 ```json
 {
-  "id": "boss-1",
+  "id": "boss-0",
   "name": "First Boss",
   "level": 10,
-  "order": 1,
+  "order": 0,
   "location": "Starting Area"
 }
 ```
