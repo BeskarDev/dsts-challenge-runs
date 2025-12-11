@@ -11,7 +11,7 @@ const bossesPath = path.join(__dirname, '..', 'src', 'data', 'bosses.json');
 const digimon = JSON.parse(fs.readFileSync(digimonPath, 'utf8'));
 const bosses = JSON.parse(fs.readFileSync(bossesPath, 'utf8'));
 
-const validStages = ['Baby', 'Rookie', 'Champion', 'Ultimate', 'Mega'];
+const validStages = ['Baby', 'Rookie', 'Champion', 'Ultimate', 'Mega', 'Armor'];
 
 // Validation functions
 function validateDigimon(digimon) {

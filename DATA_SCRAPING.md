@@ -24,11 +24,25 @@ This document details the data scraping process performed for Phase 3 of the DST
 ## Digimon Database
 
 ### Scope
-- **Total Digimon in Database**: 367
+- **Total Digimon in Database**: 475 (ALL Digimon including DLC)
 - **Source Game**: Digimon Story: Time Stranger
-- **Exclusions**: 
-  - DLC-only Digimon (BlitzGreymon, CresGarurumon, Omnimon variants, Parallelmon, Bancho series, X-Antibody Royal Knights)
-  - Post-game exclusive Digimon (Chronomon Holy Mode, Chronomon Destroy Mode in main roster)
+- **Inclusions**: 
+  - All base game Digimon (1-457)
+  - DLC Episode Pack 1 Digimon (458-463): BlitzGreymon, CresGarurumon, Omnimon variants, Parallelmon
+  - DLC Episode Pack 2 Digimon (464-468): Omnimon Merciful Mode, Bancho series
+  - DLC Episode Pack 3 Digimon (469-473): X-Antibody Royal Knights
+  - Post-game exclusive Digimon (474-475): Chronomon Holy Mode, Chronomon Destroy Mode
+
+### Blacklist Configuration
+Instead of excluding Digimon from the database, a separate blacklist configuration file (`src/lib/data/digimon-blacklist.ts`) identifies Digimon with special requirements:
+- **DLC Digimon**: Require Episode Pack purchases
+- **Post-game Digimon**: Require completing main story
+- **Armor Digimon**: Require Digi-Eggs
+- **High Agent Rank**: Require Agent Rank 7-10
+- **Skill Tree Requirements**: Require maxing specific skill categories
+- **Mega+ Tier**: Generally late-game content
+
+This approach allows the database to be adaptable to different use cases while maintaining flexibility for challenge run configurations.
 
 ### Stage Mapping
 The game uses these evolution stages, mapped to our interface:
@@ -43,9 +57,10 @@ The game uses these evolution stages, mapped to our interface:
 ### Distribution by Stage
 - **Baby** (In-Training I & II): 20 Digimon (IDs 1-20)
 - **Rookie**: 60 Digimon (IDs 21-80)
-- **Champion**: 80 Digimon (IDs 81-160)
-- **Ultimate**: 102 Digimon (IDs 161-262)
-- **Mega**: 105 Digimon (IDs 263-367)
+- **Champion**: 83 Digimon (IDs 81-163, includes some hybrids)
+- **Ultimate**: 102 Digimon (IDs 164-265)
+- **Mega**: 184 Digimon (IDs 266-449, includes Mega+)
+- **Armor**: 26 Digimon (IDs 431-457, some overlap with above ranges)
 
 ### Field Guide Numbers
 The database uses sequential IDs (1-367) based on the scraped data. These IDs represent the field guide order from the game, though not all 475 game Digimon are included due to the exclusion of DLC and post-game content.
@@ -114,10 +129,32 @@ The game contains 30 main story missions, with bosses encountered at key progres
 
 ## Images
 
-### Placeholders
-Since actual game assets cannot be redistributed, placeholder SVG images have been created:
+### Current Status: Placeholders
+Currently, placeholder SVG and PNG images are used. The actual images from Game8.co should be downloaded and integrated.
+
+### Image Source
+Game8 uses the following pattern for images:
+```
+https://img.game8.co/{collection_id}/{hash}.png/show
+```
+
+Example from DOM:
+```html
+<img src="https://img.game8.co/4291853/1dd82e99d614005a78dbfe7af49334d6.png/show">
+```
+
+### Integration Plan
+See `IMAGE_DOWNLOAD_GUIDE.md` for detailed instructions on:
+1. Scraping image URLs from Game8 pages
+2. Downloading images to appropriate directories
+3. Updating JSON references
+4. Alternative: Direct CDN linking
+
+### Placeholders (Temporary)
+Until actual images are integrated:
 - **Digimon Placeholder**: Blue theme (static/images/digimon/placeholder.svg)
 - **Boss Placeholder**: Red theme (static/images/bosses/placeholder.svg)
+- Individual placeholders generated for each entry
 
 ### Image References
 All Digimon and boss entries contain `imageUrl` fields pointing to:
@@ -167,27 +204,20 @@ interface Boss {
 
 ## Exclusions Applied
 
-### DLC Digimon (Not Included)
-- BlitzGreymon (DLC Episode Pack 1)
-- CresGarurumon (DLC Episode Pack 1)
-- Omnimon Zwart Defeat (DLC Episode Pack 1)
-- Omnimon Alter-S (DLC Episode Pack 1)
-- Omnimon Alter-B (DLC Episode Pack 1)
-- Parallelmon (Any DLC Pack bonus)
-- Omnimon Merciful Mode (DLC Episode Pack 2)
-- BanchoLillymon (DLC Episode Pack 2)
-- BanchoStingmon (DLC Episode Pack 2)
-- BanchoGolemon (DLC Episode Pack 2)
-- BanchoMamemon (DLC Episode Pack 2)
-- Omnimon X (DLC Episode Pack 3)
-- Magnamon X (DLC Episode Pack 3)
-- UlforceVeedramon X (DLC Episode Pack 3)
-- Gallantmon X (DLC Episode Pack 3)
-- Jesmon X (DLC Episode Pack 3)
+### No Exclusions - Blacklist Configuration Instead
+All 475 Digimon are included in the database for maximum flexibility. Special requirements are tracked in a separate blacklist configuration file.
 
-### Post-Game Exclusive Considerations
-- Chronomon forms appear as final bosses (included in boss list) but are post-game completion content
-- Some Mega+ tier Digimon require post-game stat grinding (partially included based on availability)
+See `src/lib/data/digimon-blacklist.ts` for:
+- DLC Digimon (Episode Packs 1-3): 16 Digimon
+- Post-game exclusives: 2 Digimon (Chronomon variants)
+- Armor Digimon requirements: 13+ Digimon
+- High Agent Rank requirements: 5+ Digimon
+- Skill tree requirements: 3 Digimon
+- Mega+ tier considerations
+
+The blacklist provides helper functions:
+- `isBlacklistedForChallengeRun(digimonId)`: Check if a Digimon should be excluded from challenge runs
+- `getBlacklistReason(digimonId)`: Get the specific requirement/reason for blacklisting
 
 ## Notes
 

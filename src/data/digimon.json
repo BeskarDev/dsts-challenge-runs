@@ -2200,5 +2200,653 @@
     "name": "AncientMermaimon",
     "stage": "Mega",
     "imageUrl": "/images/digimon/ancientmermaimon.png"
+  },
+  {
+    "id": "368",
+    "name": "Omegamon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/omegamon.png"
+  },
+  {
+    "id": "369",
+    "name": "Omegamon Zwart",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/omegamon-zwart.png"
+  },
+  {
+    "id": "370",
+    "name": "Imperialdramon Paladin Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/imperialdramon-paladin-mode.png"
+  },
+  {
+    "id": "371",
+    "name": "Imperialdramon Fighter Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/imperialdramon-fighter-mode.png"
+  },
+  {
+    "id": "372",
+    "name": "Imperialdramon Dragon Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/imperialdramon-dragon-mode.png"
+  },
+  {
+    "id": "373",
+    "name": "Beelzemon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/beelzemon.png"
+  },
+  {
+    "id": "374",
+    "name": "Belphemon Sleep Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/belphemon-sleep-mode.png"
+  },
+  {
+    "id": "375",
+    "name": "Hououmon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/hououmon.png"
+  },
+  {
+    "id": "376",
+    "name": "Phoenixmon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/phoenixmon.png"
+  },
+  {
+    "id": "377",
+    "name": "Goddramon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/goddramon.png"
+  },
+  {
+    "id": "378",
+    "name": "Holydramon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/holydramon.png"
+  },
+  {
+    "id": "379",
+    "name": "BlackWarGreymon X",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/blackwargreymon-x.png"
+  },
+  {
+    "id": "380",
+    "name": "WarGreymon X",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/wargreymon-x.png"
+  },
+  {
+    "id": "381",
+    "name": "MetalGarurumon X",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/metalgarurumon-x.png"
+  },
+  {
+    "id": "382",
+    "name": "Apocalymon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/apocalymon.png"
+  },
+  {
+    "id": "383",
+    "name": "Diablomon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/diablomon.png"
+  },
+  {
+    "id": "384",
+    "name": "Zeedgarurumon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/zeedgarurumon.png"
+  },
+  {
+    "id": "385",
+    "name": "ZeedMillenniumon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/zeedmillenniumon.png"
+  },
+  {
+    "id": "386",
+    "name": "Millenniummon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/millenniummon.png"
+  },
+  {
+    "id": "387",
+    "name": "MoonMillenniumon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/moonmillenniumon.png"
+  },
+  {
+    "id": "388",
+    "name": "Lucemon Falldown Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/lucemon-falldown-mode.png"
+  },
+  {
+    "id": "389",
+    "name": "GrandisKuwagamon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/grandiskuwagamon.png"
+  },
+  {
+    "id": "390",
+    "name": "TigerVespamon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/tigervespamon.png"
+  },
+  {
+    "id": "391",
+    "name": "SaintGalgomon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/saintgalgomon.png"
+  },
+  {
+    "id": "392",
+    "name": "Gaiomon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/gaiomon.png"
+  },
+  {
+    "id": "393",
+    "name": "Minervamon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/minervamon.png"
+  },
+  {
+    "id": "394",
+    "name": "MarineAngemon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/marineangemon.png"
+  },
+  {
+    "id": "395",
+    "name": "Holydramon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/holydramon.png"
+  },
+  {
+    "id": "396",
+    "name": "Ophanimon Falldown Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ophanimon-falldown-mode.png"
+  },
+  {
+    "id": "397",
+    "name": "Beelzemon X-Antibody",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/beelzemon-x-antibody.png"
+  },
+  {
+    "id": "398",
+    "name": "Leviamon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/leviamon.png"
+  },
+  {
+    "id": "399",
+    "name": "Daemon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/daemon.png"
+  },
+  {
+    "id": "400",
+    "name": "Daemon Super Ultimate",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/daemon-super-ultimate.png"
+  },
+  {
+    "id": "401",
+    "name": "Boltboutamon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/boltboutamon.png"
+  },
+  {
+    "id": "402",
+    "name": "GranKuwagamon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/grankuwagamon.png"
+  },
+  {
+    "id": "403",
+    "name": "GrandLocomon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/grandlocomon.png"
+  },
+  {
+    "id": "404",
+    "name": "Justimon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/justimon.png"
+  },
+  {
+    "id": "405",
+    "name": "Justimon Critical Arm",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/justimon-critical-arm.png"
+  },
+  {
+    "id": "406",
+    "name": "Justimon Accel Arm",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/justimon-accel-arm.png"
+  },
+  {
+    "id": "407",
+    "name": "Justimon Blitz Arm",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/justimon-blitz-arm.png"
+  },
+  {
+    "id": "408",
+    "name": "SlashAngemon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/slashangemon.png"
+  },
+  {
+    "id": "409",
+    "name": "Valkyrimon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/valkyrimon.png"
+  },
+  {
+    "id": "410",
+    "name": "Goddramon X-Antibody",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/goddramon-x-antibody.png"
+  },
+  {
+    "id": "411",
+    "name": "AncientGreymon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancientgreymon.png"
+  },
+  {
+    "id": "412",
+    "name": "AncientGarurumon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancientgarurumon.png"
+  },
+  {
+    "id": "413",
+    "name": "AncientBeetlemon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancientbeetlemon.png"
+  },
+  {
+    "id": "414",
+    "name": "AncientKazemon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancientkazemon.png"
+  },
+  {
+    "id": "415",
+    "name": "AncientMegatheriummon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancientmegatheriummon.png"
+  },
+  {
+    "id": "416",
+    "name": "AncientWisemon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancientwisemon.png"
+  },
+  {
+    "id": "417",
+    "name": "AncientVolcanomon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancientvolcanomon.png"
+  },
+  {
+    "id": "418",
+    "name": "AncientTroiamon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancienttroiamon.png"
+  },
+  {
+    "id": "419",
+    "name": "AncientSphinxmon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancientsphinxmon.png"
+  },
+  {
+    "id": "420",
+    "name": "AncientMermaimon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ancientmermaimon.png"
+  },
+  {
+    "id": "421",
+    "name": "EmperorGreymon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/emperorgreymon.png"
+  },
+  {
+    "id": "422",
+    "name": "MagnaGarurumon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/magnagarurumon.png"
+  },
+  {
+    "id": "423",
+    "name": "KaiserGreymon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/kaisergreymon.png"
+  },
+  {
+    "id": "424",
+    "name": "Susanoomon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/susanoomon.png"
+  },
+  {
+    "id": "425",
+    "name": "Agunimon",
+    "stage": "Champion",
+    "imageUrl": "/images/digimon/agunimon.png"
+  },
+  {
+    "id": "426",
+    "name": "Lobomon",
+    "stage": "Champion",
+    "imageUrl": "/images/digimon/lobomon.png"
+  },
+  {
+    "id": "427",
+    "name": "Alphamon Ouryuken",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/alphamon-ouryuken.png"
+  },
+  {
+    "id": "428",
+    "name": "Alphamon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/alphamon.png"
+  },
+  {
+    "id": "429",
+    "name": "Dukemon Crimson Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/dukemon-crimson-mode.png"
+  },
+  {
+    "id": "430",
+    "name": "Sleipmon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/sleipmon.png"
+  },
+  {
+    "id": "431",
+    "name": "Flamedramon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/flamedramon.png"
+  },
+  {
+    "id": "432",
+    "name": "Raidramon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/raidramon.png"
+  },
+  {
+    "id": "433",
+    "name": "Magnamon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/magnamon.png"
+  },
+  {
+    "id": "434",
+    "name": "Rapidmon (Armor)",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/rapidmon-armor.png"
+  },
+  {
+    "id": "435",
+    "name": "Halsemon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/halsemon.png"
+  },
+  {
+    "id": "436",
+    "name": "Nefertimon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/nefertimon.png"
+  },
+  {
+    "id": "437",
+    "name": "Pegasusmon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/pegasusmon.png"
+  },
+  {
+    "id": "438",
+    "name": "Digmon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/digmon.png"
+  },
+  {
+    "id": "439",
+    "name": "Submarimon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/submarimon.png"
+  },
+  {
+    "id": "440",
+    "name": "Stingmon",
+    "stage": "Champion",
+    "imageUrl": "/images/digimon/stingmon.png"
+  },
+  {
+    "id": "441",
+    "name": "Orcamon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/orcamon.png"
+  },
+  {
+    "id": "442",
+    "name": "Seahomon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/seahomon.png"
+  },
+  {
+    "id": "443",
+    "name": "Pteranomon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/pteranomon.png"
+  },
+  {
+    "id": "444",
+    "name": "Kangarumon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/kangarumon.png"
+  },
+  {
+    "id": "445",
+    "name": "Sepikmon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/sepikmon.png"
+  },
+  {
+    "id": "446",
+    "name": "Boarmon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/boarmon.png"
+  },
+  {
+    "id": "447",
+    "name": "Toucanmon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/toucanmon.png"
+  },
+  {
+    "id": "448",
+    "name": "Honeybeemon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/honeybeemon.png"
+  },
+  {
+    "id": "449",
+    "name": "Rhinomon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/rhinomon.png"
+  },
+  {
+    "id": "450",
+    "name": "Shadramon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/shadramon.png"
+  },
+  {
+    "id": "451",
+    "name": "Sethmon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/sethmon.png"
+  },
+  {
+    "id": "452",
+    "name": "Allomon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/allomon.png"
+  },
+  {
+    "id": "453",
+    "name": "Tylomon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/tylomon.png"
+  },
+  {
+    "id": "454",
+    "name": "Elephantmon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/elephantmon.png"
+  },
+  {
+    "id": "455",
+    "name": "Bararmon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/bararmon.png"
+  },
+  {
+    "id": "456",
+    "name": "Tortomon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/tortomon.png"
+  },
+  {
+    "id": "457",
+    "name": "Baronmon",
+    "stage": "Armor",
+    "imageUrl": "/images/digimon/baronmon.png"
+  },
+  {
+    "id": "458",
+    "name": "BlitzGreymon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/blitzgreymon.png"
+  },
+  {
+    "id": "459",
+    "name": "CresGarurumon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/cresgarurumon.png"
+  },
+  {
+    "id": "460",
+    "name": "Omnimon Alter-B",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/omnimon-alter-b.png"
+  },
+  {
+    "id": "461",
+    "name": "Omnimon Zwart Defeat",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/omnimon-zwart-defeat.png"
+  },
+  {
+    "id": "462",
+    "name": "Omnimon Alter-S",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/omnimon-alter-s.png"
+  },
+  {
+    "id": "463",
+    "name": "Parallelmon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/parallelmon.png"
+  },
+  {
+    "id": "464",
+    "name": "Omnimon Merciful Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/omnimon-merciful-mode.png"
+  },
+  {
+    "id": "465",
+    "name": "BanchoLillymon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/bancholillymon.png"
+  },
+  {
+    "id": "466",
+    "name": "BanchoStingmon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/banchostingmon.png"
+  },
+  {
+    "id": "467",
+    "name": "BanchoGolemon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/banchogolemon.png"
+  },
+  {
+    "id": "468",
+    "name": "BanchoMamemon",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/banchomamemon.png"
+  },
+  {
+    "id": "469",
+    "name": "Omnimon X",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/omnimon-x.png"
+  },
+  {
+    "id": "470",
+    "name": "Magnamon X",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/magnamon-x.png"
+  },
+  {
+    "id": "471",
+    "name": "UlforceVeedramon X",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/ulforceveedramon-x.png"
+  },
+  {
+    "id": "472",
+    "name": "Gallantmon X",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/gallantmon-x.png"
+  },
+  {
+    "id": "473",
+    "name": "Jesmon X",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/jesmon-x.png"
+  },
+  {
+    "id": "474",
+    "name": "Chronomon Holy Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/chronomon-holy-mode.png"
+  },
+  {
+    "id": "475",
+    "name": "Chronomon Destroy Mode",
+    "stage": "Mega",
+    "imageUrl": "/images/digimon/chronomon-destroy-mode.png"
   }
 ]
