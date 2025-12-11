@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // Simple validation script to verify the data files match the TypeScript interfaces
+/* eslint-disable @typescript-eslint/no-require-imports */
 
 const fs = require('fs');
 const path = require('path');
