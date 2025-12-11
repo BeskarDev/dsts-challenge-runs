@@ -1,67 +1,38 @@
-# DSTS Challenge Runs
+# sv
 
-A web application for generating and tracking custom challenge runs in *Digimon Story Time Stranger*.
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-## Overview
+## Creating a project
 
-DSTS Challenge Runs provides players with structured challenge run configurations that add variety and difficulty to their gameplay experience. The app features:
+If you're seeing this, you've probably already done this step. Congrats!
 
-- **Rule Generation**: Generate randomized challenge rules based on configurable parameters
-- **Progress Tracking**: Track your progress through boss checkpoints and evolution tiers
-- **Seed System**: Reproducible randomization with sharable seeds
-- **Local Storage**: All progress saved locally in your browser
+```sh
+# create a new project in the current directory
+npx sv create
 
-## Features (MVP)
-
-### Random Evolution Challenge
-- Play on hard mode
-- Evolution restricted by story progress (Baby → Rookie → Champion → Ultimate → Mega)
-- Team composition randomly determined at each evolution tier checkpoint
-- Level cap tied to upcoming boss levels
-- Re-roll capability at checkpoints
-
-## Tech Stack
-
-- **Runtime**: Node.js 24
-- **Language**: TypeScript
-- **Framework**: Svelte 5
-- **UI**: shadcn-svelte + Tailwind CSS
-- **Build**: Vite
-- **Testing**: Vitest
-- **Deployment**: GitHub Pages
-
-## Getting Started
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Run tests
-npm run test
+# create a new project in my-app
+npx sv create my-app
 ```
 
-## Documentation
+## Developing
 
-### Specifications
-- [Project Overview](./spec/overview.md) - Goals, features, and tech stack
-- [Architecture](./spec/architecture.md) - System design and component structure
-- [Data Model](./spec/data_model.md) - Data structures and storage schema
-- [Roadmap](./spec/roadmap.md) - Implementation phases and milestones
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-### Additional Resources
-- [Initial Plan](./spec/initial-plan.md) - Original project requirements
-- [Clarifications](./spec/clarifications.md) - Requirements clarifications
+```sh
+npm run dev
 
-## Contributing
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for development guidelines, code standards, and contribution process.
+## Building
 
-## License
+To create a production version of your app:
 
-See [LICENSE](./LICENSE) for details.
+```sh
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
