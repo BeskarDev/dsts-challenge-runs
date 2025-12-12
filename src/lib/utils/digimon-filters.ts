@@ -15,9 +15,12 @@ const DLC_DIGIMON_NUMBERS = [
 /**
  * Post-game exclusive Digimon numbers
  * Post-game exclusive Digimon (474-475): Chronomon Holy Mode, Chronomon Destroy Mode
+ * Aegiomon line (081, 193-197): Aegiomon and its Aegiochusmon evolutions
  */
 const POST_GAME_DIGIMON_NUMBERS = [
-	'474', '475'
+	'474', '475', // Chronomon variants
+	'081',        // Aegiomon
+	'193', '194', '195', '196', '197' // Aegiochusmon variants
 ];
 
 /**
