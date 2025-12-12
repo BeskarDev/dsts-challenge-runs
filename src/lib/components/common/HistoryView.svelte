@@ -61,9 +61,12 @@
 
 	function handleDeleteRun(runId: string) {
 		if (confirm('Are you sure you want to delete this challenge run from history?')) {
-			deletingRunId = runId;
-			historyStore.deleteRun(runId);
-			deletingRunId = null;
+			try {
+				deletingRunId = runId;
+				historyStore.deleteRun(runId);
+			} finally {
+				deletingRunId = null;
+			}
 		}
 	}
 
