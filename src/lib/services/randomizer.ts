@@ -1,14 +1,26 @@
 import type { Digimon, EvolutionStage } from '../types/digimon';
 
 /**
- * Evolution stage hierarchy for filtering
+ * Evolution stage hierarchy for standard evolution filtering.
+ * Note: Armor Digimon are handled separately as they require Digi-Eggs.
  */
 export const STAGE_HIERARCHY: EvolutionStage[] = ['Baby', 'Rookie', 'Champion', 'Ultimate', 'Mega', 'Mega+'];
 
 /**
- * Get all stages up to and including the given stage
+ * Armor stage is special and not part of the standard hierarchy.
+ * It requires Digi-Eggs which are unlocked at specific game milestones.
+ */
+export const ARMOR_STAGE: EvolutionStage = 'Armor';
+
+/**
+ * Get all stages up to and including the given stage.
+ * Armor stage is not included as it requires special unlock conditions.
  */
 export function getStagesUpTo(stage: EvolutionStage): EvolutionStage[] {
+	// Armor is special and not in the standard hierarchy
+	if (stage === 'Armor') {
+		return ['Armor'];
+	}
 	const index = STAGE_HIERARCHY.indexOf(stage);
 	if (index === -1) return ['Baby'];
 	return STAGE_HIERARCHY.slice(0, index + 1);

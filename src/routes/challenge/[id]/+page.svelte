@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import type { PageData } from './$types';
 	import Card from '$lib/components/common/Card.svelte';
 	import Button from '$lib/components/common/Button.svelte';
@@ -16,6 +16,7 @@
 	let challengeState = $state<ChallengeRunState | null>(null);
 	let seedInput = $state('');
 	let randomizer = new RandomizerService();
+	let unsubscribe: (() => void) | undefined;
 
 	onMount(() => {
 		// Load existing challenge state
@@ -24,11 +25,16 @@
 		}
 		
 		// Subscribe to store changes
-		const unsubscribe = challengeStore.subscribe((state) => {
+		unsubscribe = challengeStore.subscribe((state) => {
 			challengeState = state;
 		});
-		
-		return unsubscribe;
+	});
+
+	onDestroy(() => {
+		// Clean up store subscription
+		if (unsubscribe) {
+			unsubscribe();
+		}
 	});
 
 	// Filter out optional bosses for starting position - start at boss-1 by default

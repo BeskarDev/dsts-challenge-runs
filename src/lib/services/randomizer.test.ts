@@ -78,8 +78,13 @@ describe('getStagesUpTo', () => {
 		expect(stages).toEqual(['Baby', 'Rookie', 'Champion', 'Ultimate', 'Mega', 'Mega+']);
 	});
 
-	it('should include Armor in hierarchy', () => {
+	it('should contain Mega+ in the standard hierarchy', () => {
 		expect(STAGE_HIERARCHY).toContain('Mega+');
+	});
+
+	it('should return Armor only for Armor stage (special handling)', () => {
+		const stages = getStagesUpTo('Armor');
+		expect(stages).toEqual(['Armor']);
 	});
 });
 
