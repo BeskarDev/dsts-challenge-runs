@@ -2,21 +2,9 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import Header from '$lib/components/common/Header.svelte';
-	import { themeStore } from '$lib/stores/theme';
-	import { onMount } from 'svelte';
+	import '$lib/stores/theme'; // Import to initialize theme on load
 
 	let { children } = $props();
-
-	// Initialize theme on mount
-	onMount(() => {
-		// Force re-apply theme on initial load
-		const theme = themeStore.getEffectiveTheme();
-		if (theme === 'dark') {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-	});
 </script>
 
 <svelte:head>

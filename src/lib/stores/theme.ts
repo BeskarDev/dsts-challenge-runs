@@ -41,7 +41,10 @@ function createThemeStore() {
 		applyTheme(initialTheme);
 
 		// Listen for system preference changes
-		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+		// Note: This listener persists for the app lifetime since the store is a singleton.
+		// No cleanup is needed as the store is never destroyed during the app's lifecycle.
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		mediaQuery.addEventListener('change', () => {
 			const currentTheme = localStorage.getItem(THEME_KEY) as Theme | null;
 			if (currentTheme === 'system' || !currentTheme) {
 				applyTheme('system');

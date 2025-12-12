@@ -24,7 +24,7 @@
 </script>
 
 <div
-	class="rounded-md border border-border-light dark:border-border bg-white dark:bg-[rgba(15,24,52,0.92)] backdrop-blur-sm p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel hover:shadow-lg dark:hover:shadow-[0_22px_45px_rgba(0,0,0,0.80)] transition-all"
+	class="rounded-md border border-gray-200 dark:border-border bg-white dark:bg-[rgba(15,24,52,0.92)] backdrop-blur-sm p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel hover:shadow-lg dark:hover:shadow-[0_22px_45px_rgba(0,0,0,0.80)] transition-all"
 >
 	<div class="relative w-20 h-20">
 		{#if !imageError}

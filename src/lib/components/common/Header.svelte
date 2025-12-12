@@ -1,13 +1,19 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { themeStore } from '$lib/stores/theme';
+	import { onMount } from 'svelte';
 
-	let currentTheme = $state<'light' | 'dark'>('dark');
+	let currentTheme = $state<'light' | 'dark'>('light');
 
-	$effect(() => {
+	onMount(() => {
+		// Get initial theme
+		currentTheme = themeStore.getEffectiveTheme();
+
+		// Subscribe to theme changes
 		const unsubscribe = themeStore.subscribe(() => {
 			currentTheme = themeStore.getEffectiveTheme();
 		});
+
 		return unsubscribe;
 	});
 
@@ -16,7 +22,7 @@
 	}
 </script>
 
-<header class="bg-surface-100 dark:bg-surface border-b border-border-light dark:border-border shadow-lg transition-colors">
+<header class="bg-surface-100 dark:bg-surface border-b border-gray-200 dark:border-border shadow-lg transition-colors">
 	<div class="container mx-auto px-4 py-4">
 		<div class="flex items-center justify-between">
 			<a
@@ -30,7 +36,7 @@
 					<li>
 						<a
 							href="{base}/"
-							class="text-muted-foreground dark:text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
+							class="text-gray-600 dark:text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
 						>
 							Home
 						</a>
@@ -38,7 +44,7 @@
 					<li>
 						<a
 							href="{base}/about"
-							class="text-muted-foreground dark:text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
+							class="text-gray-600 dark:text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
 						>
 							About
 						</a>
@@ -46,7 +52,7 @@
 				</ul>
 				<button
 					onclick={toggleTheme}
-					class="p-2 rounded-md border border-border-light dark:border-border bg-surface-50 dark:bg-surface-100 hover:bg-surface-100 dark:hover:bg-surface-200 transition-colors"
+					class="p-2 rounded-md border border-gray-200 dark:border-border bg-surface-50 dark:bg-surface-100 hover:bg-surface-100 dark:hover:bg-surface-200 transition-colors"
 					aria-label={currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
 					title={currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
 				>

@@ -14,7 +14,7 @@
 </script>
 
 <div
-	class="rounded-md border border-border-light dark:border-border bg-white dark:bg-[rgba(8,14,32,0.80)] backdrop-blur-sm p-6 shadow-panel-light dark:shadow-panel"
+	class="rounded-md border border-gray-200 dark:border-border bg-white dark:bg-[rgba(8,14,32,0.80)] backdrop-blur-sm p-6 shadow-panel-light dark:shadow-panel"
 >
 	<div class="flex items-center justify-between mb-4">
 		<h2 class="text-xl font-bold text-gray-900 dark:text-muted-50">Current Team</h2>
