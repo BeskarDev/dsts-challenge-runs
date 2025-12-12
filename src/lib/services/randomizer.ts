@@ -163,14 +163,31 @@ export class RandomizerService {
 	/**
 	 * Get random Digimon from multiple generations (up to and including the given generation)
 	 * Prevents duplicates across all selected Digimon
+	 * @param onlyHighest - If true, only include the highest available generation
+	 * @param minGeneration - Optional minimum generation to include (for override)
 	 */
 	getRandomDigimonMultiGeneration(
 		allDigimon: Digimon[],
 		maxGeneration: EvolutionGeneration,
 		count: number,
-		exclude: string[] = []
+		exclude: string[] = [],
+		onlyHighest: boolean = false,
+		minGeneration?: EvolutionGeneration
 	): Digimon[] {
-		const allowedGenerations = getGenerationsUpTo(maxGeneration);
+		let allowedGenerations: EvolutionGeneration[];
+		
+		if (onlyHighest) {
+			// Only include the highest generation
+			allowedGenerations = [maxGeneration];
+		} else if (minGeneration) {
+			// Include generations from minGeneration to maxGeneration
+			const allGenerations = getGenerationsUpTo(maxGeneration);
+			const minIndex = allGenerations.indexOf(minGeneration);
+			allowedGenerations = minIndex >= 0 ? allGenerations.slice(minIndex) : allGenerations;
+		} else {
+			// Include all generations up to max
+			allowedGenerations = getGenerationsUpTo(maxGeneration);
+		}
 		
 		// Filter by allowed generations and exclude list
 		const available = allDigimon.filter(
@@ -194,17 +211,31 @@ export class RandomizerService {
 	/**
 	 * Reroll a single slot in the team
 	 * Returns a new Digimon that is not already in the team
+	 * @param onlyHighest - If true, only include the highest available generation
+	 * @param minGeneration - Optional minimum generation to include (for override)
 	 */
 	rerollSlot(
 		allDigimon: Digimon[],
 		maxGeneration: EvolutionGeneration,
-		currentTeamNumbers: string[]
+		currentTeamNumbers: string[],
+		onlyHighest: boolean = false,
+		minGeneration?: EvolutionGeneration
 	): Digimon | null {
 		// Generate new seed for this reroll
 		const newSeed = this.generateSeed();
 		this.setSeed(newSeed);
 
-		const allowedGenerations = getGenerationsUpTo(maxGeneration);
+		let allowedGenerations: EvolutionGeneration[];
+		
+		if (onlyHighest) {
+			allowedGenerations = [maxGeneration];
+		} else if (minGeneration) {
+			const allGenerations = getGenerationsUpTo(maxGeneration);
+			const minIndex = allGenerations.indexOf(minGeneration);
+			allowedGenerations = minIndex >= 0 ? allGenerations.slice(minIndex) : allGenerations;
+		} else {
+			allowedGenerations = getGenerationsUpTo(maxGeneration);
+		}
 		
 		// Filter by allowed generations and exclude current team members
 		const available = allDigimon.filter(
@@ -236,17 +267,28 @@ export class RandomizerService {
 
 	/**
 	 * Generate a new team from multiple generations
+	 * @param onlyHighest - If true, only include the highest available generation
+	 * @param minGeneration - Optional minimum generation to include (for override)
 	 */
 	rerollMultiGeneration(
 		allDigimon: Digimon[],
 		maxGeneration: EvolutionGeneration,
 		count: number,
-		currentTeam: string[] = []
+		currentTeam: string[] = [],
+		onlyHighest: boolean = false,
+		minGeneration?: EvolutionGeneration
 	): Digimon[] {
 		// Generate new seed for reroll
 		const newSeed = this.generateSeed();
 		this.setSeed(newSeed);
 		
-		return this.getRandomDigimonMultiGeneration(allDigimon, maxGeneration, count, currentTeam);
+		return this.getRandomDigimonMultiGeneration(
+			allDigimon, 
+			maxGeneration, 
+			count, 
+			currentTeam,
+			onlyHighest,
+			minGeneration
+		);
 	}
 }

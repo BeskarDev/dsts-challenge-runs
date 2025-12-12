@@ -36,8 +36,6 @@
 		return attributeMap[attribute] || '';
 	}
 
-	const attributeIconUrl = getAttributeIconUrl(digimon.attribute);
-
 </script>
 
 <div
@@ -92,9 +90,9 @@
 		<!-- Additional info: Attribute, Type, Personality -->
 		<div class="mt-2 space-y-1">
 			<div class="flex items-center justify-center gap-1">
-				{#if attributeIconUrl}
+				{#if getAttributeIconUrl(digimon.attribute)}
 					<img 
-						src={attributeIconUrl} 
+						src={getAttributeIconUrl(digimon.attribute)} 
 						alt={digimon.attribute}
 						class="w-4 h-4"
 						title={digimon.attribute}

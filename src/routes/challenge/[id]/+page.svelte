@@ -17,6 +17,10 @@
 	let seedInput = $state('');
 	let randomizer = new RandomizerService();
 	let unsubscribe: (() => void) | undefined;
+	
+	// Evolution pool settings
+	let onlyHighestGeneration = $state(true); // Default to only highest generation
+	let minGenerationOverride = $state<EvolutionGeneration | null>(null);
 
 	onMount(() => {
 		// Load existing challenge state
@@ -53,9 +57,16 @@
 		const initialGeneration = data.challenge.evolutionCheckpoints[0].unlockedGeneration as EvolutionGeneration;
 		const teamSize = data.challenge.settings.teamSize;
 		
-		// Use multi-generation selection for team generation
+		// Use multi-generation selection for team generation with onlyHighest flag
 		const initialTeam = randomizer
-			.getRandomDigimonMultiGeneration(data.digimon as Digimon[], initialGeneration, teamSize, [])
+			.getRandomDigimonMultiGeneration(
+				data.digimon as Digimon[], 
+				initialGeneration, 
+				teamSize, 
+				[],
+				onlyHighestGeneration,
+				minGenerationOverride || undefined
+			)
 			.map((digimon: Digimon, index: number) => ({
 				digimonNumber: digimon.number,
 				slotIndex: index,
@@ -109,7 +120,9 @@
 		const newDigimon = randomizer.rerollSlot(
 			data.digimon as Digimon[],
 			challengeState.currentGeneration,
-			currentTeamNumbers
+			currentTeamNumbers,
+			onlyHighestGeneration,
+			minGenerationOverride || undefined
 		);
 
 		if (!newDigimon) return;
@@ -146,7 +159,9 @@
 			data.digimon as Digimon[],
 			challengeState.currentGeneration,
 			teamSize,
-			[] // Don't exclude previous team for full reroll
+			[], // Don't exclude previous team for full reroll
+			onlyHighestGeneration,
+			minGenerationOverride || undefined
 		);
 
 		const newTeam: TeamMember[] = newTeamDigimon.map((digimon: Digimon, index: number) => ({
@@ -201,6 +216,13 @@
 		return data.bosses.find((b) => b.order === nextBossOrder) || null;
 	}
 
+	function getLevelCap(): number | null {
+		const nextBoss = getNextBoss();
+		if (!nextBoss) return null;
+		// Level cap is boss level minus 5
+		return Math.max(1, nextBoss.level - 5);
+	}
+
 	function getCurrentCheckpoint() {
 		if (!challengeState || !data.challenge) return null;
 		// Find the checkpoint that matches or is less than current boss order
@@ -242,6 +264,42 @@
 				/>
 			</div>
 
+			<div class="mb-4">
+				<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
+					<input
+						type="checkbox"
+						bind:checked={onlyHighestGeneration}
+						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
+					/>
+					<span>Only use highest available evolution generation (recommended)</span>
+				</label>
+			</div>
+
+			{#if !onlyHighestGeneration}
+				<div class="mb-4">
+					<label
+						for="minGeneration"
+						class="block text-sm font-medium text-gray-700 dark:text-muted-100 mb-2"
+					>
+						Minimum Generation (optional override)
+					</label>
+					<select
+						id="minGeneration"
+						bind:value={minGenerationOverride}
+						class="w-full px-3 py-2 border border-gray-300 dark:border-border bg-white dark:bg-surface-100 text-gray-900 dark:text-muted-50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
+					>
+						<option value={null}>All available generations</option>
+						<option value="In-Training I">In-Training I</option>
+						<option value="In-Training II">In-Training II</option>
+						<option value="Rookie">Rookie</option>
+						<option value="Champion">Champion</option>
+						<option value="Ultimate">Ultimate</option>
+						<option value="Mega">Mega</option>
+						<option value="Mega +">Mega +</option>
+					</select>
+				</div>
+			{/if}
+
 			<div class="mb-6">
 				<h3 class="font-semibold text-gray-900 dark:text-muted-100 mb-2">Challenge Rules:</h3>
 				<ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-muted-300">
@@ -275,7 +333,12 @@
 				<div class="space-y-2 text-gray-700 dark:text-muted-300">
 					<p>
 						<strong class="text-gray-900 dark:text-muted-100">Level Cap:</strong>
-						{getNextBoss()?.level || 'No limit'}
+						{getLevelCap() || 'No limit'}
+						{#if getNextBoss()}
+							<span class="text-xs text-gray-500 dark:text-muted-400">
+								(Next boss: {getNextBoss()?.name} Lv.{getNextBoss()?.level})
+							</span>
+						{/if}
 					</p>
 					<p>
 						<strong class="text-gray-900 dark:text-muted-100">Evolution Generation:</strong>
@@ -285,6 +348,40 @@
 							{challengeState.currentGeneration}
 						</span>
 					</p>
+					<div class="mt-3">
+						<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
+							<input
+								type="checkbox"
+								bind:checked={onlyHighestGeneration}
+								class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
+							/>
+							<span>Only highest generation</span>
+						</label>
+					</div>
+					{#if !onlyHighestGeneration}
+						<div class="mt-2">
+							<label
+								for="minGenRunning"
+								class="block text-xs text-gray-600 dark:text-muted mb-1"
+							>
+								Min Generation Override:
+							</label>
+							<select
+								id="minGenRunning"
+								bind:value={minGenerationOverride}
+								class="w-full px-2 py-1 text-sm border border-gray-300 dark:border-border bg-white dark:bg-surface-100 text-gray-900 dark:text-muted-50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
+							>
+								<option value={null}>All available</option>
+								<option value="In-Training I">In-Training I</option>
+								<option value="In-Training II">In-Training II</option>
+								<option value="Rookie">Rookie</option>
+								<option value="Champion">Champion</option>
+								<option value="Ultimate">Ultimate</option>
+								<option value="Mega">Mega</option>
+								<option value="Mega +">Mega +</option>
+							</select>
+						</div>
+					{/if}
 					<p>
 						<strong class="text-gray-900 dark:text-muted-100">Seed:</strong>
 						<code
