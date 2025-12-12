@@ -1,6 +1,0 @@
-<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
-  <rect width="128" height="128" fill="#E24A4A" rx="8"/>
-  <circle cx="64" cy="50" r="20" fill="white" opacity="0.3"/>
-  <polygon points="64,40 74,50 64,60 54,50" fill="white" opacity="0.5"/>
-  <text x="64" y="110" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="bold">Boss</text>
-</svg>

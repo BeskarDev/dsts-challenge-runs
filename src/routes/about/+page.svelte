@@ -2,6 +2,10 @@
 	import Card from '$lib/components/common/Card.svelte';
 </script>
 
+<svelte:head>
+	<title>About - Digimon Story Time Stranger</title>
+</svelte:head>
+
 <div class="max-w-4xl mx-auto">
 	<h1 class="text-4xl font-bold text-gray-900 dark:text-muted-50 mb-8">About DSTS Challenge Runs</h1>
 
@@ -47,6 +51,51 @@
 				<li>Tailwind CSS</li>
 				<li>Deployed on GitHub Pages</li>
 			</ul>
+		</Card>
+
+		<Card>
+			<h2 class="text-2xl font-bold text-gray-900 dark:text-muted-50 mb-4">Copyright Notice</h2>
+			<div class="space-y-3 text-gray-700 dark:text-muted-300">
+				<p>
+					This fan-made project does not claim ownership of any images, icons, or linked content displayed on this website. All Digimon-related images and data are the property of their respective copyright holders.
+				</p>
+				<p>
+					Images and content are sourced from:
+				</p>
+				<ul class="list-disc list-inside space-y-1 ml-4">
+					<li>
+						<a 
+							href="https://www.grindosaur.com/" 
+							target="_blank" 
+							rel="noopener noreferrer"
+							class="text-primary-600 dark:text-primary-400 hover:underline"
+						>
+							Grindosaur
+						</a> - Digimon data and attribute icons
+					</li>
+					<li>
+						<a 
+							href="https://game8.co/" 
+							target="_blank" 
+							rel="noopener noreferrer"
+							class="text-primary-600 dark:text-primary-400 hover:underline"
+						>
+							Game8.co
+						</a> - Boss images and strategy guides
+					</li>
+				</ul>
+				<p class="text-sm italic mt-3">
+					If you are a representative of Grindosaur, Game8.co, or any other copyright holder and would like content removed or modified, please contact me via Reddit at 
+					<a 
+						href="https://www.reddit.com/user/theRapkin" 
+						target="_blank" 
+						rel="noopener noreferrer"
+						class="text-primary-600 dark:text-primary-400 hover:underline font-medium"
+					>
+						u/theRapkin
+					</a>.
+				</p>
+			</div>
 		</Card>
 	</div>
 </div>

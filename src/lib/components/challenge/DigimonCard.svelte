@@ -102,7 +102,7 @@
 					<img 
 						src={getAttributeIconUrl(digimon.attribute)} 
 						alt={digimon.attribute}
-						class="w-4 h-4"
+					class="w-4 h-4 dark:invert-0 invert"
 						title={digimon.attribute}
 					/>
 				{/if}

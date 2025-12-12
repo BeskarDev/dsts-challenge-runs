@@ -129,11 +129,12 @@ interface ChallengeSettings {
     }
   ],
   "evolutionCheckpoints": [
-    { "bossOrder": 0, "unlockedStage": "Baby", "allowReroll": true },
-    { "bossOrder": 3, "unlockedStage": "Rookie", "allowReroll": true },
+    { "bossOrder": 1, "unlockedStage": "In-Training II", "allowReroll": true },
+    { "bossOrder": 2, "unlockedStage": "Rookie", "allowReroll": true },
     { "bossOrder": 6, "unlockedStage": "Champion", "allowReroll": true },
-    { "bossOrder": 10, "unlockedStage": "Ultimate", "allowReroll": true },
-    { "bossOrder": 15, "unlockedStage": "Mega", "allowReroll": true }
+    { "bossOrder": 11, "unlockedStage": "Ultimate", "allowReroll": true },
+    { "bossOrder": 22, "unlockedStage": "Mega", "allowReroll": true },
+    { "bossOrder": 26, "unlockedStage": "Mega +", "allowReroll": true }
   ],
   "settings": {
     "teamSize": 6,

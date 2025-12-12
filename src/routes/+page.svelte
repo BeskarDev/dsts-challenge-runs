@@ -7,9 +7,11 @@
 	import { challengeStore } from '$lib/stores/challenge';
 
 	let hasExistingChallenge = $state(false);
+	let isLoading = $state(true);
 
 	onMount(() => {
 		hasExistingChallenge = challengeStore.hasExistingState(challengeConfig.id);
+		isLoading = false;
 	});
 
 	function continueChallenge() {
@@ -23,13 +25,24 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Challenge Runs - Digimon Story Time Stranger</title>
+</svelte:head>
+
 <div class="max-w-4xl mx-auto">
 	<div class="text-center mb-12">
+		<div class="flex justify-center mb-4">
+			<img 
+				src="{base}/logo.png" 
+				alt="Digimon Story Time Stranger" 
+				class="h-64 w-64 object-contain"
+			/>
+		</div>
 		<h1 class="text-4xl font-bold text-gray-900 dark:text-muted-50 mb-4">
-			Digimon Story Time Stranger Challenge Runs
+			Challenge Runs
 		</h1>
 		<p class="text-xl text-gray-600 dark:text-muted">
-			Generate and track custom challenge runs for your playthrough
+			Track custom challenge runs for your playthrough
 		</p>
 	</div>
 
@@ -55,7 +68,9 @@
 			</div>
 
 			<div class="flex gap-4">
-				{#if hasExistingChallenge}
+				{#if isLoading}
+					<div class="text-gray-500 dark:text-muted">Loading...</div>
+				{:else if hasExistingChallenge}
 					<Button onclick={continueChallenge}>Continue Challenge</Button>
 					<Button variant="outline" onclick={newChallenge}>New Challenge</Button>
 				{:else}

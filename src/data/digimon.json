@@ -3396,6 +3396,7 @@
     "attribute": "Vaccine",
     "type": "Deity",
     "basePersonality": "Friendly",
+    "postgame": true,
     "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/jupitermon-icon.png",
     "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/jupitermon"
   },
@@ -4366,6 +4367,7 @@
     "attribute": "Vaccine",
     "type": "Deity",
     "basePersonality": "Friendly",
+    "postgame": true,
     "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/jupitermon-wm-icon.png",
     "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/jupitermon-wm"
   },
@@ -4486,6 +4488,7 @@
     "attribute": "Unknown",
     "type": "Unidentified",
     "basePersonality": "Brave",
+    "postgame": true,
     "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/agumon-bond-of-bravery-icon.png",
     "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/agumon-bond-of-bravery"
   },
@@ -4506,6 +4509,7 @@
     "attribute": "Unknown",
     "type": "Unidentified",
     "basePersonality": "Compassionate",
+    "postgame": true,
     "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/gabumon-bond-of-friendship-icon.png",
     "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/gabumon-bond-of-friendship"
   },

@@ -84,7 +84,8 @@ function filterDigimonByGenerations(
 			const equivalent = getNonStandardEquivalent(d.number, d.generation);
 			if (equivalent) {
 				const equivIndex = GENERATION_HIERARCHY.indexOf(equivalent);
-				return equivIndex >= 0 && equivIndex <= maxGenIndex;
+				// Only include if equivalent is in the allowed generations
+				return equivIndex >= 0 && allowedGenerations.includes(equivalent);
 			}
 		}
 		
