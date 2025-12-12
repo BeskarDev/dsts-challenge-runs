@@ -36,7 +36,9 @@
 	</button>
 	{#if open}
 		<div class="px-4 py-3 bg-white dark:bg-[rgba(15,24,52,0.92)]">
-			{@render children()}
+			{#if children}
+				{@render children()}
+			{/if}
 		</div>
 	{/if}
 </div>

@@ -324,7 +324,14 @@
 </div>
 
 {#if showCelebration}
-	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 animate-in fade-in duration-300" onclick={() => showCelebration = false}>
+	<div 
+		class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 animate-in fade-in duration-300" 
+		role="button"
+		tabindex="0"
+		onclick={() => showCelebration = false}
+		onkeydown={(e) => e.key === 'Enter' || e.key === ' ' ? showCelebration = false : null}
+		aria-label="Close celebration"
+	>
 		<div class="bg-white dark:bg-surface-100 rounded-lg p-8 shadow-2xl text-center max-w-md mx-4 animate-in zoom-in duration-300">
 			<div class="text-6xl mb-4 animate-bounce">🎉</div>
 			<h2 class="text-3xl font-bold text-gray-900 dark:text-muted-50 mb-2">Congratulations!</h2>

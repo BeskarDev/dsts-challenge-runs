@@ -190,10 +190,10 @@
 		
 		// Determine if we need to generate a new team
 		const currentBoss = data.bosses.find(b => b.order === bossOrder);
-		const previousBoss = data.bosses.find(b => b.order === challengeState.currentBossOrder);
+		const previousBoss = data.bosses.find(b => b.order === challengeState!.currentBossOrder);
 		
 		// Check if we're crossing a generation checkpoint
-		const generationChanged = correctGeneration !== challengeState.currentGeneration;
+		const generationChanged = correctGeneration !== challengeState!.currentGeneration;
 		
 		const shouldRerollTeam = rerollTeamPerBoss || 
 			!previousBoss || 
@@ -425,7 +425,7 @@
 
 	function getLevelCap(): number | null {
 		if (!challengeState || !data.bosses) return null;
-		const currentBoss = data.bosses.find((b) => b.order === challengeState.currentBossOrder);
+		const currentBoss = data.bosses.find((b) => b.order === challengeState!.currentBossOrder);
 		if (!currentBoss) return null;
 		// Level cap is current boss level minus 5
 		return Math.max(1, currentBoss.level - 5);
