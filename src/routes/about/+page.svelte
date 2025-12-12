@@ -3,18 +3,18 @@
 </script>
 
 <svelte:head>
-	<title>About - Digimon Story Time Stranger</title>
+	<title>About - Digital Challenge Companion</title>
 </svelte:head>
 
 <div class="max-w-4xl mx-auto">
-	<h1 class="text-4xl font-bold text-gray-900 dark:text-muted-50 mb-8">About DSTS Challenge Runs</h1>
+	<h1 class="text-4xl font-bold text-gray-900 dark:text-muted-50 mb-8">About Digital Challenge Companion</h1>
 
 	<div class="space-y-6">
 		<Card>
 			<h2 class="text-2xl font-bold text-gray-900 dark:text-muted-50 mb-4">What is this?</h2>
 			<p class="text-gray-700 dark:text-muted-300 mb-4">
-				DSTS Challenge Runs is a web application designed to help players of
-				<strong class="text-gray-900 dark:text-muted-100">Digimon Story Time Stranger</strong> create
+				Digital Challenge Companion is a web application designed to help players of
+				<strong class="text-gray-900 dark:text-muted-100">Digimon Story games</strong> create
 				and track custom challenge runs. The app generates randomized rule sets and helps you monitor
 				your progress throughout your playthrough.
 			</p>

@@ -8,6 +8,7 @@
 	import TeamDisplay from '$lib/components/challenge/TeamDisplay.svelte';
 	import BossNavigation from '$lib/components/challenge/BossNavigation.svelte';
 	import { challengeStore } from '$lib/stores/challenge';
+	import { historyStore } from '$lib/stores/history';
 	import { RandomizerService } from '$lib/services/randomizer';
 	import type { ChallengeRunState, TeamMember } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
@@ -42,6 +43,12 @@
 
 		// Load existing challenge state
 		if (data.challenge) {
+			// Set challenge metadata for history tracking
+			challengeStore.setChallengeMetadata(
+				data.challenge.id,
+				data.challenge.name,
+				data.bosses?.length || 1
+			);
 			challengeStore.load(data.challenge.id);
 		}
 		
@@ -49,8 +56,28 @@
 		unsubscribe = challengeStore.subscribe((state) => {
 			challengeState = state;
 			isLoadingState = false;
-			// Update URL with current seed if state exists
-			if (state && state.seed) {
+			
+			// If there's a URL seed that differs from the current state seed,
+			// try to restore from history first, or start a new challenge
+			if (urlSeed && state && state.seed !== urlSeed) {
+				// Clear the existing state
+				if (data.challenge) {
+					challengeStore.clear(data.challenge.id);
+				}
+				// Will be handled in the next subscription call when state is null
+			} else if (urlSeed && !state) {
+				// No existing state but we have a URL seed
+				// Try to restore from history first
+				const historicalRun = historyStore.getRunBySeed(data.challenge?.id || '', urlSeed);
+				if (historicalRun && historicalRun.fullState) {
+					// Restore the full state from history
+					challengeStore.save(historicalRun.fullState);
+				} else {
+					// No historical run found, start a new challenge
+					startNewChallenge();
+				}
+			} else if (state && state.seed) {
+				// Update URL with current seed if state exists and no URL seed conflict
 				updateUrlWithSeed(state.seed);
 			}
 		});
@@ -448,7 +475,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.challenge?.name || 'Challenge'} - Digimon Story Time Stranger</title>
+	<title>{data.challenge?.name || 'Challenge'} - Digital Challenge Companion</title>
 </svelte:head>
 
 <div class="max-w-6xl mx-auto">

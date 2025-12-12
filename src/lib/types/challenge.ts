@@ -71,3 +71,26 @@ export interface AppState {
 export interface UserPreferences {
 	theme?: 'light' | 'dark' | 'system';
 }
+
+// Historical run tracking for statistics
+export interface HistoricalRun {
+	id: string; // Unique ID for the historical run
+	challengeId: string;
+	challengeName: string;
+	seed: string;
+	startedAt: string;
+	lastUpdatedAt: string;
+	completedAt?: string; // undefined if not completed
+	status: 'active' | 'completed' | 'abandoned';
+	progress: {
+		currentBossOrder: number;
+		totalBosses: number;
+		currentGeneration: EvolutionGeneration;
+	};
+	metadata: {
+		totalRerolls: number;
+		teamSize: number;
+	};
+	// Full challenge state for restoration
+	fullState: ChallengeRunState;
+}

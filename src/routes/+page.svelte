@@ -26,7 +26,7 @@
 </script>
 
 <svelte:head>
-	<title>Challenge Runs - Digimon Story Time Stranger</title>
+	<title>Digital Challenge Companion</title>
 </svelte:head>
 
 <div class="max-w-4xl mx-auto">
@@ -34,12 +34,12 @@
 		<div class="flex justify-center mb-4">
 			<img 
 				src="{base}/logo.png" 
-				alt="Digimon Story Time Stranger" 
+				alt="Digital Challenge Companion" 
 				class="h-64 w-64 object-contain"
 			/>
 		</div>
 		<h1 class="text-4xl font-bold text-gray-900 dark:text-muted-50 mb-4">
-			Challenge Runs
+			Digital Challenge Companion
 		</h1>
 		<p class="text-xl text-gray-600 dark:text-muted">
 			Track custom challenge runs for your playthrough
