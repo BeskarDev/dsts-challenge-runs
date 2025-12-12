@@ -28,13 +28,6 @@ export function setStoredLanguage(language: SupportedLanguage): void {
 	}
 }
 
-/**
- * Check if Japanese names mode is enabled
- */
-export function isJapaneseNamesEnabled(): boolean {
-	return getStoredLanguage() === 'ja';
-}
-
 // Initialize i18next
 i18next.init({
 	lng: getStoredLanguage(),
@@ -57,22 +50,6 @@ i18next.init({
 
 // Create the svelte-i18next store
 export const i18n = createI18nStore(i18next);
-
-/**
- * Translate a term using the current language setting.
- * For English, returns the original term.
- * For Japanese, returns the mapped Japanese term if available, otherwise the original.
- */
-export function translateTerm(term: string): string {
-	const currentLang = i18next.language;
-	if (currentLang === 'en') {
-		return term;
-	}
-	// For Japanese, check if there's a translation, otherwise return original
-	const translated = i18next.t(term);
-	// If the translation equals the key, it means no translation was found
-	return translated;
-}
 
 /**
  * Change the current language
