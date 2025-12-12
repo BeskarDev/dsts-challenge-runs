@@ -14,7 +14,7 @@
 			<h2 class="text-2xl font-bold text-gray-900 dark:text-muted-50 mb-4">What is this?</h2>
 			<p class="text-gray-700 dark:text-muted-300 mb-4">
 				Digital Challenge Companion is a web application designed to help players of
-				<strong class="text-gray-900 dark:text-muted-100">Digimon Story: Cyber Sleuth - Complete Edition</strong> create
+				<strong class="text-gray-900 dark:text-muted-100">Digimon Story games</strong> create
 				and track custom challenge runs. The app generates randomized rule sets and helps you monitor
 				your progress throughout your playthrough.
 			</p>

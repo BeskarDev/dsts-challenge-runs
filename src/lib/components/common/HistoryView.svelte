@@ -38,19 +38,6 @@
 		return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 	}
 
-	function getStatusColor(status: string): string {
-		switch (status) {
-			case 'completed':
-				return 'text-green-600 dark:text-green-400';
-			case 'active':
-				return 'text-blue-600 dark:text-blue-400';
-			case 'abandoned':
-				return 'text-gray-600 dark:text-gray-400';
-			default:
-				return 'text-gray-600 dark:text-gray-400';
-		}
-	}
-
 	function getStatusBadge(status: string): string {
 		switch (status) {
 			case 'completed':

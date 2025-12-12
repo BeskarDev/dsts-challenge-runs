@@ -3,7 +3,7 @@ import type { HistoricalRun, ChallengeRunState } from '../types/challenge';
 import { storage } from '../services/storage';
 
 function createHistoryStore() {
-	const { subscribe, set, update } = writable<HistoricalRun[]>([]);
+	const { subscribe, set } = writable<HistoricalRun[]>([]);
 
 	return {
 		subscribe,

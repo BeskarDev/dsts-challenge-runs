@@ -8,8 +8,10 @@ function getChallengeKey(challengeId: string): string {
 }
 
 // Helper to get total bosses for a challenge - this needs to be set externally
-let totalBossesCache: Record<string, number> = {};
-let challengeNameCache: Record<string, string> = {};
+const DEFAULT_CHALLENGE_NAME = 'Challenge Run';
+const DEFAULT_TOTAL_BOSSES = 1;
+const totalBossesCache: Record<string, number> = {};
+const challengeNameCache: Record<string, string> = {};
 
 function createChallengeStore() {
 	const { subscribe, set, update } = writable<ChallengeRunState | null>(null);
@@ -54,8 +56,8 @@ function createChallengeStore() {
 			set(state);
 			
 			// Update history
-			const challengeName = challengeNameCache[state.challengeId] || 'Challenge';
-			const totalBosses = totalBossesCache[state.challengeId] || 1;
+			const challengeName = challengeNameCache[state.challengeId] || DEFAULT_CHALLENGE_NAME;
+			const totalBosses = totalBossesCache[state.challengeId] || DEFAULT_TOTAL_BOSSES;
 			historyStore.addOrUpdateRun(state, challengeName, totalBosses);
 		},
 		update: (updater: (state: ChallengeRunState | null) => ChallengeRunState | null) => {
@@ -66,8 +68,8 @@ function createChallengeStore() {
 					storage.saveState(key, newState);
 					
 					// Update history
-					const challengeName = challengeNameCache[newState.challengeId] || 'Challenge';
-					const totalBosses = totalBossesCache[newState.challengeId] || 1;
+					const challengeName = challengeNameCache[newState.challengeId] || DEFAULT_CHALLENGE_NAME;
+					const totalBosses = totalBossesCache[newState.challengeId] || DEFAULT_TOTAL_BOSSES;
 					historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
 				}
 				return newState;
@@ -84,8 +86,8 @@ function createChallengeStore() {
 				storage.saveState(getChallengeKey(state.challengeId), newState);
 				
 				// Update history
-				const challengeName = challengeNameCache[state.challengeId] || 'Challenge';
-				const totalBosses = totalBossesCache[state.challengeId] || 1;
+				const challengeName = challengeNameCache[state.challengeId] || DEFAULT_CHALLENGE_NAME;
+				const totalBosses = totalBossesCache[state.challengeId] || DEFAULT_TOTAL_BOSSES;
 				historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
 				
 				return newState;
@@ -102,8 +104,8 @@ function createChallengeStore() {
 				storage.saveState(getChallengeKey(state.challengeId), newState);
 				
 				// Update history
-				const challengeName = challengeNameCache[state.challengeId] || 'Challenge';
-				const totalBosses = totalBossesCache[state.challengeId] || 1;
+				const challengeName = challengeNameCache[state.challengeId] || DEFAULT_CHALLENGE_NAME;
+				const totalBosses = totalBossesCache[state.challengeId] || DEFAULT_TOTAL_BOSSES;
 				historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
 				
 				return newState;
