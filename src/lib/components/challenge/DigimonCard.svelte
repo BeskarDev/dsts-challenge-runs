@@ -23,23 +23,40 @@
 	}
 </script>
 
-<div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center gap-3 hover:shadow-lg transition-shadow">
+<div
+	class="rounded-md border border-gray-200 dark:border-border bg-white dark:bg-[rgba(15,24,52,0.92)] backdrop-blur-sm p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel hover:shadow-lg dark:hover:shadow-[0_22px_45px_rgba(0,0,0,0.80)] transition-all"
+>
 	<div class="relative w-20 h-20">
 		{#if !imageError}
 			<img
 				src={digimon.iconUrl}
 				alt={digimon.name}
-				class="w-full h-full object-contain rounded-lg bg-gray-100"
+				class="w-full h-full object-contain rounded-md bg-gray-100 dark:bg-surface-200"
 				onerror={handleImageError}
 			/>
 		{:else}
-			<div class="w-full h-full rounded-lg bg-gray-200 flex items-center justify-center text-gray-400">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+			<div
+				class="w-full h-full rounded-md bg-gray-200 dark:bg-surface-200 flex items-center justify-center text-gray-400 dark:text-muted"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-10 w-10"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+					/>
 				</svg>
 			</div>
 		{/if}
-		<span class="absolute -top-2 -left-2 bg-primary-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+		<span
+			class="absolute -top-2 -left-2 bg-primary-500 text-white dark:text-surface-500 text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-glow"
+		>
 			{slotIndex + 1}
 		</span>
 	</div>
@@ -49,21 +66,32 @@
 			href={digimon.detailsUrl}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="font-semibold text-gray-900 hover:text-primary-600 hover:underline transition-colors"
+			class="font-semibold text-gray-900 dark:text-muted-50 hover:text-primary-500 dark:hover:text-primary-400 hover:underline transition-colors"
 		>
 			{digimon.name}
 		</a>
-		<p class="text-sm text-gray-600">{digimon.generation}</p>
+		<p class="text-sm text-gray-600 dark:text-muted">{digimon.generation}</p>
 	</div>
 
 	{#if showRerollButton && onReroll}
 		<button
 			onclick={handleReroll}
-			class="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition-colors flex items-center gap-1"
+			class="px-3 py-1 text-sm bg-gray-100 dark:bg-surface-100 hover:bg-gray-200 dark:hover:bg-surface-50 text-gray-700 dark:text-muted rounded-full border border-transparent dark:border-border transition-all flex items-center gap-1"
 			title="Re-roll this slot"
 		>
-			<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-4 w-4"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+				/>
 			</svg>
 			Re-roll
 		</button>

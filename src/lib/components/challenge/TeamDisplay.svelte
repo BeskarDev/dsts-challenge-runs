@@ -13,14 +13,27 @@
 	let { team, onRerollSlot, onRerollAll, showRerollButtons = true }: Props = $props();
 </script>
 
-<div class="bg-white rounded-lg shadow-md p-6">
+<div
+	class="rounded-md border border-gray-200 dark:border-border bg-white dark:bg-[rgba(8,14,32,0.80)] backdrop-blur-sm p-6 shadow-panel-light dark:shadow-panel"
+>
 	<div class="flex items-center justify-between mb-4">
-		<h2 class="text-xl font-bold text-gray-900">Current Team</h2>
+		<h2 class="text-xl font-bold text-gray-900 dark:text-muted-50">Current Team</h2>
 		{#if showRerollButtons && onRerollAll}
 			<Button variant="secondary" onclick={onRerollAll}>
 				<span class="flex items-center gap-2">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-4 w-4"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+						/>
 					</svg>
 					Re-roll All
 				</span>
@@ -30,9 +43,9 @@
 
 	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
 		{#each team as digimon, index (digimon.number + '-' + index)}
-			<DigimonCard 
-				{digimon} 
-				slotIndex={index} 
+			<DigimonCard
+				{digimon}
+				slotIndex={index}
 				onReroll={onRerollSlot}
 				showRerollButton={showRerollButtons}
 			/>
@@ -40,7 +53,7 @@
 	</div>
 
 	{#if team.length === 0}
-		<div class="text-center py-8 text-gray-500">
+		<div class="text-center py-8 text-gray-500 dark:text-muted">
 			No team members yet. Generate a team to start!
 		</div>
 	{/if}
