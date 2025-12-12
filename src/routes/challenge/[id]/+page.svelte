@@ -8,7 +8,7 @@
 	import { challengeStore } from '$lib/stores/challenge';
 	import { RandomizerService } from '$lib/services/randomizer';
 	import type { ChallengeRunState, TeamMember } from '$lib/types/challenge';
-	import type { Digimon, EvolutionStage } from '$lib/types/digimon';
+	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
 	import type { Boss } from '$lib/types/boss';
 
 	let { data }: { data: PageData } = $props();
@@ -50,14 +50,14 @@
 		const seed = seedInput || randomizer.generateSeed();
 		randomizer.setSeed(seed);
 
-		const initialStage = data.challenge.evolutionCheckpoints[0].unlockedStage as EvolutionStage;
+		const initialGeneration = data.challenge.evolutionCheckpoints[0].unlockedGeneration as EvolutionGeneration;
 		const teamSize = data.challenge.settings.teamSize;
 		
-		// Use multi-stage selection for team generation
+		// Use multi-generation selection for team generation
 		const initialTeam = randomizer
-			.getRandomDigimonMultiStage(data.digimon as Digimon[], initialStage, teamSize, [])
-			.map((digimon, index) => ({
-				digimonId: digimon.id,
+			.getRandomDigimonMultiGeneration(data.digimon as Digimon[], initialGeneration, teamSize, [])
+			.map((digimon: Digimon, index: number) => ({
+				digimonNumber: digimon.number,
 				slotIndex: index,
 				rolledAtCheckpoint: 0
 			}));
@@ -69,7 +69,7 @@
 			challengeId: data.challenge.id,
 			seed,
 			currentBossOrder: startBoss,
-			currentStage: initialStage,
+			currentGeneration: initialGeneration,
 			team: initialTeam,
 			rerollHistory: [],
 			createdAt: new Date().toISOString(),
@@ -93,7 +93,7 @@
 				return {
 					...state,
 					currentBossOrder: bossOrder,
-					currentStage: checkpoint.unlockedStage as EvolutionStage,
+					currentGeneration: checkpoint.unlockedGeneration as EvolutionGeneration,
 					updatedAt: new Date().toISOString()
 				};
 			});
@@ -105,11 +105,11 @@
 	function rerollSlot(slotIndex: number) {
 		if (!challengeState || !data.digimon) return;
 
-		const currentTeamIds = challengeState.team.map(m => m.digimonId);
+		const currentTeamNumbers = challengeState.team.map(m => m.digimonNumber);
 		const newDigimon = randomizer.rerollSlot(
 			data.digimon as Digimon[],
-			challengeState.currentStage,
-			currentTeamIds
+			challengeState.currentGeneration,
+			currentTeamNumbers
 		);
 
 		if (!newDigimon) return;
@@ -117,7 +117,7 @@
 		const newTeam: TeamMember[] = challengeState.team.map((member, index) => {
 			if (index === slotIndex) {
 				return {
-					digimonId: newDigimon.id,
+					digimonNumber: newDigimon.number,
 					slotIndex: index,
 					rolledAtCheckpoint: challengeState!.currentBossOrder
 				};
@@ -139,18 +139,18 @@
 	function rerollAll() {
 		if (!challengeState || !data.digimon || !data.challenge) return;
 
-		const previousTeamIds = challengeState.team.map(m => m.digimonId);
+		const previousTeamNumbers = challengeState.team.map(m => m.digimonNumber);
 		const teamSize = data.challenge.settings.teamSize;
 
-		const newTeamDigimon = randomizer.rerollMultiStage(
+		const newTeamDigimon = randomizer.rerollMultiGeneration(
 			data.digimon as Digimon[],
-			challengeState.currentStage,
+			challengeState.currentGeneration,
 			teamSize,
 			[] // Don't exclude previous team for full reroll
 		);
 
-		const newTeam: TeamMember[] = newTeamDigimon.map((digimon, index) => ({
-			digimonId: digimon.id,
+		const newTeam: TeamMember[] = newTeamDigimon.map((digimon: Digimon, index: number) => ({
+			digimonNumber: digimon.number,
 			slotIndex: index,
 			rolledAtCheckpoint: challengeState!.currentBossOrder
 		}));
@@ -159,8 +159,8 @@
 		const rerollEvent = {
 			timestamp: new Date().toISOString(),
 			checkpoint: challengeState.currentBossOrder,
-			previousTeam: previousTeamIds,
-			newTeam: newTeam.map(m => m.digimonId),
+			previousTeam: previousTeamNumbers,
+			newTeam: newTeam.map(m => m.digimonNumber),
 			seed: randomizer.getSeed()
 		};
 
@@ -189,7 +189,7 @@
 		return [...challengeState.team]
 			.sort((a, b) => a.slotIndex - b.slotIndex)
 			.map((member) => {
-				const digimon = data.digimon?.find((d) => d.id === member.digimonId);
+				const digimon = data.digimon?.find((d) => d.number === member.digimonNumber);
 				return digimon ? ({ ...digimon } as Digimon) : null;
 			})
 			.filter((d): d is Digimon => d !== null);
@@ -268,9 +268,9 @@
 				<h2 class="text-xl font-bold text-gray-900 mb-4">Challenge Status</h2>
 				<div class="space-y-2 text-gray-700">
 					<p><strong>Level Cap:</strong> {getNextBoss()?.level || 'No limit'}</p>
-					<p><strong>Evolution Stage:</strong> 
+					<p><strong>Evolution Generation:</strong> 
 						<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
-							{challengeState.currentStage}
+							{challengeState.currentGeneration}
 						</span>
 					</p>
 					<p><strong>Seed:</strong> <code class="bg-gray-100 px-2 py-1 rounded text-sm">{challengeState.seed}</code></p>
@@ -297,7 +297,7 @@
 								{/if}
 							</span>
 							<span>
-								{boss?.name || `Boss ${checkpoint.bossOrder}`}: <strong>{checkpoint.unlockedStage}</strong>
+								{boss?.name || `Boss ${checkpoint.bossOrder}`}: <strong>{checkpoint.unlockedGeneration}</strong>
 							</span>
 						</div>
 					{/each}

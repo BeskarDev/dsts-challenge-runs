@@ -1,29 +1,45 @@
-import type { Digimon, EvolutionStage } from '../types/digimon';
+import type { Digimon, EvolutionGeneration } from '../types/digimon';
 
 /**
- * Evolution stage hierarchy for standard evolution filtering.
- * Note: Armor Digimon are handled separately as they require Digi-Eggs.
+ * Evolution generation hierarchy for standard evolution filtering.
+ * Note: Armor and Hybrid Digimon are handled separately as they have special requirements.
  */
-export const STAGE_HIERARCHY: EvolutionStage[] = ['Baby', 'Rookie', 'Champion', 'Ultimate', 'Mega', 'Mega+'];
+export const GENERATION_HIERARCHY: EvolutionGeneration[] = [
+	'In-Training I',
+	'In-Training II',
+	'Rookie',
+	'Champion',
+	'Ultimate',
+	'Mega',
+	'Mega +'
+];
 
 /**
- * Armor stage is special and not part of the standard hierarchy.
+ * Armor generation is special and not part of the standard hierarchy.
  * It requires Digi-Eggs which are unlocked at specific game milestones.
  */
-export const ARMOR_STAGE: EvolutionStage = 'Armor';
+export const ARMOR_GENERATION: EvolutionGeneration = 'Armor';
 
 /**
- * Get all stages up to and including the given stage.
- * Armor stage is not included as it requires special unlock conditions.
+ * Hybrid generation is special and not part of the standard hierarchy.
  */
-export function getStagesUpTo(stage: EvolutionStage): EvolutionStage[] {
-	// Armor is special and not in the standard hierarchy
-	if (stage === 'Armor') {
+export const HYBRID_GENERATION: EvolutionGeneration = 'Hybrid';
+
+/**
+ * Get all generations up to and including the given generation.
+ * Armor and Hybrid are not included as they have special unlock conditions.
+ */
+export function getGenerationsUpTo(generation: EvolutionGeneration): EvolutionGeneration[] {
+	// Armor and Hybrid are special and not in the standard hierarchy
+	if (generation === 'Armor') {
 		return ['Armor'];
 	}
-	const index = STAGE_HIERARCHY.indexOf(stage);
-	if (index === -1) return ['Baby'];
-	return STAGE_HIERARCHY.slice(0, index + 1);
+	if (generation === 'Hybrid') {
+		return ['Hybrid'];
+	}
+	const index = GENERATION_HIERARCHY.indexOf(generation);
+	if (index === -1) return ['In-Training I'];
+	return GENERATION_HIERARCHY.slice(0, index + 1);
 }
 
 /**
@@ -117,17 +133,17 @@ export class RandomizerService {
 	}
 
 	/**
-	 * Get random Digimon from a pool, filtering by stage and excluding specified Digimon
+	 * Get random Digimon from a pool, filtering by generation and excluding specified Digimon
 	 */
 	getRandomDigimon(
 		allDigimon: Digimon[],
-		stage: EvolutionStage,
+		generation: EvolutionGeneration,
 		count: number,
 		exclude: string[] = []
 	): Digimon[] {
-		// Filter by stage and exclude list
+		// Filter by generation and exclude list
 		const available = allDigimon.filter(
-			(d) => d.stage === stage && !exclude.includes(d.id)
+			(d) => d.generation === generation && !exclude.includes(d.number)
 		);
 
 		if (available.length === 0) {
@@ -145,20 +161,20 @@ export class RandomizerService {
 	}
 
 	/**
-	 * Get random Digimon from multiple stages (up to and including the given stage)
+	 * Get random Digimon from multiple generations (up to and including the given generation)
 	 * Prevents duplicates across all selected Digimon
 	 */
-	getRandomDigimonMultiStage(
+	getRandomDigimonMultiGeneration(
 		allDigimon: Digimon[],
-		maxStage: EvolutionStage,
+		maxGeneration: EvolutionGeneration,
 		count: number,
 		exclude: string[] = []
 	): Digimon[] {
-		const allowedStages = getStagesUpTo(maxStage);
+		const allowedGenerations = getGenerationsUpTo(maxGeneration);
 		
-		// Filter by allowed stages and exclude list
+		// Filter by allowed generations and exclude list
 		const available = allDigimon.filter(
-			(d) => allowedStages.includes(d.stage) && !exclude.includes(d.id)
+			(d) => allowedGenerations.includes(d.generation) && !exclude.includes(d.number)
 		);
 
 		if (available.length === 0) {
@@ -181,18 +197,18 @@ export class RandomizerService {
 	 */
 	rerollSlot(
 		allDigimon: Digimon[],
-		maxStage: EvolutionStage,
-		currentTeamIds: string[]
+		maxGeneration: EvolutionGeneration,
+		currentTeamNumbers: string[]
 	): Digimon | null {
 		// Generate new seed for this reroll
 		const newSeed = this.generateSeed();
 		this.setSeed(newSeed);
 
-		const allowedStages = getStagesUpTo(maxStage);
+		const allowedGenerations = getGenerationsUpTo(maxGeneration);
 		
-		// Filter by allowed stages and exclude current team members
+		// Filter by allowed generations and exclude current team members
 		const available = allDigimon.filter(
-			(d) => allowedStages.includes(d.stage) && !currentTeamIds.includes(d.id)
+			(d) => allowedGenerations.includes(d.generation) && !currentTeamNumbers.includes(d.number)
 		);
 
 		if (available.length === 0) {
@@ -207,7 +223,7 @@ export class RandomizerService {
 	 */
 	reroll(
 		allDigimon: Digimon[],
-		stage: EvolutionStage,
+		generation: EvolutionGeneration,
 		count: number,
 		currentTeam: string[] = []
 	): Digimon[] {
@@ -215,15 +231,15 @@ export class RandomizerService {
 		const newSeed = this.generateSeed();
 		this.setSeed(newSeed);
 		
-		return this.getRandomDigimon(allDigimon, stage, count, currentTeam);
+		return this.getRandomDigimon(allDigimon, generation, count, currentTeam);
 	}
 
 	/**
-	 * Generate a new team from multiple stages
+	 * Generate a new team from multiple generations
 	 */
-	rerollMultiStage(
+	rerollMultiGeneration(
 		allDigimon: Digimon[],
-		maxStage: EvolutionStage,
+		maxGeneration: EvolutionGeneration,
 		count: number,
 		currentTeam: string[] = []
 	): Digimon[] {
@@ -231,6 +247,6 @@ export class RandomizerService {
 		const newSeed = this.generateSeed();
 		this.setSeed(newSeed);
 		
-		return this.getRandomDigimonMultiStage(allDigimon, maxStage, count, currentTeam);
+		return this.getRandomDigimonMultiGeneration(allDigimon, maxGeneration, count, currentTeam);
 	}
 }

@@ -1,39 +1,42 @@
-export type EvolutionStage = 'Baby' | 'Rookie' | 'Champion' | 'Ultimate' | 'Mega' | 'Mega+' | 'Armor';
+/**
+ * Evolution generation/stage names as they appear in the game
+ */
+export type EvolutionGeneration = 
+	| 'In-Training I' 
+	| 'In-Training II' 
+	| 'Rookie' 
+	| 'Champion' 
+	| 'Ultimate' 
+	| 'Mega' 
+	| 'Mega +' 
+	| 'Armor' 
+	| 'Hybrid';
 
+/**
+ * Digimon data interface matching the comprehensive table structure
+ * All fields are directly sourced from the authoritative digimon-table data
+ */
 export interface Digimon {
-	id: string;
+	/** Digimon number (e.g., "001", "002") */
+	number: string;
+	/** Digimon name */
 	name: string;
-	stage: EvolutionStage;
-	imageUrl?: string;
-	// Future extensibility
-	attributes?: string[];
-	types?: string[];
+	/** Evolution generation/stage */
+	generation: EvolutionGeneration;
+	/** Attribute (e.g., "Vaccine", "Data", "Virus", "Free", "Variable", "Unknown", "No Data") */
+	attribute: string;
+	/** Digimon type (e.g., "Reptile", "Beast", "Dragon") */
+	type: string;
+	/** Base personality trait */
+	basePersonality: string;
+	/** Direct URL to the Digimon's icon image */
+	iconUrl: string;
+	/** Direct URL to the Digimon's details page */
+	detailsUrl: string;
 }
 
 /**
- * Generate a Grindosaur URL for a Digimon
- * Handles special characters and whitespace in names
+ * Legacy type alias for backwards compatibility during migration
+ * @deprecated Use EvolutionGeneration instead
  */
-export function getGrindosaurUrl(name: string): string {
-	// Convert name to URL-safe format: lowercase, spaces to hyphens, remove special chars
-	const urlName = name
-		.toLowerCase()
-		.replace(/\s+/g, '-')
-		.replace(/[()]/g, '')
-		.replace(/[^a-z0-9-]/g, '');
-	return `https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/${urlName}`;
-}
-
-/**
- * Generate a Grindosaur icon URL for a Digimon (256x256px)
- * Handles special characters and whitespace in names
- */
-export function getGrindosaurIconUrl(name: string): string {
-	// Convert name to URL-safe format: lowercase, spaces to hyphens, remove special chars
-	const urlName = name
-		.toLowerCase()
-		.replace(/\s+/g, '-')
-		.replace(/[()]/g, '')
-		.replace(/[^a-z0-9-]/g, '');
-	return `https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/${urlName}-icon.png`;
-}
+export type EvolutionStage = EvolutionGeneration;

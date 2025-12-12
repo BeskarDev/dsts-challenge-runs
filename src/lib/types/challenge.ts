@@ -1,4 +1,4 @@
-import type { EvolutionStage } from './digimon';
+import type { EvolutionGeneration } from './digimon';
 
 export interface ChallengeConfig {
 	id: string;
@@ -17,7 +17,7 @@ export interface ChallengeRule {
 
 export interface EvolutionCheckpoint {
 	bossOrder: number;
-	unlockedStage: EvolutionStage;
+	unlockedGeneration: EvolutionGeneration;
 	allowReroll: boolean;
 }
 
@@ -32,7 +32,7 @@ export interface ChallengeRunState {
 	challengeId: string;
 	seed: string;
 	currentBossOrder: number;
-	currentStage: EvolutionStage;
+	currentGeneration: EvolutionGeneration;
 	team: TeamMember[];
 	rerollHistory: RerollEvent[];
 	createdAt: string;
@@ -40,7 +40,7 @@ export interface ChallengeRunState {
 }
 
 export interface TeamMember {
-	digimonId: string;
+	digimonNumber: string;
 	slotIndex: number;
 	rolledAtCheckpoint: number;
 }
