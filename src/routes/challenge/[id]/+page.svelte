@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 	import Card from '$lib/components/common/Card.svelte';
 	import Button from '$lib/components/common/Button.svelte';
@@ -10,6 +12,7 @@
 	import type { ChallengeRunState, TeamMember } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
 	import type { Boss } from '$lib/types/boss';
+	import { filterDigimonByContent } from '$lib/utils/digimon-filters';
 
 	let { data }: { data: PageData } = $props();
 
@@ -21,8 +24,18 @@
 	// Evolution pool settings
 	let onlyHighestGeneration = $state(true); // Default to only highest generation
 	let minGenerationOverride = $state<EvolutionGeneration | null>(null);
+	
+	// Content filtering settings
+	let includeDLC = $state(true);
+	let includePostGame = $state(true);
 
 	onMount(() => {
+		// Check for seed in URL parameters
+		const urlSeed = $page.url.searchParams.get('seed');
+		if (urlSeed) {
+			seedInput = urlSeed;
+		}
+
 		// Load existing challenge state
 		if (data.challenge) {
 			challengeStore.load(data.challenge.id);
@@ -31,6 +44,10 @@
 		// Subscribe to store changes
 		unsubscribe = challengeStore.subscribe((state) => {
 			challengeState = state;
+			// Update URL with current seed if state exists
+			if (state && state.seed) {
+				updateUrlWithSeed(state.seed);
+			}
 		});
 	});
 
@@ -40,6 +57,31 @@
 			unsubscribe();
 		}
 	});
+
+	// Update URL with seed parameter without causing navigation
+	function updateUrlWithSeed(seed: string) {
+		if (typeof window !== 'undefined') {
+			const url = new URL(window.location.href);
+			url.searchParams.set('seed', seed);
+			window.history.replaceState({}, '', url.toString());
+		}
+	}
+
+	// Copy seed URL to clipboard
+	function copySeedUrl() {
+		if (!challengeState) return;
+		const url = new URL(window.location.href);
+		url.searchParams.set('seed', challengeState.seed);
+		navigator.clipboard.writeText(url.toString()).then(() => {
+			alert('Seed URL copied to clipboard!');
+		});
+	}
+
+	// Filter out optional content based on user preferences
+	function getFilteredDigimon(): Digimon[] {
+		if (!data.digimon) return [];
+		return filterDigimonByContent(data.digimon as Digimon[], includeDLC, includePostGame);
+	}
 
 	// Filter out optional bosses for starting position - start at boss-1 by default
 	function getStartingBossOrder() {
@@ -57,10 +99,13 @@
 		const initialGeneration = data.challenge.evolutionCheckpoints[0].unlockedGeneration as EvolutionGeneration;
 		const teamSize = data.challenge.settings.teamSize;
 		
+		// Use filtered digimon list based on content preferences
+		const filteredDigimon = getFilteredDigimon();
+		
 		// Use multi-generation selection for team generation with onlyHighest flag
 		const initialTeam = randomizer
 			.getRandomDigimonMultiGeneration(
-				data.digimon as Digimon[], 
+				filteredDigimon, 
 				initialGeneration, 
 				teamSize, 
 				[],
@@ -117,8 +162,10 @@
 		if (!challengeState || !data.digimon) return;
 
 		const currentTeamNumbers = challengeState.team.map(m => m.digimonNumber);
+		const filteredDigimon = getFilteredDigimon();
+		
 		const newDigimon = randomizer.rerollSlot(
-			data.digimon as Digimon[],
+			filteredDigimon,
 			challengeState.currentGeneration,
 			currentTeamNumbers,
 			onlyHighestGeneration,
@@ -154,9 +201,10 @@
 
 		const previousTeamNumbers = challengeState.team.map(m => m.digimonNumber);
 		const teamSize = data.challenge.settings.teamSize;
+		const filteredDigimon = getFilteredDigimon();
 
 		const newTeamDigimon = randomizer.rerollMultiGeneration(
-			data.digimon as Digimon[],
+			filteredDigimon,
 			challengeState.currentGeneration,
 			teamSize,
 			[], // Don't exclude previous team for full reroll
@@ -299,6 +347,26 @@
 					</select>
 				</div>
 			{/if}
+			
+			<div class="mb-4 border-t border-gray-200 dark:border-border pt-4">
+				<h3 class="text-sm font-semibold text-gray-900 dark:text-muted-100 mb-2">Optional Content</h3>
+				<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100 mb-2">
+					<input
+						type="checkbox"
+						bind:checked={includeDLC}
+						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
+					/>
+					<span>Include DLC Digimon (Episode Packs 1-3)</span>
+				</label>
+				<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
+					<input
+						type="checkbox"
+						bind:checked={includePostGame}
+						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
+					/>
+					<span>Include Post-game Digimon (Chronomon variants)</span>
+				</label>
+			</div>
 
 			<div class="mb-6">
 				<h3 class="font-semibold text-gray-900 dark:text-muted-100 mb-2">Challenge Rules:</h3>
@@ -388,6 +456,16 @@
 							class="bg-gray-100 dark:bg-surface-100 px-2 py-1 rounded text-sm text-gray-900 dark:text-muted-50"
 							>{challengeState.seed}</code
 						>
+						<button
+							onclick={copySeedUrl}
+							class="ml-2 text-xs text-primary-600 dark:text-primary-400 hover:underline"
+							title="Copy URL with seed to share"
+						>
+							📋 Copy URL
+						</button>
+					</p>
+					<p class="text-xs text-gray-500 dark:text-muted-400 mt-1">
+						ℹ️ Each reroll generates a new seed. Share the URL to let others recreate your exact team.
 					</p>
 					<p>
 						<strong class="text-gray-900 dark:text-muted-100">Re-rolls Used:</strong>
