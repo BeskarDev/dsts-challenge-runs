@@ -116,7 +116,7 @@
 					</button>
 				</div>
 
-				<!-- Japanese Names Checkbox -->
+				<!-- Japanese Names Toggle -->
 				<div class="flex items-center justify-between">
 					<label
 						for="japanese-names-toggle"
@@ -124,13 +124,23 @@
 					>
 						Japanese Names
 					</label>
-					<input
+					<button
 						id="japanese-names-toggle"
-						type="checkbox"
-						checked={isJapaneseNames}
-						onchange={handleJapaneseNamesToggle}
-						class="h-4 w-4 rounded border-gray-300 dark:border-border text-primary-500 focus:ring-primary-500 focus:ring-offset-0 dark:bg-surface-100"
-					/>
+						type="button"
+						onclick={handleJapaneseNamesToggle}
+						class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 {isJapaneseNames
+							? 'bg-primary-500'
+							: 'bg-gray-200 dark:bg-surface-200'}"
+						role="switch"
+						aria-checked={isJapaneseNames}
+						aria-label="Toggle Japanese names"
+					>
+						<span
+							class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out {isJapaneseNames
+								? 'translate-x-5'
+								: 'translate-x-0'}"
+						></span>
+					</button>
 				</div>
 
 				<p class="text-xs text-gray-500 dark:text-muted-400 mt-2">

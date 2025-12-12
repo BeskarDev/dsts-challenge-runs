@@ -1,0 +1,211 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { historyStore } from '$lib/stores/history';
+	import type { HistoricalRun } from '$lib/types/challenge';
+	import Card from './Card.svelte';
+
+	interface Props {
+		isOpen: boolean;
+		onClose: () => void;
+	}
+
+	let { isOpen, onClose }: Props = $props();
+
+	let history = $state<HistoricalRun[]>([]);
+
+	onMount(() => {
+		historyStore.load();
+		const unsubscribe = historyStore.subscribe((value) => {
+			history = value;
+		});
+		return unsubscribe;
+	});
+
+	function handleBackdropClick(event: MouseEvent) {
+		if (event.target === event.currentTarget) {
+			onClose();
+		}
+	}
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'Escape') {
+			onClose();
+		}
+	}
+
+	function formatDate(dateString: string): string {
+		const date = new Date(dateString);
+		return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+	}
+
+	function getStatusColor(status: string): string {
+		switch (status) {
+			case 'completed':
+				return 'text-green-600 dark:text-green-400';
+			case 'active':
+				return 'text-blue-600 dark:text-blue-400';
+			case 'abandoned':
+				return 'text-gray-600 dark:text-gray-400';
+			default:
+				return 'text-gray-600 dark:text-gray-400';
+		}
+	}
+
+	function getStatusBadge(status: string): string {
+		switch (status) {
+			case 'completed':
+				return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300';
+			case 'active':
+				return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300';
+			case 'abandoned':
+				return 'bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-300';
+			default:
+				return 'bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-300';
+		}
+	}
+
+	// Sort history by most recent first
+	let sortedHistory = $derived(
+		[...history].sort((a, b) => 
+			new Date(b.lastUpdatedAt).getTime() - new Date(a.lastUpdatedAt).getTime()
+		)
+	);
+</script>
+
+<svelte:window onkeydown={handleKeydown} />
+
+{#if isOpen}
+	<!-- Backdrop -->
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div
+		class="fixed inset-0 bg-black/30 z-40"
+		onclick={handleBackdropClick}
+	></div>
+
+	<!-- History View -->
+	<div
+		class="fixed inset-4 md:inset-8 z-50 rounded-lg border border-gray-200 dark:border-border bg-white dark:bg-surface shadow-xl overflow-hidden flex flex-col"
+		role="dialog"
+		aria-modal="true"
+		aria-label="Challenge Run History"
+	>
+		<!-- Header -->
+		<div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-border">
+			<h2 class="text-xl font-semibold text-gray-900 dark:text-muted-50">Challenge Run History</h2>
+			<button
+				onclick={onClose}
+				class="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-surface-100 transition-colors"
+				aria-label="Close history"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6 text-gray-500 dark:text-muted"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+					stroke-width="2"
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+		</div>
+
+		<!-- Content -->
+		<div class="flex-1 overflow-y-auto p-4">
+			{#if sortedHistory.length === 0}
+				<div class="text-center py-12">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="h-16 w-16 mx-auto text-gray-400 dark:text-muted-400 mb-4"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+						stroke-width="1.5"
+					>
+						<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+					</svg>
+					<p class="text-gray-600 dark:text-muted-400 text-lg">No challenge runs yet</p>
+					<p class="text-gray-500 dark:text-muted-500 text-sm mt-2">
+						Start a challenge run to see it appear here!
+					</p>
+				</div>
+			{:else}
+				<div class="space-y-4">
+					{#each sortedHistory as run (run.id)}
+						<Card>
+							<div class="space-y-3">
+								<!-- Header Row -->
+								<div class="flex items-start justify-between">
+									<div>
+										<h3 class="text-lg font-semibold text-gray-900 dark:text-muted-50">
+											{run.challengeName}
+										</h3>
+										<p class="text-sm text-gray-600 dark:text-muted-400 mt-1">
+											Seed: <span class="font-mono">{run.seed}</span>
+										</p>
+									</div>
+									<span class="px-3 py-1 rounded-full text-xs font-medium {getStatusBadge(run.status)}">
+										{run.status.charAt(0).toUpperCase() + run.status.slice(1)}
+									</span>
+								</div>
+
+								<!-- Progress -->
+								<div class="space-y-2">
+									<div class="flex items-center justify-between text-sm">
+										<span class="text-gray-700 dark:text-muted-300">Progress</span>
+										<span class="font-semibold text-gray-900 dark:text-muted-100">
+											{run.progress.currentBossOrder} / {run.progress.totalBosses} Bosses
+										</span>
+									</div>
+									<div class="w-full bg-gray-200 dark:bg-surface-200 rounded-full h-2">
+										<div
+											class="bg-primary-500 h-2 rounded-full transition-all"
+											style="width: {(run.progress.currentBossOrder / run.progress.totalBosses) * 100}%"
+										></div>
+									</div>
+								</div>
+
+								<!-- Metadata Grid -->
+								<div class="grid grid-cols-2 gap-3 pt-2">
+									<div class="text-sm">
+										<span class="text-gray-600 dark:text-muted-400">Generation:</span>
+										<span class="ml-2 font-medium text-gray-900 dark:text-muted-100">
+											{run.progress.currentGeneration}
+										</span>
+									</div>
+									<div class="text-sm">
+										<span class="text-gray-600 dark:text-muted-400">Team Size:</span>
+										<span class="ml-2 font-medium text-gray-900 dark:text-muted-100">
+											{run.metadata.teamSize}
+										</span>
+									</div>
+									<div class="text-sm">
+										<span class="text-gray-600 dark:text-muted-400">Total Rerolls:</span>
+										<span class="ml-2 font-medium text-gray-900 dark:text-muted-100">
+											{run.metadata.totalRerolls}
+										</span>
+									</div>
+									<div class="text-sm">
+										<span class="text-gray-600 dark:text-muted-400">Last Updated:</span>
+										<span class="ml-2 font-medium text-gray-900 dark:text-muted-100">
+											{formatDate(run.lastUpdatedAt)}
+										</span>
+									</div>
+								</div>
+
+								<!-- Timestamps -->
+								<div class="pt-2 border-t border-gray-200 dark:border-border text-xs text-gray-500 dark:text-muted-500">
+									<div>Started: {formatDate(run.startedAt)}</div>
+									{#if run.completedAt}
+										<div>Completed: {formatDate(run.completedAt)}</div>
+									{/if}
+								</div>
+							</div>
+						</Card>
+					{/each}
+				</div>
+			{/if}
+		</div>
+	</div>
+{/if}

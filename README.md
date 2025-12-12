@@ -1,6 +1,6 @@
-# DSTS Challenge Runs
+# Digital Challenge Companion
 
-Generate and track custom challenge runs for Digimon Story Time Stranger.
+Generate and track custom challenge runs for Digimon Story: Cyber Sleuth - Complete Edition.
 
 ## 🎮 Features
 

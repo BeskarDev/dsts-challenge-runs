@@ -1,16 +1,26 @@
 import { writable } from 'svelte/store';
 import type { ChallengeRunState } from '../types/challenge';
 import { storage } from '../services/storage';
+import { historyStore } from './history';
 
 function getChallengeKey(challengeId: string): string {
 	return `dsts:challenge:${challengeId}`;
 }
+
+// Helper to get total bosses for a challenge - this needs to be set externally
+let totalBossesCache: Record<string, number> = {};
+let challengeNameCache: Record<string, string> = {};
 
 function createChallengeStore() {
 	const { subscribe, set, update } = writable<ChallengeRunState | null>(null);
 
 	return {
 		subscribe,
+		// Set metadata for history tracking
+		setChallengeMetadata: (challengeId: string, name: string, totalBosses: number) => {
+			challengeNameCache[challengeId] = name;
+			totalBossesCache[challengeId] = totalBosses;
+		},
 		load: (challengeId: string) => {
 			const key = getChallengeKey(challengeId);
 			let state = storage.loadState<ChallengeRunState>(key);
@@ -42,6 +52,11 @@ function createChallengeStore() {
 			const key = getChallengeKey(state.challengeId);
 			storage.saveState(key, state);
 			set(state);
+			
+			// Update history
+			const challengeName = challengeNameCache[state.challengeId] || 'Challenge';
+			const totalBosses = totalBossesCache[state.challengeId] || 1;
+			historyStore.addOrUpdateRun(state, challengeName, totalBosses);
 		},
 		update: (updater: (state: ChallengeRunState | null) => ChallengeRunState | null) => {
 			update((state) => {
@@ -49,6 +64,11 @@ function createChallengeStore() {
 				if (newState) {
 					const key = getChallengeKey(newState.challengeId);
 					storage.saveState(key, newState);
+					
+					// Update history
+					const challengeName = challengeNameCache[newState.challengeId] || 'Challenge';
+					const totalBosses = totalBossesCache[newState.challengeId] || 1;
+					historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
 				}
 				return newState;
 			});
@@ -62,6 +82,12 @@ function createChallengeStore() {
 					updatedAt: new Date().toISOString()
 				};
 				storage.saveState(getChallengeKey(state.challengeId), newState);
+				
+				// Update history
+				const challengeName = challengeNameCache[state.challengeId] || 'Challenge';
+				const totalBosses = totalBossesCache[state.challengeId] || 1;
+				historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
+				
 				return newState;
 			});
 		},
@@ -74,6 +100,12 @@ function createChallengeStore() {
 					updatedAt: new Date().toISOString()
 				};
 				storage.saveState(getChallengeKey(state.challengeId), newState);
+				
+				// Update history
+				const challengeName = challengeNameCache[state.challengeId] || 'Challenge';
+				const totalBosses = totalBossesCache[state.challengeId] || 1;
+				historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
+				
 				return newState;
 			});
 		},

@@ -42,6 +42,12 @@
 
 		// Load existing challenge state
 		if (data.challenge) {
+			// Set challenge metadata for history tracking
+			challengeStore.setChallengeMetadata(
+				data.challenge.id,
+				data.challenge.name,
+				data.bosses?.length || 1
+			);
 			challengeStore.load(data.challenge.id);
 		}
 		
@@ -448,7 +454,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.challenge?.name || 'Challenge'} - Digimon Story Time Stranger</title>
+	<title>{data.challenge?.name || 'Challenge'} - Digital Challenge Companion</title>
 </svelte:head>
 
 <div class="max-w-6xl mx-auto">
