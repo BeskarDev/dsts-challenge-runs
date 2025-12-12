@@ -55,8 +55,20 @@
 		unsubscribe = challengeStore.subscribe((state) => {
 			challengeState = state;
 			isLoadingState = false;
-			// Update URL with current seed if state exists
-			if (state && state.seed) {
+			
+			// If there's a URL seed that differs from the current state seed,
+			// clear the state and start a new challenge with the URL seed
+			if (urlSeed && state && state.seed !== urlSeed) {
+				// Clear the existing state
+				if (data.challenge) {
+					challengeStore.clear(data.challenge.id);
+				}
+				// Start new challenge will be triggered automatically since state is now null
+			} else if (urlSeed && !state) {
+				// No existing state but we have a URL seed - auto-start the challenge
+				startNewChallenge();
+			} else if (state && state.seed) {
+				// Update URL with current seed if state exists and no URL seed conflict
 				updateUrlWithSeed(state.seed);
 			}
 		});
