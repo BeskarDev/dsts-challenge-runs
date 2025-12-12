@@ -28,6 +28,7 @@
 	// Content filtering settings
 	let includeDLC = $state(true);
 	let includePostGame = $state(true);
+	let includeNonStandard = $state(false); // Armor and Hybrid digimon
 
 	onMount(() => {
 		// Check for seed in URL parameters
@@ -110,7 +111,8 @@
 				teamSize, 
 				[],
 				onlyHighestGeneration,
-				minGenerationOverride || undefined
+				minGenerationOverride || undefined,
+				includeNonStandard
 			)
 			.map((digimon: Digimon, index: number) => ({
 				digimonNumber: digimon.number,
@@ -169,7 +171,8 @@
 			challengeState.currentGeneration,
 			currentTeamNumbers,
 			onlyHighestGeneration,
-			minGenerationOverride || undefined
+			minGenerationOverride || undefined,
+			includeNonStandard
 		);
 
 		if (!newDigimon) return;
@@ -209,7 +212,8 @@
 			teamSize,
 			[], // Don't exclude previous team for full reroll
 			onlyHighestGeneration,
-			minGenerationOverride || undefined
+			minGenerationOverride || undefined,
+			includeNonStandard
 		);
 
 		const newTeam: TeamMember[] = newTeamDigimon.map((digimon: Digimon, index: number) => ({
@@ -358,13 +362,21 @@
 					/>
 					<span>Include DLC Digimon (Episode Packs 1-3)</span>
 				</label>
-				<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
+				<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100 mb-2">
 					<input
 						type="checkbox"
 						bind:checked={includePostGame}
 						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
 					/>
 					<span>Include Post-game Digimon (Chronomon variants)</span>
+				</label>
+				<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
+					<input
+						type="checkbox"
+						bind:checked={includeNonStandard}
+						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
+					/>
+					<span>Include Armor & Hybrid Digimon (matched by power level)</span>
 				</label>
 			</div>
 

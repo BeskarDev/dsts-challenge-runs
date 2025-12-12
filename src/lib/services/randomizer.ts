@@ -1,4 +1,5 @@
 import type { Digimon, EvolutionGeneration } from '../types/digimon';
+import { getNonStandardEquivalent } from '../utils/generation-equivalents';
 
 /**
  * Evolution generation hierarchy for standard evolution filtering.
@@ -28,8 +29,12 @@ export const HYBRID_GENERATION: EvolutionGeneration = 'Hybrid';
 /**
  * Get all generations up to and including the given generation.
  * Armor and Hybrid are not included as they have special unlock conditions.
+ * @param includeNonStandard - If true, include Armor/Hybrid based on their equivalents
  */
-export function getGenerationsUpTo(generation: EvolutionGeneration): EvolutionGeneration[] {
+export function getGenerationsUpTo(
+	generation: EvolutionGeneration,
+	includeNonStandard: boolean = false
+): EvolutionGeneration[] {
 	// Armor and Hybrid are special and not in the standard hierarchy
 	if (generation === 'Armor') {
 		return ['Armor'];
@@ -39,7 +44,16 @@ export function getGenerationsUpTo(generation: EvolutionGeneration): EvolutionGe
 	}
 	const index = GENERATION_HIERARCHY.indexOf(generation);
 	if (index === -1) return ['In-Training I'];
-	return GENERATION_HIERARCHY.slice(0, index + 1);
+	
+	const standardGens = GENERATION_HIERARCHY.slice(0, index + 1);
+	
+	// Optionally include non-standard generations
+	if (includeNonStandard) {
+		// Add Armor and Hybrid as they can be included based on equivalents
+		return [...standardGens, 'Armor', 'Hybrid'];
+	}
+	
+	return standardGens;
 }
 
 /**
@@ -165,6 +179,7 @@ export class RandomizerService {
 	 * Prevents duplicates across all selected Digimon
 	 * @param onlyHighest - If true, only include the highest available generation
 	 * @param minGeneration - Optional minimum generation to include (for override)
+	 * @param includeNonStandard - If true, include Armor/Hybrid based on equivalent generations
 	 */
 	getRandomDigimonMultiGeneration(
 		allDigimon: Digimon[],
@@ -172,7 +187,8 @@ export class RandomizerService {
 		count: number,
 		exclude: string[] = [],
 		onlyHighest: boolean = false,
-		minGeneration?: EvolutionGeneration
+		minGeneration?: EvolutionGeneration,
+		includeNonStandard: boolean = false
 	): Digimon[] {
 		let allowedGenerations: EvolutionGeneration[];
 		
@@ -181,18 +197,37 @@ export class RandomizerService {
 			allowedGenerations = [maxGeneration];
 		} else if (minGeneration) {
 			// Include generations from minGeneration to maxGeneration
-			const allGenerations = getGenerationsUpTo(maxGeneration);
+			const allGenerations = getGenerationsUpTo(maxGeneration, includeNonStandard);
 			const minIndex = allGenerations.indexOf(minGeneration);
 			allowedGenerations = minIndex >= 0 ? allGenerations.slice(minIndex) : allGenerations;
 		} else {
 			// Include all generations up to max
-			allowedGenerations = getGenerationsUpTo(maxGeneration);
+			allowedGenerations = getGenerationsUpTo(maxGeneration, includeNonStandard);
 		}
 		
+		// Get the max generation index for non-standard filtering
+		const maxGenIndex = GENERATION_HIERARCHY.indexOf(maxGeneration);
+		
 		// Filter by allowed generations and exclude list
-		const available = allDigimon.filter(
-			(d) => allowedGenerations.includes(d.generation) && !exclude.includes(d.number)
-		);
+		const available = allDigimon.filter((d) => {
+			if (exclude.includes(d.number)) return false;
+			
+			// Check standard generations
+			if (allowedGenerations.includes(d.generation)) {
+				return true;
+			}
+			
+			// Check non-standard generations if enabled
+			if (includeNonStandard && (d.generation === 'Armor' || d.generation === 'Hybrid')) {
+				const equivalent = getNonStandardEquivalent(d.number, d.generation);
+				if (equivalent) {
+					const equivIndex = GENERATION_HIERARCHY.indexOf(equivalent);
+					return equivIndex >= 0 && equivIndex <= maxGenIndex;
+				}
+			}
+			
+			return false;
+		});
 
 		if (available.length === 0) {
 			return [];
@@ -213,13 +248,15 @@ export class RandomizerService {
 	 * Returns a new Digimon that is not already in the team
 	 * @param onlyHighest - If true, only include the highest available generation
 	 * @param minGeneration - Optional minimum generation to include (for override)
+	 * @param includeNonStandard - If true, include Armor/Hybrid based on equivalent generations
 	 */
 	rerollSlot(
 		allDigimon: Digimon[],
 		maxGeneration: EvolutionGeneration,
 		currentTeamNumbers: string[],
 		onlyHighest: boolean = false,
-		minGeneration?: EvolutionGeneration
+		minGeneration?: EvolutionGeneration,
+		includeNonStandard: boolean = false
 	): Digimon | null {
 		// Generate new seed for this reroll
 		const newSeed = this.generateSeed();
@@ -230,17 +267,36 @@ export class RandomizerService {
 		if (onlyHighest) {
 			allowedGenerations = [maxGeneration];
 		} else if (minGeneration) {
-			const allGenerations = getGenerationsUpTo(maxGeneration);
+			const allGenerations = getGenerationsUpTo(maxGeneration, includeNonStandard);
 			const minIndex = allGenerations.indexOf(minGeneration);
 			allowedGenerations = minIndex >= 0 ? allGenerations.slice(minIndex) : allGenerations;
 		} else {
-			allowedGenerations = getGenerationsUpTo(maxGeneration);
+			allowedGenerations = getGenerationsUpTo(maxGeneration, includeNonStandard);
 		}
 		
+		// Get the max generation index for non-standard filtering
+		const maxGenIndex = GENERATION_HIERARCHY.indexOf(maxGeneration);
+		
 		// Filter by allowed generations and exclude current team members
-		const available = allDigimon.filter(
-			(d) => allowedGenerations.includes(d.generation) && !currentTeamNumbers.includes(d.number)
-		);
+		const available = allDigimon.filter((d) => {
+			if (currentTeamNumbers.includes(d.number)) return false;
+			
+			// Check standard generations
+			if (allowedGenerations.includes(d.generation)) {
+				return true;
+			}
+			
+			// Check non-standard generations if enabled
+			if (includeNonStandard && (d.generation === 'Armor' || d.generation === 'Hybrid')) {
+				const equivalent = getNonStandardEquivalent(d.number, d.generation);
+				if (equivalent) {
+					const equivIndex = GENERATION_HIERARCHY.indexOf(equivalent);
+					return equivIndex >= 0 && equivIndex <= maxGenIndex;
+				}
+			}
+			
+			return false;
+		});
 
 		if (available.length === 0) {
 			return null;
@@ -269,6 +325,7 @@ export class RandomizerService {
 	 * Generate a new team from multiple generations
 	 * @param onlyHighest - If true, only include the highest available generation
 	 * @param minGeneration - Optional minimum generation to include (for override)
+	 * @param includeNonStandard - If true, include Armor/Hybrid based on equivalent generations
 	 */
 	rerollMultiGeneration(
 		allDigimon: Digimon[],
@@ -276,7 +333,8 @@ export class RandomizerService {
 		count: number,
 		currentTeam: string[] = [],
 		onlyHighest: boolean = false,
-		minGeneration?: EvolutionGeneration
+		minGeneration?: EvolutionGeneration,
+		includeNonStandard: boolean = false
 	): Digimon[] {
 		// Generate new seed for reroll
 		const newSeed = this.generateSeed();
@@ -288,7 +346,8 @@ export class RandomizerService {
 			count, 
 			currentTeam,
 			onlyHighest,
-			minGeneration
+			minGeneration,
+			includeNonStandard
 		);
 	}
 }
