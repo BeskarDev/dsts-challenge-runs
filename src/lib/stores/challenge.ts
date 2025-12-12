@@ -16,6 +16,10 @@ function createChallengeStore() {
 			const state = storage.loadState<ChallengeRunState>(key);
 			set(state);
 		},
+		hasExistingState: (challengeId: string): boolean => {
+			const key = getChallengeKey(challengeId);
+			return storage.loadState<ChallengeRunState>(key) !== null;
+		},
 		save: (state: ChallengeRunState) => {
 			const key = getChallengeKey(state.challengeId);
 			storage.saveState(key, state);

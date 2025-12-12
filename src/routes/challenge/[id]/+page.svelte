@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 	import Card from '$lib/components/common/Card.svelte';
@@ -146,12 +145,34 @@
 		);
 
 		if (checkpoint) {
+			// When advancing to a checkpoint, generate a new team with the unlocked generation
+			const filteredDigimon = getFilteredDigimon();
+			const teamSize = data.challenge.settings.teamSize;
+			
+			const newTeamDigimon = randomizer.rerollMultiGeneration(
+				filteredDigimon,
+				checkpoint.unlockedGeneration as EvolutionGeneration,
+				teamSize,
+				[], // Don't exclude anything for checkpoint advance
+				onlyHighestGeneration,
+				minGenerationOverride || undefined,
+				includeNonStandard
+			);
+
+			const newTeam: TeamMember[] = newTeamDigimon.map((digimon: Digimon, index: number) => ({
+				digimonNumber: digimon.number,
+				slotIndex: index,
+				rolledAtCheckpoint: bossOrder
+			}));
+
 			challengeStore.update((state) => {
 				if (!state) return state;
 				return {
 					...state,
 					currentBossOrder: bossOrder,
 					currentGeneration: checkpoint.unlockedGeneration as EvolutionGeneration,
+					team: newTeam,
+					seed: randomizer.getSeed(),
 					updatedAt: new Date().toISOString()
 				};
 			});

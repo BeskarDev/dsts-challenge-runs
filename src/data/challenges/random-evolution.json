@@ -25,7 +25,7 @@
 		}
 	],
 	"evolutionCheckpoints": [
-		{ "bossOrder": 1, "unlockedGeneration": "In-Training I", "allowReroll": true },
+		{ "bossOrder": 1, "unlockedGeneration": "In-Training II", "allowReroll": true },
 		{ "bossOrder": 2, "unlockedGeneration": "Rookie", "allowReroll": true },
 		{ "bossOrder": 6, "unlockedGeneration": "Champion", "allowReroll": true },
 		{ "bossOrder": 10, "unlockedGeneration": "Ultimate", "allowReroll": true },

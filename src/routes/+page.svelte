@@ -1,8 +1,26 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
 	import Card from '$lib/components/common/Card.svelte';
 	import Button from '$lib/components/common/Button.svelte';
 	import challengeConfig from '$data/challenges/random-evolution.json';
+	import { challengeStore } from '$lib/stores/challenge';
+
+	let hasExistingChallenge = $state(false);
+
+	onMount(() => {
+		hasExistingChallenge = challengeStore.hasExistingState(challengeConfig.id);
+	});
+
+	function continueChallenge() {
+		window.location.href = `${base}/challenge/${challengeConfig.id}`;
+	}
+
+	function newChallenge() {
+		// Clear existing challenge state before starting new one
+		challengeStore.clear(challengeConfig.id);
+		window.location.href = `${base}/challenge/${challengeConfig.id}`;
+	}
 </script>
 
 <div class="max-w-4xl mx-auto">
@@ -36,9 +54,14 @@
 				</ul>
 			</div>
 
-			<Button onclick={() => (window.location.href = `${base}/challenge/${challengeConfig.id}`)}>
-				Start Challenge
-			</Button>
+			<div class="flex gap-4">
+				{#if hasExistingChallenge}
+					<Button onclick={continueChallenge}>Continue Challenge</Button>
+					<Button variant="outline" onclick={newChallenge}>New Challenge</Button>
+				{:else}
+					<Button onclick={newChallenge}>Start Challenge</Button>
+				{/if}
+			</div>
 		</Card>
 	</div>
 </div>

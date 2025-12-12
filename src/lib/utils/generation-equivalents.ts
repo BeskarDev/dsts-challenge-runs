@@ -1,5 +1,4 @@
 import type { EvolutionGeneration } from '../types/digimon';
-import { GENERATION_HIERARCHY } from '../services/randomizer';
 
 /**
  * Mapping of non-standard generation Digimon to their equivalent standard generation
