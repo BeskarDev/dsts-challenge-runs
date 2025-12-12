@@ -6,13 +6,14 @@ export type Theme = 'light' | 'dark' | 'system';
 const THEME_KEY = 'dsts:theme';
 
 function getInitialTheme(): Theme {
-	if (!browser) return 'system';
+	if (!browser) return 'dark';
 
 	const stored = localStorage.getItem(THEME_KEY) as Theme | null;
 	if (stored && ['light', 'dark', 'system'].includes(stored)) {
 		return stored;
 	}
-	return 'system';
+	// Default to dark mode when no preference is stored
+	return 'dark';
 }
 
 function getSystemPreference(): 'light' | 'dark' {
@@ -76,8 +77,12 @@ function createThemeStore() {
 		getEffectiveTheme: (): 'light' | 'dark' => {
 			const current = browser
 				? (localStorage.getItem(THEME_KEY) as Theme | null)
-				: 'system';
-			return current === 'system' || !current ? getSystemPreference() : current;
+				: 'dark';
+			if (current === 'system') {
+				return getSystemPreference();
+			}
+			// Default to dark mode when no preference is stored
+			return current || 'dark';
 		}
 	};
 }

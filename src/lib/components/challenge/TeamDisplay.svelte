@@ -2,6 +2,7 @@
 	import type { Digimon } from '$lib/types/digimon';
 	import DigimonCard from './DigimonCard.svelte';
 	import Button from '$lib/components/common/Button.svelte';
+	import { i18n } from '$lib/i18n';
 
 	interface Props {
 		team: Digimon[];
@@ -13,6 +14,9 @@
 	}
 
 	let { team, onRerollSlot, onRerollAll, showRerollButtons = true, levelCap, currentGeneration }: Props = $props();
+
+	// Reactive translation for the current generation label
+	let translatedGeneration = $derived(currentGeneration ? $i18n.t(currentGeneration) : '');
 </script>
 
 <div
@@ -30,7 +34,7 @@
 					{/if}
 					{#if currentGeneration}
 						<span class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 border border-primary-200 dark:border-primary-800">
-							<span class="font-semibold">Max:</span>&nbsp;{currentGeneration}
+							<span class="font-semibold">Max:</span>&nbsp;{translatedGeneration}
 						</span>
 					{/if}
 				</div>

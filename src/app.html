@@ -7,8 +7,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script>
 			// Apply theme immediately to prevent flash
+			// Default to dark mode when no preference is stored
 			(function() {
-				const theme = localStorage.getItem('dsts:theme') || 'system';
+				const theme = localStorage.getItem('dsts:theme') || 'dark';
 				const effectiveTheme = theme === 'system' 
 					? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
 					: theme;

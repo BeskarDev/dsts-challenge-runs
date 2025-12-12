@@ -12,6 +12,7 @@
 	import type { ChallengeRunState, TeamMember } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
 	import { filterDigimonByContent } from '$lib/utils/digimon-filters';
+	import { i18n } from '$lib/i18n';
 
 	let { data }: { data: PageData } = $props();
 
@@ -604,7 +605,7 @@
 							<span
 								class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300"
 							>
-								{challengeState.currentGeneration}
+								{$i18n.t(challengeState.currentGeneration)}
 							</span>
 						</p>
 						<div class="mt-3">
@@ -706,7 +707,7 @@
 								</span>
 								<span>
 									{boss?.name || `Boss ${checkpoint.bossOrder}`}: <strong
-										class="text-gray-900 dark:text-muted-50">{checkpoint.unlockedGeneration}</strong
+										class="text-gray-900 dark:text-muted-50">{$i18n.t(checkpoint.unlockedGeneration)}</strong
 									>
 								</span>
 							</div>
