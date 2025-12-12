@@ -11,7 +11,6 @@
 	import { RandomizerService } from '$lib/services/randomizer';
 	import type { ChallengeRunState, TeamMember } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
-	import type { Boss } from '$lib/types/boss';
 	import { filterDigimonByContent } from '$lib/utils/digimon-filters';
 
 	let { data }: { data: PageData } = $props();
@@ -424,12 +423,6 @@
 			.filter((d): d is Digimon => d !== null);
 	}
 
-	function getNextBoss(): Boss | null {
-		if (!challengeState || !data.bosses) return null;
-		const nextBossOrder = challengeState.currentBossOrder + 1;
-		return data.bosses.find((b) => b.order === nextBossOrder) || null;
-	}
-
 	function getLevelCap(): number | null {
 		if (!challengeState || !data.bosses) return null;
 		const currentBoss = data.bosses.find((b) => b.order === challengeState.currentBossOrder);
@@ -601,8 +594,7 @@
 		<!-- Progress Info -->
 		<div class="grid gap-4 md:grid-cols-2 mb-6">
 			<Accordion title="Challenge Status">
-				{#snippet children()}
-					<div class="space-y-2 text-gray-700 dark:text-muted-300">
+			<div class="space-y-2 text-gray-700 dark:text-muted-300">
 						<p>
 							<strong class="text-gray-900 dark:text-muted-100">Level Cap:</strong>
 							{getLevelCap() || 'No limit'}
@@ -671,21 +663,19 @@
 							{challengeState.rerollHistory.length}
 						</p>
 					</div>
-				{/snippet}
 			</Accordion>
 
 			<Accordion title="Evolution Checkpoints">
-				{#snippet children()}
-					<div class="space-y-2">
-						{#each data.challenge?.evolutionCheckpoints || [] as checkpoint (checkpoint.bossOrder)}
-							{@const boss = data.bosses?.find((b) => b.order === checkpoint.bossOrder)}
-							{@const isUnlocked = challengeState.currentBossOrder >= checkpoint.bossOrder}
-							<div
-								class="flex items-center gap-2 text-sm {isUnlocked
-									? 'text-secondary-600 dark:text-secondary-400'
-									: 'text-gray-500 dark:text-muted'}"
-							>
-								<span class="w-5 h-5 flex items-center justify-center">
+				<div class="space-y-2">
+					{#each data.challenge?.evolutionCheckpoints || [] as checkpoint (checkpoint.bossOrder)}
+						{@const boss = data.bosses?.find((b) => b.order === checkpoint.bossOrder)}
+						{@const isUnlocked = challengeState.currentBossOrder >= checkpoint.bossOrder}
+						<div
+							class="flex items-center gap-2 text-sm {isUnlocked
+								? 'text-secondary-600 dark:text-secondary-400'
+								: 'text-gray-500 dark:text-muted'}"
+						>
+							<span class="w-5 h-5 flex items-center justify-center">
 									{#if isUnlocked}
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -722,7 +712,6 @@
 							</div>
 						{/each}
 					</div>
-				{/snippet}
 			</Accordion>
 		</div>
 

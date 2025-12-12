@@ -1,8 +1,10 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	interface Props {
 		title: string;
 		isOpen?: boolean;
-		children?: any;
+		children?: Snippet;
 	}
 
 	let { title, isOpen = false, children }: Props = $props();

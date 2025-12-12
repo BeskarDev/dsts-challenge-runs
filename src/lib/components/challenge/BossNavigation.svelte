@@ -222,7 +222,7 @@
 						Weak to:
 					</span>
 					<div class="flex flex-wrap gap-1">
-						{#each attributes as attribute}
+						{#each attributes as attribute (attribute)}
 							<span
 								class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800"
 								title={attribute}
@@ -231,7 +231,7 @@
 								<span>{attribute}</span>
 							</span>
 						{/each}
-						{#each damageElements as element}
+						{#each damageElements as element (element)}
 							<span
 								class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800"
 								title={element}
@@ -251,7 +251,7 @@
 						Resists:
 					</span>
 					<div class="flex flex-wrap gap-1">
-						{#each attributes as attribute}
+						{#each attributes as attribute (attribute)}
 							<span
 								class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
 								title={attribute}
@@ -260,7 +260,7 @@
 								<span>{attribute}</span>
 							</span>
 						{/each}
-						{#each damageElements as element}
+						{#each damageElements as element (element)}
 							<span
 								class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
 								title={element}
@@ -280,7 +280,7 @@
 						Immune to:
 					</span>
 					<div class="flex flex-wrap gap-1">
-						{#each attributes as attribute}
+						{#each attributes as attribute (attribute)}
 							<span
 								class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700"
 								title={attribute}
@@ -289,7 +289,7 @@
 								<span>{attribute}</span>
 							</span>
 						{/each}
-						{#each damageElements as element}
+						{#each damageElements as element (element)}
 							<span
 								class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700"
 								title={element}
@@ -344,7 +344,8 @@
 	</div>
 	<!-- Confetti animation -->
 	<div class="fixed inset-0 z-40 pointer-events-none">
-		{#each Array(50) as _, i}
+		<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
+		{#each Array(50) as _, i (i)}
 			<div 
 				class="absolute animate-confetti"
 				style="

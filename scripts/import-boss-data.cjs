@@ -13,9 +13,11 @@
  * - DLC bosses (Omnimon Zwart Defeat, Omnimon Alter-B, Parallelmon) are marked optional
  */
 
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
+/* eslint-enable @typescript-eslint/no-require-imports */
 
 // Read and parse the HTML file
 const htmlPath = path.join(__dirname, '..', 'boss-table.html');
