@@ -93,16 +93,19 @@
 	function startNewChallenge() {
 		if (!data.challenge || !data.digimon) return;
 
-		const seed = seedInput || randomizer.generateSeed();
-		randomizer.setSeed(seed);
-
+		const mainSeed = seedInput || randomizer.generateSeed();
+		
+		// Start at the first required boss (skip optional boss-0)
+		const startBoss = getStartingBossOrder();
 		const initialGeneration = data.challenge.evolutionCheckpoints[0].unlockedGeneration as EvolutionGeneration;
+		
+		// Generate initial team for starting boss
+		const initialBossSeed = `${mainSeed}-boss-${startBoss}`;
+		randomizer.setSeed(initialBossSeed);
+		
+		const filteredDigimon = getFilteredDigimon();
 		const teamSize = data.challenge.settings.teamSize;
 		
-		// Use filtered digimon list based on content preferences
-		const filteredDigimon = getFilteredDigimon();
-		
-		// Use multi-generation selection for team generation with onlyHighest flag
 		const initialTeam = randomizer
 			.getRandomDigimonMultiGeneration(
 				filteredDigimon, 
@@ -116,19 +119,24 @@
 			.map((digimon: Digimon, index: number) => ({
 				digimonNumber: digimon.number,
 				slotIndex: index,
-				rolledAtCheckpoint: 0
+				rolledAtCheckpoint: startBoss
 			}));
-
-		// Start at the first required boss (skip optional boss-0)
-		const startBoss = getStartingBossOrder();
 
 		const newState: ChallengeRunState = {
 			challengeId: data.challenge.id,
-			seed,
+			seed: mainSeed, // Main seed never changes
 			currentBossOrder: startBoss,
 			currentGeneration: initialGeneration,
 			team: initialTeam,
 			rerollHistory: [],
+			bossTeams: {
+				[startBoss]: {
+					bossOrder: startBoss,
+					generation: initialGeneration,
+					team: initialTeam,
+					seed: initialBossSeed
+				}
+			},
 			createdAt: new Date().toISOString(),
 			updatedAt: new Date().toISOString()
 		};
@@ -139,46 +147,81 @@
 	function navigateToBoss(bossOrder: number) {
 		if (!challengeState || !data.challenge) return;
 		
-		// Find if there's a checkpoint at this boss
-		const checkpoint = data.challenge.evolutionCheckpoints.find(
-			(cp) => cp.bossOrder === bossOrder
-		);
-
-		if (checkpoint) {
-			// When advancing to a checkpoint, generate a new team with the unlocked generation
-			const filteredDigimon = getFilteredDigimon();
-			const teamSize = data.challenge.settings.teamSize;
-			
-			const newTeamDigimon = randomizer.rerollMultiGeneration(
-				filteredDigimon,
-				checkpoint.unlockedGeneration as EvolutionGeneration,
-				teamSize,
-				[], // Don't exclude anything for checkpoint advance
-				onlyHighestGeneration,
-				minGenerationOverride || undefined,
-				includeNonStandard
-			);
-
-			const newTeam: TeamMember[] = newTeamDigimon.map((digimon: Digimon, index: number) => ({
-				digimonNumber: digimon.number,
-				slotIndex: index,
-				rolledAtCheckpoint: bossOrder
-			}));
-
+		// Check if we already have a team saved for this boss
+		if (challengeState.bossTeams[bossOrder]) {
+			// Restore the saved team for this boss
+			const savedTeam = challengeState.bossTeams[bossOrder];
 			challengeStore.update((state) => {
 				if (!state) return state;
 				return {
 					...state,
 					currentBossOrder: bossOrder,
-					currentGeneration: checkpoint.unlockedGeneration as EvolutionGeneration,
-					team: newTeam,
-					seed: randomizer.getSeed(),
+					currentGeneration: savedTeam.generation,
+					team: savedTeam.team,
 					updatedAt: new Date().toISOString()
 				};
 			});
-		} else {
-			challengeStore.updateBossProgress(bossOrder);
+			return;
 		}
+		
+		// Generate new team for this boss
+		const checkpoint = data.challenge.evolutionCheckpoints.find(
+			(cp) => cp.bossOrder === bossOrder
+		);
+		
+		// Determine generation for this boss
+		const newGeneration = checkpoint 
+			? (checkpoint.unlockedGeneration as EvolutionGeneration)
+			: challengeState.currentGeneration;
+		
+		// Generate boss-specific seed
+		const bossSeed = `${challengeState.seed}-boss-${bossOrder}`;
+		randomizer.setSeed(bossSeed);
+		
+		const filteredDigimon = getFilteredDigimon();
+		const teamSize = data.challenge.settings.teamSize;
+		
+		// Get list of digimon already used in this evolution level to avoid repeats
+		const usedInGeneration = Object.values(challengeState.bossTeams)
+			.filter(bt => bt.generation === newGeneration)
+			.flatMap(bt => bt.team.map(tm => tm.digimonNumber));
+		
+		const newTeamDigimon = randomizer.rerollMultiGeneration(
+			filteredDigimon,
+			newGeneration,
+			teamSize,
+			usedInGeneration, // Exclude digimon already used in this generation
+			onlyHighestGeneration,
+			minGenerationOverride || undefined,
+			includeNonStandard
+		);
+
+		const newTeam: TeamMember[] = newTeamDigimon.map((digimon: Digimon, index: number) => ({
+			digimonNumber: digimon.number,
+			slotIndex: index,
+			rolledAtCheckpoint: bossOrder
+		}));
+
+		challengeStore.update((state) => {
+			if (!state) return state;
+			return {
+				...state,
+				currentBossOrder: bossOrder,
+				currentGeneration: newGeneration,
+				team: newTeam,
+				seed: state.seed, // Main seed never changes
+				bossTeams: {
+					...state.bossTeams,
+					[bossOrder]: {
+						bossOrder,
+						generation: newGeneration,
+						team: newTeam,
+						seed: bossSeed
+					}
+				},
+				updatedAt: new Date().toISOString()
+			};
+		});
 	}
 
 	function rerollSlot(slotIndex: number) {
@@ -186,6 +229,10 @@
 
 		const currentTeamNumbers = challengeState.team.map(m => m.digimonNumber);
 		const filteredDigimon = getFilteredDigimon();
+		
+		// Generate sub-seed for this reroll
+		const rerollSeed = `${challengeState.seed}-boss-${challengeState.currentBossOrder}-reroll-${Date.now()}`;
+		randomizer.setSeed(rerollSeed);
 		
 		const newDigimon = randomizer.rerollSlot(
 			filteredDigimon,
@@ -211,10 +258,18 @@
 
 		challengeStore.update((state) => {
 			if (!state) return state;
+			// Update both current team and boss team snapshot
 			return {
 				...state,
 				team: newTeam,
-				seed: randomizer.getSeed(),
+				bossTeams: {
+					...state.bossTeams,
+					[state.currentBossOrder]: {
+						...state.bossTeams[state.currentBossOrder],
+						team: newTeam,
+						seed: rerollSeed
+					}
+				},
 				updatedAt: new Date().toISOString()
 			};
 		});
@@ -226,6 +281,10 @@
 		const previousTeamNumbers = challengeState.team.map(m => m.digimonNumber);
 		const teamSize = data.challenge.settings.teamSize;
 		const filteredDigimon = getFilteredDigimon();
+
+		// Generate sub-seed for this reroll
+		const rerollSeed = `${challengeState.seed}-boss-${challengeState.currentBossOrder}-rerollall-${Date.now()}`;
+		randomizer.setSeed(rerollSeed);
 
 		const newTeamDigimon = randomizer.rerollMultiGeneration(
 			filteredDigimon,
@@ -249,15 +308,23 @@
 			checkpoint: challengeState.currentBossOrder,
 			previousTeam: previousTeamNumbers,
 			newTeam: newTeam.map(m => m.digimonNumber),
-			seed: randomizer.getSeed()
+			seed: rerollSeed
 		};
 
 		challengeStore.update((state) => {
 			if (!state) return state;
+			// Update both current team and boss team snapshot
 			return {
 				...state,
 				team: newTeam,
-				seed: randomizer.getSeed(),
+				bossTeams: {
+					...state.bossTeams,
+					[state.currentBossOrder]: {
+						...state.bossTeams[state.currentBossOrder],
+						team: newTeam,
+						seed: rerollSeed
+					}
+				},
 				rerollHistory: [...state.rerollHistory, rerollEvent],
 				updatedAt: new Date().toISOString()
 			};
@@ -435,11 +502,6 @@
 					<p>
 						<strong class="text-gray-900 dark:text-muted-100">Level Cap:</strong>
 						{getLevelCap() || 'No limit'}
-						{#if getNextBoss()}
-							<span class="text-xs text-gray-500 dark:text-muted-400">
-								(Next boss: {getNextBoss()?.name} Lv.{getNextBoss()?.level})
-							</span>
-						{/if}
 					</p>
 					<p>
 						<strong class="text-gray-900 dark:text-muted-100">Evolution Generation:</strong>

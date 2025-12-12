@@ -13,7 +13,25 @@ function createChallengeStore() {
 		subscribe,
 		load: (challengeId: string) => {
 			const key = getChallengeKey(challengeId);
-			const state = storage.loadState<ChallengeRunState>(key);
+			let state = storage.loadState<ChallengeRunState>(key);
+			
+			// Migrate old state format if needed
+			if (state && !state.bossTeams) {
+				state = {
+					...state,
+					bossTeams: {
+						[state.currentBossOrder]: {
+							bossOrder: state.currentBossOrder,
+							generation: state.currentGeneration,
+							team: state.team,
+							seed: `${state.seed}-boss-${state.currentBossOrder}`
+						}
+					}
+				};
+				// Save migrated state
+				storage.saveState(key, state);
+			}
+			
 			set(state);
 		},
 		hasExistingState: (challengeId: string): boolean => {

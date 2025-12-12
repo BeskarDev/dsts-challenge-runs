@@ -43,12 +43,20 @@
 >
 	<div class="relative w-20 h-20">
 		{#if !imageError}
-			<img
-				src={digimon.iconUrl}
-				alt={digimon.name}
-				class="w-full h-full object-contain rounded-md bg-gray-100 dark:bg-surface-200"
-				onerror={handleImageError}
-			/>
+			<a
+				href={digimon.detailsUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="block cursor-pointer hover:opacity-80 transition-opacity"
+				title="View on GrindoSaur"
+			>
+				<img
+					src={digimon.iconUrl}
+					alt={digimon.name}
+					class="w-full h-full object-contain rounded-md bg-gray-100 dark:bg-surface-200"
+					onerror={handleImageError}
+				/>
+			</a>
 		{:else}
 			<div
 				class="w-full h-full rounded-md bg-gray-200 dark:bg-surface-200 flex items-center justify-center text-gray-400 dark:text-muted"
