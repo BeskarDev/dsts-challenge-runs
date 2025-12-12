@@ -7,7 +7,9 @@
 	let { children, class: className = '' }: Props = $props();
 </script>
 
-<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow {className}">
+<div
+	class="rounded-md border border-border-light dark:border-border bg-white dark:bg-[rgba(8,14,32,0.80)] backdrop-blur-sm p-6 shadow-panel-light dark:shadow-panel hover:shadow-lg dark:hover:shadow-[0_22px_45px_rgba(0,0,0,0.80)] transition-all {className}"
+>
 	{#if children}
 		{@render children()}
 	{/if}

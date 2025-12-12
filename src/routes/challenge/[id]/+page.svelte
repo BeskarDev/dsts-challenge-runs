@@ -217,32 +217,38 @@
 </script>
 
 <div class="max-w-6xl mx-auto">
-	<h1 class="text-4xl font-bold text-gray-900 mb-8">{data.challenge?.name || 'Challenge'}</h1>
+	<h1 class="text-4xl font-bold text-gray-900 dark:text-muted-50 mb-8">
+		{data.challenge?.name || 'Challenge'}
+	</h1>
 
 	{#if !challengeState}
 		<Card>
-			<h2 class="text-2xl font-bold text-gray-900 mb-4">Start New Challenge</h2>
-			<p class="text-gray-700 mb-4">{data.challenge?.description || ''}</p>
+			<h2 class="text-2xl font-bold text-gray-900 dark:text-muted-50 mb-4">Start New Challenge</h2>
+			<p class="text-gray-700 dark:text-muted-300 mb-4">{data.challenge?.description || ''}</p>
 
 			<div class="mb-4">
-				<label for="seed" class="block text-sm font-medium text-gray-700 mb-2">
+				<label
+					for="seed"
+					class="block text-sm font-medium text-gray-700 dark:text-muted-100 mb-2"
+				>
 					Seed (optional - leave empty for random)
 				</label>
 				<input
 					id="seed"
 					type="text"
 					bind:value={seedInput}
-					class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+					class="w-full px-3 py-2 border border-gray-300 dark:border-border bg-white dark:bg-surface-100 text-gray-900 dark:text-muted-50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
 					placeholder="Enter seed or leave empty"
 				/>
 			</div>
 
 			<div class="mb-6">
-				<h3 class="font-semibold text-gray-900 mb-2">Challenge Rules:</h3>
-				<ul class="list-disc list-inside space-y-1 text-gray-700">
+				<h3 class="font-semibold text-gray-900 dark:text-muted-100 mb-2">Challenge Rules:</h3>
+				<ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-muted-300">
 					{#each data.challenge?.rules || [] as rule (rule.id)}
 						<li>
-							<strong>{rule.title}:</strong> {rule.description}
+							<strong class="text-gray-900 dark:text-muted-100">{rule.title}:</strong>
+							{rule.description}
 						</li>
 					{/each}
 				</ul>
@@ -254,7 +260,7 @@
 		<!-- Boss Navigation -->
 		{#if data.bosses}
 			<div class="mb-6">
-				<BossNavigation 
+				<BossNavigation
 					currentBossOrder={challengeState.currentBossOrder}
 					bosses={data.bosses}
 					onNavigate={navigateToBoss}
@@ -265,39 +271,80 @@
 		<!-- Progress Info -->
 		<div class="grid gap-6 md:grid-cols-2 mb-6">
 			<Card>
-				<h2 class="text-xl font-bold text-gray-900 mb-4">Challenge Status</h2>
-				<div class="space-y-2 text-gray-700">
-					<p><strong>Level Cap:</strong> {getNextBoss()?.level || 'No limit'}</p>
-					<p><strong>Evolution Generation:</strong> 
-						<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
+				<h2 class="text-xl font-bold text-gray-900 dark:text-muted-50 mb-4">Challenge Status</h2>
+				<div class="space-y-2 text-gray-700 dark:text-muted-300">
+					<p>
+						<strong class="text-gray-900 dark:text-muted-100">Level Cap:</strong>
+						{getNextBoss()?.level || 'No limit'}
+					</p>
+					<p>
+						<strong class="text-gray-900 dark:text-muted-100">Evolution Generation:</strong>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300"
+						>
 							{challengeState.currentGeneration}
 						</span>
 					</p>
-					<p><strong>Seed:</strong> <code class="bg-gray-100 px-2 py-1 rounded text-sm">{challengeState.seed}</code></p>
-					<p><strong>Re-rolls Used:</strong> {challengeState.rerollHistory.length}</p>
+					<p>
+						<strong class="text-gray-900 dark:text-muted-100">Seed:</strong>
+						<code
+							class="bg-gray-100 dark:bg-surface-100 px-2 py-1 rounded text-sm text-gray-900 dark:text-muted-50"
+							>{challengeState.seed}</code
+						>
+					</p>
+					<p>
+						<strong class="text-gray-900 dark:text-muted-100">Re-rolls Used:</strong>
+						{challengeState.rerollHistory.length}
+					</p>
 				</div>
 			</Card>
 
 			<Card>
-				<h2 class="text-xl font-bold text-gray-900 mb-4">Evolution Checkpoints</h2>
+				<h2 class="text-xl font-bold text-gray-900 dark:text-muted-50 mb-4">
+					Evolution Checkpoints
+				</h2>
 				<div class="space-y-2">
 					{#each data.challenge?.evolutionCheckpoints || [] as checkpoint (checkpoint.bossOrder)}
-						{@const boss = data.bosses?.find(b => b.order === checkpoint.bossOrder)}
+						{@const boss = data.bosses?.find((b) => b.order === checkpoint.bossOrder)}
 						{@const isUnlocked = challengeState.currentBossOrder >= checkpoint.bossOrder}
-						<div class="flex items-center gap-2 text-sm {isUnlocked ? 'text-green-700' : 'text-gray-500'}">
+						<div
+							class="flex items-center gap-2 text-sm {isUnlocked
+								? 'text-secondary-600 dark:text-secondary-400'
+								: 'text-gray-500 dark:text-muted'}"
+						>
 							<span class="w-5 h-5 flex items-center justify-center">
 								{#if isUnlocked}
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
-										<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-5 w-5 text-secondary-500 dark:text-secondary-400"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+											clip-rule="evenodd"
+										/>
 									</svg>
 								{:else}
-									<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-										<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd" />
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-5 w-5 text-gray-400 dark:text-muted"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12z"
+											clip-rule="evenodd"
+										/>
 									</svg>
 								{/if}
 							</span>
 							<span>
-								{boss?.name || `Boss ${checkpoint.bossOrder}`}: <strong>{checkpoint.unlockedGeneration}</strong>
+								{boss?.name || `Boss ${checkpoint.bossOrder}`}: <strong
+									class="text-gray-900 dark:text-muted-50">{checkpoint.unlockedGeneration}</strong
+								>
 							</span>
 						</div>
 					{/each}
@@ -307,14 +354,14 @@
 
 		<!-- Team Display -->
 		<div class="mb-6">
-			<TeamDisplay 
+			<TeamDisplay
 				team={getTeamDigimon()}
 				onRerollSlot={canReroll() ? rerollSlot : undefined}
 				onRerollAll={canReroll() ? rerollAll : undefined}
 				showRerollButtons={canReroll()}
 			/>
 			{#if !canReroll()}
-				<p class="mt-2 text-sm text-gray-500 text-center">
+				<p class="mt-2 text-sm text-gray-500 dark:text-muted text-center">
 					Re-rolls are not available at this checkpoint.
 				</p>
 			{/if}
@@ -323,26 +370,25 @@
 		<!-- Challenge Rules and Actions -->
 		<div class="grid gap-6 md:grid-cols-2">
 			<Card>
-				<h2 class="text-xl font-bold text-gray-900 mb-4">Challenge Rules</h2>
-				<ul class="list-disc list-inside space-y-2 text-gray-700">
+				<h2 class="text-xl font-bold text-gray-900 dark:text-muted-50 mb-4">Challenge Rules</h2>
+				<ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-muted-300">
 					{#each data.challenge?.rules || [] as rule (rule.id)}
 						<li>
-							<strong>{rule.title}:</strong> {rule.description}
+							<strong class="text-gray-900 dark:text-muted-100">{rule.title}:</strong>
+							{rule.description}
 						</li>
 					{/each}
 				</ul>
 			</Card>
 
 			<Card>
-				<h2 class="text-xl font-bold text-gray-900 mb-4">Actions</h2>
+				<h2 class="text-xl font-bold text-gray-900 dark:text-muted-50 mb-4">Actions</h2>
 				<div class="space-y-4">
 					<div>
-						<p class="text-sm text-gray-600 mb-2">
+						<p class="text-sm text-gray-600 dark:text-muted mb-2">
 							Reset this challenge to start over with a new seed and team.
 						</p>
-						<Button variant="outline" onclick={resetChallenge}>
-							Reset Challenge
-						</Button>
+						<Button variant="outline" onclick={resetChallenge}> Reset Challenge </Button>
 					</div>
 				</div>
 			</Card>
