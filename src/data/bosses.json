@@ -5,7 +5,8 @@
     "level": 12,
     "order": 0,
     "location": "Signs of an Anomaly",
-    "imageUrl": "/images/bosses/chaosdramon.svg"
+    "imageUrl": "/images/bosses/chaosdramon.svg",
+    "optional": true
   },
   {
     "id": "boss-1",

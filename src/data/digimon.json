@@ -1574,7 +1574,7 @@
   {
     "id": "263",
     "name": "Armageddemon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/armageddemon.svg"
   },
   {
@@ -1604,7 +1604,7 @@
   {
     "id": "268",
     "name": "Beelzemon Blast Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/beelzemon-blast-mode.svg"
   },
   {
@@ -1658,13 +1658,13 @@
   {
     "id": "277",
     "name": "Chaosmon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/chaosmon.svg"
   },
   {
     "id": "278",
     "name": "Chaosmon Valdur Arm",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/chaosmon-valdur-arm.svg"
   },
   {
@@ -1700,7 +1700,7 @@
   {
     "id": "284",
     "name": "Daemon Super Ultimate",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/daemon-super-ultimate.svg"
   },
   {
@@ -1754,7 +1754,7 @@
   {
     "id": "293",
     "name": "Gallantmon Crimson Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/gallantmon-crimson-mode.svg"
   },
   {
@@ -1820,7 +1820,7 @@
   {
     "id": "304",
     "name": "Jesmon GX",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/jesmon-gx.svg"
   },
   {
@@ -1868,7 +1868,7 @@
   {
     "id": "312",
     "name": "Lucemon SM",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/lucemon-sm.svg"
   },
   {
@@ -1934,7 +1934,7 @@
   {
     "id": "323",
     "name": "MirageGaogamon Burst Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/miragegaogamon-burst-mode.svg"
   },
   {
@@ -1952,13 +1952,13 @@
   {
     "id": "326",
     "name": "Omegamon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/omegamon.svg"
   },
   {
     "id": "327",
     "name": "Omegamon Zwart",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/omegamon-zwart.svg"
   },
   {
@@ -1970,7 +1970,7 @@
   {
     "id": "329",
     "name": "Ophanimon FM",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/ophanimon-fm.svg"
   },
   {
@@ -2006,7 +2006,7 @@
   {
     "id": "335",
     "name": "Ravemon BM",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/ravemon-bm.svg"
   },
   {
@@ -2018,7 +2018,7 @@
   {
     "id": "337",
     "name": "Rosemon Burst Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/rosemon-burst-mode.svg"
   },
   {
@@ -2060,7 +2060,7 @@
   {
     "id": "344",
     "name": "ShineGreymon BM",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/shinegreymon-bm.svg"
   },
   {
@@ -2072,7 +2072,7 @@
   {
     "id": "346",
     "name": "Susanoomon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/susanoomon.svg"
   },
   {
@@ -2138,7 +2138,7 @@
   {
     "id": "357",
     "name": "ZeedMillenniummon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/zeedmillenniummon.svg"
   },
   {
@@ -2204,19 +2204,19 @@
   {
     "id": "368",
     "name": "Omegamon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/omegamon.svg"
   },
   {
     "id": "369",
     "name": "Omegamon Zwart",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/omegamon-zwart.svg"
   },
   {
     "id": "370",
     "name": "Imperialdramon Paladin Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/imperialdramon-paladin-mode.svg"
   },
   {
@@ -2270,31 +2270,31 @@
   {
     "id": "379",
     "name": "BlackWarGreymon X",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/blackwargreymon-x.svg"
   },
   {
     "id": "380",
     "name": "WarGreymon X",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/wargreymon-x.svg"
   },
   {
     "id": "381",
     "name": "MetalGarurumon X",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/metalgarurumon-x.svg"
   },
   {
     "id": "382",
     "name": "Apocalymon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/apocalymon.svg"
   },
   {
     "id": "383",
     "name": "Diablomon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/diablomon.svg"
   },
   {
@@ -2306,7 +2306,7 @@
   {
     "id": "385",
     "name": "ZeedMillenniumon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/zeedmillenniumon.svg"
   },
   {
@@ -2324,25 +2324,25 @@
   {
     "id": "388",
     "name": "Lucemon Falldown Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/lucemon-falldown-mode.svg"
   },
   {
     "id": "389",
     "name": "GrandisKuwagamon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/grandiskuwagamon.svg"
   },
   {
     "id": "390",
     "name": "TigerVespamon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/tigervespamon.svg"
   },
   {
     "id": "391",
     "name": "SaintGalgomon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/saintgalgomon.svg"
   },
   {
@@ -2372,13 +2372,13 @@
   {
     "id": "396",
     "name": "Ophanimon Falldown Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/ophanimon-falldown-mode.svg"
   },
   {
     "id": "397",
     "name": "Beelzemon X-Antibody",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/beelzemon-x-antibody.svg"
   },
   {
@@ -2396,13 +2396,13 @@
   {
     "id": "400",
     "name": "Daemon Super Ultimate",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/daemon-super-ultimate.svg"
   },
   {
     "id": "401",
     "name": "Boltboutamon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/boltboutamon.svg"
   },
   {
@@ -2456,7 +2456,7 @@
   {
     "id": "410",
     "name": "Goddramon X-Antibody",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/goddramon-x-antibody.svg"
   },
   {
@@ -2540,7 +2540,7 @@
   {
     "id": "424",
     "name": "Susanoomon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/susanoomon.svg"
   },
   {
@@ -2558,7 +2558,7 @@
   {
     "id": "427",
     "name": "Alphamon Ouryuken",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/alphamon-ouryuken.svg"
   },
   {
@@ -2570,7 +2570,7 @@
   {
     "id": "429",
     "name": "Dukemon Crimson Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/dukemon-crimson-mode.svg"
   },
   {
@@ -2744,31 +2744,31 @@
   {
     "id": "458",
     "name": "BlitzGreymon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/blitzgreymon.svg"
   },
   {
     "id": "459",
     "name": "CresGarurumon",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/cresgarurumon.svg"
   },
   {
     "id": "460",
     "name": "Omnimon Alter-B",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/omnimon-alter-b.svg"
   },
   {
     "id": "461",
     "name": "Omnimon Zwart Defeat",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/omnimon-zwart-defeat.svg"
   },
   {
     "id": "462",
     "name": "Omnimon Alter-S",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/omnimon-alter-s.svg"
   },
   {
@@ -2780,7 +2780,7 @@
   {
     "id": "464",
     "name": "Omnimon Merciful Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/omnimon-merciful-mode.svg"
   },
   {
@@ -2810,43 +2810,43 @@
   {
     "id": "469",
     "name": "Omnimon X",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/omnimon-x.svg"
   },
   {
     "id": "470",
     "name": "Magnamon X",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/magnamon-x.svg"
   },
   {
     "id": "471",
     "name": "UlforceVeedramon X",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/ulforceveedramon-x.svg"
   },
   {
     "id": "472",
     "name": "Gallantmon X",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/gallantmon-x.svg"
   },
   {
     "id": "473",
     "name": "Jesmon X",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/jesmon-x.svg"
   },
   {
     "id": "474",
     "name": "Chronomon Holy Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/chronomon-holy-mode.svg"
   },
   {
     "id": "475",
     "name": "Chronomon Destroy Mode",
-    "stage": "Mega",
+    "stage": "Mega+",
     "imageUrl": "/images/digimon/chronomon-destroy-mode.svg"
   }
 ]

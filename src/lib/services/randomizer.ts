@@ -1,6 +1,20 @@
 import type { Digimon, EvolutionStage } from '../types/digimon';
 
 /**
+ * Evolution stage hierarchy for filtering
+ */
+export const STAGE_HIERARCHY: EvolutionStage[] = ['Baby', 'Rookie', 'Champion', 'Ultimate', 'Mega', 'Mega+'];
+
+/**
+ * Get all stages up to and including the given stage
+ */
+export function getStagesUpTo(stage: EvolutionStage): EvolutionStage[] {
+	const index = STAGE_HIERARCHY.indexOf(stage);
+	if (index === -1) return ['Baby'];
+	return STAGE_HIERARCHY.slice(0, index + 1);
+}
+
+/**
  * Simple seeded random number generator using mulberry32 algorithm
  * Returns a deterministic sequence of random numbers based on the seed
  */
@@ -48,6 +62,14 @@ export class SeededRandom {
 			[result[i], result[j]] = [result[j], result[i]];
 		}
 		return result;
+	}
+
+	/**
+	 * Pick a single random element from an array
+	 */
+	pickOne<T>(array: T[]): T | undefined {
+		if (array.length === 0) return undefined;
+		return array[this.nextInt(0, array.length)];
 	}
 }
 
@@ -111,6 +133,64 @@ export class RandomizerService {
 	}
 
 	/**
+	 * Get random Digimon from multiple stages (up to and including the given stage)
+	 * Prevents duplicates across all selected Digimon
+	 */
+	getRandomDigimonMultiStage(
+		allDigimon: Digimon[],
+		maxStage: EvolutionStage,
+		count: number,
+		exclude: string[] = []
+	): Digimon[] {
+		const allowedStages = getStagesUpTo(maxStage);
+		
+		// Filter by allowed stages and exclude list
+		const available = allDigimon.filter(
+			(d) => allowedStages.includes(d.stage) && !exclude.includes(d.id)
+		);
+
+		if (available.length === 0) {
+			return [];
+		}
+
+		// If we need more than available, return all available
+		if (count >= available.length) {
+			return [...available];
+		}
+
+		// Shuffle and take the requested count
+		const shuffled = this.rng.shuffle(available);
+		return shuffled.slice(0, count);
+	}
+
+	/**
+	 * Reroll a single slot in the team
+	 * Returns a new Digimon that is not already in the team
+	 */
+	rerollSlot(
+		allDigimon: Digimon[],
+		maxStage: EvolutionStage,
+		currentTeamIds: string[]
+	): Digimon | null {
+		// Generate new seed for this reroll
+		const newSeed = this.generateSeed();
+		this.setSeed(newSeed);
+
+		const allowedStages = getStagesUpTo(maxStage);
+		
+		// Filter by allowed stages and exclude current team members
+		const available = allDigimon.filter(
+			(d) => allowedStages.includes(d.stage) && !currentTeamIds.includes(d.id)
+		);
+
+		if (available.length === 0) {
+			return null;
+		}
+
+		return this.rng.pickOne(available) || null;
+	}
+
+	/**
 	 * Generate a new team, excluding current team members
 	 */
 	reroll(
@@ -124,5 +204,21 @@ export class RandomizerService {
 		this.setSeed(newSeed);
 		
 		return this.getRandomDigimon(allDigimon, stage, count, currentTeam);
+	}
+
+	/**
+	 * Generate a new team from multiple stages
+	 */
+	rerollMultiStage(
+		allDigimon: Digimon[],
+		maxStage: EvolutionStage,
+		count: number,
+		currentTeam: string[] = []
+	): Digimon[] {
+		// Generate new seed for reroll
+		const newSeed = this.generateSeed();
+		this.setSeed(newSeed);
+		
+		return this.getRandomDigimonMultiStage(allDigimon, maxStage, count, currentTeam);
 	}
 }
