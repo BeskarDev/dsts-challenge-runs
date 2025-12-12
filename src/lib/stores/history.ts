@@ -54,6 +54,12 @@ function createHistoryStore() {
 		clear: () => {
 			storage.clearHistory();
 			set([]);
+		},
+		deleteRun: (runId: string) => {
+			storage.deleteHistoryItem<HistoricalRun>(runId);
+			// Reload the store
+			const updatedHistory = storage.getHistory<HistoricalRun>();
+			set(updatedHistory);
 		}
 	};
 }

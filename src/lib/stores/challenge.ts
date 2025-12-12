@@ -46,6 +46,21 @@ function createChallengeStore() {
 			
 			set(state);
 		},
+		loadFromHistory: (challengeId: string, seed: string): boolean => {
+			// This attempts to load a challenge state based on seed
+			// The state might not exist if the challenge was never saved properly
+			const key = getChallengeKey(challengeId);
+			const state = storage.loadState<ChallengeRunState>(key);
+			
+			// Check if the current state matches the requested seed
+			if (state && state.seed === seed) {
+				set(state);
+				return true;
+			}
+			
+			// If not, we can't load it (challenge states are per-challenge, not per-seed)
+			return false;
+		},
 		hasExistingState: (challengeId: string): boolean => {
 			const key = getChallengeKey(challengeId);
 			return storage.loadState<ChallengeRunState>(key) !== null;

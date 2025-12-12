@@ -81,6 +81,18 @@ export class StorageService {
 			console.error('Failed to clear history:', error);
 		}
 	}
+
+	deleteHistoryItem<T extends { id: string }>(itemId: string): void {
+		if (!this.isClient) return;
+		try {
+			const history = this.getHistory<T>();
+			const filtered = history.filter(item => item.id !== itemId);
+			const serialized = JSON.stringify(filtered);
+			localStorage.setItem(this.HISTORY_KEY, serialized);
+		} catch (error) {
+			console.error('Failed to delete history item:', error);
+		}
+	}
 }
 
 export const storage = new StorageService();

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import { historyStore } from '$lib/stores/history';
 	import type { HistoricalRun } from '$lib/types/challenge';
 	import Card from './Card.svelte';
@@ -12,6 +13,7 @@
 	let { isOpen, onClose }: Props = $props();
 
 	let history = $state<HistoricalRun[]>([]);
+	let deletingRunId = $state<string | null>(null);
 
 	onMount(() => {
 		historyStore.load();
@@ -48,6 +50,20 @@
 				return 'bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-300';
 			default:
 				return 'bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-300';
+		}
+	}
+
+	function handleLoadRun(run: HistoricalRun) {
+		// Navigate to challenge page with seed parameter
+		const url = `${base}/challenge/${run.challengeId}?seed=${encodeURIComponent(run.seed)}`;
+		window.location.href = url;
+	}
+
+	function handleDeleteRun(runId: string) {
+		if (confirm('Are you sure you want to delete this challenge run from history?')) {
+			deletingRunId = runId;
+			historyStore.deleteRun(runId);
+			deletingRunId = null;
 		}
 	}
 
@@ -187,6 +203,46 @@
 									{#if run.completedAt}
 										<div>Completed: {formatDate(run.completedAt)}</div>
 									{/if}
+								</div>
+
+								<!-- Actions -->
+								<div class="flex gap-2 pt-3 border-t border-gray-200 dark:border-border">
+									<button
+										onclick={() => handleLoadRun(run)}
+										disabled={deletingRunId === run.id}
+										class="flex-1 px-4 py-2 rounded-full border border-primary-500 bg-transparent hover:bg-primary-500/10 text-primary-500 font-medium transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+										aria-label="Load run"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4 mr-2"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+											stroke-width="2"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+										</svg>
+										Load Run
+									</button>
+									<button
+										onclick={() => handleDeleteRun(run.id)}
+										disabled={deletingRunId === run.id}
+										class="px-3 py-2 rounded-md border border-red-200 dark:border-red-900/30 bg-red-50 dark:bg-red-900/10 text-red-700 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+										aria-label="Delete run"
+										title="Delete run"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+											stroke-width="2"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+										</svg>
+									</button>
 								</div>
 							</div>
 						</Card>
