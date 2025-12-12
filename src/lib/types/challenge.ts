@@ -91,4 +91,6 @@ export interface HistoricalRun {
 		totalRerolls: number;
 		teamSize: number;
 	};
+	// Full challenge state for restoration
+	fullState: ChallengeRunState;
 }

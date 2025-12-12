@@ -8,6 +8,7 @@
 	import TeamDisplay from '$lib/components/challenge/TeamDisplay.svelte';
 	import BossNavigation from '$lib/components/challenge/BossNavigation.svelte';
 	import { challengeStore } from '$lib/stores/challenge';
+	import { historyStore } from '$lib/stores/history';
 	import { RandomizerService } from '$lib/services/randomizer';
 	import type { ChallengeRunState, TeamMember } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
@@ -57,16 +58,24 @@
 			isLoadingState = false;
 			
 			// If there's a URL seed that differs from the current state seed,
-			// clear the state and start a new challenge with the URL seed
+			// try to restore from history first, or start a new challenge
 			if (urlSeed && state && state.seed !== urlSeed) {
 				// Clear the existing state
 				if (data.challenge) {
 					challengeStore.clear(data.challenge.id);
 				}
-				// Start new challenge will be triggered automatically since state is now null
+				// Will be handled in the next subscription call when state is null
 			} else if (urlSeed && !state) {
-				// No existing state but we have a URL seed - auto-start the challenge
-				startNewChallenge();
+				// No existing state but we have a URL seed
+				// Try to restore from history first
+				const historicalRun = historyStore.getRunBySeed(data.challenge?.id || '', urlSeed);
+				if (historicalRun && historicalRun.fullState) {
+					// Restore the full state from history
+					challengeStore.save(historicalRun.fullState);
+				} else {
+					// No historical run found, start a new challenge
+					startNewChallenge();
+				}
 			} else if (state && state.seed) {
 				// Update URL with current seed if state exists and no URL seed conflict
 				updateUrlWithSeed(state.seed);

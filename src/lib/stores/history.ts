@@ -36,7 +36,8 @@ function createHistoryStore() {
 				metadata: {
 					totalRerolls: state.rerollHistory.length,
 					teamSize: state.team.length
-				}
+				},
+				fullState: state // Save the full state for restoration
 			};
 
 			if (existingIndex >= 0) {
@@ -60,6 +61,10 @@ function createHistoryStore() {
 			// Reload the store
 			const updatedHistory = storage.getHistory<HistoricalRun>();
 			set(updatedHistory);
+		},
+		getRunBySeed: (challengeId: string, seed: string): HistoricalRun | null => {
+			const history = storage.getHistory<HistoricalRun>();
+			return history.find(run => run.challengeId === challengeId && run.seed === seed) || null;
 		}
 	};
 }
