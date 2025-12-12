@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 	import { themeStore } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
+	import favicon from '$lib/assets/favicon.svg';
 
 	let currentTheme = $state<'light' | 'dark'>('light');
 
@@ -27,16 +28,17 @@
 		<div class="flex items-center justify-between">
 			<a
 				href="{base}/"
-				class="text-2xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-300 transition-colors"
+				class="flex items-center gap-3 text-2xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-300 transition-colors"
 			>
-				DSTS Challenge Runs
+				<img src={favicon} alt="DSTS Logo" class="h-8 w-8" />
+				<span>DSTS Challenge Runs</span>
 			</a>
 			<nav class="flex items-center gap-6">
 				<ul class="flex gap-6">
 					<li>
 						<a
 							href="{base}/"
-							class="text-gray-600 dark:text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
+							class="text-gray-900 dark:text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
 						>
 							Home
 						</a>
@@ -44,7 +46,7 @@
 					<li>
 						<a
 							href="{base}/about"
-							class="text-gray-600 dark:text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
+							class="text-gray-900 dark:text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium"
 						>
 							About
 						</a>

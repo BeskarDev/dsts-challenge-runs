@@ -1,38 +1,85 @@
-# sv
+# DSTS Challenge Runs
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Generate and track custom challenge runs for Digimon Story Time Stranger.
 
-## Creating a project
+## 🎮 Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Seed-based randomization** for reproducible challenge runs
+- **Evolution tier restrictions** based on story progress
+- **Boss checkpoint system** for tracking progress
+- **Re-roll functionality** at designated checkpoints
+- **Local storage** - all data stays in your browser
+- **Dark/Light mode** support
 
-```sh
-# create a new project in the current directory
-npx sv create
+## 🚀 Quick Start
 
-# create a new project in my-app
-npx sv create my-app
-```
+### Prerequisites
 
-## Developing
+- Node.js 24+
+- npm or pnpm
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Development
 
-```sh
+```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
+# Build for production
 npm run build
+
+# Run tests
+npm run test
+
+# Lint code
+npm run lint
+
+# Format code
+npm run format
 ```
 
-You can preview the production build with `npm run preview`.
+## 📖 Documentation
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+For detailed documentation, see the [spec/](./spec/) directory:
+
+- [Project Overview](./spec/overview.md)
+- [Architecture](./spec/architecture.md)
+- [Data Model](./spec/data_model.md)
+- [Implementation Roadmap](./spec/roadmap.md)
+- [Contributing Guidelines](./spec/contributing.md)
+- [Style Guide](./spec/style_guide.md)
+
+## 🛠️ Tech Stack
+
+- **Framework**: Svelte 5 with SvelteKit
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Testing**: Vitest
+- **Deployment**: GitHub Pages
+
+## 🎯 Challenge Types
+
+### Random Evolution Challenge
+
+Build your team from randomly selected Digimon that unlock as you progress through the story.
+
+**Rules:**
+- Hard mode required
+- Level cap based on upcoming boss
+- Random team composition
+- Evolution restrictions by story progress
+
+## 🤝 Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](./spec/contributing.md) for guidelines.
+
+## 📝 License
+
+See [LICENSE](./LICENSE) file for details.
+
+## 🔗 Links
+
+- [Boss Info Source](https://game8.co/games/Digimon-Story-Time-Stranger/archives/553558)
+- [Digimon List Source](https://game8.co/games/Digimon-Story-Time-Stranger/archives/552892)
