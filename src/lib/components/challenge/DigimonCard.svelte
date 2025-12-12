@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Digimon } from '$lib/types/digimon';
+	import { i18n } from '$lib/i18n';
 
 	interface Props {
 		digimon: Digimon;
@@ -11,6 +12,12 @@
 	let { digimon, slotIndex, onReroll, showRerollButton = true }: Props = $props();
 
 	let imageError = $state(false);
+
+	// Reactive translations that update when language changes
+	let translatedName = $derived($i18n.t(digimon.name));
+	let translatedGeneration = $derived($i18n.t(digimon.generation));
+	let translatedAttribute = $derived($i18n.t(digimon.attribute));
+	let translatedType = $derived($i18n.t(digimon.type));
 
 	function handleImageError() {
 		imageError = true;
@@ -91,9 +98,9 @@
 			rel="noopener noreferrer"
 			class="font-semibold text-gray-900 dark:text-muted-50 hover:text-primary-500 dark:hover:text-primary-400 hover:underline transition-colors"
 		>
-			{digimon.name}
+			{translatedName}
 		</a>
-		<p class="text-sm text-gray-600 dark:text-muted">{digimon.generation}</p>
+		<p class="text-sm text-gray-600 dark:text-muted">{translatedGeneration}</p>
 		
 		<!-- Additional info: Attribute, Type, Personality -->
 		<div class="mt-2 space-y-1">
@@ -101,14 +108,14 @@
 				{#if getAttributeIconUrl(digimon.attribute)}
 					<img 
 						src={getAttributeIconUrl(digimon.attribute)} 
-						alt={digimon.attribute}
+						alt={translatedAttribute}
 					class="w-4 h-4 dark:invert-0 invert"
-						title={digimon.attribute}
+						title={translatedAttribute}
 					/>
 				{/if}
-				<span class="text-xs text-gray-600 dark:text-muted">{digimon.attribute}</span>
+				<span class="text-xs text-gray-600 dark:text-muted">{translatedAttribute}</span>
 			</div>
-			<p class="text-xs text-gray-500 dark:text-muted-400">{digimon.type}</p>
+			<p class="text-xs text-gray-500 dark:text-muted-400">{translatedType}</p>
 			<p class="text-xs text-gray-500 dark:text-muted-400 italic">{digimon.basePersonality}</p>
 		</div>
 	</div>
