@@ -57,6 +57,42 @@ export function getGenerationsUpTo(
 }
 
 /**
+ * Filter digimon by allowed generations, including non-standard generation handling
+ * @param allDigimon - All available digimon
+ * @param allowedGenerations - Standard generations that are allowed
+ * @param maxGenIndex - Index of max generation in hierarchy (for non-standard filtering)
+ * @param includeNonStandard - Whether to include Armor/Hybrid based on equivalents
+ * @param exclude - Digimon numbers to exclude
+ */
+function filterDigimonByGenerations(
+	allDigimon: Digimon[],
+	allowedGenerations: EvolutionGeneration[],
+	maxGenIndex: number,
+	includeNonStandard: boolean,
+	exclude: string[] = []
+): Digimon[] {
+	return allDigimon.filter((d) => {
+		if (exclude.includes(d.number)) return false;
+		
+		// Check standard generations
+		if (allowedGenerations.includes(d.generation)) {
+			return true;
+		}
+		
+		// Check non-standard generations if enabled
+		if (includeNonStandard && (d.generation === 'Armor' || d.generation === 'Hybrid')) {
+			const equivalent = getNonStandardEquivalent(d.number, d.generation);
+			if (equivalent) {
+				const equivIndex = GENERATION_HIERARCHY.indexOf(equivalent);
+				return equivIndex >= 0 && equivIndex <= maxGenIndex;
+			}
+		}
+		
+		return false;
+	});
+}
+
+/**
  * Simple seeded random number generator using mulberry32 algorithm
  * Returns a deterministic sequence of random numbers based on the seed
  */
@@ -209,25 +245,13 @@ export class RandomizerService {
 		const maxGenIndex = GENERATION_HIERARCHY.indexOf(maxGeneration);
 		
 		// Filter by allowed generations and exclude list
-		const available = allDigimon.filter((d) => {
-			if (exclude.includes(d.number)) return false;
-			
-			// Check standard generations
-			if (allowedGenerations.includes(d.generation)) {
-				return true;
-			}
-			
-			// Check non-standard generations if enabled
-			if (includeNonStandard && (d.generation === 'Armor' || d.generation === 'Hybrid')) {
-				const equivalent = getNonStandardEquivalent(d.number, d.generation);
-				if (equivalent) {
-					const equivIndex = GENERATION_HIERARCHY.indexOf(equivalent);
-					return equivIndex >= 0 && equivIndex <= maxGenIndex;
-				}
-			}
-			
-			return false;
-		});
+		const available = filterDigimonByGenerations(
+			allDigimon,
+			allowedGenerations,
+			maxGenIndex,
+			includeNonStandard,
+			exclude
+		);
 
 		if (available.length === 0) {
 			return [];
@@ -278,25 +302,13 @@ export class RandomizerService {
 		const maxGenIndex = GENERATION_HIERARCHY.indexOf(maxGeneration);
 		
 		// Filter by allowed generations and exclude current team members
-		const available = allDigimon.filter((d) => {
-			if (currentTeamNumbers.includes(d.number)) return false;
-			
-			// Check standard generations
-			if (allowedGenerations.includes(d.generation)) {
-				return true;
-			}
-			
-			// Check non-standard generations if enabled
-			if (includeNonStandard && (d.generation === 'Armor' || d.generation === 'Hybrid')) {
-				const equivalent = getNonStandardEquivalent(d.number, d.generation);
-				if (equivalent) {
-					const equivIndex = GENERATION_HIERARCHY.indexOf(equivalent);
-					return equivIndex >= 0 && equivIndex <= maxGenIndex;
-				}
-			}
-			
-			return false;
-		});
+		const available = filterDigimonByGenerations(
+			allDigimon,
+			allowedGenerations,
+			maxGenIndex,
+			includeNonStandard,
+			currentTeamNumbers
+		);
 
 		if (available.length === 0) {
 			return null;

@@ -1,4 +1,5 @@
 import type { EvolutionGeneration } from '../types/digimon';
+import { GENERATION_HIERARCHY } from '../services/randomizer';
 
 /**
  * Mapping of non-standard generation Digimon to their equivalent standard generation
@@ -53,48 +54,4 @@ export function getNonStandardEquivalent(
 		return HYBRID_GENERATION_EQUIVALENTS[digimonNumber] || 'Champion'; // Default to Champion
 	}
 	return null;
-}
-
-/**
- * Check if a Digimon should be included based on unlocked generation,
- * taking into account non-standard generation equivalents
- */
-export function isDigimonAvailableForGeneration(
-	digimonNumber: string,
-	digimonGeneration: EvolutionGeneration,
-	unlockedGeneration: EvolutionGeneration,
-	includeNonStandard: boolean = true
-): boolean {
-	// Standard generation check
-	if (digimonGeneration !== 'Armor' && digimonGeneration !== 'Hybrid') {
-		// Use standard hierarchy check
-		return true; // Let the existing logic handle this
-	}
-	
-	// Non-standard generations
-	if (!includeNonStandard) {
-		return false;
-	}
-	
-	// Get equivalent generation
-	const equivalent = getNonStandardEquivalent(digimonNumber, digimonGeneration);
-	if (!equivalent) {
-		return false;
-	}
-	
-	// Check if equivalent is within unlocked range
-	const generationHierarchy: EvolutionGeneration[] = [
-		'In-Training I',
-		'In-Training II',
-		'Rookie',
-		'Champion',
-		'Ultimate',
-		'Mega',
-		'Mega +'
-	];
-	
-	const unlockedIndex = generationHierarchy.indexOf(unlockedGeneration);
-	const equivalentIndex = generationHierarchy.indexOf(equivalent);
-	
-	return equivalentIndex <= unlockedIndex;
 }
