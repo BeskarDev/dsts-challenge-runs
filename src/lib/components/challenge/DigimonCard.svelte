@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { Digimon } from '$lib/types/digimon';
-	import { getGrindosaurUrl, getGrindosaurIconUrl } from '$lib/types/digimon';
 
 	interface Props {
 		digimon: Digimon;
@@ -28,7 +27,7 @@
 	<div class="relative w-20 h-20">
 		{#if !imageError}
 			<img
-				src={getGrindosaurIconUrl(digimon.name)}
+				src={digimon.iconUrl}
 				alt={digimon.name}
 				class="w-full h-full object-contain rounded-lg bg-gray-100"
 				onerror={handleImageError}
@@ -47,14 +46,14 @@
 
 	<div class="text-center">
 		<a
-			href={getGrindosaurUrl(digimon.name)}
+			href={digimon.detailsUrl}
 			target="_blank"
 			rel="noopener noreferrer"
 			class="font-semibold text-gray-900 hover:text-primary-600 hover:underline transition-colors"
 		>
 			{digimon.name}
 		</a>
-		<p class="text-sm text-gray-600">{digimon.stage}</p>
+		<p class="text-sm text-gray-600">{digimon.generation}</p>
 	</div>
 
 	{#if showRerollButton && onReroll}

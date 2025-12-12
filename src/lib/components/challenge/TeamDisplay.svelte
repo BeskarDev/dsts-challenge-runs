@@ -29,7 +29,7 @@
 	</div>
 
 	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-		{#each team as digimon, index (digimon.id + '-' + index)}
+		{#each team as digimon, index (digimon.number + '-' + index)}
 			<DigimonCard 
 				{digimon} 
 				slotIndex={index} 

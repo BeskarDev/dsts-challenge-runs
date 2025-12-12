@@ -21,16 +21,16 @@
 		{
 			"id": "stage-restriction",
 			"title": "Evolution Restriction",
-			"description": "Only use Digimon up to your current unlocked evolution stage"
+			"description": "Only use Digimon up to your current unlocked evolution generation"
 		}
 	],
 	"evolutionCheckpoints": [
-		{ "bossOrder": 1, "unlockedStage": "Baby", "allowReroll": true },
-		{ "bossOrder": 3, "unlockedStage": "Rookie", "allowReroll": true },
-		{ "bossOrder": 6, "unlockedStage": "Champion", "allowReroll": true },
-		{ "bossOrder": 10, "unlockedStage": "Ultimate", "allowReroll": true },
-		{ "bossOrder": 15, "unlockedStage": "Mega", "allowReroll": true },
-		{ "bossOrder": 20, "unlockedStage": "Mega+", "allowReroll": true }
+		{ "bossOrder": 1, "unlockedGeneration": "In-Training I", "allowReroll": true },
+		{ "bossOrder": 3, "unlockedGeneration": "Rookie", "allowReroll": true },
+		{ "bossOrder": 6, "unlockedGeneration": "Champion", "allowReroll": true },
+		{ "bossOrder": 10, "unlockedGeneration": "Ultimate", "allowReroll": true },
+		{ "bossOrder": 15, "unlockedGeneration": "Mega", "allowReroll": true },
+		{ "bossOrder": 20, "unlockedGeneration": "Mega +", "allowReroll": true }
 	],
 	"settings": {
 		"teamSize": 6,
