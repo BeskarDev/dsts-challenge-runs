@@ -33,6 +33,10 @@ export interface Digimon {
 	iconUrl: string;
 	/** Direct URL to the Digimon's details page */
 	detailsUrl: string;
+	/** Whether this Digimon requires DLC (Episode Packs or Pre-order) */
+	isDLC?: boolean;
+	/** Whether this Digimon is post-game exclusive */
+	isPostGame?: boolean;
 }
 
 /**

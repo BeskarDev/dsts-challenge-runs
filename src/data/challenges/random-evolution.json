@@ -25,12 +25,12 @@
 		}
 	],
 	"evolutionCheckpoints": [
-		{ "bossOrder": 1, "unlockedGeneration": "In-Training I", "allowReroll": true },
-		{ "bossOrder": 3, "unlockedGeneration": "Rookie", "allowReroll": true },
+		{ "bossOrder": 1, "unlockedGeneration": "In-Training II", "allowReroll": true },
+		{ "bossOrder": 2, "unlockedGeneration": "Rookie", "allowReroll": true },
 		{ "bossOrder": 6, "unlockedGeneration": "Champion", "allowReroll": true },
-		{ "bossOrder": 10, "unlockedGeneration": "Ultimate", "allowReroll": true },
-		{ "bossOrder": 15, "unlockedGeneration": "Mega", "allowReroll": true },
-		{ "bossOrder": 20, "unlockedGeneration": "Mega +", "allowReroll": true }
+		{ "bossOrder": 11, "unlockedGeneration": "Ultimate", "allowReroll": true },
+		{ "bossOrder": 22, "unlockedGeneration": "Mega", "allowReroll": true },
+		{ "bossOrder": 26, "unlockedGeneration": "Mega +", "allowReroll": true }
 	],
 	"settings": {
 		"teamSize": 6,

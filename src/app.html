@@ -2,7 +2,21 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon/favicon.ico" />
+		<title>Challenge Runs - Digimon Story Time Stranger</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			// Apply theme immediately to prevent flash
+			(function() {
+				const theme = localStorage.getItem('dsts:theme') || 'system';
+				const effectiveTheme = theme === 'system' 
+					? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+					: theme;
+				if (effectiveTheme === 'dark') {
+					document.documentElement.classList.add('dark');
+				}
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

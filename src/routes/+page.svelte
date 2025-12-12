@@ -1,17 +1,48 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
 	import Card from '$lib/components/common/Card.svelte';
 	import Button from '$lib/components/common/Button.svelte';
 	import challengeConfig from '$data/challenges/random-evolution.json';
+	import { challengeStore } from '$lib/stores/challenge';
+
+	let hasExistingChallenge = $state(false);
+	let isLoading = $state(true);
+
+	onMount(() => {
+		hasExistingChallenge = challengeStore.hasExistingState(challengeConfig.id);
+		isLoading = false;
+	});
+
+	function continueChallenge() {
+		window.location.href = `${base}/challenge/${challengeConfig.id}`;
+	}
+
+	function newChallenge() {
+		// Clear existing challenge state before starting new one
+		challengeStore.clear(challengeConfig.id);
+		window.location.href = `${base}/challenge/${challengeConfig.id}`;
+	}
 </script>
+
+<svelte:head>
+	<title>Challenge Runs - Digimon Story Time Stranger</title>
+</svelte:head>
 
 <div class="max-w-4xl mx-auto">
 	<div class="text-center mb-12">
+		<div class="flex justify-center mb-4">
+			<img 
+				src="{base}/logo.png" 
+				alt="Digimon Story Time Stranger" 
+				class="h-64 w-64 object-contain"
+			/>
+		</div>
 		<h1 class="text-4xl font-bold text-gray-900 dark:text-muted-50 mb-4">
-			Digimon Story Time Stranger Challenge Runs
+			Challenge Runs
 		</h1>
 		<p class="text-xl text-gray-600 dark:text-muted">
-			Generate and track custom challenge runs for your playthrough
+			Track custom challenge runs for your playthrough
 		</p>
 	</div>
 
@@ -36,9 +67,16 @@
 				</ul>
 			</div>
 
-			<Button onclick={() => (window.location.href = `${base}/challenge/${challengeConfig.id}`)}>
-				Start Challenge
-			</Button>
+			<div class="flex gap-4">
+				{#if isLoading}
+					<div class="text-gray-500 dark:text-muted">Loading...</div>
+				{:else if hasExistingChallenge}
+					<Button onclick={continueChallenge}>Continue Challenge</Button>
+					<Button variant="outline" onclick={newChallenge}>New Challenge</Button>
+				{:else}
+					<Button onclick={newChallenge}>Start Challenge</Button>
+				{/if}
+			</div>
 		</Card>
 	</div>
 </div>

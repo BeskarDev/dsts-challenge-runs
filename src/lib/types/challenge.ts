@@ -30,14 +30,23 @@ export interface ChallengeSettings {
 
 export interface ChallengeRunState {
 	challengeId: string;
-	seed: string;
+	seed: string; // Main seed - never changes, used for base team generation
 	currentBossOrder: number;
 	currentGeneration: EvolutionGeneration;
 	team: TeamMember[];
 	rerollHistory: RerollEvent[];
+	bossTeams: Record<number, BossTeamSnapshot>; // Store team snapshot per boss
 	createdAt: string;
 	updatedAt: string;
 }
+
+export interface BossTeamSnapshot {
+	bossOrder: number;
+	generation: EvolutionGeneration;
+	team: TeamMember[];
+	seed: string; // Sub-seed for this specific boss team
+}
+
 
 export interface TeamMember {
 	digimonNumber: string;

@@ -8,16 +8,34 @@
 		onRerollSlot?: (slotIndex: number) => void;
 		onRerollAll?: () => void;
 		showRerollButtons?: boolean;
+		levelCap?: number | null;
+		currentGeneration?: string;
 	}
 
-	let { team, onRerollSlot, onRerollAll, showRerollButtons = true }: Props = $props();
+	let { team, onRerollSlot, onRerollAll, showRerollButtons = true, levelCap, currentGeneration }: Props = $props();
 </script>
 
 <div
 	class="rounded-md border border-gray-200 dark:border-border bg-white dark:bg-[rgba(8,14,32,0.80)] backdrop-blur-sm p-6 shadow-panel-light dark:shadow-panel"
 >
-	<div class="flex items-center justify-between mb-4">
-		<h2 class="text-xl font-bold text-gray-900 dark:text-muted-50">Current Team</h2>
+	<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+		<div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+			<h2 class="text-xl font-bold text-gray-900 dark:text-muted-50">Current Team</h2>
+			{#if levelCap || currentGeneration}
+				<div class="flex items-center gap-2 text-sm">
+					{#if levelCap}
+						<span class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+							<span class="font-semibold">Cap:</span>&nbsp;Lv.{levelCap}
+						</span>
+					{/if}
+					{#if currentGeneration}
+						<span class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 border border-primary-200 dark:border-primary-800">
+							<span class="font-semibold">Max:</span>&nbsp;{currentGeneration}
+						</span>
+					{/if}
+				</div>
+			{/if}
+		</div>
 		{#if showRerollButtons && onRerollAll}
 			<Button variant="secondary" onclick={onRerollAll}>
 				<span class="flex items-center gap-2">

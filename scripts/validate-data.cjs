@@ -39,6 +39,8 @@ function validateDigimon(digimon) {
 function validateBosses(bosses) {
   const errors = [];
   
+  const validElements = ['Fire', 'Water', 'Ice', 'Wind', 'Plant', 'Earth', 'Electric', 'Light', 'Dark', 'Steel', 'Neutral', 'Vaccine', 'Data', 'Virus'];
+  
   bosses.forEach((b, index) => {
     if (!b.id || typeof b.id !== 'string') {
       errors.push(`Boss ${index}: Missing or invalid id`);
@@ -57,6 +59,18 @@ function validateBosses(bosses) {
     }
     if (b.imageUrl && typeof b.imageUrl !== 'string') {
       errors.push(`Boss ${index} (${b.name}): Invalid imageUrl`);
+    }
+    if (b.guideUrl && typeof b.guideUrl !== 'string') {
+      errors.push(`Boss ${index} (${b.name}): Invalid guideUrl`);
+    }
+    if (b.weaknesses && (!Array.isArray(b.weaknesses) || !b.weaknesses.every(e => validElements.includes(e)))) {
+      errors.push(`Boss ${index} (${b.name}): Invalid weaknesses`);
+    }
+    if (b.resistances && (!Array.isArray(b.resistances) || !b.resistances.every(e => validElements.includes(e)))) {
+      errors.push(`Boss ${index} (${b.name}): Invalid resistances`);
+    }
+    if (b.immunities && (!Array.isArray(b.immunities) || !b.immunities.every(e => validElements.includes(e)))) {
+      errors.push(`Boss ${index} (${b.name}): Invalid immunities`);
     }
   });
   

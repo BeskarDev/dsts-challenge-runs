@@ -21,6 +21,21 @@
 			onReroll(slotIndex);
 		}
 	}
+
+	// Map attribute names to icon URLs from GrindoSaur CDN
+	function getAttributeIconUrl(attribute: string): string {
+		const attributeMap: Record<string, string> = {
+			'Vaccine': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/vaccine-icon.png',
+			'Data': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/data-icon.png',
+			'Virus': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/virus-icon.png',
+			'Free': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/free-icon.png',
+			'Variable': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/variable-icon.png',
+			'Unknown': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/unknown-icon.png',
+			'No Data': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/no-data-icon.png'
+		};
+		return attributeMap[attribute] || '';
+	}
+
 </script>
 
 <div
@@ -28,12 +43,20 @@
 >
 	<div class="relative w-20 h-20">
 		{#if !imageError}
-			<img
-				src={digimon.iconUrl}
-				alt={digimon.name}
-				class="w-full h-full object-contain rounded-md bg-gray-100 dark:bg-surface-200"
-				onerror={handleImageError}
-			/>
+			<a
+				href={digimon.detailsUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="block cursor-pointer hover:opacity-80 transition-opacity"
+				title="View on GrindoSaur"
+			>
+				<img
+					src={digimon.iconUrl}
+					alt={digimon.name}
+					class="w-full h-full object-contain rounded-md bg-gray-100 dark:bg-surface-200"
+					onerror={handleImageError}
+				/>
+			</a>
 		{:else}
 			<div
 				class="w-full h-full rounded-md bg-gray-200 dark:bg-surface-200 flex items-center justify-center text-gray-400 dark:text-muted"
@@ -71,6 +94,23 @@
 			{digimon.name}
 		</a>
 		<p class="text-sm text-gray-600 dark:text-muted">{digimon.generation}</p>
+		
+		<!-- Additional info: Attribute, Type, Personality -->
+		<div class="mt-2 space-y-1">
+			<div class="flex items-center justify-center gap-1">
+				{#if getAttributeIconUrl(digimon.attribute)}
+					<img 
+						src={getAttributeIconUrl(digimon.attribute)} 
+						alt={digimon.attribute}
+					class="w-4 h-4 dark:invert-0 invert"
+						title={digimon.attribute}
+					/>
+				{/if}
+				<span class="text-xs text-gray-600 dark:text-muted">{digimon.attribute}</span>
+			</div>
+			<p class="text-xs text-gray-500 dark:text-muted-400">{digimon.type}</p>
+			<p class="text-xs text-gray-500 dark:text-muted-400 italic">{digimon.basePersonality}</p>
+		</div>
 	</div>
 
 	{#if showRerollButton && onReroll}
