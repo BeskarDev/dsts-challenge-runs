@@ -114,23 +114,29 @@
 
 <div class="slot-machine-wrapper relative" data-slot-state={animationState}>
 	{#if animationState === 'idle'}
-		<!-- Placeholder state -->
+		<!-- Placeholder state with skeleton loader -->
 		<div
-			class="rounded-md border border-gray-200 dark:border-border bg-gray-100 dark:bg-surface-200 p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel animate-pulse-subtle"
+			class="rounded-md border border-gray-200 dark:border-border bg-gray-100 dark:bg-surface-200 p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel animate-pulse-subtle min-h-[300px]"
 		>
-			<div class="relative w-20 h-20">
-				<div class="w-full h-full rounded-md bg-gray-200 dark:bg-surface-100 flex items-center justify-center">
-					<span class="text-gray-400 dark:text-muted text-2xl">?</span>
-				</div>
+			<!-- Skeleton icon -->
+			<div class="relative">
+				<div class="w-[75px] h-[75px] rounded-md bg-gray-300 dark:bg-gray-600"></div>
 				<span
-					class="absolute -top-2 -left-2 bg-gray-400 dark:bg-muted text-white dark:text-surface-500 text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center"
+					class="absolute -top-2 -left-2 bg-gray-600 dark:bg-muted text-white dark:text-surface-500 text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center"
 				>
 					{slotIndex + 1}
 				</span>
 			</div>
-			<div class="text-center">
-				<div class="h-4 w-16 bg-gray-200 dark:bg-surface-100 rounded mb-2 mx-auto"></div>
-				<div class="h-3 w-12 bg-gray-200 dark:bg-surface-100 rounded mx-auto"></div>
+			<!-- Skeleton text -->
+			<div class="text-center w-full space-y-2">
+				<div class="h-4 w-20 bg-gray-300 dark:bg-gray-600 rounded mx-auto"></div>
+				<div class="h-3 w-16 bg-gray-300 dark:bg-gray-600 rounded mx-auto"></div>
+				<!-- Skeleton additional info rows -->
+				<div class="mt-3 space-y-1.5 flex flex-col items-center">
+					<div class="h-2.5 w-14 bg-gray-300 dark:bg-gray-600 rounded"></div>
+					<div class="h-2.5 w-12 bg-gray-300 dark:bg-gray-600 rounded"></div>
+					<div class="h-2.5 w-16 bg-gray-300 dark:bg-gray-600 rounded italic"></div>
+				</div>
 			</div>
 		</div>
 	{:else if animationState === 'spinning' && currentDisplayDigimon}

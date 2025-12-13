@@ -7,9 +7,10 @@
 		slotIndex: number;
 		onReroll?: (slotIndex: number) => void;
 		showRerollButton?: boolean;
+		rerollDisabled?: boolean;
 	}
 
-	let { digimon, slotIndex, onReroll, showRerollButton = true }: Props = $props();
+	let { digimon, slotIndex, onReroll, showRerollButton = true, rerollDisabled = false }: Props = $props();
 
 	let imageError = $state(false);
 
@@ -50,7 +51,7 @@
 </script>
 
 <div
-	class="rounded-md border border-gray-200 dark:border-border bg-white dark:bg-[rgba(15,24,52,0.92)] backdrop-blur-sm p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel hover:shadow-lg dark:hover:shadow-[0_22px_45px_rgba(0,0,0,0.80)] transition-all"
+	class="rounded-md border border-gray-200 dark:border-border bg-white dark:bg-[rgba(15,24,52,0.92)] backdrop-blur-sm p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel hover:shadow-lg dark:hover:shadow-[0_22px_45px_rgba(0,0,0,0.80)] transition-all min-h-[300px]"
 >
 	<div class="relative w-20 h-20">
 		{#if !imageError}
@@ -127,7 +128,8 @@
 	{#if showRerollButton && onReroll}
 		<button
 			onclick={handleReroll}
-			class="px-3 py-1 text-sm bg-gray-100 dark:bg-surface-100 hover:bg-gray-200 dark:hover:bg-surface-50 text-gray-700 dark:text-muted rounded-full border border-transparent dark:border-border transition-all flex items-center gap-1"
+			disabled={rerollDisabled}
+			class="mt-auto px-3 py-1 text-sm bg-gray-100 dark:bg-surface-100 hover:bg-gray-200 dark:hover:bg-surface-50 text-gray-700 dark:text-muted rounded-full border border-transparent dark:border-border transition-all flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-100 dark:disabled:hover:bg-surface-100"
 			title="Re-roll this slot"
 		>
 			<svg

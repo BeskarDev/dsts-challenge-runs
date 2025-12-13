@@ -557,10 +557,10 @@
 	}
 
 	function resetChallenge() {
-		if (!data.challenge) return;
+		if (!data.challenge || !challengeState) return;
 		if (confirm('Are you sure you want to reset this challenge? All progress will be lost.')) {
 			// Reset animation state when clearing challenge
-			resetAnimationState(data.challenge.id);
+			resetAnimationState(data.challenge.id, challengeState.seed);
 			challengeStore.clear(data.challenge.id);
 		}
 	}
@@ -569,7 +569,7 @@
 	function handleRevealTeam() {
 		if (!challengeState || !data.challenge) return;
 		// Mark animation as played for this boss
-		markAnimationPlayed(data.challenge.id, challengeState.currentBossOrder);
+		markAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
 		animationPlayedForCurrentBoss = true;
 		pendingTeamReveal = false;
 	}
@@ -582,7 +582,7 @@
 			return;
 		}
 		
-		const played = hasAnimationPlayed(data.challenge.id, challengeState.currentBossOrder);
+		const played = hasAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
 		animationPlayedForCurrentBoss = played;
 		// Only show pending reveal if this is a new team that hasn't been revealed yet
 		pendingTeamReveal = !played;

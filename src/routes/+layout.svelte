@@ -3,6 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import Header from '$lib/components/common/Header.svelte';
 	import '$lib/stores/theme'; // Import to initialize theme on load
+	import '$lib/services/migrations'; // Import to register migrations
 	import { page } from '$app/stores';
 	import { derived } from 'svelte/store';
 

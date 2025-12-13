@@ -12,7 +12,7 @@
  * - MINOR: New features, backward compatible
  * - PATCH: Bug fixes, backward compatible
  */
-export const CURRENT_STORAGE_VERSION = '1.0.0';
+export const CURRENT_STORAGE_VERSION = '1.1.0';
 
 /**
  * Version information for a storage entry

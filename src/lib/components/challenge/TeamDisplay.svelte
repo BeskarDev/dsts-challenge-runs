@@ -36,12 +36,15 @@
 	// Animation state
 	let isAnimating = $state(false);
 	let completedSlots = $state(0);
+	let rerollingSlots = $state<Set<number>>(new Set());
+	let isRerollAnimation = $state(false);
 
 	// Reactive translation for the current generation label
 	let translatedGeneration = $derived(currentGeneration ? $i18n.t(currentGeneration) : '');
 
 	// Determine if we should show animation
 	let shouldAnimate = $derived(pendingReveal && !animationPlayed && allDigimon.length > 0);
+	let shouldShowOverlayButton = $derived(shouldAnimate && !isAnimating);
 
 	// Create array of slot indices for placeholder rendering
 	let placeholderSlots = $derived(Array.from({ length: team.length }, (_, i) => i));
@@ -56,12 +59,39 @@
 
 	function handleSlotAnimationComplete() {
 		completedSlots++;
-		if (completedSlots >= team.length) {
+		const expectedSlots = isRerollAnimation ? rerollingSlots.size : team.length;
+		if (completedSlots >= expectedSlots) {
 			// All slots completed
 			setTimeout(() => {
 				isAnimating = false;
+				isRerollAnimation = false;
+				rerollingSlots = new Set();
 			}, 200);
 		}
+	}
+
+	function handleRerollSlot(slotIndex: number) {
+		if (allDigimon.length > 0) {
+			// Start re-roll animation for single slot
+			rerollingSlots = new Set([slotIndex]);
+			isRerollAnimation = true;
+			isAnimating = true;
+			completedSlots = 0;
+		}
+		// Call original handler
+		onRerollSlot?.(slotIndex);
+	}
+
+	function handleRerollAll() {
+		if (allDigimon.length > 0) {
+			// Start re-roll animation for all slots
+			rerollingSlots = new Set(Array.from({ length: team.length }, (_, i) => i));
+			isRerollAnimation = true;
+			isAnimating = true;
+			completedSlots = 0;
+		}
+		// Call original handler
+		onRerollAll?.();
 	}
 
 	// Calculate estimated animation time for display
@@ -96,35 +126,12 @@
 			{/if}
 		</div>
 		<div class="flex items-center gap-2">
-			{#if shouldAnimate && !isAnimating}
-				<!-- Show "Roll New Team" button when pending reveal -->
-				<Button variant="primary" onclick={handleRevealTeam}>
-					<span class="flex items-center gap-2">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-5 w-5"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-							/>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-							/>
-						</svg>
-						Roll New Team
-					</span>
-				</Button>
-			{:else if showRerollButtons && onRerollAll && !isAnimating}
-				<Button variant="secondary" onclick={onRerollAll}>
+			{#if showRerollButtons && onRerollAll}
+				<Button 
+					variant="secondary" 
+					onclick={handleRerollAll}
+					disabled={isAnimating || shouldShowOverlayButton}
+				>
 					<span class="flex items-center gap-2">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -147,26 +154,65 @@
 		</div>
 	</div>
 
-	{#if shouldAnimate && !isAnimating}
+	<!-- Team display area with overlay button -->
+	<div class="relative">
+		<!-- Overlay button for revealing team -->
+		{#if shouldShowOverlayButton}
+			<div class="absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-surface-500/80 backdrop-blur-sm rounded-md">
+				<Button variant="primary" onclick={handleRevealTeam} class="animate-pulse-subtle shadow-2xl">
+					<span class="flex items-center gap-3 px-4 py-2">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+							/>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+						<span class="text-lg font-bold">Roll New Team</span>
+					</span>
+				</Button>
+			</div>
+		{/if}
+
+		{#if shouldAnimate && !isAnimating}
 		<!-- Pending reveal state: show placeholders -->
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
 			{#each placeholderSlots as index (index)}
 				<div
-					class="rounded-md border border-gray-200 dark:border-border bg-gray-100 dark:bg-surface-200 p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel animate-pulse-subtle"
+					class="rounded-md border border-gray-200 dark:border-border bg-gray-100 dark:bg-surface-200 p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel animate-pulse-subtle min-h-[300px]"
 				>
-					<div class="relative w-20 h-20">
-						<div class="w-full h-full rounded-md bg-gray-200 dark:bg-surface-100 flex items-center justify-center">
-							<span class="text-gray-400 dark:text-muted text-2xl">?</span>
-						</div>
+					<!-- Skeleton icon -->
+					<div class="relative">
+						<div class="w-[75px] h-[75px] rounded-md bg-gray-300 dark:bg-gray-400"></div>
 						<span
 							class="absolute -top-2 -left-2 bg-gray-400 dark:bg-muted text-white dark:text-surface-500 text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center"
 						>
 							{index + 1}
 						</span>
 					</div>
-					<div class="text-center">
-						<div class="h-4 w-16 bg-gray-200 dark:bg-surface-100 rounded mb-2 mx-auto"></div>
-						<div class="h-3 w-12 bg-gray-200 dark:bg-surface-100 rounded mx-auto"></div>
+					<!-- Skeleton text -->
+					<div class="text-center w-full space-y-2">
+						<div class="h-4 w-20 bg-gray-300 dark:bg-gray-400 rounded mx-auto"></div>
+						<div class="h-3 w-16 bg-gray-300 dark:bg-gray-400 rounded mx-auto"></div>
+						<!-- Skeleton additional info rows -->
+						<div class="mt-3 space-y-1.5 flex flex-col items-center">
+							<div class="h-2.5 w-14 bg-gray-300 dark:bg-gray-400 rounded"></div>
+							<div class="h-2.5 w-12 bg-gray-300 dark:bg-gray-400 rounded"></div>
+							<div class="h-2.5 w-16 bg-gray-300 dark:bg-gray-400 rounded"></div>
+						</div>
 					</div>
 				</div>
 			{/each}
@@ -178,41 +224,60 @@
 		<!-- Animating state: show slot machine cards -->
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
 			{#each team as digimon, index (digimon.number + '-' + index)}
-				<SlotMachineCard
-					{digimon}
-					slotIndex={index}
-					shouldAnimate={true}
-					{allDigimon}
-					onAnimationComplete={handleSlotAnimationComplete}
-				>
-					<DigimonCard
-						{digimon}
-						slotIndex={index}
-						onReroll={onRerollSlot}
-						showRerollButton={showRerollButtons}
-					/>
-				</SlotMachineCard>
+				{#if isRerollAnimation && !rerollingSlots.has(index)}
+					<!-- Non-animating slot during re-roll -->
+					<div class="min-h-[300px]">
+						<DigimonCard
+							{digimon}
+							slotIndex={index}
+							onReroll={handleRerollSlot}
+							showRerollButton={showRerollButtons}
+							rerollDisabled={true}
+						/>
+					</div>
+				{:else}
+					<!-- Animating slot -->
+					<div class="min-h-[300px]">
+						<SlotMachineCard
+							{digimon}
+							slotIndex={index}
+							shouldAnimate={true}
+							{allDigimon}
+							onAnimationComplete={handleSlotAnimationComplete}
+						>
+							<DigimonCard
+								{digimon}
+								slotIndex={index}
+								onReroll={handleRerollSlot}
+								showRerollButton={showRerollButtons}
+								rerollDisabled={isAnimating}
+							/>
+						</SlotMachineCard>
+					</div>
+				{/if}
 			{/each}
 		</div>
 	{:else}
 		<!-- Normal state: show regular team display -->
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
 			{#each team as digimon, index (digimon.number + '-' + index)}
-				<div class={animationPlayed ? '' : 'animate-scale-in'} style="animation-delay: {index * 50}ms">
+				<div class="min-h-[300px] {animationPlayed ? '' : 'animate-scale-in'}" style="animation-delay: {index * 50}ms">
 					<DigimonCard
 						{digimon}
 						slotIndex={index}
-						onReroll={onRerollSlot}
+						onReroll={handleRerollSlot}
 						showRerollButton={showRerollButtons}
+						rerollDisabled={isAnimating}
 					/>
 				</div>
 			{/each}
 		</div>
 	{/if}
 
-	{#if team.length === 0}
-		<div class="text-center py-8 text-gray-500 dark:text-muted">
-			No team members yet. Generate a team to start!
-		</div>
-	{/if}
+		{#if team.length === 0}
+			<div class="text-center py-8 text-gray-500 dark:text-muted">
+				No team members yet. Generate a team to start!
+			</div>
+		{/if}
+	</div>
 </div>
