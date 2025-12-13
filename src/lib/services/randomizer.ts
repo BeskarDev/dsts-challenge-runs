@@ -74,22 +74,20 @@ function filterDigimonByGenerations(
 	return allDigimon.filter((d) => {
 		if (exclude.includes(d.number)) return false;
 		
-		// Check standard generations
-		if (allowedGenerations.includes(d.generation)) {
-			return true;
-		}
-		
-		// Check non-standard generations if enabled
-		if (includeNonStandard && (d.generation === 'Armor' || d.generation === 'Hybrid')) {
-			const equivalent = getNonStandardEquivalent(d.number, d.generation);
-			if (equivalent) {
-				const equivIndex = GENERATION_HIERARCHY.indexOf(equivalent);
-				// Only include if equivalent is in the allowed generations
-				return equivIndex >= 0 && allowedGenerations.includes(equivalent);
+		// Check for special generation equivalents (Lucemon, Armor, Hybrid)
+		const equivalent = getNonStandardEquivalent(d.number, d.generation);
+		if (equivalent) {
+			// Only include if equivalent generation is allowed
+			// For Armor/Hybrid: only include if includeNonStandard is true AND equivalent is allowed
+			if (d.generation === 'Armor' || d.generation === 'Hybrid') {
+				return includeNonStandard && allowedGenerations.includes(equivalent);
 			}
+			// For special standard generations (e.g., Lucemon): use equivalent directly
+			return allowedGenerations.includes(equivalent);
 		}
 		
-		return false;
+		// Check standard generations without special equivalents
+		return allowedGenerations.includes(d.generation);
 	});
 }
 
