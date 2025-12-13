@@ -35,6 +35,39 @@
 	let includeNonStandard = $state(true); // Armor and Hybrid digimon
 	let includeDLCBosses = $state(false); // DLC bosses (Omnimon Zwart Defeat, etc.)
 	let rerollTeamPerBoss = $state(false); // Generate new team for every boss fight (default: only per quest)
+	let isInitializingState = $state(false); // Flag to prevent effect loops during initial load
+
+	// Watch for content filtering setting changes to update challenge state
+	$effect(() => {
+		if (!isInitializingState && challengeState) {
+			const hasChanges = 
+				challengeState.includeDLC !== includeDLC ||
+				challengeState.includePostGame !== includePostGame ||
+				challengeState.includeNonStandard !== includeNonStandard ||
+				challengeState.includeDLCBosses !== includeDLCBosses ||
+				challengeState.rerollTeamPerBoss !== rerollTeamPerBoss;
+			
+			if (hasChanges) {
+				// Only update if there's an actual change to avoid infinite loops
+				challengeStore.update((state) => {
+					if (state) {
+						return {
+							...state,
+							includeDLC,
+							includePostGame,
+							includeNonStandard,
+							includeDLCBosses,
+							rerollTeamPerBoss,
+							updatedAt: new Date().toISOString()
+						};
+					}
+					return state;
+				});
+				// Update challenge metadata with new boss count
+				updateChallengeMetadata();
+			}
+		}
+	});
 
 	// Handle history deletion - if the current run is deleted, navigate back to home
 	function handleHistoryDelete(deletedRunId: string) {
@@ -58,19 +91,27 @@
 
 		// Load existing challenge state
 		if (data.challenge) {
-			// Set challenge metadata for history tracking
-			challengeStore.setChallengeMetadata(
-				data.challenge.id,
-				data.challenge.name,
-				data.bosses?.length || 1
-			);
 			challengeStore.load(data.challenge.id);
+			// Metadata will be updated after state loads to get correct DLC setting
 		}
 
 		// Subscribe to store changes
 		unsubscribe = challengeStore.subscribe((state) => {
 			challengeState = state;
 			isLoadingState = false;
+			isInitializingState = true; // Prevent effect from updating during load
+
+			// Update all content filtering settings from loaded state
+			if (state) {
+				includeDLC = state.includeDLC ?? true;
+				includePostGame = state.includePostGame ?? false;
+				includeNonStandard = state.includeNonStandard ?? true;
+				includeDLCBosses = state.includeDLCBosses ?? false;
+				rerollTeamPerBoss = state.rerollTeamPerBoss ?? false;
+			}
+
+			// Update challenge metadata with correct boss count
+			updateChallengeMetadata();
 
 			// If there's a URL seed that differs from the current state seed,
 			// try to restore from history first, or start a new challenge
@@ -85,8 +126,16 @@
 				// Try to restore from history first
 				const historicalRun = historyStore.getRunBySeed(data.challenge?.id || '', urlSeed);
 				if (historicalRun && historicalRun.fullState) {
-					// Restore the full state from history
-					challengeStore.save(historicalRun.fullState);
+					// Restore the full state from history, ensuring all content filtering fields are set
+					const restoredState = {
+						...historicalRun.fullState,
+						includeDLC: historicalRun.fullState.includeDLC ?? true,
+						includePostGame: historicalRun.fullState.includePostGame ?? false,
+						includeNonStandard: historicalRun.fullState.includeNonStandard ?? true,
+						includeDLCBosses: historicalRun.fullState.includeDLCBosses ?? false,
+						rerollTeamPerBoss: historicalRun.fullState.rerollTeamPerBoss ?? false
+					};
+					challengeStore.save(restoredState);
 				} else {
 					// No historical run found, start a new challenge
 					startNewChallenge();
@@ -95,6 +144,9 @@
 				// Update URL with current seed if state exists and no URL seed conflict
 				updateUrlWithSeed(state.seed);
 			}
+			
+			// Allow effect to run after sync
+			isInitializingState = false;
 		});
 
 		// Subscribe to history changes to detect if current run was deleted
@@ -128,7 +180,7 @@
 		if (typeof window !== 'undefined') {
 			const url = new URL(window.location.href);
 			url.searchParams.set('seed', seed);
-			goto(url.toString(), { replaceHistoryState: true, noScroll: true });
+			goto(url.toString(), { replaceState: true, noScroll: true });
 		}
 	}
 
@@ -146,6 +198,30 @@
 	function getFilteredDigimon(): Digimon[] {
 		if (!data.digimon) return [];
 		return filterDigimonByContent(data.digimon as Digimon[], includeDLC, includePostGame);
+	}
+
+	// Calculate total boss count based on DLC setting
+	function getTotalBossCount(includeDLC: boolean = false) {
+		if (!data.bosses) return 1;
+		if (includeDLC) {
+			// Count all bosses except tutorial boss (order 0)
+			return data.bosses.filter((b) => b.order > 0).length;
+		} else {
+			// Count only required bosses (not optional, and not tutorial)
+			return data.bosses.filter((b) => !b.optional && b.order > 0).length;
+		}
+	}
+
+	// Update challenge metadata with correct boss count
+	function updateChallengeMetadata() {
+		if (data.challenge) {
+			const totalBosses = getTotalBossCount(includeDLCBosses);
+			challengeStore.setChallengeMetadata(
+				data.challenge.id,
+				data.challenge.name,
+				totalBosses
+			);
+		}
 	}
 
 	// Filter out optional bosses for starting position - start at boss-1 by default
@@ -203,6 +279,12 @@
 					seed: initialBossSeed
 				}
 			},
+			// Store all content filtering settings
+			includeDLC,
+			includePostGame,
+			includeNonStandard,
+			includeDLCBosses,
+			rerollTeamPerBoss,
 			createdAt: new Date().toISOString(),
 			updatedAt: new Date().toISOString()
 		};

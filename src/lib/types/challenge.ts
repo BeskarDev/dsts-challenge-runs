@@ -36,6 +36,12 @@ export interface ChallengeRunState {
 	team: TeamMember[];
 	rerollHistory: RerollEvent[];
 	bossTeams: Record<number, BossTeamSnapshot>; // Store team snapshot per boss
+	// Content filtering settings
+	includeDLC: boolean;
+	includePostGame: boolean;
+	includeNonStandard: boolean; // Armor and Hybrid digimon
+	includeDLCBosses: boolean; // DLC bosses (Omnimon Zwart Defeat, etc.)
+	rerollTeamPerBoss: boolean; // Generate new team for every boss fight
 	createdAt: string;
 	updatedAt: string;
 }

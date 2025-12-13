@@ -2,14 +2,25 @@ import { writable } from 'svelte/store';
 import type { ChallengeRunState } from '../types/challenge';
 import { storage } from '../services/storage';
 import { historyStore } from './history';
+import bossesData from '../../data/bosses.json';
 
 function getChallengeKey(challengeId: string): string {
 	return `dsts:challenge:${challengeId}`;
 }
 
+function getTotalBossesForState(state: ChallengeRunState): number {
+	// Get all non-optional bosses (required bosses)
+	const requiredBosses = bossesData.filter(boss => !boss.optional);
+	
+	// Add DLC bosses if included (boss orders 34, 35, 36)
+	const dlcBosses = bossesData.filter(boss => boss.optional && boss.order >= 34);
+	
+	const includeDLC = state.includeDLCBosses ?? false; // Default to false if not set
+	return includeDLC ? requiredBosses.length + dlcBosses.length : requiredBosses.length;
+}
+
 // Helper to get total bosses for a challenge - this needs to be set externally
 const DEFAULT_CHALLENGE_NAME = 'Challenge Run';
-const DEFAULT_TOTAL_BOSSES = 1;
 const totalBossesCache: Record<string, number> = {};
 const challengeNameCache: Record<string, string> = {};
 
@@ -44,6 +55,36 @@ function createChallengeStore() {
 				storage.saveState(key, state);
 			}
 
+			// Migrate content filtering fields if missing
+			if (state) {
+				let needsSave = false;
+				
+				if (!('includeDLC' in state)) {
+					state.includeDLC = true;
+					needsSave = true;
+				}
+				if (!('includePostGame' in state)) {
+					state.includePostGame = false;
+					needsSave = true;
+				}
+				if (!('includeNonStandard' in state)) {
+					state.includeNonStandard = true;
+					needsSave = true;
+				}
+				if (!('includeDLCBosses' in state)) {
+					state.includeDLCBosses = false;
+					needsSave = true;
+				}
+				if (!('rerollTeamPerBoss' in state)) {
+					state.rerollTeamPerBoss = false;
+					needsSave = true;
+				}
+				
+				if (needsSave) {
+					storage.saveState(key, state);
+				}
+			}
+
 			set(state);
 		},
 		hasExistingState: (challengeId: string): boolean => {
@@ -52,13 +93,24 @@ function createChallengeStore() {
 		},
 		save: (state: ChallengeRunState) => {
 			const key = getChallengeKey(state.challengeId);
-			storage.saveState(key, state);
-			set(state);
+			
+			// Ensure all content filtering fields are set
+			const normalizedState = {
+				...state,
+				includeDLC: state.includeDLC ?? true,
+				includePostGame: state.includePostGame ?? false,
+				includeNonStandard: state.includeNonStandard ?? true,
+				includeDLCBosses: state.includeDLCBosses ?? false,
+				rerollTeamPerBoss: state.rerollTeamPerBoss ?? false
+			};
+			
+			storage.saveState(key, normalizedState);
+			set(normalizedState);
 
-			// Update history
-			const challengeName = challengeNameCache[state.challengeId] || DEFAULT_CHALLENGE_NAME;
-			const totalBosses = totalBossesCache[state.challengeId] || DEFAULT_TOTAL_BOSSES;
-			historyStore.addOrUpdateRun(state, challengeName, totalBosses);
+			// Update history with accurate boss count based on DLC setting
+			const challengeName = challengeNameCache[normalizedState.challengeId] || DEFAULT_CHALLENGE_NAME;
+			const totalBosses = getTotalBossesForState(normalizedState);
+			historyStore.addOrUpdateRun(normalizedState, challengeName, totalBosses);
 		},
 		update: (updater: (state: ChallengeRunState | null) => ChallengeRunState | null) => {
 			update((state) => {
@@ -67,9 +119,9 @@ function createChallengeStore() {
 					const key = getChallengeKey(newState.challengeId);
 					storage.saveState(key, newState);
 
-					// Update history
+					// Update history with accurate boss count based on DLC setting
 					const challengeName = challengeNameCache[newState.challengeId] || DEFAULT_CHALLENGE_NAME;
-					const totalBosses = totalBossesCache[newState.challengeId] || DEFAULT_TOTAL_BOSSES;
+					const totalBosses = getTotalBossesForState(newState);
 					historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
 				}
 				return newState;
@@ -85,9 +137,9 @@ function createChallengeStore() {
 				};
 				storage.saveState(getChallengeKey(state.challengeId), newState);
 
-				// Update history
+				// Update history with accurate boss count based on DLC setting
 				const challengeName = challengeNameCache[state.challengeId] || DEFAULT_CHALLENGE_NAME;
-				const totalBosses = totalBossesCache[state.challengeId] || DEFAULT_TOTAL_BOSSES;
+				const totalBosses = getTotalBossesForState(newState);
 				historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
 
 				return newState;
@@ -103,9 +155,9 @@ function createChallengeStore() {
 				};
 				storage.saveState(getChallengeKey(state.challengeId), newState);
 
-				// Update history
+				// Update history with accurate boss count based on DLC setting
 				const challengeName = challengeNameCache[state.challengeId] || DEFAULT_CHALLENGE_NAME;
-				const totalBosses = totalBossesCache[state.challengeId] || DEFAULT_TOTAL_BOSSES;
+				const totalBosses = getTotalBossesForState(newState);
 				historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
 
 				return newState;
