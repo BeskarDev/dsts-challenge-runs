@@ -58,30 +58,31 @@ function createChallengeStore() {
 			// Migrate content filtering fields if missing
 			if (state) {
 				let needsSave = false;
+				const migratedState = state as unknown as Record<string, unknown>;
 				
 				if (!('includeDLC' in state)) {
-					state.includeDLC = true;
+					migratedState.includeDLC = true;
 					needsSave = true;
 				}
 				if (!('includePostGame' in state)) {
-					state.includePostGame = false;
+					migratedState.includePostGame = false;
 					needsSave = true;
 				}
 				if (!('includeNonStandard' in state)) {
-					state.includeNonStandard = true;
+					migratedState.includeNonStandard = true;
 					needsSave = true;
 				}
 				if (!('includeDLCBosses' in state)) {
-					state.includeDLCBosses = false;
+					migratedState.includeDLCBosses = false;
 					needsSave = true;
 				}
 				if (!('rerollTeamPerBoss' in state)) {
-					state.rerollTeamPerBoss = false;
+					migratedState.rerollTeamPerBoss = false;
 					needsSave = true;
 				}
 				
 				if (needsSave) {
-					storage.saveState(key, state);
+					storage.saveState(key, state as unknown as ChallengeRunState);
 				}
 			}
 
