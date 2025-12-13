@@ -42,6 +42,11 @@ function createThemeStore() {
 	// Apply initial theme
 	if (browser) {
 		applyTheme(initialTheme);
+		
+		// Ensure the initial theme is persisted to localStorage
+		// This handles the case where getInitialTheme() loaded from storage
+		// or returned the default
+		storage.saveState(THEME_KEY, initialTheme);
 
 		// Listen for system preference changes
 		// Note: This listener persists for the app lifetime since the store is a singleton.

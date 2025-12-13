@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import type { PageData } from './$types';
 	import Card from '$lib/components/common/Card.svelte';
 	import Button from '$lib/components/common/Button.svelte';
@@ -127,7 +128,7 @@
 		if (typeof window !== 'undefined') {
 			const url = new URL(window.location.href);
 			url.searchParams.set('seed', seed);
-			window.history.replaceState({}, '', url.toString());
+			goto(url.toString(), { replaceHistoryState: true, noScroll: true });
 		}
 	}
 
