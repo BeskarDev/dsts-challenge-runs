@@ -76,7 +76,7 @@
 					<p>
 						The first challenge is just something I thought would be fun for repeat casual
 						playthroughs and to see many different digimon you maybe wouldnt pick normally.
-						<br/>I may add more challenge types in the future based on user feedback and ideas!
+						<br />I may add more challenge types in the future based on user feedback and ideas!
 					</p>
 				</div>
 			</div>

@@ -44,15 +44,15 @@ export function getGenerationsUpTo(
 	}
 	const index = GENERATION_HIERARCHY.indexOf(generation);
 	if (index === -1) return ['In-Training I'];
-	
+
 	const standardGens = GENERATION_HIERARCHY.slice(0, index + 1);
-	
+
 	// Optionally include non-standard generations
 	if (includeNonStandard) {
 		// Add Armor and Hybrid as they can be included based on equivalents
 		return [...standardGens, 'Armor', 'Hybrid'];
 	}
-	
+
 	return standardGens;
 }
 
@@ -73,7 +73,7 @@ function filterDigimonByGenerations(
 ): Digimon[] {
 	return allDigimon.filter((d) => {
 		if (exclude.includes(d.number)) return false;
-		
+
 		// Check for special generation equivalents (Lucemon, Armor, Hybrid)
 		const equivalent = getNonStandardEquivalent(d.number, d.generation);
 		if (equivalent) {
@@ -85,7 +85,7 @@ function filterDigimonByGenerations(
 			// For special standard generations (e.g., Lucemon): use equivalent directly
 			return allowedGenerations.includes(equivalent);
 		}
-		
+
 		// Check standard generations without special equivalents
 		return allowedGenerations.includes(d.generation);
 	});
@@ -163,7 +163,9 @@ export class RandomizerService {
 	 * Generate a new random seed
 	 */
 	generateSeed(): string {
-		return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+		return (
+			Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+		);
 	}
 
 	/**
@@ -226,7 +228,7 @@ export class RandomizerService {
 		includeNonStandard: boolean = false
 	): Digimon[] {
 		let allowedGenerations: EvolutionGeneration[];
-		
+
 		if (onlyHighest) {
 			// Only include the highest generation
 			allowedGenerations = [maxGeneration];
@@ -239,10 +241,10 @@ export class RandomizerService {
 			// Include all generations up to max
 			allowedGenerations = getGenerationsUpTo(maxGeneration, includeNonStandard);
 		}
-		
+
 		// Get the max generation index for non-standard filtering
 		const maxGenIndex = GENERATION_HIERARCHY.indexOf(maxGeneration);
-		
+
 		// Filter by allowed generations and exclude list
 		const available = filterDigimonByGenerations(
 			allDigimon,
@@ -286,7 +288,7 @@ export class RandomizerService {
 		this.setSeed(newSeed);
 
 		let allowedGenerations: EvolutionGeneration[];
-		
+
 		if (onlyHighest) {
 			allowedGenerations = [maxGeneration];
 		} else if (minGeneration) {
@@ -296,10 +298,10 @@ export class RandomizerService {
 		} else {
 			allowedGenerations = getGenerationsUpTo(maxGeneration, includeNonStandard);
 		}
-		
+
 		// Get the max generation index for non-standard filtering
 		const maxGenIndex = GENERATION_HIERARCHY.indexOf(maxGeneration);
-		
+
 		// Filter by allowed generations and exclude current team members
 		const available = filterDigimonByGenerations(
 			allDigimon,
@@ -328,7 +330,7 @@ export class RandomizerService {
 		// Generate new seed for reroll
 		const newSeed = this.generateSeed();
 		this.setSeed(newSeed);
-		
+
 		return this.getRandomDigimon(allDigimon, generation, count, currentTeam);
 	}
 
@@ -350,11 +352,11 @@ export class RandomizerService {
 		// Generate new seed for reroll
 		const newSeed = this.generateSeed();
 		this.setSeed(newSeed);
-		
+
 		return this.getRandomDigimonMultiGeneration(
-			allDigimon, 
-			maxGeneration, 
-			count, 
+			allDigimon,
+			maxGeneration,
+			count,
 			currentTeam,
 			onlyHighest,
 			minGeneration,
