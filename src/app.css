@@ -124,3 +124,156 @@
 		background-color: rgba(46, 195, 246, 0.1);
 	}
 }
+
+/* Centralized animation keyframes and utilities */
+@layer utilities {
+	/* Fade in animation */
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	/* Scale in animation with fade */
+	@keyframes scale-in {
+		from {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	/* Bounce in animation */
+	@keyframes bounce-in {
+		0% {
+			opacity: 0;
+			transform: scale(0.3);
+		}
+		50% {
+			transform: scale(1.05);
+		}
+		70% {
+			transform: scale(0.95);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	/* Slot machine spin animation - cycles through blur effect */
+	@keyframes slot-spin {
+		0% {
+			opacity: 0.5;
+			filter: blur(4px);
+			transform: translateY(-100%);
+		}
+		50% {
+			opacity: 0.7;
+			filter: blur(2px);
+			transform: translateY(0);
+		}
+		100% {
+			opacity: 0.5;
+			filter: blur(4px);
+			transform: translateY(100%);
+		}
+	}
+
+	/* Slot reveal animation - final reveal with glow */
+	@keyframes slot-reveal {
+		0% {
+			opacity: 0;
+			transform: scale(0.8);
+			filter: blur(4px);
+		}
+		60% {
+			opacity: 1;
+			transform: scale(1.05);
+			filter: blur(0);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+			filter: blur(0);
+		}
+	}
+
+	/* Subtle pulse for placeholders */
+	@keyframes pulse-subtle {
+		0%, 100% {
+			opacity: 0.6;
+		}
+		50% {
+			opacity: 0.8;
+		}
+	}
+
+	/* Shimmer effect for loading states */
+	@keyframes shimmer {
+		0% {
+			background-position: -200% 0;
+		}
+		100% {
+			background-position: 200% 0;
+		}
+	}
+
+	/* Animation classes */
+	.animate-fade-in {
+		animation: fade-in 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+	}
+
+	.animate-scale-in {
+		animation: scale-in 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+	}
+
+	.animate-bounce-in {
+		animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+	}
+
+	.animate-slot-spin {
+		animation: slot-spin 0.08s linear infinite;
+	}
+
+	.animate-slot-reveal {
+		animation: slot-reveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	.animate-pulse-subtle {
+		animation: pulse-subtle 1.5s ease-in-out infinite;
+	}
+
+	.animate-shimmer {
+		background: linear-gradient(
+			90deg,
+			var(--color-surface) 25%,
+			var(--color-surface-hover) 50%,
+			var(--color-surface) 75%
+		);
+		background-size: 200% 100%;
+		animation: shimmer 1.5s infinite;
+	}
+
+	/* Respect user preference for reduced motion */
+	@media (prefers-reduced-motion: reduce) {
+		.animate-fade-in,
+		.animate-scale-in,
+		.animate-bounce-in,
+		.animate-slot-spin,
+		.animate-slot-reveal,
+		.animate-pulse-subtle,
+		.animate-shimmer {
+			animation: none !important;
+			opacity: 1 !important;
+			transform: none !important;
+			filter: none !important;
+		}
+	}
+}
