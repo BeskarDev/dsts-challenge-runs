@@ -25,7 +25,7 @@
 	// Animation states
 	let animationState = $state<'idle' | 'spinning' | 'revealing' | 'complete'>('idle');
 	let currentDisplayDigimon = $state<Digimon | null>(null);
-	let cycleInterval: ReturnType<typeof setInterval> | null = null;
+	let cycleTimeout: ReturnType<typeof setTimeout> | null = null;
 
 	// Get timing for this slot
 	const timing = $derived(getSlotTiming(slotIndex));
@@ -65,9 +65,9 @@
 
 				if (cycleCount >= maxCycles) {
 					// Stop spinning and reveal final digimon
-					if (cycleInterval) {
-						clearInterval(cycleInterval);
-						cycleInterval = null;
+					if (cycleTimeout) {
+						clearTimeout(cycleTimeout);
+						cycleTimeout = null;
 					}
 					animationState = 'revealing';
 					currentDisplayDigimon = digimon;
@@ -79,7 +79,7 @@
 					}, 400); // Match the slot-reveal animation duration
 				} else {
 					// Schedule next cycle with adjusted speed
-					cycleInterval = setTimeout(cycle, cycleSpeed) as unknown as ReturnType<typeof setInterval>;
+					cycleTimeout = setTimeout(cycle, cycleSpeed);
 				}
 			};
 
@@ -98,8 +98,8 @@
 		}
 
 		return () => {
-			if (cycleInterval) {
-				clearInterval(cycleInterval);
+			if (cycleTimeout) {
+				clearTimeout(cycleTimeout);
 			}
 		};
 	});

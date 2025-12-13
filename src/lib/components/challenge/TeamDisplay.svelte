@@ -43,6 +43,9 @@
 	// Determine if we should show animation
 	let shouldAnimate = $derived(pendingReveal && !animationPlayed && allDigimon.length > 0);
 
+	// Create array of slot indices for placeholder rendering
+	let placeholderSlots = $derived(Array.from({ length: team.length }, (_, i) => i));
+
 	function handleRevealTeam() {
 		if (shouldAnimate) {
 			isAnimating = true;
@@ -143,8 +146,7 @@
 	{#if shouldAnimate && !isAnimating}
 		<!-- Pending reveal state: show placeholders -->
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-			<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-			{#each team as _digimon, index (index)}
+			{#each placeholderSlots as index (index)}
 				<div
 					class="rounded-md border border-gray-200 dark:border-border bg-gray-100 dark:bg-surface-200 p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel animate-pulse-subtle"
 				>
