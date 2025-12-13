@@ -152,7 +152,8 @@ describe('MigrationRegistry', () => {
 		testMigration = {
 			fromVersion: '1.0.0',
 			toVersion: '1.1.0',
-			migrate: (data: { old: string }) => ({ new: data.old }),
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			migrate: (data: any) => ({ new: data.old }),
 			description: 'Test migration'
 		};
 	});

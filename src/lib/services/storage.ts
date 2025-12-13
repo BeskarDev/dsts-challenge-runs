@@ -14,9 +14,14 @@ export class StorageService {
 		try {
 			// Check if already versioned
 			const isVersioned =
-				state && typeof state === 'object' && '_version' in state && 'data' in state;
+				state &&
+				typeof state === 'object' &&
+				'_version' in state &&
+				'_createdAt' in state &&
+				'_updatedAt' in state &&
+				'data' in state;
 			const versionedState = isVersioned
-				? (state as VersionedData<T>)
+				? (state as unknown as VersionedData<T>)
 				: versioningService.wrap(state);
 			const serialized = JSON.stringify(versionedState);
 			localStorage.setItem(key, serialized);

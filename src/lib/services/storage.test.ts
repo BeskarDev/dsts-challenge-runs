@@ -8,7 +8,7 @@ describe('StorageService with Versioning', () => {
 	beforeEach(() => {
 		// Mock localStorage
 		mockStorage = {};
-		global.localStorage = {
+		const localStorageMock = {
 			getItem: vi.fn((key: string) => mockStorage[key] || null),
 			setItem: vi.fn((key: string, value: string) => {
 				mockStorage[key] = value;
@@ -22,6 +22,8 @@ describe('StorageService with Versioning', () => {
 			key: vi.fn(),
 			length: 0
 		} as Storage;
+
+		globalThis.localStorage = localStorageMock;
 
 		storageService = new StorageService();
 	});
