@@ -32,9 +32,9 @@
 <div class="max-w-4xl mx-auto">
 	<div class="text-center mb-12">
 		<div class="flex justify-center mb-4">
-			<img 
-				src="{base}/logo.png" 
-				alt="Digital Challenge Companion" 
+			<img
+				src="{base}/logo.png"
+				alt="Digital Challenge Companion"
 				class="h-64 w-64 object-contain"
 			/>
 		</div>
@@ -71,7 +71,11 @@
 				{#if isLoading}
 					<div class="text-gray-500 dark:text-muted">Loading...</div>
 				{:else}
-					<Button onclick={continueChallenge} disabled={!hasExistingChallenge} class="flex items-center gap-2 justify-center">
+					<Button
+						onclick={continueChallenge}
+						disabled={!hasExistingChallenge}
+						class="flex items-center gap-2 justify-center"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-4 w-4"
@@ -82,7 +86,11 @@
 						</svg>
 						Continue
 					</Button>
-					<Button variant="outline" onclick={newChallenge} class="flex items-center gap-2 justify-center">
+					<Button
+						variant="outline"
+						onclick={newChallenge}
+						class="flex items-center gap-2 justify-center"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-4 w-4"

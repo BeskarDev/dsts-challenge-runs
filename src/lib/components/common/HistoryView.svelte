@@ -47,7 +47,11 @@
 
 	function formatDate(dateString: string): string {
 		const date = new Date(dateString);
-		return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+		return (
+			date.toLocaleDateString() +
+			' ' +
+			date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+		);
 	}
 
 	function getStatusBadge(status: string): string {
@@ -82,8 +86,8 @@
 
 	// Sort history by most recent first
 	let sortedHistory = $derived(
-		[...history].sort((a, b) => 
-			new Date(b.lastUpdatedAt).getTime() - new Date(a.lastUpdatedAt).getTime()
+		[...history].sort(
+			(a, b) => new Date(b.lastUpdatedAt).getTime() - new Date(a.lastUpdatedAt).getTime()
 		)
 	);
 </script>
@@ -94,10 +98,7 @@
 	<!-- Backdrop -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div
-		class="fixed inset-0 bg-black/30 z-40"
-		onclick={handleBackdropClick}
-	></div>
+	<div class="fixed inset-0 bg-black/30 z-40" onclick={handleBackdropClick}></div>
 
 	<!-- History View -->
 	<div
@@ -140,7 +141,11 @@
 						stroke="currentColor"
 						stroke-width="1.5"
 					>
-						<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+						/>
 					</svg>
 					<p class="text-gray-600 dark:text-muted-400 text-lg">No challenge runs yet</p>
 					<p class="text-gray-500 dark:text-muted-500 text-sm mt-2">
@@ -162,7 +167,9 @@
 											Seed: <span class="font-mono">{run.seed}</span>
 										</p>
 									</div>
-									<span class="px-3 py-1 rounded-full text-xs font-medium {getStatusBadge(run.status)}">
+									<span
+										class="px-3 py-1 rounded-full text-xs font-medium {getStatusBadge(run.status)}"
+									>
 										{run.status.charAt(0).toUpperCase() + run.status.slice(1)}
 									</span>
 								</div>
@@ -178,7 +185,8 @@
 									<div class="w-full bg-gray-200 dark:bg-surface-200 rounded-full h-2">
 										<div
 											class="bg-primary-500 h-2 rounded-full transition-all"
-											style="width: {(run.progress.currentBossOrder / run.progress.totalBosses) * 100}%"
+											style="width: {(run.progress.currentBossOrder / run.progress.totalBosses) *
+												100}%"
 										></div>
 									</div>
 								</div>
@@ -212,7 +220,9 @@
 								</div>
 
 								<!-- Timestamps -->
-								<div class="pt-2 border-t border-gray-200 dark:border-border text-xs text-gray-500 dark:text-muted-500">
+								<div
+									class="pt-2 border-t border-gray-200 dark:border-border text-xs text-gray-500 dark:text-muted-500"
+								>
 									<div>Started: {formatDate(run.startedAt)}</div>
 									{#if run.completedAt}
 										<div>Completed: {formatDate(run.completedAt)}</div>
@@ -235,7 +245,11 @@
 											stroke="currentColor"
 											stroke-width="2"
 										>
-											<path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+											/>
 										</svg>
 										Load Run
 									</button>
@@ -254,7 +268,11 @@
 											stroke="currentColor"
 											stroke-width="2"
 										>
-											<path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+											/>
 										</svg>
 									</button>
 								</div>

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { 
-	getNonStandardEquivalent, 
+import {
+	getNonStandardEquivalent,
 	getEffectiveGeneration,
 	LUCEMON_GENERATION_EQUIVALENTS
 } from './generation-equivalents';

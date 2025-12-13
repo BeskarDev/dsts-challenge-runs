@@ -68,10 +68,7 @@
 	<!-- Backdrop -->
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div
-		class="fixed inset-0 bg-black/30 z-40"
-		onclick={handleBackdropClick}
-	></div>
+	<div class="fixed inset-0 bg-black/30 z-40" onclick={handleBackdropClick}></div>
 
 	<!-- Config Menu -->
 	<div

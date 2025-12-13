@@ -8,9 +8,9 @@
 	}
 
 	let { title, isOpen = false, children }: Props = $props();
-	
+
 	let open = $state(isOpen);
-	
+
 	function toggle() {
 		open = !open;
 	}

@@ -20,13 +20,13 @@
 		animationPlayed?: boolean;
 	}
 
-	let { 
-		team, 
+	let {
+		team,
 		allDigimon = [],
-		onRerollSlot, 
-		onRerollAll, 
-		showRerollButtons = true, 
-		levelCap, 
+		onRerollSlot,
+		onRerollAll,
+		showRerollButtons = true,
+		levelCap,
 		currentGeneration,
 		pendingReveal = false,
 		onRevealTeam,
@@ -79,12 +79,16 @@
 			{#if levelCap || currentGeneration}
 				<div class="flex items-center gap-2 text-sm">
 					{#if levelCap}
-						<span class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800 animate-fade-in">
+						<span
+							class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800 animate-fade-in"
+						>
 							<span class="font-semibold">Cap:</span>&nbsp;Lv.{levelCap}
 						</span>
 					{/if}
 					{#if currentGeneration}
-						<span class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 border border-primary-200 dark:border-primary-800 animate-fade-in">
+						<span
+							class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 border border-primary-200 dark:border-primary-800 animate-fade-in"
+						>
 							<span class="font-semibold">Max:</span>&nbsp;{translatedGeneration}
 						</span>
 					{/if}

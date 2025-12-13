@@ -1,708 +1,392 @@
 [
-  {
-    "index": 0,
-    "name": "Chaosdramon",
-    "location": "Signs of an Anomaly",
-    "imageUrl": "https://img.game8.co/4296244/b0bae5c763818e6b8150599a6580bb36.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555349",
-    "weaknesses": [
-      "Ice",
-      "Water",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Steel",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 1,
-    "name": "Kuwagamon",
-    "location": "Signs of an Anomaly",
-    "imageUrl": "https://img.game8.co/4295147/232dd325ba78fd214d7c35b750704015.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555080",
-    "weaknesses": [
-      "Fire",
-      "Electric",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Plant",
-      "Wind",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 2,
-    "name": "Raremon",
-    "location": "Reunions Bring Trouble",
-    "imageUrl": "https://img.game8.co/4295149/a0aa7f63dd0d1870c541825f5c3c075e.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555206",
-    "weaknesses": [
-      "Fire",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Water",
-      "Dark",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 3,
-    "name": "Cyclonemon",
-    "location": "Resonating Thoughts",
-    "imageUrl": "https://img.game8.co/4295734/c39dabf3e033e1c585b9bd202bc95ddb.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555259",
-    "weaknesses": [
-      "Ice",
-      "Wind",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Earth",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 4,
-    "name": "Vademon",
-    "location": "A Vow Made on a Starry Sky",
-    "imageUrl": "https://img.game8.co/4296041/a26b2b1e9e5da9c12c6f01445a941b50.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555298",
-    "weaknesses": [
-      "Fire",
-      "Neutral",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Ice",
-      "Plant",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 5,
-    "name": "Greymon (Blue)",
-    "location": "Shinjuku Rhapsody",
-    "imageUrl": "https://img.game8.co/4296393/c36aab22b2484cbd902bc05c0f9fd9cb.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555394",
-    "weaknesses": [
-      "Ice",
-      "Water",
-      "Electric",
-      "Neutral",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Earth",
-      "Dark",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 6,
-    "name": "Titamon",
-    "location": "Truth Born from an Egg",
-    "imageUrl": "https://img.game8.co/4296847/21a2a461a51c7477e96157e9a17a550f.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555208",
-    "weaknesses": [
-      "Fire",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Earth",
-      "Dark",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 7,
-    "name": "Fugamon",
-    "location": "Rumble in the Underground",
-    "imageUrl": "https://img.game8.co/4297222/31002287b738fc6f7449ba5beb100812.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555822",
-    "weaknesses": [
-      "Ice",
-      "Water",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Earth",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 8,
-    "name": "Ogremon",
-    "location": "Rumble in the Underground",
-    "imageUrl": "https://img.game8.co/4297220/0a083fb9f0a429fc4151e116ef851031.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555822",
-    "weaknesses": [
-      "Fire",
-      "Earth",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Plant",
-      "Wind",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 9,
-    "name": "Hyogamon",
-    "location": "Rumble in the Underground",
-    "imageUrl": "https://img.game8.co/4297221/33cf5178b24e0408b2ed1c9008cdb145.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555822",
-    "weaknesses": [
-      "Fire",
-      "Steel",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Ice",
-      "Water",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 10,
-    "name": "Parrotmon",
-    "location": "Gathering Storm Clouds",
-    "imageUrl": "https://img.game8.co/4297207/b354f3e13395945814b495e7996f43e7.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555689",
-    "weaknesses": [
-      "Fire",
-      "Earth",
-      "Data"
-    ],
-    "resistances": [
-      "Wind",
-      "Virus"
-    ],
-    "immunities": [
-      "Electric"
-    ]
-  },
-  {
-    "index": 11,
-    "name": "UltimateBrachiomon",
-    "location": "Incoming Conflict",
-    "imageUrl": "https://img.game8.co/4297270/7704012c7c6e03ffa858d2a1d244b593.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/556130",
-    "weaknesses": [
-      "Plant",
-      "Wind",
-      "Virus"
-    ],
-    "resistances": [
-      "Steel",
-      "Earth",
-      "Vaccine"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 12,
-    "name": "Vulcanusmon",
-    "location": "Incoming Conflict",
-    "imageUrl": "https://img.game8.co/4297368/209042eed515b77f146499de17f13961.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/556211",
-    "weaknesses": [
-      "Earth",
-      "Neutral",
-      "Virus"
-    ],
-    "resistances": [
-      "Fire",
-      "Vaccine"
-    ],
-    "immunities": [
-      "Steel"
-    ]
-  },
-  {
-    "index": 13,
-    "name": "Sharkmon",
-    "location": "On the Shores of Another World",
-    "imageUrl": "https://img.game8.co/4297385/af28d0b2660f7f0c421a47b5e6f1189b.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/556318",
-    "weaknesses": [
-      "Electric",
-      "Neutral",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Ice",
-      "Data"
-    ],
-    "immunities": [
-      "Water"
-    ]
-  },
-  {
-    "index": 14,
-    "name": "Cherrymon",
-    "location": "The World Tree's Cry",
-    "imageUrl": "https://img.game8.co/4297431/a547719ee4023d64e10aea77ce50fd04.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/557067",
-    "weaknesses": [
-      "Fire",
-      "Steel",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Earth",
-      "Data"
-    ],
-    "immunities": [
-      "Plant"
-    ]
-  },
-  {
-    "index": 15,
-    "name": "Okuwamon",
-    "location": "The World Tree's Cry",
-    "imageUrl": "https://img.game8.co/4297430/a7c1a76974273304a274adcdfbd4f499.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/557810",
-    "weaknesses": [
-      "Earth",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Plant",
-      "Steel",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 16,
-    "name": "Titamon + SkullBaluchimon",
-    "location": "The Defense of Nishi-Shinjuku",
-    "imageUrl": "https://img.game8.co/4302047/361813c0752ffe4e6f0fa16c44d4d608.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/558358",
-    "weaknesses": [
-      "Vaccine"
-    ],
-    "resistances": [
-      "Steel",
-      "Earth",
-      "Data"
-    ],
-    "immunities": [
-      "Dark"
-    ]
-  },
-  {
-    "index": 17,
-    "name": "SkullSeadramon",
-    "location": "Red Seas and Regret",
-    "imageUrl": "https://img.game8.co/4302048/6d15f9b146827c844c3379913b06068c.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559550",
-    "weaknesses": [
-      "Vaccine"
-    ],
-    "resistances": [
-      "Plant",
-      "Electric",
-      "Steel",
-      "Earth",
-      "Dark",
-      "Neutral",
-      "Data"
-    ],
-    "immunities": [
-      "Ice",
-      "Water"
-    ]
-  },
-  {
-    "index": 18,
-    "name": "Calmaramon",
-    "location": "A Promise on a Scarf",
-    "imageUrl": "https://img.game8.co/4302049/5ac8183a66ad2b1750940b813f39ebe2.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559565",
-    "weaknesses": [
-      "Fire",
-      "Electric"
-    ],
-    "resistances": [
-      "Steel"
-    ],
-    "immunities": [
-      "Water"
-    ]
-  },
-  {
-    "index": 19,
-    "name": "Witchmon",
-    "location": "The Titans' Grudge",
-    "imageUrl": "https://img.game8.co/4302050/da94a5697f79d2d4d98010eaf10bfcb1.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559651",
-    "weaknesses": [
-      "Plant",
-      "Earth",
-      "Virus"
-    ],
-    "resistances": [
-      "Water",
-      "Wind",
-      "Vaccine"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 20,
-    "name": "TyrantKabuterimon",
-    "location": "The Titans' Grudge",
-    "imageUrl": "https://img.game8.co/4302051/904d5b2dcd0c7fbfa0d7ec8a806f9d3d.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559659",
-    "weaknesses": [
-      "Ice",
-      "Water",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Earth",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 21,
-    "name": "Callismon",
-    "location": "The Paradise Colosseum",
-    "imageUrl": "https://img.game8.co/4302052/3536b4958c2cfd0d2377589e627c538a.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559714",
-    "weaknesses": [
-      "Fire",
-      "Neutral",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Ice",
-      "Steel",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 22,
-    "name": "VenomMyotismon",
-    "location": "The God of Speed's Wish",
-    "imageUrl": "https://img.game8.co/4302053/6c4fdeb5d1d6f5eb729fb5a9e008e401.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559963",
-    "weaknesses": [
-      "Electric",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Dark",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 23,
-    "name": "ZombiePlutomon",
-    "location": "Throne of the Underworld",
-    "imageUrl": "https://img.game8.co/4302054/3e954deb3bcf3de0da49128c836cafab.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560152",
-    "weaknesses": [
-      "Fire",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Ice",
-      "Data"
-    ],
-    "immunities": [
-      "Dark"
-    ]
-  },
-  {
-    "index": 24,
-    "name": "Power Loader",
-    "location": "No Cure for Stupidity",
-    "imageUrl": "https://img.game8.co/4302055/29fab49185f59d220abc78ec1e4d7466.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560394",
-    "weaknesses": [],
-    "resistances": [],
-    "immunities": []
-  },
-  {
-    "index": 25,
-    "name": "Apollomon",
-    "location": "Fire and Ice at War",
-    "imageUrl": "https://img.game8.co/4302056/df0097267bf76841b554407cfbb9bf66.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560648",
-    "weaknesses": [
-      "Ice",
-      "Water",
-      "Dark",
-      "Data"
-    ],
-    "resistances": [
-      "Virus"
-    ],
-    "immunities": [
-      "Fire",
-      "Light"
-    ]
-  },
-  {
-    "index": 26,
-    "name": "Dianamon",
-    "location": "Fire and Ice at War",
-    "imageUrl": "https://img.game8.co/4302057/096ec013a75166f93c83f9876043d930.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560662",
-    "weaknesses": [
-      "Fire",
-      "Wind",
-      "Virus"
-    ],
-    "resistances": [
-      "Water",
-      "Vaccine"
-    ],
-    "immunities": [
-      "Ice"
-    ]
-  },
-  {
-    "index": 27,
-    "name": "Junomon HM",
-    "location": "The Mad Oracle",
-    "imageUrl": "https://img.game8.co/4302073/a74b1dc11ab4e3b84b44d6b66d1a9303.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560758",
-    "weaknesses": [
-      "Plant",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Electric",
-      "Data"
-    ],
-    "immunities": [
-      "Dark"
-    ]
-  },
-  {
-    "index": 28,
-    "name": "Barbamon",
-    "location": "The Final Battle Over the Natural Order",
-    "imageUrl": "https://img.game8.co/4318212/16259c96297ee9afe4f157a61f1fa51c.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561228",
-    "weaknesses": [
-      "Water",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Data"
-    ],
-    "immunities": [
-      "Dark"
-    ]
-  },
-  {
-    "index": 29,
-    "name": "Creepymon",
-    "location": "The Final Battle Over the Natural Order",
-    "imageUrl": "https://img.game8.co/4318243/496eacced527dc35bb4402272c931ce6.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561255",
-    "weaknesses": [
-      "Ice",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Data"
-    ],
-    "immunities": [
-      "Dark"
-    ]
-  },
-  {
-    "index": 30,
-    "name": "Lilithmon",
-    "location": "The Final Battle Over the Natural Order",
-    "imageUrl": "https://img.game8.co/4318240/7281fd80876563c63ae9ddce1f5e7a25.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561260",
-    "weaknesses": [
-      "Steel",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Neutral",
-      "Data"
-    ],
-    "immunities": [
-      "Dark"
-    ]
-  },
-  {
-    "index": 31,
-    "name": "Leviamon",
-    "location": "The Final Battle Over the Natural Order",
-    "imageUrl": "https://img.game8.co/4318218/91ad51220cb67c90309027a2dec9aa9c.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561344",
-    "weaknesses": [
-      "Electric",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Data"
-    ],
-    "immunities": [
-      "Water",
-      "Dark"
-    ]
-  },
-  {
-    "index": 32,
-    "name": "Lucemon SM",
-    "location": "The Final Battle Over the Natural Order",
-    "imageUrl": "https://img.game8.co/4318241/62a41020507e93b624f05b661c998879.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561359",
-    "weaknesses": [
-      "Light",
-      "Neutral",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Data"
-    ],
-    "immunities": [
-      "Dark"
-    ]
-  },
-  {
-    "index": 33,
-    "name": "Beelzemon BM",
-    "location": "The Final Battle Over the Natural Order",
-    "imageUrl": "https://img.game8.co/4318213/d05e9fa36c691ade6ac1632a4b76bcf5.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561369",
-    "weaknesses": [
-      "Earth",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Dark",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 34,
-    "name": "Belphemon RM",
-    "location": "The Final Battle Over the Natural Order",
-    "imageUrl": "https://img.game8.co/4318214/135f58d9c7e841db554ea185a6e9b2f3.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561399",
-    "weaknesses": [
-      "Ice",
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Steel",
-      "Data"
-    ],
-    "immunities": [
-      "Dark"
-    ]
-  },
-  {
-    "index": 35,
-    "name": "Chronomon",
-    "location": "The Final Battle Over the Natural Order",
-    "imageUrl": "https://img.game8.co/4318239/ff2d22e3b0549f69bfc42a4e45739557.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561431",
-    "weaknesses": [],
-    "resistances": [],
-    "immunities": []
-  },
-  {
-    "index": 36,
-    "name": "Omnimon Zwart Defeat",
-    "location": "Alternate Dimension",
-    "imageUrl": "https://img.game8.co/4362417/158a2bbf8ced1f0aad39819acfc36bdf.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/570536",
-    "weaknesses": [
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Fire",
-      "Dark",
-      "Neutral",
-      "Data"
-    ],
-    "immunities": []
-  },
-  {
-    "index": 37,
-    "name": "Omnimon Alter-B",
-    "location": "Alternate Dimension",
-    "imageUrl": "https://img.game8.co/4362415/c77ecbc512bf53ccc50a2729578858fb.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/570556",
-    "weaknesses": [
-      "Earth",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Neutral",
-      "Data"
-    ],
-    "immunities": [
-      "Dark"
-    ]
-  },
-  {
-    "index": 38,
-    "name": "Parallelmon",
-    "location": "Alternate Dimension",
-    "imageUrl": "https://img.game8.co/4363461/2d7a16290ff5315d2b0880aea6c2ad29.png/show",
-    "guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/570557",
-    "weaknesses": [
-      "Light",
-      "Vaccine"
-    ],
-    "resistances": [
-      "Neutral",
-      "Data"
-    ],
-    "immunities": []
-  }
+	{
+		"index": 0,
+		"name": "Chaosdramon",
+		"location": "Signs of an Anomaly",
+		"imageUrl": "https://img.game8.co/4296244/b0bae5c763818e6b8150599a6580bb36.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555349",
+		"weaknesses": ["Ice", "Water", "Vaccine"],
+		"resistances": ["Fire", "Steel", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 1,
+		"name": "Kuwagamon",
+		"location": "Signs of an Anomaly",
+		"imageUrl": "https://img.game8.co/4295147/232dd325ba78fd214d7c35b750704015.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555080",
+		"weaknesses": ["Fire", "Electric", "Vaccine"],
+		"resistances": ["Plant", "Wind", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 2,
+		"name": "Raremon",
+		"location": "Reunions Bring Trouble",
+		"imageUrl": "https://img.game8.co/4295149/a0aa7f63dd0d1870c541825f5c3c075e.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555206",
+		"weaknesses": ["Fire", "Light", "Vaccine"],
+		"resistances": ["Water", "Dark", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 3,
+		"name": "Cyclonemon",
+		"location": "Resonating Thoughts",
+		"imageUrl": "https://img.game8.co/4295734/c39dabf3e033e1c585b9bd202bc95ddb.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555259",
+		"weaknesses": ["Ice", "Wind", "Vaccine"],
+		"resistances": ["Fire", "Earth", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 4,
+		"name": "Vademon",
+		"location": "A Vow Made on a Starry Sky",
+		"imageUrl": "https://img.game8.co/4296041/a26b2b1e9e5da9c12c6f01445a941b50.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555298",
+		"weaknesses": ["Fire", "Neutral", "Vaccine"],
+		"resistances": ["Ice", "Plant", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 5,
+		"name": "Greymon (Blue)",
+		"location": "Shinjuku Rhapsody",
+		"imageUrl": "https://img.game8.co/4296393/c36aab22b2484cbd902bc05c0f9fd9cb.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555394",
+		"weaknesses": ["Ice", "Water", "Electric", "Neutral", "Vaccine"],
+		"resistances": ["Fire", "Earth", "Dark", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 6,
+		"name": "Titamon",
+		"location": "Truth Born from an Egg",
+		"imageUrl": "https://img.game8.co/4296847/21a2a461a51c7477e96157e9a17a550f.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555208",
+		"weaknesses": ["Fire", "Light", "Vaccine"],
+		"resistances": ["Earth", "Dark", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 7,
+		"name": "Fugamon",
+		"location": "Rumble in the Underground",
+		"imageUrl": "https://img.game8.co/4297222/31002287b738fc6f7449ba5beb100812.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555822",
+		"weaknesses": ["Ice", "Water", "Vaccine"],
+		"resistances": ["Fire", "Earth", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 8,
+		"name": "Ogremon",
+		"location": "Rumble in the Underground",
+		"imageUrl": "https://img.game8.co/4297220/0a083fb9f0a429fc4151e116ef851031.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555822",
+		"weaknesses": ["Fire", "Earth", "Vaccine"],
+		"resistances": ["Plant", "Wind", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 9,
+		"name": "Hyogamon",
+		"location": "Rumble in the Underground",
+		"imageUrl": "https://img.game8.co/4297221/33cf5178b24e0408b2ed1c9008cdb145.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555822",
+		"weaknesses": ["Fire", "Steel", "Vaccine"],
+		"resistances": ["Ice", "Water", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 10,
+		"name": "Parrotmon",
+		"location": "Gathering Storm Clouds",
+		"imageUrl": "https://img.game8.co/4297207/b354f3e13395945814b495e7996f43e7.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/555689",
+		"weaknesses": ["Fire", "Earth", "Data"],
+		"resistances": ["Wind", "Virus"],
+		"immunities": ["Electric"]
+	},
+	{
+		"index": 11,
+		"name": "UltimateBrachiomon",
+		"location": "Incoming Conflict",
+		"imageUrl": "https://img.game8.co/4297270/7704012c7c6e03ffa858d2a1d244b593.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/556130",
+		"weaknesses": ["Plant", "Wind", "Virus"],
+		"resistances": ["Steel", "Earth", "Vaccine"],
+		"immunities": []
+	},
+	{
+		"index": 12,
+		"name": "Vulcanusmon",
+		"location": "Incoming Conflict",
+		"imageUrl": "https://img.game8.co/4297368/209042eed515b77f146499de17f13961.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/556211",
+		"weaknesses": ["Earth", "Neutral", "Virus"],
+		"resistances": ["Fire", "Vaccine"],
+		"immunities": ["Steel"]
+	},
+	{
+		"index": 13,
+		"name": "Sharkmon",
+		"location": "On the Shores of Another World",
+		"imageUrl": "https://img.game8.co/4297385/af28d0b2660f7f0c421a47b5e6f1189b.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/556318",
+		"weaknesses": ["Electric", "Neutral", "Vaccine"],
+		"resistances": ["Ice", "Data"],
+		"immunities": ["Water"]
+	},
+	{
+		"index": 14,
+		"name": "Cherrymon",
+		"location": "The World Tree's Cry",
+		"imageUrl": "https://img.game8.co/4297431/a547719ee4023d64e10aea77ce50fd04.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/557067",
+		"weaknesses": ["Fire", "Steel", "Vaccine"],
+		"resistances": ["Earth", "Data"],
+		"immunities": ["Plant"]
+	},
+	{
+		"index": 15,
+		"name": "Okuwamon",
+		"location": "The World Tree's Cry",
+		"imageUrl": "https://img.game8.co/4297430/a7c1a76974273304a274adcdfbd4f499.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/557810",
+		"weaknesses": ["Earth", "Vaccine"],
+		"resistances": ["Plant", "Steel", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 16,
+		"name": "Titamon + SkullBaluchimon",
+		"location": "The Defense of Nishi-Shinjuku",
+		"imageUrl": "https://img.game8.co/4302047/361813c0752ffe4e6f0fa16c44d4d608.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/558358",
+		"weaknesses": ["Vaccine"],
+		"resistances": ["Steel", "Earth", "Data"],
+		"immunities": ["Dark"]
+	},
+	{
+		"index": 17,
+		"name": "SkullSeadramon",
+		"location": "Red Seas and Regret",
+		"imageUrl": "https://img.game8.co/4302048/6d15f9b146827c844c3379913b06068c.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559550",
+		"weaknesses": ["Vaccine"],
+		"resistances": ["Plant", "Electric", "Steel", "Earth", "Dark", "Neutral", "Data"],
+		"immunities": ["Ice", "Water"]
+	},
+	{
+		"index": 18,
+		"name": "Calmaramon",
+		"location": "A Promise on a Scarf",
+		"imageUrl": "https://img.game8.co/4302049/5ac8183a66ad2b1750940b813f39ebe2.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559565",
+		"weaknesses": ["Fire", "Electric"],
+		"resistances": ["Steel"],
+		"immunities": ["Water"]
+	},
+	{
+		"index": 19,
+		"name": "Witchmon",
+		"location": "The Titans' Grudge",
+		"imageUrl": "https://img.game8.co/4302050/da94a5697f79d2d4d98010eaf10bfcb1.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559651",
+		"weaknesses": ["Plant", "Earth", "Virus"],
+		"resistances": ["Water", "Wind", "Vaccine"],
+		"immunities": []
+	},
+	{
+		"index": 20,
+		"name": "TyrantKabuterimon",
+		"location": "The Titans' Grudge",
+		"imageUrl": "https://img.game8.co/4302051/904d5b2dcd0c7fbfa0d7ec8a806f9d3d.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559659",
+		"weaknesses": ["Ice", "Water", "Vaccine"],
+		"resistances": ["Fire", "Earth", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 21,
+		"name": "Callismon",
+		"location": "The Paradise Colosseum",
+		"imageUrl": "https://img.game8.co/4302052/3536b4958c2cfd0d2377589e627c538a.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559714",
+		"weaknesses": ["Fire", "Neutral", "Vaccine"],
+		"resistances": ["Ice", "Steel", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 22,
+		"name": "VenomMyotismon",
+		"location": "The God of Speed's Wish",
+		"imageUrl": "https://img.game8.co/4302053/6c4fdeb5d1d6f5eb729fb5a9e008e401.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/559963",
+		"weaknesses": ["Electric", "Light", "Vaccine"],
+		"resistances": ["Fire", "Dark", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 23,
+		"name": "ZombiePlutomon",
+		"location": "Throne of the Underworld",
+		"imageUrl": "https://img.game8.co/4302054/3e954deb3bcf3de0da49128c836cafab.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560152",
+		"weaknesses": ["Fire", "Light", "Vaccine"],
+		"resistances": ["Ice", "Data"],
+		"immunities": ["Dark"]
+	},
+	{
+		"index": 24,
+		"name": "Power Loader",
+		"location": "No Cure for Stupidity",
+		"imageUrl": "https://img.game8.co/4302055/29fab49185f59d220abc78ec1e4d7466.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560394",
+		"weaknesses": [],
+		"resistances": [],
+		"immunities": []
+	},
+	{
+		"index": 25,
+		"name": "Apollomon",
+		"location": "Fire and Ice at War",
+		"imageUrl": "https://img.game8.co/4302056/df0097267bf76841b554407cfbb9bf66.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560648",
+		"weaknesses": ["Ice", "Water", "Dark", "Data"],
+		"resistances": ["Virus"],
+		"immunities": ["Fire", "Light"]
+	},
+	{
+		"index": 26,
+		"name": "Dianamon",
+		"location": "Fire and Ice at War",
+		"imageUrl": "https://img.game8.co/4302057/096ec013a75166f93c83f9876043d930.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560662",
+		"weaknesses": ["Fire", "Wind", "Virus"],
+		"resistances": ["Water", "Vaccine"],
+		"immunities": ["Ice"]
+	},
+	{
+		"index": 27,
+		"name": "Junomon HM",
+		"location": "The Mad Oracle",
+		"imageUrl": "https://img.game8.co/4302073/a74b1dc11ab4e3b84b44d6b66d1a9303.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/560758",
+		"weaknesses": ["Plant", "Light", "Vaccine"],
+		"resistances": ["Electric", "Data"],
+		"immunities": ["Dark"]
+	},
+	{
+		"index": 28,
+		"name": "Barbamon",
+		"location": "The Final Battle Over the Natural Order",
+		"imageUrl": "https://img.game8.co/4318212/16259c96297ee9afe4f157a61f1fa51c.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561228",
+		"weaknesses": ["Water", "Light", "Vaccine"],
+		"resistances": ["Fire", "Data"],
+		"immunities": ["Dark"]
+	},
+	{
+		"index": 29,
+		"name": "Creepymon",
+		"location": "The Final Battle Over the Natural Order",
+		"imageUrl": "https://img.game8.co/4318243/496eacced527dc35bb4402272c931ce6.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561255",
+		"weaknesses": ["Ice", "Light", "Vaccine"],
+		"resistances": ["Fire", "Data"],
+		"immunities": ["Dark"]
+	},
+	{
+		"index": 30,
+		"name": "Lilithmon",
+		"location": "The Final Battle Over the Natural Order",
+		"imageUrl": "https://img.game8.co/4318240/7281fd80876563c63ae9ddce1f5e7a25.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561260",
+		"weaknesses": ["Steel", "Light", "Vaccine"],
+		"resistances": ["Neutral", "Data"],
+		"immunities": ["Dark"]
+	},
+	{
+		"index": 31,
+		"name": "Leviamon",
+		"location": "The Final Battle Over the Natural Order",
+		"imageUrl": "https://img.game8.co/4318218/91ad51220cb67c90309027a2dec9aa9c.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561344",
+		"weaknesses": ["Electric", "Light", "Vaccine"],
+		"resistances": ["Data"],
+		"immunities": ["Water", "Dark"]
+	},
+	{
+		"index": 32,
+		"name": "Lucemon SM",
+		"location": "The Final Battle Over the Natural Order",
+		"imageUrl": "https://img.game8.co/4318241/62a41020507e93b624f05b661c998879.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561359",
+		"weaknesses": ["Light", "Neutral", "Vaccine"],
+		"resistances": ["Fire", "Data"],
+		"immunities": ["Dark"]
+	},
+	{
+		"index": 33,
+		"name": "Beelzemon BM",
+		"location": "The Final Battle Over the Natural Order",
+		"imageUrl": "https://img.game8.co/4318213/d05e9fa36c691ade6ac1632a4b76bcf5.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561369",
+		"weaknesses": ["Earth", "Light", "Vaccine"],
+		"resistances": ["Fire", "Dark", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 34,
+		"name": "Belphemon RM",
+		"location": "The Final Battle Over the Natural Order",
+		"imageUrl": "https://img.game8.co/4318214/135f58d9c7e841db554ea185a6e9b2f3.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561399",
+		"weaknesses": ["Ice", "Light", "Vaccine"],
+		"resistances": ["Fire", "Steel", "Data"],
+		"immunities": ["Dark"]
+	},
+	{
+		"index": 35,
+		"name": "Chronomon",
+		"location": "The Final Battle Over the Natural Order",
+		"imageUrl": "https://img.game8.co/4318239/ff2d22e3b0549f69bfc42a4e45739557.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/561431",
+		"weaknesses": [],
+		"resistances": [],
+		"immunities": []
+	},
+	{
+		"index": 36,
+		"name": "Omnimon Zwart Defeat",
+		"location": "Alternate Dimension",
+		"imageUrl": "https://img.game8.co/4362417/158a2bbf8ced1f0aad39819acfc36bdf.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/570536",
+		"weaknesses": ["Light", "Vaccine"],
+		"resistances": ["Fire", "Dark", "Neutral", "Data"],
+		"immunities": []
+	},
+	{
+		"index": 37,
+		"name": "Omnimon Alter-B",
+		"location": "Alternate Dimension",
+		"imageUrl": "https://img.game8.co/4362415/c77ecbc512bf53ccc50a2729578858fb.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/570556",
+		"weaknesses": ["Earth", "Vaccine"],
+		"resistances": ["Neutral", "Data"],
+		"immunities": ["Dark"]
+	},
+	{
+		"index": 38,
+		"name": "Parallelmon",
+		"location": "Alternate Dimension",
+		"imageUrl": "https://img.game8.co/4363461/2d7a16290ff5315d2b0880aea6c2ad29.png/show",
+		"guideUrl": "https://game8.co/games/Digimon-Story-Time-Stranger/archives/570557",
+		"weaknesses": ["Light", "Vaccine"],
+		"resistances": ["Neutral", "Data"],
+		"immunities": []
+	}
 ]

@@ -16,108 +16,136 @@ const validStages = ['Baby', 'Rookie', 'Champion', 'Ultimate', 'Mega', 'Armor'];
 
 // Validation functions
 function validateDigimon(digimon) {
-  const errors = [];
-  
-  digimon.forEach((d, index) => {
-    if (!d.id || typeof d.id !== 'string') {
-      errors.push(`Digimon ${index}: Missing or invalid id`);
-    }
-    if (!d.name || typeof d.name !== 'string') {
-      errors.push(`Digimon ${index}: Missing or invalid name`);
-    }
-    if (!d.stage || !validStages.includes(d.stage)) {
-      errors.push(`Digimon ${index} (${d.name}): Invalid stage "${d.stage}". Must be one of: ${validStages.join(', ')}`);
-    }
-    if (d.imageUrl && typeof d.imageUrl !== 'string') {
-      errors.push(`Digimon ${index} (${d.name}): Invalid imageUrl`);
-    }
-  });
-  
-  return errors;
+	const errors = [];
+
+	digimon.forEach((d, index) => {
+		if (!d.id || typeof d.id !== 'string') {
+			errors.push(`Digimon ${index}: Missing or invalid id`);
+		}
+		if (!d.name || typeof d.name !== 'string') {
+			errors.push(`Digimon ${index}: Missing or invalid name`);
+		}
+		if (!d.stage || !validStages.includes(d.stage)) {
+			errors.push(
+				`Digimon ${index} (${d.name}): Invalid stage "${d.stage}". Must be one of: ${validStages.join(', ')}`
+			);
+		}
+		if (d.imageUrl && typeof d.imageUrl !== 'string') {
+			errors.push(`Digimon ${index} (${d.name}): Invalid imageUrl`);
+		}
+	});
+
+	return errors;
 }
 
 function validateBosses(bosses) {
-  const errors = [];
-  
-  const validElements = ['Fire', 'Water', 'Ice', 'Wind', 'Plant', 'Earth', 'Electric', 'Light', 'Dark', 'Steel', 'Neutral', 'Vaccine', 'Data', 'Virus'];
-  
-  bosses.forEach((b, index) => {
-    if (!b.id || typeof b.id !== 'string') {
-      errors.push(`Boss ${index}: Missing or invalid id`);
-    }
-    if (!b.name || typeof b.name !== 'string') {
-      errors.push(`Boss ${index}: Missing or invalid name`);
-    }
-    if (typeof b.level !== 'number') {
-      errors.push(`Boss ${index} (${b.name}): Missing or invalid level`);
-    }
-    if (typeof b.order !== 'number') {
-      errors.push(`Boss ${index} (${b.name}): Missing or invalid order`);
-    }
-    if (b.location && typeof b.location !== 'string') {
-      errors.push(`Boss ${index} (${b.name}): Invalid location`);
-    }
-    if (b.imageUrl && typeof b.imageUrl !== 'string') {
-      errors.push(`Boss ${index} (${b.name}): Invalid imageUrl`);
-    }
-    if (b.guideUrl && typeof b.guideUrl !== 'string') {
-      errors.push(`Boss ${index} (${b.name}): Invalid guideUrl`);
-    }
-    if (b.weaknesses && (!Array.isArray(b.weaknesses) || !b.weaknesses.every(e => validElements.includes(e)))) {
-      errors.push(`Boss ${index} (${b.name}): Invalid weaknesses`);
-    }
-    if (b.resistances && (!Array.isArray(b.resistances) || !b.resistances.every(e => validElements.includes(e)))) {
-      errors.push(`Boss ${index} (${b.name}): Invalid resistances`);
-    }
-    if (b.immunities && (!Array.isArray(b.immunities) || !b.immunities.every(e => validElements.includes(e)))) {
-      errors.push(`Boss ${index} (${b.name}): Invalid immunities`);
-    }
-  });
-  
-  // Check order sequence
-  const orders = bosses.map(b => b.order).sort((a, b) => a - b);
-  for (let i = 0; i < orders.length; i++) {
-    if (orders[i] !== i) {
-      errors.push(`Boss order sequence broken: expected ${i}, found ${orders[i]}`);
-    }
-  }
-  
-  return errors;
+	const errors = [];
+
+	const validElements = [
+		'Fire',
+		'Water',
+		'Ice',
+		'Wind',
+		'Plant',
+		'Earth',
+		'Electric',
+		'Light',
+		'Dark',
+		'Steel',
+		'Neutral',
+		'Vaccine',
+		'Data',
+		'Virus'
+	];
+
+	bosses.forEach((b, index) => {
+		if (!b.id || typeof b.id !== 'string') {
+			errors.push(`Boss ${index}: Missing or invalid id`);
+		}
+		if (!b.name || typeof b.name !== 'string') {
+			errors.push(`Boss ${index}: Missing or invalid name`);
+		}
+		if (typeof b.level !== 'number') {
+			errors.push(`Boss ${index} (${b.name}): Missing or invalid level`);
+		}
+		if (typeof b.order !== 'number') {
+			errors.push(`Boss ${index} (${b.name}): Missing or invalid order`);
+		}
+		if (b.location && typeof b.location !== 'string') {
+			errors.push(`Boss ${index} (${b.name}): Invalid location`);
+		}
+		if (b.imageUrl && typeof b.imageUrl !== 'string') {
+			errors.push(`Boss ${index} (${b.name}): Invalid imageUrl`);
+		}
+		if (b.guideUrl && typeof b.guideUrl !== 'string') {
+			errors.push(`Boss ${index} (${b.name}): Invalid guideUrl`);
+		}
+		if (
+			b.weaknesses &&
+			(!Array.isArray(b.weaknesses) || !b.weaknesses.every((e) => validElements.includes(e)))
+		) {
+			errors.push(`Boss ${index} (${b.name}): Invalid weaknesses`);
+		}
+		if (
+			b.resistances &&
+			(!Array.isArray(b.resistances) || !b.resistances.every((e) => validElements.includes(e)))
+		) {
+			errors.push(`Boss ${index} (${b.name}): Invalid resistances`);
+		}
+		if (
+			b.immunities &&
+			(!Array.isArray(b.immunities) || !b.immunities.every((e) => validElements.includes(e)))
+		) {
+			errors.push(`Boss ${index} (${b.name}): Invalid immunities`);
+		}
+	});
+
+	// Check order sequence
+	const orders = bosses.map((b) => b.order).sort((a, b) => a - b);
+	for (let i = 0; i < orders.length; i++) {
+		if (orders[i] !== i) {
+			errors.push(`Boss order sequence broken: expected ${i}, found ${orders[i]}`);
+		}
+	}
+
+	return errors;
 }
 
 // Run validations
 console.log('Validating digimon.json...');
 const digimonErrors = validateDigimon(digimon);
 if (digimonErrors.length > 0) {
-  console.error('❌ Digimon validation failed:');
-  digimonErrors.forEach(err => console.error('  -', err));
+	console.error('❌ Digimon validation failed:');
+	digimonErrors.forEach((err) => console.error('  -', err));
 } else {
-  console.log(`✅ Digimon validation passed! (${digimon.length} entries)`);
-  
-  // Print stats
-  const stats = {};
-  digimon.forEach(d => {
-    stats[d.stage] = (stats[d.stage] || 0) + 1;
-  });
-  console.log('   Stage distribution:');
-  Object.entries(stats).forEach(([stage, count]) => {
-    console.log(`   - ${stage}: ${count}`);
-  });
+	console.log(`✅ Digimon validation passed! (${digimon.length} entries)`);
+
+	// Print stats
+	const stats = {};
+	digimon.forEach((d) => {
+		stats[d.stage] = (stats[d.stage] || 0) + 1;
+	});
+	console.log('   Stage distribution:');
+	Object.entries(stats).forEach(([stage, count]) => {
+		console.log(`   - ${stage}: ${count}`);
+	});
 }
 
 console.log('\nValidating bosses.json...');
 const bossesErrors = validateBosses(bosses);
 if (bossesErrors.length > 0) {
-  console.error('❌ Bosses validation failed:');
-  bossesErrors.forEach(err => console.error('  -', err));
+	console.error('❌ Bosses validation failed:');
+	bossesErrors.forEach((err) => console.error('  -', err));
 } else {
-  console.log(`✅ Bosses validation passed! (${bosses.length} entries)`);
-  console.log(`   Level range: ${Math.min(...bosses.map(b => b.level))} - ${Math.max(...bosses.map(b => b.level))}`);
+	console.log(`✅ Bosses validation passed! (${bosses.length} entries)`);
+	console.log(
+		`   Level range: ${Math.min(...bosses.map((b) => b.level))} - ${Math.max(...bosses.map((b) => b.level))}`
+	);
 }
 
 // Exit with error if any validation failed
 if (digimonErrors.length > 0 || bossesErrors.length > 0) {
-  process.exit(1);
+	process.exit(1);
 }
 
 console.log('\n✅ All validations passed!');

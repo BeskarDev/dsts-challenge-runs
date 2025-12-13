@@ -1,8 +1,9 @@
 import { writable } from 'svelte/store';
 import type { AppState } from '../types/challenge';
 import { storage } from '../services/storage';
+import { STORAGE_KEYS } from '../services/storage-keys';
 
-const APP_STATE_KEY = 'dsts:app';
+const APP_STATE_KEY = STORAGE_KEYS.APP;
 
 const defaultAppState: AppState = {
 	version: '1.0.0',
@@ -12,7 +13,7 @@ const defaultAppState: AppState = {
 function createAppStore() {
 	// Load initial state from localStorage
 	const initialState = storage.loadState<AppState>(APP_STATE_KEY) || defaultAppState;
-	
+
 	const { subscribe, set, update } = writable<AppState>(initialState);
 
 	return {

@@ -11,10 +11,7 @@ export type DamageElement =
 	| 'Steel'
 	| 'Neutral';
 
-export type Attribute =
-	| 'Vaccine'
-	| 'Data'
-	| 'Virus';
+export type Attribute = 'Vaccine' | 'Data' | 'Virus';
 
 // For backward compatibility, keep Element as union of both
 export type Element = DamageElement | Attribute;

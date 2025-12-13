@@ -70,6 +70,7 @@ Follow the [Conventional Commits](https://www.conventionalcommits.org/) specific
 ```
 
 **Types:**
+
 - `feat` - New feature
 - `fix` - Bug fix
 - `docs` - Documentation changes
@@ -79,6 +80,7 @@ Follow the [Conventional Commits](https://www.conventionalcommits.org/) specific
 - `chore` - Build process or auxiliary tool changes
 
 **Examples:**
+
 ```
 feat(randomizer): add seed-based team generation
 fix(storage): prevent state loss on page refresh
@@ -87,6 +89,23 @@ test(randomizer): add unit tests for duplicate prevention
 ```
 
 ## Code Standards
+
+### Local Storage Changes
+
+**⚠️ CRITICAL: If you modify any data structures stored in local storage, you MUST follow the versioning system.**
+
+See the [Versioning System Documentation](./versioning.md) for detailed guidelines.
+
+**Required steps when changing stored data:**
+
+1. ✅ Check if your changes require a migration
+2. ✅ Update `CURRENT_STORAGE_VERSION` if breaking changes
+3. ✅ Create and register migration functions
+4. ✅ Write tests for migrations
+5. ✅ Update versioning documentation
+6. ✅ Test with both fresh and legacy data
+
+**Storage keys** are centrally managed in `src/lib/services/storage-keys.ts`. Always use these constants instead of hardcoded strings.
 
 ### TypeScript
 
@@ -98,24 +117,24 @@ test(randomizer): add unit tests for duplicate prevention
 ```typescript
 // ✅ Good
 interface Digimon {
-  id: string;
-  name: string;
-  stage: EvolutionStage;
+	id: string;
+	name: string;
+	stage: EvolutionStage;
 }
 
 function getDigimon(id: string): Digimon | undefined {
-  // ...
+	// ...
 }
 
 // ❌ Avoid
 type Digimon = {
-  id: string;
-  name: string;
-  stage: string;
-}
+	id: string;
+	name: string;
+	stage: string;
+};
 
 function getDigimon(id) {
-  // ...
+	// ...
 }
 ```
 
@@ -128,19 +147,19 @@ function getDigimon(id) {
 
 ```svelte
 <script lang="ts">
-  // 1. Imports
-  // 2. Props
-  // 3. State
-  // 4. Derived values
-  // 5. Effects
-  // 6. Event handlers
-  // 7. Helper functions
+	// 1. Imports
+	// 2. Props
+	// 3. State
+	// 4. Derived values
+	// 5. Effects
+	// 6. Event handlers
+	// 7. Helper functions
 </script>
 
 <!-- Template -->
 
 <style>
-  /* Styles (prefer Tailwind classes in template) */
+	/* Styles (prefer Tailwind classes in template) */
 </style>
 ```
 
@@ -165,15 +184,15 @@ src/
 
 ### Naming Conventions
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Files (components) | PascalCase | `DigimonCard.svelte` |
-| Files (other) | kebab-case | `challenge-state.ts` |
-| Variables | camelCase | `currentTeam` |
-| Constants | UPPER_SNAKE_CASE | `MAX_TEAM_SIZE` |
-| Types/Interfaces | PascalCase | `ChallengeConfig` |
-| Functions | camelCase | `getRandomDigimon()` |
-| CSS classes | kebab-case | `.digimon-card` |
+| Type               | Convention       | Example              |
+| ------------------ | ---------------- | -------------------- |
+| Files (components) | PascalCase       | `DigimonCard.svelte` |
+| Files (other)      | kebab-case       | `challenge-state.ts` |
+| Variables          | camelCase        | `currentTeam`        |
+| Constants          | UPPER_SNAKE_CASE | `MAX_TEAM_SIZE`      |
+| Types/Interfaces   | PascalCase       | `ChallengeConfig`    |
+| Functions          | camelCase        | `getRandomDigimon()` |
+| CSS classes        | kebab-case       | `.digimon-card`      |
 
 ### Formatting
 
@@ -183,11 +202,11 @@ src/
 
 ```json
 {
-  "semi": true,
-  "singleQuote": true,
-  "tabWidth": 2,
-  "trailingComma": "es5",
-  "printWidth": 100
+	"semi": true,
+	"singleQuote": true,
+	"tabWidth": 2,
+	"trailingComma": "es5",
+	"printWidth": 100
 }
 ```
 
@@ -200,24 +219,24 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { createRandomizer } from './randomizer';
 
 describe('Randomizer', () => {
-  let randomizer: Randomizer;
+	let randomizer: Randomizer;
 
-  beforeEach(() => {
-    randomizer = createRandomizer();
-  });
+	beforeEach(() => {
+		randomizer = createRandomizer();
+	});
 
-  describe('getRandomDigimon', () => {
-    it('should return the requested number of Digimon', () => {
-      const result = randomizer.getRandomDigimon('Rookie', 3);
-      expect(result).toHaveLength(3);
-    });
+	describe('getRandomDigimon', () => {
+		it('should return the requested number of Digimon', () => {
+			const result = randomizer.getRandomDigimon('Rookie', 3);
+			expect(result).toHaveLength(3);
+		});
 
-    it('should not return duplicates', () => {
-      const result = randomizer.getRandomDigimon('Rookie', 6);
-      const uniqueIds = new Set(result.map(d => d.id));
-      expect(uniqueIds.size).toBe(6);
-    });
-  });
+		it('should not return duplicates', () => {
+			const result = randomizer.getRandomDigimon('Rookie', 6);
+			const uniqueIds = new Set(result.map((d) => d.id));
+			expect(uniqueIds.size).toBe(6);
+		});
+	});
 });
 ```
 
@@ -260,12 +279,8 @@ npm run test:coverage
  * @returns Array of randomly selected Digimon
  * @throws Error if not enough Digimon available
  */
-function getRandomDigimon(
-  stage: EvolutionStage,
-  count: number,
-  exclude?: string[]
-): Digimon[] {
-  // ...
+function getRandomDigimon(stage: EvolutionStage, count: number, exclude?: string[]): Digimon[] {
+	// ...
 }
 ```
 
@@ -295,21 +310,25 @@ function getRandomDigimon(
 
 ```markdown
 ## Description
+
 [Brief description of changes]
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Checklist
+
 - [ ] Tests pass locally
 - [ ] Code follows style guidelines
 - [ ] Documentation updated
 - [ ] PR title follows conventional commits
 
 ## Related Issues
+
 Closes #[issue number]
 ```
 
@@ -325,6 +344,7 @@ Closes #[issue number]
 ### Bug Reports
 
 Include:
+
 - Steps to reproduce
 - Expected behavior
 - Actual behavior
@@ -334,6 +354,7 @@ Include:
 ### Feature Requests
 
 Include:
+
 - Use case description
 - Proposed solution
 - Alternatives considered
@@ -341,19 +362,20 @@ Include:
 
 ### Labels
 
-| Label | Description |
-|-------|-------------|
-| `bug` | Something isn't working |
-| `enhancement` | New feature or request |
-| `documentation` | Documentation improvements |
-| `good first issue` | Good for newcomers |
-| `help wanted` | Extra attention needed |
-| `mvp` | Required for MVP |
-| `stretch` | Nice to have |
+| Label              | Description                |
+| ------------------ | -------------------------- |
+| `bug`              | Something isn't working    |
+| `enhancement`      | New feature or request     |
+| `documentation`    | Documentation improvements |
+| `good first issue` | Good for newcomers         |
+| `help wanted`      | Extra attention needed     |
+| `mvp`              | Required for MVP           |
+| `stretch`          | Nice to have               |
 
 ## Questions?
 
 If you have questions, please:
+
 1. Check existing issues and documentation
 2. Open a new issue with the `question` label
 3. Be patient and respectful

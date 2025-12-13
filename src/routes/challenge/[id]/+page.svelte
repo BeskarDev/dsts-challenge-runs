@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import type { PageData } from './$types';
 	import Card from '$lib/components/common/Card.svelte';
 	import Button from '$lib/components/common/Button.svelte';
@@ -24,21 +25,54 @@
 	let randomizer = new RandomizerService();
 	let unsubscribe: (() => void) | undefined;
 	let historyUnsubscribe: (() => void) | undefined;
-	
+
 	// Animation state - track pending reveals for new teams
 	let pendingTeamReveal = $state(false);
 	let animationPlayedForCurrentBoss = $state(true);
-	
+
 	// Evolution pool settings
 	let onlyHighestGeneration = $state(true); // Default to only highest generation
 	let minGenerationOverride = $state<EvolutionGeneration | null>(null);
-	
+
 	// Content filtering settings
 	let includeDLC = $state(true);
 	let includePostGame = $state(false);
 	let includeNonStandard = $state(true); // Armor and Hybrid digimon
 	let includeDLCBosses = $state(false); // DLC bosses (Omnimon Zwart Defeat, etc.)
 	let rerollTeamPerBoss = $state(false); // Generate new team for every boss fight (default: only per quest)
+	let isInitializingState = $state(false); // Flag to prevent effect loops during initial load
+
+	// Watch for content filtering setting changes to update challenge state
+	$effect(() => {
+		if (!isInitializingState && challengeState) {
+			const hasChanges = 
+				challengeState.includeDLC !== includeDLC ||
+				challengeState.includePostGame !== includePostGame ||
+				challengeState.includeNonStandard !== includeNonStandard ||
+				challengeState.includeDLCBosses !== includeDLCBosses ||
+				challengeState.rerollTeamPerBoss !== rerollTeamPerBoss;
+			
+			if (hasChanges) {
+				// Only update if there's an actual change to avoid infinite loops
+				challengeStore.update((state) => {
+					if (state) {
+						return {
+							...state,
+							includeDLC,
+							includePostGame,
+							includeNonStandard,
+							includeDLCBosses,
+							rerollTeamPerBoss,
+							updatedAt: new Date().toISOString()
+						};
+					}
+					return state;
+				});
+				// Update challenge metadata with new boss count
+				updateChallengeMetadata();
+			}
+		}
+	});
 
 	// Handle history deletion - if the current run is deleted, navigate back to home
 	function handleHistoryDelete(deletedRunId: string) {
@@ -62,20 +96,28 @@
 
 		// Load existing challenge state
 		if (data.challenge) {
-			// Set challenge metadata for history tracking
-			challengeStore.setChallengeMetadata(
-				data.challenge.id,
-				data.challenge.name,
-				data.bosses?.length || 1
-			);
 			challengeStore.load(data.challenge.id);
+			// Metadata will be updated after state loads to get correct DLC setting
 		}
-		
+
 		// Subscribe to store changes
 		unsubscribe = challengeStore.subscribe((state) => {
 			challengeState = state;
 			isLoadingState = false;
-			
+			isInitializingState = true; // Prevent effect from updating during load
+
+			// Update all content filtering settings from loaded state
+			if (state) {
+				includeDLC = state.includeDLC ?? true;
+				includePostGame = state.includePostGame ?? false;
+				includeNonStandard = state.includeNonStandard ?? true;
+				includeDLCBosses = state.includeDLCBosses ?? false;
+				rerollTeamPerBoss = state.rerollTeamPerBoss ?? false;
+			}
+
+			// Update challenge metadata with correct boss count
+			updateChallengeMetadata();
+
 			// If there's a URL seed that differs from the current state seed,
 			// try to restore from history first, or start a new challenge
 			if (urlSeed && state && state.seed !== urlSeed) {
@@ -89,8 +131,16 @@
 				// Try to restore from history first
 				const historicalRun = historyStore.getRunBySeed(data.challenge?.id || '', urlSeed);
 				if (historicalRun && historicalRun.fullState) {
-					// Restore the full state from history
-					challengeStore.save(historicalRun.fullState);
+					// Restore the full state from history, ensuring all content filtering fields are set
+					const restoredState = {
+						...historicalRun.fullState,
+						includeDLC: historicalRun.fullState.includeDLC ?? true,
+						includePostGame: historicalRun.fullState.includePostGame ?? false,
+						includeNonStandard: historicalRun.fullState.includeNonStandard ?? true,
+						includeDLCBosses: historicalRun.fullState.includeDLCBosses ?? false,
+						rerollTeamPerBoss: historicalRun.fullState.rerollTeamPerBoss ?? false
+					};
+					challengeStore.save(restoredState);
 				} else {
 					// No historical run found, start a new challenge
 					startNewChallenge();
@@ -99,6 +149,9 @@
 				// Update URL with current seed if state exists and no URL seed conflict
 				updateUrlWithSeed(state.seed);
 			}
+			
+			// Allow effect to run after sync
+			isInitializingState = false;
 		});
 
 		// Subscribe to history changes to detect if current run was deleted
@@ -107,7 +160,7 @@
 			// Check if the current run still exists in history
 			if (challengeState && data.challenge && challengeState.seed) {
 				const currentRunExists = history.some(
-					run => run.challengeId === data.challenge!.id && run.seed === challengeState!.seed
+					(run) => run.challengeId === data.challenge!.id && run.seed === challengeState!.seed
 				);
 				// If the run was deleted and no state exists, navigate to home
 				if (!currentRunExists && !challengeStore.hasExistingState(data.challenge.id)) {
@@ -132,7 +185,7 @@
 		if (typeof window !== 'undefined') {
 			const url = new URL(window.location.href);
 			url.searchParams.set('seed', seed);
-			window.history.replaceState({}, '', url.toString());
+			goto(url.toString(), { replaceState: true, noScroll: true });
 		}
 	}
 
@@ -152,10 +205,34 @@
 		return filterDigimonByContent(data.digimon as Digimon[], includeDLC, includePostGame);
 	}
 
+	// Calculate total boss count based on DLC setting
+	function getTotalBossCount(includeDLC: boolean = false) {
+		if (!data.bosses) return 1;
+		if (includeDLC) {
+			// Count all bosses except tutorial boss (order 0)
+			return data.bosses.filter((b) => b.order > 0).length;
+		} else {
+			// Count only required bosses (not optional, and not tutorial)
+			return data.bosses.filter((b) => !b.optional && b.order > 0).length;
+		}
+	}
+
+	// Update challenge metadata with correct boss count
+	function updateChallengeMetadata() {
+		if (data.challenge) {
+			const totalBosses = getTotalBossCount(includeDLCBosses);
+			challengeStore.setChallengeMetadata(
+				data.challenge.id,
+				data.challenge.name,
+				totalBosses
+			);
+		}
+	}
+
 	// Filter out optional bosses for starting position - start at boss-1 by default
 	function getStartingBossOrder() {
 		if (!data.bosses) return 1;
-		const firstRequiredBoss = data.bosses.find(b => !b.optional);
+		const firstRequiredBoss = data.bosses.find((b) => !b.optional);
 		return firstRequiredBoss?.order ?? 1;
 	}
 
@@ -163,23 +240,24 @@
 		if (!data.challenge || !data.digimon) return;
 
 		const mainSeed = seedInput || randomizer.generateSeed();
-		
+
 		// Start at the first required boss (skip optional boss-0)
 		const startBoss = getStartingBossOrder();
-		const initialGeneration = data.challenge.evolutionCheckpoints[0].unlockedGeneration as EvolutionGeneration;
-		
+		const initialGeneration = data.challenge.evolutionCheckpoints[0]
+			.unlockedGeneration as EvolutionGeneration;
+
 		// Generate initial team for starting boss
 		const initialBossSeed = `${mainSeed}-boss-${startBoss}`;
 		randomizer.setSeed(initialBossSeed);
-		
+
 		const filteredDigimon = getFilteredDigimon();
 		const teamSize = data.challenge.settings.teamSize;
-		
+
 		const initialTeam = randomizer
 			.getRandomDigimonMultiGeneration(
-				filteredDigimon, 
-				initialGeneration, 
-				teamSize, 
+				filteredDigimon,
+				initialGeneration,
+				teamSize,
 				[],
 				onlyHighestGeneration,
 				minGenerationOverride || undefined,
@@ -206,6 +284,12 @@
 					seed: initialBossSeed
 				}
 			},
+			// Store all content filtering settings
+			includeDLC,
+			includePostGame,
+			includeNonStandard,
+			includeDLCBosses,
+			rerollTeamPerBoss,
 			createdAt: new Date().toISOString(),
 			updatedAt: new Date().toISOString()
 		};
@@ -215,18 +299,19 @@
 
 	function navigateToBoss(bossOrder: number) {
 		if (!challengeState || !data.challenge || !data.bosses) return;
-		
+
 		// Find the highest unlocked generation for this boss order
 		// (get the latest checkpoint that is <= current boss order)
 		// Always calculate this first to ensure correct generation even for cached teams
 		const unlockedCheckpoints = data.challenge.evolutionCheckpoints
-			.filter(cp => cp.bossOrder <= bossOrder)
+			.filter((cp) => cp.bossOrder <= bossOrder)
 			.sort((a, b) => b.bossOrder - a.bossOrder);
-		
-		const correctGeneration = unlockedCheckpoints.length > 0
-			? (unlockedCheckpoints[0].unlockedGeneration as EvolutionGeneration)
-			: challengeState.currentGeneration;
-		
+
+		const correctGeneration =
+			unlockedCheckpoints.length > 0
+				? (unlockedCheckpoints[0].unlockedGeneration as EvolutionGeneration)
+				: challengeState.currentGeneration;
+
 		// Check if we already have a team saved for this boss
 		if (challengeState.bossTeams[bossOrder]) {
 			// Restore the saved team for this boss, but use the correct generation
@@ -252,22 +337,23 @@
 			});
 			return;
 		}
-		
+
 		// Determine if we need to generate a new team
-		const currentBoss = data.bosses.find(b => b.order === bossOrder);
-		const previousBoss = data.bosses.find(b => b.order === challengeState!.currentBossOrder);
-		
+		const currentBoss = data.bosses.find((b) => b.order === bossOrder);
+		const previousBoss = data.bosses.find((b) => b.order === challengeState!.currentBossOrder);
+
 		// Check if we're crossing a generation checkpoint
 		const generationChanged = correctGeneration !== challengeState!.currentGeneration;
-		
-		const shouldRerollTeam = rerollTeamPerBoss || 
-			!previousBoss || 
-			!currentBoss || 
+
+		const shouldRerollTeam =
+			rerollTeamPerBoss ||
+			!previousBoss ||
+			!currentBoss ||
 			currentBoss.location !== previousBoss.location ||
 			generationChanged; // Always reroll when generation changes
-		
+
 		const newGeneration = correctGeneration;
-		
+
 		// If not rerolling per boss and location is the same, keep current team
 		// but still update the generation to the highest unlocked
 		if (!shouldRerollTeam && challengeState.team.length > 0) {
@@ -282,24 +368,24 @@
 			});
 			return;
 		}
-		
+
 		// Generate new team for this boss
-		
+
 		// Generate boss-specific seed
 		const bossSeed = `${challengeState.seed}-boss-${bossOrder}`;
 		randomizer.setSeed(bossSeed);
-		
+
 		const filteredDigimon = getFilteredDigimon();
 		const teamSize = data.challenge.settings.teamSize;
-		
+
 		// Get list of digimon already used - only if rerolling per boss
 		// Otherwise, allow repeats to avoid running out of digimon
-		const usedInGeneration = rerollTeamPerBoss 
+		const usedInGeneration = rerollTeamPerBoss
 			? Object.values(challengeState.bossTeams)
-				.filter(bt => bt.generation === newGeneration)
-				.flatMap(bt => bt.team.map(tm => tm.digimonNumber))
+					.filter((bt) => bt.generation === newGeneration)
+					.flatMap((bt) => bt.team.map((tm) => tm.digimonNumber))
 			: [];
-		
+
 		const newTeamDigimon = randomizer.rerollMultiGeneration(
 			filteredDigimon,
 			newGeneration,
@@ -309,19 +395,20 @@
 			minGenerationOverride || undefined,
 			includeNonStandard
 		);
-		
+
 		// If no digimon available (empty pool), retry without exclusions
-		const finalTeam = newTeamDigimon.length > 0 
-			? newTeamDigimon 
-			: randomizer.rerollMultiGeneration(
-				filteredDigimon,
-				newGeneration,
-				teamSize,
-				[], // No exclusions
-				onlyHighestGeneration,
-				minGenerationOverride || undefined,
-				includeNonStandard
-			);
+		const finalTeam =
+			newTeamDigimon.length > 0
+				? newTeamDigimon
+				: randomizer.rerollMultiGeneration(
+						filteredDigimon,
+						newGeneration,
+						teamSize,
+						[], // No exclusions
+						onlyHighestGeneration,
+						minGenerationOverride || undefined,
+						includeNonStandard
+					);
 
 		const newTeam: TeamMember[] = finalTeam.map((digimon: Digimon, index: number) => ({
 			digimonNumber: digimon.number,
@@ -355,13 +442,13 @@
 		if (!challengeState || !data.digimon) return;
 
 		const oldDigimonNumber = challengeState.team[slotIndex].digimonNumber;
-		const currentTeamNumbers = challengeState.team.map(m => m.digimonNumber);
+		const currentTeamNumbers = challengeState.team.map((m) => m.digimonNumber);
 		const filteredDigimon = getFilteredDigimon();
-		
+
 		// Generate sub-seed for this reroll
 		const rerollSeed = `${challengeState.seed}-boss-${challengeState.currentBossOrder}-reroll-${Date.now()}`;
 		randomizer.setSeed(rerollSeed);
-		
+
 		const newDigimon = randomizer.rerollSlot(
 			filteredDigimon,
 			challengeState.currentGeneration,
@@ -416,7 +503,7 @@
 	function rerollAll() {
 		if (!challengeState || !data.digimon || !data.challenge) return;
 
-		const previousTeamNumbers = challengeState.team.map(m => m.digimonNumber);
+		const previousTeamNumbers = challengeState.team.map((m) => m.digimonNumber);
 		const teamSize = data.challenge.settings.teamSize;
 		const filteredDigimon = getFilteredDigimon();
 
@@ -445,7 +532,7 @@
 			timestamp: new Date().toISOString(),
 			checkpoint: challengeState.currentBossOrder,
 			previousTeam: previousTeamNumbers,
-			newTeam: newTeam.map(m => m.digimonNumber),
+			newTeam: newTeam.map((m) => m.digimonNumber),
 			seed: rerollSeed
 		};
 
@@ -532,9 +619,11 @@
 		if (!challengeState || !data.challenge) return null;
 		// Find the checkpoint that matches or is less than current boss order
 		const checkpoints = data.challenge.evolutionCheckpoints;
-		return checkpoints
-			.filter(cp => cp.bossOrder <= challengeState!.currentBossOrder)
-			.sort((a, b) => b.bossOrder - a.bossOrder)[0] || null;
+		return (
+			checkpoints
+				.filter((cp) => cp.bossOrder <= challengeState!.currentBossOrder)
+				.sort((a, b) => b.bossOrder - a.bossOrder)[0] || null
+		);
 	}
 
 	function canReroll() {
@@ -555,7 +644,9 @@
 	{#if isLoadingState}
 		<Card>
 			<div class="flex flex-col items-center justify-center py-12">
-				<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500 dark:border-primary-400 mb-4"></div>
+				<div
+					class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500 dark:border-primary-400 mb-4"
+				></div>
 				<p class="text-gray-600 dark:text-muted">Loading challenge...</p>
 			</div>
 		</Card>
@@ -565,10 +656,7 @@
 			<p class="text-gray-700 dark:text-muted-300 mb-4">{data.challenge?.description || ''}</p>
 
 			<div class="mb-4">
-				<label
-					for="seed"
-					class="block text-sm font-medium text-gray-700 dark:text-muted-100 mb-2"
-				>
+				<label for="seed" class="block text-sm font-medium text-gray-700 dark:text-muted-100 mb-2">
 					Seed (optional - leave empty for random)
 				</label>
 				<input
@@ -615,9 +703,11 @@
 					</select>
 				</div>
 			{/if}
-			
+
 			<div class="mb-4 border-t border-gray-200 dark:border-border pt-4">
-				<h3 class="text-sm font-semibold text-gray-900 dark:text-muted-100 mb-2">Optional Content</h3>
+				<h3 class="text-sm font-semibold text-gray-900 dark:text-muted-100 mb-2">
+					Optional Content
+				</h3>
 				<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100 mb-2">
 					<input
 						type="checkbox"
@@ -683,7 +773,7 @@
 					currentBossOrder={challengeState.currentBossOrder}
 					bosses={data.bosses}
 					onNavigate={navigateToBoss}
-					includeDLCBosses={includeDLCBosses}
+					{includeDLCBosses}
 				/>
 			</div>
 		{/if}
@@ -691,75 +781,73 @@
 		<!-- Progress Info -->
 		<div class="grid gap-4 md:grid-cols-2 mb-6">
 			<Accordion title="Challenge Status">
-			<div class="space-y-2 text-gray-700 dark:text-muted-300">
-						<p>
-							<strong class="text-gray-900 dark:text-muted-100">Level Cap:</strong>
-							{getLevelCap() || 'No limit'}
-						</p>
-						<p>
-							<strong class="text-gray-900 dark:text-muted-100">Evolution Generation:</strong>
-							<span
-								class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300"
-							>
-								{$i18n.t(challengeState.currentGeneration)}
-							</span>
-						</p>
-						<div class="mt-3">
-							<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
-								<input
-									type="checkbox"
-									bind:checked={onlyHighestGeneration}
-									class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
-								/>
-								<span>Only highest generation</span>
-							</label>
-						</div>
-						{#if !onlyHighestGeneration}
-							<div class="mt-2">
-								<label
-									for="minGenRunning"
-									class="block text-xs text-gray-600 dark:text-muted mb-1"
-								>
-									Min Generation Override:
-								</label>
-								<select
-									id="minGenRunning"
-									bind:value={minGenerationOverride}
-									class="w-full px-2 py-1 text-sm border border-gray-300 dark:border-border bg-white dark:bg-surface-100 text-gray-900 dark:text-muted-50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
-								>
-									<option value={null}>All available</option>
-									<option value="In-Training I">In-Training I</option>
-									<option value="In-Training II">In-Training II</option>
-									<option value="Rookie">Rookie</option>
-									<option value="Champion">Champion</option>
-									<option value="Ultimate">Ultimate</option>
-									<option value="Mega">Mega</option>
-									<option value="Mega +">Mega +</option>
-								</select>
-							</div>
-						{/if}
-						<p>
-							<strong class="text-gray-900 dark:text-muted-100">Seed:</strong>
-							<code
-								class="bg-gray-100 dark:bg-surface-100 px-2 py-1 rounded text-sm text-gray-900 dark:text-muted-50"
-								>{challengeState.seed}</code
-							>
-							<button
-								onclick={copySeedUrl}
-								class="ml-2 text-xs text-primary-600 dark:text-primary-400 hover:underline"
-								title="Copy URL with seed to share"
-							>
-								📋 Copy URL
-							</button>
-						</p>
-						<p class="text-xs text-gray-500 dark:text-muted-400 mt-1">
-							ℹ️ Each reroll generates a new seed. Share the URL to let others recreate your exact team.
-						</p>
-						<p>
-							<strong class="text-gray-900 dark:text-muted-100">Re-rolls Used:</strong>
-							{challengeState.rerollHistory.length}
-						</p>
+				<div class="space-y-2 text-gray-700 dark:text-muted-300">
+					<p>
+						<strong class="text-gray-900 dark:text-muted-100">Level Cap:</strong>
+						{getLevelCap() || 'No limit'}
+					</p>
+					<p>
+						<strong class="text-gray-900 dark:text-muted-100">Evolution Generation:</strong>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300"
+						>
+							{$i18n.t(challengeState.currentGeneration)}
+						</span>
+					</p>
+					<div class="mt-3">
+						<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
+							<input
+								type="checkbox"
+								bind:checked={onlyHighestGeneration}
+								class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
+							/>
+							<span>Only highest generation</span>
+						</label>
 					</div>
+					{#if !onlyHighestGeneration}
+						<div class="mt-2">
+							<label for="minGenRunning" class="block text-xs text-gray-600 dark:text-muted mb-1">
+								Min Generation Override:
+							</label>
+							<select
+								id="minGenRunning"
+								bind:value={minGenerationOverride}
+								class="w-full px-2 py-1 text-sm border border-gray-300 dark:border-border bg-white dark:bg-surface-100 text-gray-900 dark:text-muted-50 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
+							>
+								<option value={null}>All available</option>
+								<option value="In-Training I">In-Training I</option>
+								<option value="In-Training II">In-Training II</option>
+								<option value="Rookie">Rookie</option>
+								<option value="Champion">Champion</option>
+								<option value="Ultimate">Ultimate</option>
+								<option value="Mega">Mega</option>
+								<option value="Mega +">Mega +</option>
+							</select>
+						</div>
+					{/if}
+					<p>
+						<strong class="text-gray-900 dark:text-muted-100">Seed:</strong>
+						<code
+							class="bg-gray-100 dark:bg-surface-100 px-2 py-1 rounded text-sm text-gray-900 dark:text-muted-50"
+							>{challengeState.seed}</code
+						>
+						<button
+							onclick={copySeedUrl}
+							class="ml-2 text-xs text-primary-600 dark:text-primary-400 hover:underline"
+							title="Copy URL with seed to share"
+						>
+							📋 Copy URL
+						</button>
+					</p>
+					<p class="text-xs text-gray-500 dark:text-muted-400 mt-1">
+						ℹ️ Each reroll generates a new seed. Share the URL to let others recreate your exact
+						team.
+					</p>
+					<p>
+						<strong class="text-gray-900 dark:text-muted-100">Re-rolls Used:</strong>
+						{challengeState.rerollHistory.length}
+					</p>
+				</div>
 			</Accordion>
 
 			<Accordion title="Evolution Checkpoints">
@@ -773,42 +861,43 @@
 								: 'text-gray-500 dark:text-muted'}"
 						>
 							<span class="w-5 h-5 flex items-center justify-center">
-									{#if isUnlocked}
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											class="h-5 w-5 text-secondary-500 dark:text-secondary-400"
-											viewBox="0 0 20 20"
-											fill="currentColor"
-										>
-											<path
-												fill-rule="evenodd"
-												d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-												clip-rule="evenodd"
-											/>
-										</svg>
-									{:else}
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											class="h-5 w-5 text-gray-400 dark:text-muted"
-											viewBox="0 0 20 20"
-											fill="currentColor"
-										>
-											<path
-												fill-rule="evenodd"
-												d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12z"
-												clip-rule="evenodd"
-											/>
-										</svg>
-									{/if}
-								</span>
-								<span>
-									{boss?.name || `Boss ${checkpoint.bossOrder}`}: <strong
-										class="text-gray-900 dark:text-muted-50">{$i18n.t(checkpoint.unlockedGeneration)}</strong
+								{#if isUnlocked}
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-5 w-5 text-secondary-500 dark:text-secondary-400"
+										viewBox="0 0 20 20"
+										fill="currentColor"
 									>
-								</span>
-							</div>
-						{/each}
-					</div>
+										<path
+											fill-rule="evenodd"
+											d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+											clip-rule="evenodd"
+										/>
+									</svg>
+								{:else}
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-5 w-5 text-gray-400 dark:text-muted"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12z"
+											clip-rule="evenodd"
+										/>
+									</svg>
+								{/if}
+							</span>
+							<span>
+								{boss?.name || `Boss ${checkpoint.bossOrder}`}:
+								<strong class="text-gray-900 dark:text-muted-50"
+									>{$i18n.t(checkpoint.unlockedGeneration)}</strong
+								>
+							</span>
+						</div>
+					{/each}
+				</div>
 			</Accordion>
 		</div>
 
@@ -851,7 +940,9 @@
 				<h2 class="text-xl font-bold text-gray-900 dark:text-muted-50 mb-4">Actions</h2>
 				<div class="space-y-4">
 					<div>
-						<h3 class="text-sm font-semibold text-gray-900 dark:text-muted-100 mb-2">Content Filtering</h3>
+						<h3 class="text-sm font-semibold text-gray-900 dark:text-muted-100 mb-2">
+							Content Filtering
+						</h3>
 						<div class="space-y-2">
 							<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
 								<input
@@ -876,32 +967,33 @@
 									class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
 								/>
 								<span>Include Armor & Hybrid Digimon (matched by power level)</span>
-							</label>						<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
-							<input
-								type="checkbox"
-								bind:checked={includeDLCBosses}
-								class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
-							/>
-							<span>Include DLC Bosses (Omnimon variants, Parallelmon)</span>
-						</label>
-						<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
-							<input
-								type="checkbox"
-								bind:checked={rerollTeamPerBoss}
-								class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
-							/>
-							<span>New team for every boss fight</span>
-						</label>
-						<p class="text-xs text-gray-500 dark:text-muted-400 mt-1">
-							These settings apply to future re-rolls
-						</p>
+							</label>
+							<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
+								<input
+									type="checkbox"
+									bind:checked={includeDLCBosses}
+									class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
+								/>
+								<span>Include DLC Bosses (Omnimon variants, Parallelmon)</span>
+							</label>
+							<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100">
+								<input
+									type="checkbox"
+									bind:checked={rerollTeamPerBoss}
+									class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
+								/>
+								<span>New team for every boss fight</span>
+							</label>
+							<p class="text-xs text-gray-500 dark:text-muted-400 mt-1">
+								These settings apply to future re-rolls
+							</p>
 						</div>
 					</div>
 					<div class="pt-4 border-t border-gray-200 dark:border-border">
 						<p class="text-sm text-gray-600 dark:text-muted mb-2">
 							Reset this challenge to start over with a new seed and team.
 						</p>
-						<Button variant="outline" onclick={resetChallenge}> Reset Challenge </Button>
+						<Button variant="outline" onclick={resetChallenge}>Reset Challenge</Button>
 					</div>
 				</div>
 			</Card>

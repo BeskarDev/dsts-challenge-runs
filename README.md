@@ -52,6 +52,7 @@ For detailed documentation, see the [spec/](./spec/) directory:
 - [Project Overview](./spec/overview.md)
 - [Architecture](./spec/architecture.md)
 - [Data Model](./spec/data_model.md)
+- [Versioning System](./spec/versioning.md) - **Important for contributors**
 - [Implementation Roadmap](./spec/roadmap.md)
 - [Contributing Guidelines](./spec/contributing.md)
 - [Style Guide](./spec/style_guide.md)
@@ -71,6 +72,7 @@ For detailed documentation, see the [spec/](./spec/) directory:
 Build your team from randomly selected Digimon that unlock as you progress through the story.
 
 **Rules:**
+
 - Hard mode required
 - Level cap based on upcoming boss
 - Random team composition

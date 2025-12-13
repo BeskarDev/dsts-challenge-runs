@@ -7,9 +7,22 @@ import type { Digimon } from '../types/digimon';
  * DLC Episode Pack 3 Digimon (469-473): X-Antibody Royal Knights
  */
 const DLC_DIGIMON_NUMBERS = [
-	'458', '459', '460', '461', '462', '463', // Episode Pack 1
-	'464', '465', '466', '467', '468',       // Episode Pack 2
-	'469', '470', '471', '472', '473'        // Episode Pack 3
+	'458',
+	'459',
+	'460',
+	'461',
+	'462',
+	'463', // Episode Pack 1
+	'464',
+	'465',
+	'466',
+	'467',
+	'468', // Episode Pack 2
+	'469',
+	'470',
+	'471',
+	'472',
+	'473' // Episode Pack 3
 ];
 
 /**
@@ -18,9 +31,14 @@ const DLC_DIGIMON_NUMBERS = [
  * Aegiomon line (081, 193-197): Aegiomon and its Aegiochusmon evolutions
  */
 const POST_GAME_DIGIMON_NUMBERS = [
-	'474', '475', // Chronomon variants
-	'081',        // Aegiomon
-	'193', '194', '195', '196', '197' // Aegiochusmon variants
+	'474',
+	'475', // Chronomon variants
+	'081', // Aegiomon
+	'193',
+	'194',
+	'195',
+	'196',
+	'197' // Aegiochusmon variants
 ];
 
 /**
@@ -45,7 +63,7 @@ export function filterDigimonByContent(
 	includeDLC: boolean = true,
 	includePostGame: boolean = true
 ): Digimon[] {
-	return digimon.filter(d => {
+	return digimon.filter((d) => {
 		if (!includeDLC && isDLCDigimon(d.number)) return false;
 		if (!includePostGame && isPostGameDigimon(d.number)) return false;
 		return true;

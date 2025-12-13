@@ -32,17 +32,21 @@
 	// Map attribute names to icon URLs from GrindoSaur CDN
 	function getAttributeIconUrl(attribute: string): string {
 		const attributeMap: Record<string, string> = {
-			'Vaccine': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/vaccine-icon.png',
-			'Data': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/data-icon.png',
-			'Virus': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/virus-icon.png',
-			'Free': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/free-icon.png',
-			'Variable': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/variable-icon.png',
-			'Unknown': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/unknown-icon.png',
-			'No Data': 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/no-data-icon.png'
+			Vaccine:
+				'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/vaccine-icon.png',
+			Data: 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/data-icon.png',
+			Virus:
+				'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/virus-icon.png',
+			Free: 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/free-icon.png',
+			Variable:
+				'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/variable-icon.png',
+			Unknown:
+				'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/unknown-icon.png',
+			'No Data':
+				'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/no-data-icon.png'
 		};
 		return attributeMap[attribute] || '';
 	}
-
 </script>
 
 <div
@@ -101,15 +105,15 @@
 			{translatedName}
 		</a>
 		<p class="text-sm text-gray-600 dark:text-muted">{translatedGeneration}</p>
-		
+
 		<!-- Additional info: Attribute, Type, Personality -->
 		<div class="mt-2 space-y-1">
 			<div class="flex items-center justify-center gap-1">
 				{#if getAttributeIconUrl(digimon.attribute)}
-					<img 
-						src={getAttributeIconUrl(digimon.attribute)} 
+					<img
+						src={getAttributeIconUrl(digimon.attribute)}
 						alt={translatedAttribute}
-					class="w-4 h-4 dark:invert-0 invert"
+						class="w-4 h-4 dark:invert-0 invert"
 						title={translatedAttribute}
 					/>
 				{/if}
