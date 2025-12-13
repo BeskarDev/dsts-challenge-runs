@@ -22,6 +22,7 @@
 	let seedInput = $state('');
 	let randomizer = new RandomizerService();
 	let unsubscribe: (() => void) | undefined;
+	let historyUnsubscribe: (() => void) | undefined;
 	
 	// Evolution pool settings
 	let onlyHighestGeneration = $state(true); // Default to only highest generation
@@ -33,6 +34,20 @@
 	let includeNonStandard = $state(true); // Armor and Hybrid digimon
 	let includeDLCBosses = $state(false); // DLC bosses (Omnimon Zwart Defeat, etc.)
 	let rerollTeamPerBoss = $state(false); // Generate new team for every boss fight (default: only per quest)
+
+	// Handle history deletion - if the current run is deleted, navigate back to home
+	function handleHistoryDelete(deletedRunId: string) {
+		// Check if the deleted run is the current one by comparing with the challenge state seed
+		if (challengeState && data.challenge) {
+			const currentRunId = `${data.challenge.id}-${challengeState.seed}`;
+			// The deletedRunId starts with the same format, so check if it's for this challenge and seed
+			if (deletedRunId.startsWith(`${data.challenge.id}-${challengeState.seed}`)) {
+				// The current run was deleted, navigate to home
+				const base = $page.url.pathname.split('/challenge/')[0] || '';
+				window.location.href = `${base}/`;
+			}
+		}
+	}
 
 	onMount(() => {
 		// Check for seed in URL parameters
@@ -81,12 +96,30 @@
 				updateUrlWithSeed(state.seed);
 			}
 		});
+
+		// Subscribe to history changes to detect if current run was deleted
+		historyStore.load();
+		historyUnsubscribe = historyStore.subscribe((history) => {
+			// Check if the current run still exists in history
+			if (challengeState && data.challenge && challengeState.seed) {
+				const currentRunExists = history.some(
+					run => run.challengeId === data.challenge!.id && run.seed === challengeState!.seed
+				);
+				// If the run was deleted and no state exists, navigate to home
+				if (!currentRunExists && !challengeStore.hasExistingState(data.challenge.id)) {
+					handleHistoryDelete(`${data.challenge.id}-${challengeState.seed}`);
+				}
+			}
+		});
 	});
 
 	onDestroy(() => {
-		// Clean up store subscription
+		// Clean up store subscriptions
 		if (unsubscribe) {
 			unsubscribe();
+		}
+		if (historyUnsubscribe) {
+			historyUnsubscribe();
 		}
 	});
 

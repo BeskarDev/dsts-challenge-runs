@@ -24,9 +24,9 @@
 </script>
 
 <header
-	class="bg-surface-100 dark:bg-surface border-b border-gray-200 dark:border-border shadow-lg transition-colors"
+	class="sticky top-0 z-40 bg-surface-100 dark:bg-surface border-b border-gray-200 dark:border-border shadow-lg transition-colors"
 >
-	<div class="container mx-auto px-4 py-4">
+	<div class="container mx-auto px-3 py-3">
 		<div class="flex items-center justify-between">
 			<a
 				href="{base}/"

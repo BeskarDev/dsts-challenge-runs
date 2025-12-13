@@ -52,6 +52,19 @@ export const HYBRID_GENERATION_EQUIVALENTS: Record<string, EvolutionGeneration> 
 };
 
 /**
+ * Lucemon line - Special case for evolution tiers
+ * Lucemon breaks the normal progression due to availability mechanics:
+ * - Rookie form available at Ultimate tier
+ * - Ultimate form available at Mega tier
+ * - Mega+ form available at Mega+ tier (normal)
+ */
+export const LUCEMON_GENERATION_EQUIVALENTS: Record<string, EvolutionGeneration> = {
+	'039': 'Ultimate', // Lucemon - Rookie form available at Ultimate tier
+	'296': 'Mega',     // Lucemon CM - Ultimate form available at Mega tier
+	// '447' (Lucemon SM) is Mega+ and stays at Mega+ tier normally
+};
+
+/**
  * Get the standard generation equivalent for a non-standard Digimon
  * Returns null if not mapped or if it's already a standard generation
  */
@@ -59,6 +72,11 @@ export function getNonStandardEquivalent(
 	digimonNumber: string,
 	actualGeneration: EvolutionGeneration
 ): EvolutionGeneration | null {
+	// Check for Lucemon special cases (applies to any of its forms)
+	if (LUCEMON_GENERATION_EQUIVALENTS[digimonNumber]) {
+		return LUCEMON_GENERATION_EQUIVALENTS[digimonNumber];
+	}
+	
 	if (actualGeneration === 'Armor') {
 		return ARMOR_GENERATION_EQUIVALENTS[digimonNumber] || 'Champion'; // Default to Champion
 	}

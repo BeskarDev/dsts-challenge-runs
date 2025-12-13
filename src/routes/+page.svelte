@@ -71,8 +71,30 @@
 				{#if isLoading}
 					<div class="text-gray-500 dark:text-muted">Loading...</div>
 				{:else}
-					<Button onclick={continueChallenge} disabled={!hasExistingChallenge}>Continue Challenge</Button>
-					<Button variant="outline" onclick={newChallenge}>New Challenge</Button>
+					<Button onclick={continueChallenge} disabled={!hasExistingChallenge} class="flex items-center gap-2 justify-center">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4"
+							fill="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path d="M8 5v14l11-7z" />
+						</svg>
+						Continue
+					</Button>
+					<Button variant="outline" onclick={newChallenge} class="flex items-center gap-2 justify-center">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							stroke-width="2"
+						>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+						</svg>
+						New
+					</Button>
 				{/if}
 			</div>
 		</Card>

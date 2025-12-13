@@ -57,7 +57,22 @@ function createHistoryStore() {
 			set([]);
 		},
 		deleteRun: (runId: string) => {
+			// Get the run to be deleted so we can clear its challenge state
+			const history = storage.getHistory<HistoricalRun>();
+			const runToDelete = history.find(run => run.id === runId);
+			
+			// Delete from history
 			storage.deleteHistoryItem<HistoricalRun>(runId);
+			
+			// Also clear the associated challenge state if this was the last run for that challenge
+			if (runToDelete) {
+				const remainingRuns = history.filter(run => run.id !== runId && run.challengeId === runToDelete.challengeId);
+				// If no more runs exist for this challenge, clear its state
+				if (remainingRuns.length === 0) {
+					storage.clearState(`dsts:challenge:${runToDelete.challengeId}`);
+				}
+			}
+			
 			// Reload the store
 			const updatedHistory = storage.getHistory<HistoricalRun>();
 			set(updatedHistory);
