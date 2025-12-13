@@ -6,19 +6,20 @@ This document outlines the implementation phases for the DSTS Challenge Runs pro
 
 ## Phase Summary
 
-| Phase | Name | Duration | Priority |
-|-------|------|----------|----------|
-| 1 | Project Setup | 1-2 days | MVP |
-| 2 | Core Infrastructure | 3-5 days | MVP |
-| 3 | Random Evolution Challenge | 5-7 days | MVP |
-| 4 | Polish & Deploy | 2-3 days | MVP |
-| 5 | Stretch Goals | TBD | Future |
+| Phase | Name                       | Duration | Priority |
+| ----- | -------------------------- | -------- | -------- |
+| 1     | Project Setup              | 1-2 days | MVP      |
+| 2     | Core Infrastructure        | 3-5 days | MVP      |
+| 3     | Random Evolution Challenge | 5-7 days | MVP      |
+| 4     | Polish & Deploy            | 2-3 days | MVP      |
+| 5     | Stretch Goals              | TBD      | Future   |
 
 ---
 
 ## Phase 1: Project Setup ✅
 
 ### Objective
+
 Initialize the project with proper tooling, configuration, and structure.
 
 ### Status: **COMPLETE**
@@ -49,6 +50,7 @@ Initialize the project with proper tooling, configuration, and structure.
   - Add CONTRIBUTING.md (already existed)
 
 ### Acceptance Criteria
+
 - ✅ `npm run dev` starts development server
 - ✅ `npm run build` produces static output
 - ✅ `npm run test` runs test suite
@@ -59,6 +61,7 @@ Initialize the project with proper tooling, configuration, and structure.
 ## Phase 2: Core Infrastructure ✅
 
 ### Objective
+
 Build the foundational components, routing, and state management.
 
 ### Status: **COMPLETE**
@@ -93,6 +96,7 @@ Build the foundational components, routing, and state management.
   - Button components
 
 ### Acceptance Criteria
+
 - ✅ Navigation between pages works
 - ✅ Digimon and boss data loads correctly
 - ✅ State persists across page reloads
@@ -103,6 +107,7 @@ Build the foundational components, routing, and state management.
 ## Phase 3: Random Evolution Challenge
 
 ### Objective
+
 Implement the first challenge run with full functionality.
 
 ### Deliverables
@@ -140,6 +145,7 @@ Implement the first challenge run with full functionality.
   - Team composition view
 
 ### Acceptance Criteria
+
 - User can generate random team with seed
 - Re-roll works and shows new team
 - Progress persists after refresh
@@ -151,6 +157,7 @@ Implement the first challenge run with full functionality.
 ## Phase 4: Polish & Deploy
 
 ### Objective
+
 Finalize the MVP with polish, testing, and deployment.
 
 ### Deliverables
@@ -183,6 +190,7 @@ Finalize the MVP with polish, testing, and deployment.
   - Add custom domain (optional)
 
 ### Acceptance Criteria
+
 - No console errors in production
 - Works on mobile devices
 - All tests pass
@@ -220,24 +228,24 @@ Finalize the MVP with polish, testing, and deployment.
 
 ## Milestones
 
-| Milestone | Target | Description |
-|-----------|--------|-------------|
-| M1: Setup Complete | Week 1 | Project initialized, CI/CD working |
-| M2: Core Ready | Week 2 | Routing, state, data in place |
-| M3: MVP Complete | Week 3-4 | Random Evolution Challenge functional |
-| M4: Public Release | Week 4-5 | Deployed to GitHub Pages |
+| Milestone          | Target   | Description                           |
+| ------------------ | -------- | ------------------------------------- |
+| M1: Setup Complete | Week 1   | Project initialized, CI/CD working    |
+| M2: Core Ready     | Week 2   | Routing, state, data in place         |
+| M3: MVP Complete   | Week 3-4 | Random Evolution Challenge functional |
+| M4: Public Release | Week 4-5 | Deployed to GitHub Pages              |
 
 ---
 
 ## Risk Mitigation
 
-| Risk | Mitigation |
-|------|------------|
-| Scraped data incomplete | Manual verification, fallback to placeholder data |
-| Missing Digimon images | Provide placeholder images, use optional chaining for imageUrl |
-| Complex state management | Start simple, iterate based on needs |
-| Scope creep | Strict MVP scope, document stretch goals separately |
-| Browser compatibility | Test in major browsers early |
+| Risk                     | Mitigation                                                     |
+| ------------------------ | -------------------------------------------------------------- |
+| Scraped data incomplete  | Manual verification, fallback to placeholder data              |
+| Missing Digimon images   | Provide placeholder images, use optional chaining for imageUrl |
+| Complex state management | Start simple, iterate based on needs                           |
+| Scope creep              | Strict MVP scope, document stretch goals separately            |
+| Browser compatibility    | Test in major browsers early                                   |
 
 ---
 
@@ -249,7 +257,7 @@ graph TD
     P2 --> P3[Phase 3: Challenge]
     P3 --> P4[Phase 4: Polish]
     P4 --> P5[Phase 5: Stretch]
-    
+
     P2 --> D1[Data Scraping]
     D1 --> P3
 ```
@@ -264,9 +272,9 @@ Each phase should be tracked as a GitHub milestone with individual issues for de
 
 ## Review Gates
 
-| Gate | Requirement |
-|------|-------------|
-| Phase 1 → 2 | Dev environment working, CI green |
-| Phase 2 → 3 | Core infra tested, data available |
-| Phase 3 → 4 | Feature complete, usable |
-| Phase 4 → Release | All tests pass, reviewed |
+| Gate              | Requirement                       |
+| ----------------- | --------------------------------- |
+| Phase 1 → 2       | Dev environment working, CI green |
+| Phase 2 → 3       | Core infra tested, data available |
+| Phase 3 → 4       | Feature complete, usable          |
+| Phase 4 → Release | All tests pass, reviewed          |

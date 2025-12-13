@@ -47,7 +47,6 @@ export interface BossTeamSnapshot {
 	seed: string; // Sub-seed for this specific boss team
 }
 
-
 export interface TeamMember {
 	digimonNumber: string;
 	slotIndex: number;

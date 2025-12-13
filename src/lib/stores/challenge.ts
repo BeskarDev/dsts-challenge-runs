@@ -26,7 +26,7 @@ function createChallengeStore() {
 		load: (challengeId: string) => {
 			const key = getChallengeKey(challengeId);
 			let state = storage.loadState<ChallengeRunState>(key);
-			
+
 			// Migrate old state format if needed
 			if (state && !state.bossTeams) {
 				state = {
@@ -43,7 +43,7 @@ function createChallengeStore() {
 				// Save migrated state
 				storage.saveState(key, state);
 			}
-			
+
 			set(state);
 		},
 		hasExistingState: (challengeId: string): boolean => {
@@ -54,7 +54,7 @@ function createChallengeStore() {
 			const key = getChallengeKey(state.challengeId);
 			storage.saveState(key, state);
 			set(state);
-			
+
 			// Update history
 			const challengeName = challengeNameCache[state.challengeId] || DEFAULT_CHALLENGE_NAME;
 			const totalBosses = totalBossesCache[state.challengeId] || DEFAULT_TOTAL_BOSSES;
@@ -66,7 +66,7 @@ function createChallengeStore() {
 				if (newState) {
 					const key = getChallengeKey(newState.challengeId);
 					storage.saveState(key, newState);
-					
+
 					// Update history
 					const challengeName = challengeNameCache[newState.challengeId] || DEFAULT_CHALLENGE_NAME;
 					const totalBosses = totalBossesCache[newState.challengeId] || DEFAULT_TOTAL_BOSSES;
@@ -84,12 +84,12 @@ function createChallengeStore() {
 					updatedAt: new Date().toISOString()
 				};
 				storage.saveState(getChallengeKey(state.challengeId), newState);
-				
+
 				// Update history
 				const challengeName = challengeNameCache[state.challengeId] || DEFAULT_CHALLENGE_NAME;
 				const totalBosses = totalBossesCache[state.challengeId] || DEFAULT_TOTAL_BOSSES;
 				historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
-				
+
 				return newState;
 			});
 		},
@@ -102,12 +102,12 @@ function createChallengeStore() {
 					updatedAt: new Date().toISOString()
 				};
 				storage.saveState(getChallengeKey(state.challengeId), newState);
-				
+
 				// Update history
 				const challengeName = challengeNameCache[state.challengeId] || DEFAULT_CHALLENGE_NAME;
 				const totalBosses = totalBossesCache[state.challengeId] || DEFAULT_TOTAL_BOSSES;
 				historyStore.addOrUpdateRun(newState, challengeName, totalBosses);
-				
+
 				return newState;
 			});
 		},

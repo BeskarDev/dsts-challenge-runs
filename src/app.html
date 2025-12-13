@@ -8,13 +8,36 @@
 		<script>
 			// Apply theme immediately to prevent flash
 			// Default to dark mode when no preference is stored
-			(function() {
-				const theme = localStorage.getItem('dsts:theme') || 'dark';
-				const effectiveTheme = theme === 'system' 
-					? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-					: theme;
-				if (effectiveTheme === 'dark') {
-					document.documentElement.classList.add('dark');
+			(function () {
+				try {
+					const stored = localStorage.getItem('dsts:theme');
+					if (!stored) {
+						return; // Will use default 'dark' from CSS
+					}
+
+					// Handle both versioned and non-versioned data for backward compatibility
+					let theme = 'dark';
+					try {
+						const parsed = JSON.parse(stored);
+						// Check if it's versioned data
+						theme = parsed && typeof parsed === 'object' && 'data' in parsed ? parsed.data : stored;
+					} catch {
+						// If JSON parse fails, treat as plain string
+						theme = stored;
+					}
+
+					const effectiveTheme =
+						theme === 'system'
+							? window.matchMedia('(prefers-color-scheme: dark)').matches
+								? 'dark'
+								: 'light'
+							: theme;
+					if (effectiveTheme === 'dark') {
+						document.documentElement.classList.add('dark');
+					}
+				} catch (e) {
+					// Fail silently and use default
+					console.error('Error loading theme:', e);
 				}
 			})();
 		</script>

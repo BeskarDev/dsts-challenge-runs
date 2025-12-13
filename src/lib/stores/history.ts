@@ -13,14 +13,17 @@ function createHistoryStore() {
 		},
 		addOrUpdateRun: (state: ChallengeRunState, challengeName: string, totalBosses: number) => {
 			const history = storage.getHistory<HistoricalRun>();
-			
+
 			// Check if this run already exists in history
 			const existingIndex = history.findIndex(
-				run => run.challengeId === state.challengeId && run.seed === state.seed
+				(run) => run.challengeId === state.challengeId && run.seed === state.seed
 			);
 
 			const historicalRun: HistoricalRun = {
-				id: existingIndex >= 0 ? history[existingIndex].id : `${state.challengeId}-${state.seed}-${Date.now()}`,
+				id:
+					existingIndex >= 0
+						? history[existingIndex].id
+						: `${state.challengeId}-${state.seed}-${Date.now()}`,
 				challengeId: state.challengeId,
 				challengeName,
 				seed: state.seed,
@@ -59,27 +62,29 @@ function createHistoryStore() {
 		deleteRun: (runId: string) => {
 			// Get the run to be deleted so we can clear its challenge state
 			const history = storage.getHistory<HistoricalRun>();
-			const runToDelete = history.find(run => run.id === runId);
-			
+			const runToDelete = history.find((run) => run.id === runId);
+
 			// Delete from history
 			storage.deleteHistoryItem<HistoricalRun>(runId);
-			
+
 			// Also clear the associated challenge state if this was the last run for that challenge
 			if (runToDelete) {
-				const remainingRuns = history.filter(run => run.id !== runId && run.challengeId === runToDelete.challengeId);
+				const remainingRuns = history.filter(
+					(run) => run.id !== runId && run.challengeId === runToDelete.challengeId
+				);
 				// If no more runs exist for this challenge, clear its state
 				if (remainingRuns.length === 0) {
 					storage.clearState(`dsts:challenge:${runToDelete.challengeId}`);
 				}
 			}
-			
+
 			// Reload the store
 			const updatedHistory = storage.getHistory<HistoricalRun>();
 			set(updatedHistory);
 		},
 		getRunBySeed: (challengeId: string, seed: string): HistoricalRun | null => {
 			const history = storage.getHistory<HistoricalRun>();
-			return history.find(run => run.challengeId === challengeId && run.seed === seed) || null;
+			return history.find((run) => run.challengeId === challengeId && run.seed === seed) || null;
 		}
 	};
 }

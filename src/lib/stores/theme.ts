@@ -1,14 +1,16 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
+import { storage } from '../services/storage';
+import { STORAGE_KEYS } from '../services/storage-keys';
 
 export type Theme = 'light' | 'dark' | 'system';
 
-const THEME_KEY = 'dsts:theme';
+const THEME_KEY = STORAGE_KEYS.THEME;
 
 function getInitialTheme(): Theme {
 	if (!browser) return 'dark';
 
-	const stored = localStorage.getItem(THEME_KEY) as Theme | null;
+	const stored = storage.loadState<Theme>(THEME_KEY);
 	if (stored && ['light', 'dark', 'system'].includes(stored)) {
 		return stored;
 	}
@@ -46,7 +48,7 @@ function createThemeStore() {
 		// No cleanup is needed as the store is never destroyed during the app's lifecycle.
 		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 		mediaQuery.addEventListener('change', () => {
-			const currentTheme = localStorage.getItem(THEME_KEY) as Theme | null;
+			const currentTheme = storage.loadState<Theme>(THEME_KEY);
 			if (currentTheme === 'system' || !currentTheme) {
 				applyTheme('system');
 			}
@@ -57,7 +59,7 @@ function createThemeStore() {
 		subscribe,
 		set: (theme: Theme) => {
 			if (browser) {
-				localStorage.setItem(THEME_KEY, theme);
+				storage.saveState(THEME_KEY, theme);
 				applyTheme(theme);
 			}
 			set(theme);
@@ -65,19 +67,16 @@ function createThemeStore() {
 		toggle: () => {
 			if (!browser) return;
 
-			const current = localStorage.getItem(THEME_KEY) as Theme | null;
-			const effectiveCurrent =
-				current === 'system' || !current ? getSystemPreference() : current;
+			const current = storage.loadState<Theme>(THEME_KEY);
+			const effectiveCurrent = current === 'system' || !current ? getSystemPreference() : current;
 			const next = effectiveCurrent === 'dark' ? 'light' : 'dark';
 
-			localStorage.setItem(THEME_KEY, next);
+			storage.saveState(THEME_KEY, next);
 			applyTheme(next);
 			set(next);
 		},
 		getEffectiveTheme: (): 'light' | 'dark' => {
-			const current = browser
-				? (localStorage.getItem(THEME_KEY) as Theme | null)
-				: 'dark';
+			const current = browser ? storage.loadState<Theme>(THEME_KEY) : 'dark';
 			if (current === 'system') {
 				return getSystemPreference();
 			}

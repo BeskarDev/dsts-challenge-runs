@@ -74,11 +74,11 @@ src/
 
 ### 1. Routing
 
-| Route | Description |
-|-------|-------------|
-| `/` | Landing page - Challenge selection |
+| Route             | Description                        |
+| ----------------- | ---------------------------------- |
+| `/`               | Landing page - Challenge selection |
 | `/challenge/[id]` | Challenge run detail/tracking page |
-| `/about` | About page with app info |
+| `/about`          | About page with app info           |
 
 ### 2. State Management
 
@@ -87,12 +87,12 @@ Using Svelte 5's runes and stores for reactive state management:
 ```typescript
 // Example store structure
 interface ChallengeState {
-  id: string;
-  seed: string;
-  currentBossIndex: number;
-  currentEvolutionTier: EvolutionTier;
-  team: Digimon[];
-  rerollHistory: RerollEvent[];
+	id: string;
+	seed: string;
+	currentBossIndex: number;
+	currentEvolutionTier: EvolutionTier;
+	team: Digimon[];
+	rerollHistory: RerollEvent[];
 }
 ```
 
@@ -106,13 +106,9 @@ State is persisted to LocalStorage on changes and rehydrated on app load.
 
 ```typescript
 interface RandomizerService {
-  setSeed(seed: string): void;
-  getRandomDigimon(
-    tier: EvolutionTier,
-    count: number,
-    exclude?: Digimon[]
-  ): Digimon[];
-  reroll(currentTeam: Digimon[]): Digimon[];
+	setSeed(seed: string): void;
+	getRandomDigimon(tier: EvolutionTier, count: number, exclude?: Digimon[]): Digimon[];
+	reroll(currentTeam: Digimon[]): Digimon[];
 }
 ```
 
@@ -120,9 +116,9 @@ interface RandomizerService {
 
 ```typescript
 interface StorageService {
-  saveState(key: string, state: unknown): void;
-  loadState<T>(key: string): T | null;
-  clearState(key: string): void;
+	saveState(key: string, state: unknown): void;
+	loadState<T>(key: string): T | null;
+	clearState(key: string): void;
 }
 ```
 
@@ -161,10 +157,10 @@ The architecture supports future challenge types through:
 
 ## Technology Decisions
 
-| Decision | Rationale |
-|----------|-----------|
-| Svelte 5 | Modern, reactive framework with excellent performance |
-| shadcn-svelte | Consistent, accessible UI components |
-| LocalStorage | Simple persistence without backend requirements |
-| Static JSON | Scraped data committed to repo, no runtime fetching needed |
-| Vitest | Fast, Vite-native testing framework |
+| Decision      | Rationale                                                  |
+| ------------- | ---------------------------------------------------------- |
+| Svelte 5      | Modern, reactive framework with excellent performance      |
+| shadcn-svelte | Consistent, accessible UI components                       |
+| LocalStorage  | Simple persistence without backend requirements            |
+| Static JSON   | Scraped data committed to repo, no runtime fetching needed |
+| Vitest        | Fast, Vite-native testing framework                        |

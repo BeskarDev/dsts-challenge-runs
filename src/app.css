@@ -31,7 +31,7 @@
 		/* Dark theme (DSTS-inspired) */
 		--color-background: #050712;
 		--color-foreground: #f4f7ff;
-		--color-surface: rgba(8, 14, 32, 0.80);
+		--color-surface: rgba(8, 14, 32, 0.8);
 		--color-surface-hover: rgba(15, 24, 52, 0.92);
 		--color-muted: #a4b0d8;
 		--color-muted-foreground: #8c98c0;
@@ -44,7 +44,7 @@
 		--color-secondary-foreground: #050712;
 		--color-accent: #f05bc8;
 		--color-accent-foreground: #050712;
-		--color-card: rgba(8, 14, 32, 0.80);
+		--color-card: rgba(8, 14, 32, 0.8);
 		--color-card-foreground: #f4f7ff;
 		--shadow-panel: 0 18px 40px rgba(0, 0, 0, 0.75);
 	}
@@ -58,7 +58,9 @@
 	body {
 		background-color: var(--color-background);
 		color: var(--color-foreground);
-		transition: background-color 0.2s ease, color 0.2s ease;
+		transition:
+			background-color 0.2s ease,
+			color 0.2s ease;
 	}
 
 	/* DSTS-inspired scrollbar styling */

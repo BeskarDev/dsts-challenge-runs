@@ -13,15 +13,15 @@
 
 	// Filter bosses based on DLC setting - only filter out DLC bosses, keep required bosses always
 	const filteredBosses = $derived(
-		bosses.filter(b => !b.optional || (b.optional && includeDLCBosses) || b.order === 0)
+		bosses.filter((b) => !b.optional || (b.optional && includeDLCBosses) || b.order === 0)
 	);
 
 	// Get the count of bosses in filtered list (excluding boss 0 which is always shown but optional)
-	const requiredBossCount = $derived(filteredBosses.filter(b => b.order !== 0).length);
+	const requiredBossCount = $derived(filteredBosses.filter((b) => b.order !== 0).length);
 
 	// Calculate current boss number (1-based, excluding boss 0)
 	const currentBossNumber = $derived(() => {
-		return filteredBosses.filter(b => b.order !== 0 && b.order <= currentBossOrder).length;
+		return filteredBosses.filter((b) => b.order !== 0 && b.order <= currentBossOrder).length;
 	});
 
 	const currentBoss = $derived(filteredBosses.find((b) => b.order === currentBossOrder));
@@ -81,7 +81,8 @@
 	// Get attribute icon URL from Grindosaur CDN
 	function getAttributeIconUrl(attribute: Attribute): string {
 		const attributeMap: Record<Attribute, string> = {
-			Vaccine: 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/vaccine-icon.png',
+			Vaccine:
+				'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/vaccine-icon.png',
 			Data: 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/data-icon.png',
 			Virus: 'https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/virus-icon.png'
 		};
@@ -113,7 +114,12 @@
 	</p>
 
 	<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-		<Button variant="outline" onclick={goBack} disabled={!canGoBack} class="flex items-center gap-1 justify-center md:justify-start">
+		<Button
+			variant="outline"
+			onclick={goBack}
+			disabled={!canGoBack}
+			class="flex items-center gap-1 justify-center md:justify-start"
+		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-4 w-4"
@@ -121,12 +127,7 @@
 				viewBox="0 0 24 24"
 				stroke="currentColor"
 			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M15 19l-7-7 7-7"
-				/>
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
 			</svg>
 			Previous
 		</Button>
@@ -134,56 +135,58 @@
 		<div class="flex-1 order-first md:order-none">
 			<div class="rounded-lg p-4 flex flex-col items-center">
 				<div class="flex items-center justify-center gap-2 mb-2">
-					<span class="inline-flex items-baseline px-2 py-1 rounded-full text-xs font-bold bg-amber-500 text-white uppercase tracking-wide">
+					<span
+						class="inline-flex items-baseline px-2 py-1 rounded-full text-xs font-bold bg-amber-500 text-white uppercase tracking-wide"
+					>
 						Current Objective
 					</span>
 				</div>
 				{#if currentBoss}
-				<div class="flex items-center justify-center gap-3 mb-2 flex-wrap">
-					{#if currentBoss.imageUrl}
-						<img
-							src={currentBoss.imageUrl}
-							alt={currentBoss.name}
-							class="w-12 h-12 object-contain"
-						/>
-					{/if}
-					<div class="text-lg font-bold text-gray-900 dark:text-muted-50 text-center">
-						{currentBoss.name}
-						{#if currentBoss.optional}
-							<span class="text-sm text-gray-500 dark:text-muted">(Optional)</span>
-						{/if}
-					</div>
-				</div>
-				<div class="text-sm md:text-base text-gray-600 dark:text-muted font-medium text-center">
-					Level {currentBoss.level} • {currentBoss.location}
-				</div>
-				<div class="text-sm text-gray-500 dark:text-muted-600 mt-1 text-center">
-					Boss {currentBossNumber()} / {requiredBossCount}
-				</div>
-				{#if currentBoss.guideUrl}
-					<a
-						href={currentBoss.guideUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-xs text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 inline-flex items-center gap-1 mt-1"
-					>
-						View Strategy Guide
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-3 w-3"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+					<div class="flex items-center justify-center gap-3 mb-2 flex-wrap">
+						{#if currentBoss.imageUrl}
+							<img
+								src={currentBoss.imageUrl}
+								alt={currentBoss.name}
+								class="w-12 h-12 object-contain"
 							/>
-						</svg>
-					</a>
-				{/if}
+						{/if}
+						<div class="text-lg font-bold text-gray-900 dark:text-muted-50 text-center">
+							{currentBoss.name}
+							{#if currentBoss.optional}
+								<span class="text-sm text-gray-500 dark:text-muted">(Optional)</span>
+							{/if}
+						</div>
+					</div>
+					<div class="text-sm md:text-base text-gray-600 dark:text-muted font-medium text-center">
+						Level {currentBoss.level} • {currentBoss.location}
+					</div>
+					<div class="text-sm text-gray-500 dark:text-muted-600 mt-1 text-center">
+						Boss {currentBossNumber()} / {requiredBossCount}
+					</div>
+					{#if currentBoss.guideUrl}
+						<a
+							href={currentBoss.guideUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-xs text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 inline-flex items-center gap-1 mt-1"
+						>
+							View Strategy Guide
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-3 w-3"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+								/>
+							</svg>
+						</a>
+					{/if}
 				{:else}
 					<div class="text-gray-500 dark:text-muted text-center">No boss selected</div>
 				{/if}
@@ -227,7 +230,11 @@
 								class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800"
 								title={attribute}
 							>
-							<img src={getAttributeIconUrl(attribute)} alt={attribute} class="w-3 h-3 dark:invert-0 invert" />
+								<img
+									src={getAttributeIconUrl(attribute)}
+									alt={attribute}
+									class="w-3 h-3 dark:invert-0 invert"
+								/>
 								<span>{attribute}</span>
 							</span>
 						{/each}
@@ -256,7 +263,11 @@
 								class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
 								title={attribute}
 							>
-							<img src={getAttributeIconUrl(attribute)} alt={attribute} class="w-3 h-3 dark:invert-0 invert" />
+								<img
+									src={getAttributeIconUrl(attribute)}
+									alt={attribute}
+									class="w-3 h-3 dark:invert-0 invert"
+								/>
 								<span>{attribute}</span>
 							</span>
 						{/each}
@@ -285,7 +296,11 @@
 								class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700"
 								title={attribute}
 							>
-							<img src={getAttributeIconUrl(attribute)} alt={attribute} class="w-3 h-3 dark:invert-0 invert" />
+								<img
+									src={getAttributeIconUrl(attribute)}
+									alt={attribute}
+									class="w-3 h-3 dark:invert-0 invert"
+								/>
 								<span>{attribute}</span>
 							</span>
 						{/each}
@@ -324,25 +339,25 @@
 </div>
 
 {#if showCelebration}
-	<div 
-		class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 animate-in fade-in duration-300" 
+	<div
+		class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 animate-in fade-in duration-300"
 		role="button"
 		tabindex="0"
-		onclick={() => showCelebration = false}
-		onkeydown={(e) => e.key === 'Enter' || e.key === ' ' ? showCelebration = false : null}
+		onclick={() => (showCelebration = false)}
+		onkeydown={(e) => (e.key === 'Enter' || e.key === ' ' ? (showCelebration = false) : null)}
 		aria-label="Close celebration"
 	>
-		<div class="bg-white dark:bg-surface-100 rounded-lg p-8 shadow-2xl text-center max-w-md mx-4 animate-in zoom-in duration-300">
+		<div
+			class="bg-white dark:bg-surface-100 rounded-lg p-8 shadow-2xl text-center max-w-md mx-4 animate-in zoom-in duration-300"
+		>
 			<div class="text-6xl mb-4 animate-bounce">🎉</div>
 			<h2 class="text-3xl font-bold text-gray-900 dark:text-muted-50 mb-2">Congratulations!</h2>
-			<p class="text-lg text-gray-700 dark:text-muted-300 mb-4">
-				You've completed the challenge!
-			</p>
+			<p class="text-lg text-gray-700 dark:text-muted-300 mb-4">You've completed the challenge!</p>
 			<p class="text-sm text-gray-600 dark:text-muted mb-6">
 				All required bosses have been defeated. Great job, Tamer!
 			</p>
-			<button 
-				onclick={() => showCelebration = false}
+			<button
+				onclick={() => (showCelebration = false)}
 				class="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md font-medium transition-colors"
 			>
 				Awesome! 🎊
@@ -353,7 +368,7 @@
 	<div class="fixed inset-0 z-40 pointer-events-none">
 		<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
 		{#each Array(50) as _, i (i)}
-			<div 
+			<div
 				class="absolute animate-confetti"
 				style="
 					left: {Math.random() * 100}%;
@@ -381,7 +396,7 @@
 			opacity: 0;
 		}
 	}
-	
+
 	.animate-confetti {
 		animation: confetti linear forwards;
 	}

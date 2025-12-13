@@ -2,7 +2,7 @@
 
 ## Introduction
 
-**DSTS Challenge Runs** is a web application that enables players of *Digimon Story Time Stranger* to generate, manage, and track custom challenge runs. The app provides a streamlined interface for creating rule-based challenge configurations and monitoring progress through the game.
+**DSTS Challenge Runs** is a web application that enables players of _Digimon Story Time Stranger_ to generate, manage, and track custom challenge runs. The app provides a streamlined interface for creating rule-based challenge configurations and monitoring progress through the game.
 
 ## Purpose
 
@@ -43,15 +43,15 @@ Players of Digimon Story Time Stranger who want to add variety and challenge to 
 
 ## Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| Runtime | Node.js 24 |
-| Language | TypeScript |
-| Framework | Svelte 5 |
+| Category      | Technology                   |
+| ------------- | ---------------------------- |
+| Runtime       | Node.js 24                   |
+| Language      | TypeScript                   |
+| Framework     | Svelte 5                     |
 | UI Components | shadcn-svelte + Tailwind CSS |
-| Build Tool | Vite |
-| Testing | Vitest |
-| Deployment | GitHub Pages (static) |
+| Build Tool    | Vite                         |
+| Testing       | Vitest                       |
+| Deployment    | GitHub Pages (static)        |
 
 ## Design Principles
 

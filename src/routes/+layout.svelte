@@ -12,7 +12,7 @@
 	const pageTitle = derived(page, ($page) => {
 		const path = $page.url.pathname;
 		const basePath = $page.url.pathname.replace(/^\/[^/]+/, ''); // Remove base path if present
-		
+
 		if (basePath === '/' || path === '/') {
 			return 'DSTS Challenge Runs';
 		} else if (basePath.includes('/about') || path.includes('/about')) {
@@ -22,7 +22,6 @@
 		}
 		return 'DSTS Challenge Runs';
 	});
-
 </script>
 
 <svelte:head>

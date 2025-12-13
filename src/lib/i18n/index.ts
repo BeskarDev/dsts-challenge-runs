@@ -2,8 +2,10 @@ import i18next from 'i18next';
 import { createI18nStore } from 'svelte-i18next';
 import { browser } from '$app/environment';
 import translations from './translations.json';
+import { storage } from '../services/storage';
+import { STORAGE_KEYS } from '../services/storage-keys';
 
-const LANGUAGE_KEY = 'dsts:language';
+const LANGUAGE_KEY = STORAGE_KEYS.LANGUAGE;
 
 export type SupportedLanguage = 'en' | 'ja';
 
@@ -12,7 +14,7 @@ export type SupportedLanguage = 'en' | 'ja';
  */
 function getStoredLanguage(): SupportedLanguage {
 	if (!browser) return 'en';
-	const stored = localStorage.getItem(LANGUAGE_KEY);
+	const stored = storage.loadState<SupportedLanguage>(LANGUAGE_KEY);
 	if (stored === 'ja' || stored === 'en') {
 		return stored;
 	}
@@ -24,7 +26,7 @@ function getStoredLanguage(): SupportedLanguage {
  */
 export function setStoredLanguage(language: SupportedLanguage): void {
 	if (browser) {
-		localStorage.setItem(LANGUAGE_KEY, language);
+		storage.saveState(LANGUAGE_KEY, language);
 	}
 }
 

@@ -1,15 +1,15 @@
 /**
  * Evolution generation/stage names as they appear in the game
  */
-export type EvolutionGeneration = 
-	| 'In-Training I' 
-	| 'In-Training II' 
-	| 'Rookie' 
-	| 'Champion' 
-	| 'Ultimate' 
-	| 'Mega' 
-	| 'Mega +' 
-	| 'Armor' 
+export type EvolutionGeneration =
+	| 'In-Training I'
+	| 'In-Training II'
+	| 'Rookie'
+	| 'Champion'
+	| 'Ultimate'
+	| 'Mega'
+	| 'Mega +'
+	| 'Armor'
 	| 'Hybrid';
 
 /**

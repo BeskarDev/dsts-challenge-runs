@@ -16,22 +16,22 @@ The design aims for a **modern JRPG-inspired interface** with a dark, clean, and
 
 ### Core Colors
 
-| Color Name | Light Mode | Dark Mode | Usage |
-|------------|------------|-----------|-------|
-| Background | `#f8fafc` | `#050712` | Main page background |
-| Foreground | `#1e293b` | `#f4f7ff` | Primary text color |
-| Surface | `#ffffff` | `rgba(8, 14, 32, 0.80)` | Card/panel backgrounds |
-| Muted | `#64748b` | `#a4b0d8` | Secondary text |
-| Border | `#e2e8f0` | `#414c7a` | Card borders, dividers |
-| Input | `#f1f5f9` | `#151a32` | Form input backgrounds |
+| Color Name | Light Mode | Dark Mode               | Usage                  |
+| ---------- | ---------- | ----------------------- | ---------------------- |
+| Background | `#f8fafc`  | `#050712`               | Main page background   |
+| Foreground | `#1e293b`  | `#f4f7ff`               | Primary text color     |
+| Surface    | `#ffffff`  | `rgba(8, 14, 32, 0.80)` | Card/panel backgrounds |
+| Muted      | `#64748b`  | `#a4b0d8`               | Secondary text         |
+| Border     | `#e2e8f0`  | `#414c7a`               | Card borders, dividers |
+| Input      | `#f1f5f9`  | `#151a32`               | Form input backgrounds |
 
 ### Accent Colors
 
-| Color | Hex | Usage |
-|-------|-----|-------|
-| Primary (Blue-Teal) | `#2ec3f6` / `#33b6f0` | Primary actions, links, highlights |
-| Secondary (Soft Teal) | `#40e0d0` | Secondary actions, success states |
-| Accent (Magenta) | `#f05bc8` | Special highlights, emphasis |
+| Color                 | Hex                   | Usage                              |
+| --------------------- | --------------------- | ---------------------------------- |
+| Primary (Blue-Teal)   | `#2ec3f6` / `#33b6f0` | Primary actions, links, highlights |
+| Secondary (Soft Teal) | `#40e0d0`             | Secondary actions, success states  |
+| Accent (Magenta)      | `#f05bc8`             | Special highlights, emphasis       |
 
 ### Tailwind Color Classes
 
@@ -76,16 +76,16 @@ font-family: 'Roboto Mono', monospace; /* Code/Labels */
 
 ### Font Sizes
 
-| Size | Value | Usage |
-|------|-------|-------|
-| xs | 13px | Labels, tiny text |
-| sm | 14px | Small text, descriptions |
-| base | 15px | Body text (default) |
-| lg | 17px | Emphasized text |
-| xl | 19px | Subheadings |
-| 2xl | 24px | Card headings |
-| 3xl | 30px | Section headings |
-| 4xl | 36px | Page titles |
+| Size | Value | Usage                    |
+| ---- | ----- | ------------------------ |
+| xs   | 13px  | Labels, tiny text        |
+| sm   | 14px  | Small text, descriptions |
+| base | 15px  | Body text (default)      |
+| lg   | 17px  | Emphasized text          |
+| xl   | 19px  | Subheadings              |
+| 2xl  | 24px  | Card headings            |
+| 3xl  | 30px  | Section headings         |
+| 4xl  | 36px  | Page titles              |
 
 ## Components
 
@@ -94,15 +94,18 @@ font-family: 'Roboto Mono', monospace; /* Code/Labels */
 Cards use translucent backgrounds with subtle borders and deep shadows:
 
 ```svelte
-<div class="rounded-md border border-border-light dark:border-border 
-            bg-white dark:bg-[rgba(8,14,32,0.80)] 
-            backdrop-blur-sm p-6 
-            shadow-panel-light dark:shadow-panel">
-  <!-- Content -->
+<div
+	class="rounded-md border border-border-light dark:border-border
+            bg-white dark:bg-[rgba(8,14,32,0.80)]
+            backdrop-blur-sm p-6
+            shadow-panel-light dark:shadow-panel"
+>
+	<!-- Content -->
 </div>
 ```
 
 Key properties:
+
 - Border radius: `0.4rem` (rounded-md)
 - Border: `1px solid` with theme-appropriate color
 - Background: White in light mode, translucent dark navy in dark mode
@@ -112,33 +115,42 @@ Key properties:
 ### Buttons
 
 #### Primary Button
+
 ```svelte
-<button class="px-4 py-2 rounded-full font-medium
-               bg-primary-500 hover:bg-primary-600 
+<button
+	class="px-4 py-2 rounded-full font-medium
+               bg-primary-500 hover:bg-primary-600
                text-white dark:text-surface-500
                shadow-[0_4px_12px_rgba(46,195,246,0.3)]
-               hover:shadow-[0_6px_16px_rgba(46,195,246,0.4)]">
-  Action
+               hover:shadow-[0_6px_16px_rgba(46,195,246,0.4)]"
+>
+	Action
 </button>
 ```
 
 #### Secondary Button
+
 ```svelte
-<button class="px-4 py-2 rounded-full font-medium
-               bg-secondary-400 hover:bg-secondary-500 
+<button
+	class="px-4 py-2 rounded-full font-medium
+               bg-secondary-400 hover:bg-secondary-500
                text-surface-500
-               shadow-[0_4px_12px_rgba(64,224,208,0.3)]">
-  Secondary
+               shadow-[0_4px_12px_rgba(64,224,208,0.3)]"
+>
+	Secondary
 </button>
 ```
 
 #### Outline Button
+
 ```svelte
-<button class="px-4 py-2 rounded-full font-medium
-               bg-transparent hover:bg-primary-500/10 
-               text-primary-500 
-               border border-primary-500">
-  Outline
+<button
+	class="px-4 py-2 rounded-full font-medium
+               bg-transparent hover:bg-primary-500/10
+               text-primary-500
+               border border-primary-500"
+>
+	Outline
 </button>
 ```
 
@@ -148,8 +160,8 @@ The header includes a theme toggle button:
 
 ```svelte
 <button class="p-2 rounded-md border transition-colors">
-  <!-- Sun icon for dark → light -->
-  <!-- Moon icon for light → dark -->
+	<!-- Sun icon for dark → light -->
+	<!-- Moon icon for light → dark -->
 </button>
 ```
 
@@ -157,29 +169,32 @@ The header includes a theme toggle button:
 
 Use Tailwind's default spacing scale:
 
-| Class | Value | Usage |
-|-------|-------|-------|
-| p-2 | 0.5rem | Icon button padding |
-| p-4 | 1rem | Small card padding |
-| p-6 | 1.5rem | Standard card padding |
-| gap-4 | 1rem | Grid gaps |
-| gap-6 | 1.5rem | Section spacing |
-| mb-4 | 1rem | Component margins |
-| mb-6 | 1.5rem | Section margins |
+| Class | Value  | Usage                 |
+| ----- | ------ | --------------------- |
+| p-2   | 0.5rem | Icon button padding   |
+| p-4   | 1rem   | Small card padding    |
+| p-6   | 1.5rem | Standard card padding |
+| gap-4 | 1rem   | Grid gaps             |
+| gap-6 | 1.5rem | Section spacing       |
+| mb-4  | 1rem   | Component margins     |
+| mb-6  | 1.5rem | Section margins       |
 
 ## Shadows
 
 ### Light Mode
+
 ```css
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* shadow-panel-light */
 ```
 
 ### Dark Mode
+
 ```css
 box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75); /* shadow-panel */
 ```
 
 ### Glow Effect (Primary)
+
 ```css
 box-shadow: 0 0 20px rgba(46, 195, 246, 0.3); /* shadow-glow */
 ```
@@ -211,15 +226,15 @@ Theme colors are also available as CSS custom properties:
 
 ```css
 :root {
-  --color-background: #f8fafc;
-  --color-foreground: #1e293b;
-  /* ... */
+	--color-background: #f8fafc;
+	--color-foreground: #1e293b;
+	/* ... */
 }
 
 .dark {
-  --color-background: #050712;
-  --color-foreground: #f4f7ff;
-  /* ... */
+	--color-background: #050712;
+	--color-foreground: #f4f7ff;
+	/* ... */
 }
 ```
 

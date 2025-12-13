@@ -13,7 +13,14 @@
 		currentGeneration?: string;
 	}
 
-	let { team, onRerollSlot, onRerollAll, showRerollButtons = true, levelCap, currentGeneration }: Props = $props();
+	let {
+		team,
+		onRerollSlot,
+		onRerollAll,
+		showRerollButtons = true,
+		levelCap,
+		currentGeneration
+	}: Props = $props();
 
 	// Reactive translation for the current generation label
 	let translatedGeneration = $derived(currentGeneration ? $i18n.t(currentGeneration) : '');
@@ -28,12 +35,16 @@
 			{#if levelCap || currentGeneration}
 				<div class="flex items-center gap-2 text-sm">
 					{#if levelCap}
-						<span class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+						<span
+							class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800"
+						>
 							<span class="font-semibold">Cap:</span>&nbsp;Lv.{levelCap}
 						</span>
 					{/if}
 					{#if currentGeneration}
-						<span class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 border border-primary-200 dark:border-primary-800">
+						<span
+							class="inline-flex items-center px-2.5 py-1 rounded-md font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 border border-primary-200 dark:border-primary-800"
+						>
 							<span class="font-semibold">Max:</span>&nbsp;{translatedGeneration}
 						</span>
 					{/if}
