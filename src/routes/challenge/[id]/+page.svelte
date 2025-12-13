@@ -39,7 +39,6 @@
 	function handleHistoryDelete(deletedRunId: string) {
 		// Check if the deleted run is the current one by comparing with the challenge state seed
 		if (challengeState && data.challenge) {
-			const currentRunId = `${data.challenge.id}-${challengeState.seed}`;
 			// The deletedRunId starts with the same format, so check if it's for this challenge and seed
 			if (deletedRunId.startsWith(`${data.challenge.id}-${challengeState.seed}`)) {
 				// The current run was deleted, navigate to home
