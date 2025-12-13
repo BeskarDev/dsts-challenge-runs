@@ -4,7 +4,6 @@
 	import SlotMachineCard from './SlotMachineCard.svelte';
 	import Button from '$lib/components/common/Button.svelte';
 	import { i18n } from '$lib/i18n';
-	import { getTotalSlotAnimationDuration } from '$lib/utils/animations';
 
 	interface Props {
 		team: Digimon[];
@@ -93,11 +92,6 @@
 		// Call original handler
 		onRerollAll?.();
 	}
-
-	// Calculate estimated animation time for display
-	let estimatedTime = $derived(
-		team.length > 0 ? Math.round(getTotalSlotAnimationDuration(team.length) / 1000) : 0
-	);
 </script>
 
 <div
