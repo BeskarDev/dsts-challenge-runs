@@ -217,9 +217,6 @@
 				</div>
 			{/each}
 		</div>
-		<p class="text-center text-sm text-gray-500 dark:text-muted mt-4">
-			Click "Roll New Team" to reveal your team! (~{estimatedTime}s)
-		</p>
 	{:else if isAnimating}
 		<!-- Animating state: show slot machine cards -->
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
