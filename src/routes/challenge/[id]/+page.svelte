@@ -9,6 +9,7 @@
 	import BossNavigation from '$lib/components/challenge/BossNavigation.svelte';
 	import { challengeStore } from '$lib/stores/challenge';
 	import { historyStore } from '$lib/stores/history';
+	import { hasAnimationPlayed, markAnimationPlayed, resetAnimationState } from '$lib/stores/animation';
 	import { RandomizerService } from '$lib/services/randomizer';
 	import type { ChallengeRunState, TeamMember } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
@@ -23,6 +24,10 @@
 	let randomizer = new RandomizerService();
 	let unsubscribe: (() => void) | undefined;
 	let historyUnsubscribe: (() => void) | undefined;
+	
+	// Animation state - track pending reveals for new teams
+	let pendingTeamReveal = $state(false);
+	let animationPlayedForCurrentBoss = $state(true);
 	
 	// Evolution pool settings
 	let onlyHighestGeneration = $state(true); // Default to only highest generation
@@ -467,9 +472,41 @@
 	function resetChallenge() {
 		if (!data.challenge) return;
 		if (confirm('Are you sure you want to reset this challenge? All progress will be lost.')) {
+			// Reset animation state when clearing challenge
+			resetAnimationState(data.challenge.id);
 			challengeStore.clear(data.challenge.id);
 		}
 	}
+
+	// Handle team reveal animation trigger
+	function handleRevealTeam() {
+		if (!challengeState || !data.challenge) return;
+		// Mark animation as played for this boss
+		markAnimationPlayed(data.challenge.id, challengeState.currentBossOrder);
+		animationPlayedForCurrentBoss = true;
+		pendingTeamReveal = false;
+	}
+
+	// Check if animation should be shown for current boss
+	function updateAnimationState() {
+		if (!challengeState || !data.challenge) {
+			pendingTeamReveal = false;
+			animationPlayedForCurrentBoss = true;
+			return;
+		}
+		
+		const played = hasAnimationPlayed(data.challenge.id, challengeState.currentBossOrder);
+		animationPlayedForCurrentBoss = played;
+		// Only show pending reveal if this is a new team that hasn't been revealed yet
+		pendingTeamReveal = !played;
+	}
+
+	// Watch for boss changes to update animation state
+	$effect(() => {
+		if (challengeState?.currentBossOrder !== undefined) {
+			updateAnimationState();
+		}
+	});
 
 	function getTeamDigimon(): Digimon[] {
 		if (!challengeState || !data.digimon) return [];
@@ -511,7 +548,7 @@
 </svelte:head>
 
 <div class="max-w-6xl mx-auto">
-	<h1 class="text-4xl font-bold text-gray-900 dark:text-muted-50 mb-8">
+	<h1 class="text-4xl font-bold text-gray-900 dark:text-muted-50 mb-8 animate-fade-in">
 		{data.challenge?.name || 'Challenge'}
 	</h1>
 
@@ -779,11 +816,15 @@
 		<div class="mb-6">
 			<TeamDisplay
 				team={getTeamDigimon()}
+				allDigimon={data.digimon || []}
 				onRerollSlot={canReroll() ? rerollSlot : undefined}
 				onRerollAll={canReroll() ? rerollAll : undefined}
 				showRerollButtons={canReroll()}
 				levelCap={getLevelCap()}
 				currentGeneration={challengeState.currentGeneration}
+				pendingReveal={pendingTeamReveal}
+				onRevealTeam={handleRevealTeam}
+				animationPlayed={animationPlayedForCurrentBoss}
 			/>
 			{#if !canReroll()}
 				<p class="mt-2 text-sm text-gray-500 dark:text-muted text-center">
