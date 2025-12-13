@@ -224,4 +224,56 @@ describe('RandomizerService', () => {
 			expect(randomizer.getSeed()).not.toBe(initialSeed);
 		});
 	});
+
+	describe('Lucemon special generation mapping', () => {
+		let digimonWithLucemon: Digimon[];
+
+		beforeEach(() => {
+			digimonWithLucemon = [
+				...digimon,
+				{ number: '039', name: 'Lucemon', generation: 'Rookie', attribute: 'Vaccine', type: 'Angel', basePersonality: 'Enlightened', iconUrl: 'https://example.com/lucemon.png', detailsUrl: 'https://example.com/lucemon' },
+				{ number: '296', name: 'Lucemon CM', generation: 'Ultimate', attribute: 'Virus', type: 'Evil King', basePersonality: 'Enlightened', iconUrl: 'https://example.com/lucemon-cm.png', detailsUrl: 'https://example.com/lucemon-cm' }
+			];
+		});
+
+		it('should not include Lucemon (Rookie) when filtering for Rookie generation', () => {
+			const rookies = randomizer.getRandomDigimonMultiGeneration(digimonWithLucemon, 'Rookie', 10, []);
+			
+			// Lucemon should not be included because it's treated as Ultimate
+			const lucemonIncluded = rookies.some(d => d.number === '039');
+			expect(lucemonIncluded).toBe(false);
+		});
+
+		it('should include Lucemon (Rookie) when filtering for Ultimate generation', () => {
+			const ultimates = randomizer.getRandomDigimonMultiGeneration(digimonWithLucemon, 'Ultimate', 10, []);
+			
+			// Lucemon should be included because it's treated as Ultimate
+			const lucemonIncluded = ultimates.some(d => d.number === '039');
+			expect(lucemonIncluded).toBe(true);
+		});
+
+		it('should not include Lucemon CM (Ultimate) when filtering for Ultimate generation', () => {
+			const ultimates = randomizer.getRandomDigimonMultiGeneration(digimonWithLucemon, 'Ultimate', 10, []);
+			
+			// Lucemon CM should not be included because it's treated as Mega
+			const lucemonCMIncluded = ultimates.some(d => d.number === '296');
+			expect(lucemonCMIncluded).toBe(false);
+		});
+
+		it('should include Lucemon CM (Ultimate) when filtering for Mega generation', () => {
+			const megas = randomizer.getRandomDigimonMultiGeneration(digimonWithLucemon, 'Mega', 10, []);
+			
+			// Lucemon CM should be included because it's treated as Mega
+			const lucemonCMIncluded = megas.some(d => d.number === '296');
+			expect(lucemonCMIncluded).toBe(true);
+		});
+
+		it('should exclude Lucemon (Rookie) from Champion and below filters', () => {
+			const champions = randomizer.getRandomDigimonMultiGeneration(digimonWithLucemon, 'Champion', 10, []);
+			
+			// Lucemon should not be included at Champion level
+			const lucemonIncluded = champions.some(d => d.number === '039');
+			expect(lucemonIncluded).toBe(false);
+		});
+	});
 });

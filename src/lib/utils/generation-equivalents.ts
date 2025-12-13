@@ -85,3 +85,16 @@ export function getNonStandardEquivalent(
 	}
 	return null;
 }
+
+/**
+ * Get the effective generation for display purposes
+ * This accounts for special mappings like Lucemon, Armor, and Hybrid forms
+ * Returns the equivalent generation for display, or the actual generation if no mapping exists
+ */
+export function getEffectiveGeneration(
+	digimonNumber: string,
+	actualGeneration: EvolutionGeneration
+): EvolutionGeneration {
+	const equivalent = getNonStandardEquivalent(digimonNumber, actualGeneration);
+	return equivalent || actualGeneration;
+}

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Digimon } from '$lib/types/digimon';
 	import { i18n } from '$lib/i18n';
+	import { getEffectiveGeneration } from '$lib/utils/generation-equivalents';
 
 	interface Props {
 		digimon: Digimon;
@@ -13,9 +14,12 @@
 
 	let imageError = $state(false);
 
+	// Get the effective generation for display (handles Lucemon, Armor, Hybrid mappings)
+	let effectiveGeneration = $derived(getEffectiveGeneration(digimon.number, digimon.generation));
+
 	// Reactive translations that update when language changes
 	let translatedName = $derived($i18n.t(digimon.name));
-	let translatedGeneration = $derived($i18n.t(digimon.generation));
+	let translatedGeneration = $derived($i18n.t(effectiveGeneration));
 	let translatedAttribute = $derived($i18n.t(digimon.attribute));
 	let translatedType = $derived($i18n.t(digimon.type));
 

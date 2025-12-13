@@ -74,19 +74,24 @@ function filterDigimonByGenerations(
 	return allDigimon.filter((d) => {
 		if (exclude.includes(d.number)) return false;
 		
+		// Check for special generation equivalents (e.g., Lucemon)
+		// This applies to all Digimon, not just Armor/Hybrid
+		const equivalent = getNonStandardEquivalent(d.number, d.generation);
+		if (equivalent) {
+			// Use the equivalent generation for filtering
+			return allowedGenerations.includes(equivalent);
+		}
+		
 		// Check standard generations
 		if (allowedGenerations.includes(d.generation)) {
 			return true;
 		}
 		
-		// Check non-standard generations if enabled
+		// Check non-standard generations if enabled (Armor/Hybrid without specific mapping)
 		if (includeNonStandard && (d.generation === 'Armor' || d.generation === 'Hybrid')) {
-			const equivalent = getNonStandardEquivalent(d.number, d.generation);
-			if (equivalent) {
-				const equivIndex = GENERATION_HIERARCHY.indexOf(equivalent);
-				// Only include if equivalent is in the allowed generations
-				return equivIndex >= 0 && allowedGenerations.includes(equivalent);
-			}
+			// This handles Armor/Hybrid that don't have specific mappings
+			// They use the default Champion equivalent from getNonStandardEquivalent
+			return false; // Already handled above by getNonStandardEquivalent
 		}
 		
 		return false;
