@@ -56,7 +56,7 @@ const migration_1_0_0_to_1_1_0: Migration = {
 	fromVersion: '1.0.0',
 	toVersion: '1.1.0',
 	description: 'Mark existing team progress as revealed in animation state',
-	migrate: (data: any) => {
+	migrate: (data: unknown) => {
 		// This migration runs on the entire localStorage, not individual items
 		// We need to check for challenge states and mark appropriate animations as played
 		

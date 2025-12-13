@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { migrationRegistry, versioningService } from '$lib/services/versioning';
-import { hasAnimationPlayed, resetAnimationState } from '$lib/stores/animation';
+import { versioningService } from '$lib/services/versioning';
+import { hasAnimationPlayed } from '$lib/stores/animation';
 import '$lib/services/migrations'; // Import to register migrations
 
 /**

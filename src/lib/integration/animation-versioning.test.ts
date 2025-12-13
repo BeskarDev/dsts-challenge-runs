@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { hasAnimationPlayed, markAnimationPlayed, resetAnimationState } from '$lib/stores/animation';
-import { versioningService } from '$lib/services/versioning';
 import { StorageService } from '$lib/services/storage';
 
 /**
