@@ -12,6 +12,16 @@
 
 	let { isOpen, onClose }: Props = $props();
 
+	function openDown(node: HTMLElement, { duration = 250 } = {}) {
+		return {
+			duration,
+			css: (t: number) => {
+				const clipAmount = 100 * (1 - t);
+				return `clip-path: inset(0 0 ${clipAmount}% 0);`;
+			}
+		};
+	}
+
 	let history = $state<HistoricalRun[]>([]);
 	let deletingRunId = $state<string | null>(null);
 
@@ -91,10 +101,11 @@
 
 	<!-- History View -->
 	<div
-		class="fixed inset-4 md:inset-8 z-50 rounded-lg border border-gray-200 dark:border-border bg-white dark:bg-surface shadow-xl overflow-hidden flex flex-col"
+		class="fixed inset-y-4 md:inset-y-8 right-4 md:right-8 z-50 w-full max-w-[37rem] rounded-lg border border-gray-200 dark:border-border bg-white dark:bg-surface shadow-xl overflow-hidden flex flex-col"
 		role="dialog"
 		aria-modal="true"
 		aria-label="Challenge Run History"
+		transition:openDown={{ duration: 150 }}
 	>
 		<!-- Header -->
 		<div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-border">

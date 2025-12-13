@@ -70,11 +70,9 @@
 			<div class="flex gap-4">
 				{#if isLoading}
 					<div class="text-gray-500 dark:text-muted">Loading...</div>
-				{:else if hasExistingChallenge}
-					<Button onclick={continueChallenge}>Continue Challenge</Button>
-					<Button variant="outline" onclick={newChallenge}>New Challenge</Button>
 				{:else}
-					<Button onclick={newChallenge}>Start Challenge</Button>
+					<Button onclick={continueChallenge} disabled={!hasExistingChallenge}>Continue Challenge</Button>
+					<Button variant="outline" onclick={newChallenge}>New Challenge</Button>
 				{/if}
 			</div>
 		</Card>

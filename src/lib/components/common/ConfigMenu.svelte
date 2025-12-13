@@ -10,6 +10,16 @@
 
 	let { isOpen, onClose }: Props = $props();
 
+	function openDown(node: HTMLElement, { duration = 250 } = {}) {
+		return {
+			duration,
+			css: (t: number) => {
+				const clipAmount = 100 * (1 - t);
+				return `clip-path: inset(0 0 ${clipAmount}% 0);`;
+			}
+		};
+	}
+
 	let isDarkMode = $state(true);
 	let isJapaneseNames = $state(false);
 
@@ -65,10 +75,11 @@
 
 	<!-- Config Menu -->
 	<div
-		class="fixed top-16 right-4 z-50 w-72 rounded-lg border border-gray-200 dark:border-border bg-white dark:bg-surface shadow-xl"
+		class="fixed top-16 right-4 z-50 w-72 rounded-lg border border-gray-200 dark:border-border bg-white dark:bg-surface shadow-xl overflow-hidden"
 		role="dialog"
 		aria-modal="true"
 		aria-label="Settings"
+		transition:openDown={{ duration: 100 }}
 	>
 		<div class="p-4">
 			<div class="flex items-center justify-between mb-4">

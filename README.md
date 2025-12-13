@@ -1,6 +1,11 @@
 # Digital Challenge Companion
 
-Generate and track custom challenge runs for Digimon Story: Cyber Sleuth - Complete Edition.
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Node.js](https://img.shields.io/badge/Node.js-24+-green.svg)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue.svg)](https://www.typescriptlang.org/)
+[![Svelte](https://img.shields.io/badge/Svelte-5-FF3E00.svg)](https://svelte.dev/)
+
+Generate and track custom challenge runs for Digimon Story: Time Stranger.
 
 ## 🎮 Features
 
@@ -77,7 +82,7 @@ Contributions are welcome! Please see [CONTRIBUTING.md](./spec/contributing.md) 
 
 ## 📝 License
 
-See [LICENSE](./LICENSE) file for details.
+This project is licensed under the Apache License 2.0 - see the [LICENSE](./LICENSE) file for details.
 
 ## 🔗 Links
 

@@ -16,12 +16,12 @@
 		{
 			"id": "random-team",
 			"title": "Random Team",
-			"description": "Team must be built from randomly determined Digimon"
+			"description": "Team must be built from randomly determined Digimon (no duplicates). You get a new random team after each boss quest completion."
 		},
 		{
 			"id": "stage-restriction",
 			"title": "Evolution Restriction",
-			"description": "Only use Digimon up to your current unlocked evolution generation"
+			"description": "Only use Digimon up to your current unlocked evolution generation. New generations unlock at specific bosses."
 		}
 	],
 	"evolutionCheckpoints": [
