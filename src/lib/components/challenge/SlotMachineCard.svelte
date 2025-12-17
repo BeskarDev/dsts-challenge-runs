@@ -116,51 +116,51 @@
 	{#if animationState === 'idle'}
 		<!-- Placeholder state with skeleton loader -->
 		<div
-			class="rounded-md border border-gray-200 dark:border-border bg-gray-100 dark:bg-surface-200 p-4 flex flex-col items-center gap-3 shadow-panel-light dark:shadow-panel animate-pulse-subtle min-h-[300px]"
+			class="rounded-md border border-gray-200 dark:border-border bg-gray-100 dark:bg-surface-200 p-2 sm:p-4 flex flex-col items-center gap-1.5 sm:gap-3 shadow-panel-light dark:shadow-panel animate-pulse-subtle min-h-[180px] sm:min-h-[300px]"
 		>
 			<!-- Skeleton icon -->
 			<div class="relative">
-				<div class="w-[75px] h-[75px] rounded-md bg-gray-300 dark:bg-gray-600"></div>
+				<div class="w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] rounded-md bg-gray-300 dark:bg-gray-600"></div>
 				<span
-					class="absolute -top-2 -left-2 bg-gray-600 dark:bg-muted text-white dark:text-surface-500 text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center"
+					class="absolute -top-1.5 -left-1.5 sm:-top-2 sm:-left-2 bg-gray-600 dark:bg-muted text-white dark:text-surface-500 text-[10px] sm:text-xs font-bold rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center"
 				>
 					{slotIndex + 1}
 				</span>
 			</div>
 			<!-- Skeleton text -->
-			<div class="text-center w-full space-y-2">
-				<div class="h-4 w-20 bg-gray-300 dark:bg-gray-600 rounded mx-auto"></div>
-				<div class="h-3 w-16 bg-gray-300 dark:bg-gray-600 rounded mx-auto"></div>
+			<div class="text-center w-full space-y-1 sm:space-y-2">
+				<div class="h-3 sm:h-4 w-16 sm:w-20 bg-gray-300 dark:bg-gray-600 rounded mx-auto"></div>
+				<div class="h-2.5 sm:h-3 w-12 sm:w-16 bg-gray-300 dark:bg-gray-600 rounded mx-auto"></div>
 				<!-- Skeleton additional info rows -->
-				<div class="mt-3 space-y-1.5 flex flex-col items-center">
-					<div class="h-2.5 w-14 bg-gray-300 dark:bg-gray-600 rounded"></div>
-					<div class="h-2.5 w-12 bg-gray-300 dark:bg-gray-600 rounded"></div>
-					<div class="h-2.5 w-16 bg-gray-300 dark:bg-gray-600 rounded italic"></div>
+				<div class="mt-1.5 sm:mt-3 space-y-1 sm:space-y-1.5 flex flex-col items-center">
+					<div class="h-2 sm:h-2.5 w-10 sm:w-14 bg-gray-300 dark:bg-gray-600 rounded"></div>
+					<div class="h-2 sm:h-2.5 w-8 sm:w-12 bg-gray-300 dark:bg-gray-600 rounded hidden sm:block"></div>
+					<div class="h-2 sm:h-2.5 w-12 sm:w-16 bg-gray-300 dark:bg-gray-600 rounded italic hidden sm:block"></div>
 				</div>
 			</div>
 		</div>
 	{:else if animationState === 'spinning' && currentDisplayDigimon}
 		<!-- Spinning state - show blurred cycling digimon -->
 		<div
-			class="rounded-md border border-primary-300 dark:border-primary-600 bg-white dark:bg-[rgba(15,24,52,0.92)] backdrop-blur-sm p-4 flex flex-col items-center gap-3 shadow-glow animate-slot-spin"
+			class="rounded-md border border-primary-300 dark:border-primary-600 bg-white dark:bg-[rgba(15,24,52,0.92)] backdrop-blur-sm p-2 sm:p-4 flex flex-col items-center gap-1.5 sm:gap-3 shadow-glow animate-slot-spin min-h-[180px] sm:min-h-[300px]"
 		>
-			<div class="relative w-20 h-20">
+			<div class="relative w-12 h-12 sm:w-20 sm:h-20">
 				<img
 					src={currentDisplayDigimon.iconUrl}
 					alt="Rolling..."
 					class="w-full h-full object-contain rounded-md bg-gray-100 dark:bg-surface-200 blur-[2px]"
 				/>
 				<span
-					class="absolute -top-2 -left-2 bg-primary-500 text-white dark:text-surface-500 text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-glow"
+					class="absolute -top-1.5 -left-1.5 sm:-top-2 sm:-left-2 bg-primary-500 text-white dark:text-surface-500 text-[10px] sm:text-xs font-bold rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center shadow-glow"
 				>
 					{slotIndex + 1}
 				</span>
 			</div>
 			<div class="text-center opacity-50">
-				<div class="font-semibold text-gray-900 dark:text-muted-50 blur-[1px]">
+				<div class="font-semibold text-[11px] sm:text-base text-gray-900 dark:text-muted-50 blur-[1px]">
 					{currentDisplayDigimon.name}
 				</div>
-				<p class="text-sm text-gray-600 dark:text-muted blur-[1px]">
+				<p class="text-[10px] sm:text-sm text-gray-600 dark:text-muted blur-[1px]">
 					{currentDisplayDigimon.generation}
 				</p>
 			</div>
