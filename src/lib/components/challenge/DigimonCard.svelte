@@ -147,7 +147,6 @@
 				/>
 			</svg>
 			<span class="hidden sm:inline">Re-roll</span>
-			<span class="sm:hidden">↻</span>
 		</button>
 	{/if}
 </div>
