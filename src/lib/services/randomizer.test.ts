@@ -248,14 +248,6 @@ describe('RandomizerService', () => {
 		expect(team1.map((d) => d.number)).toEqual(team2.map((d) => d.number));
 	});
 
-	it('should change seed on reroll', () => {
-		const initialSeed = randomizer.getSeed();
-		randomizer.reroll(digimon, 'Rookie', 2, []);
-		const newSeed = randomizer.getSeed();
-
-		expect(newSeed).not.toBe(initialSeed);
-	});
-
 	describe('getRandomDigimonMultiGeneration', () => {
 		it('should return digimon from multiple generations up to max', () => {
 			const selected = randomizer.getRandomDigimonMultiGeneration(digimon, 'Champion', 4, []);
@@ -304,13 +296,6 @@ describe('RandomizerService', () => {
 
 			expect(newDigimon).toBeNull();
 		});
-
-		it('should change the seed after reroll', () => {
-			const initialSeed = randomizer.getSeed();
-			randomizer.rerollSlot(digimon, 'Rookie', []);
-
-			expect(randomizer.getSeed()).not.toBe(initialSeed);
-		});
 	});
 
 	describe('rerollMultiGeneration', () => {
@@ -321,13 +306,6 @@ describe('RandomizerService', () => {
 			team.forEach((d) => {
 				expect(['In-Training I', 'In-Training II', 'Rookie', 'Champion']).toContain(d.generation);
 			});
-		});
-
-		it('should change seed on reroll', () => {
-			const initialSeed = randomizer.getSeed();
-			randomizer.rerollMultiGeneration(digimon, 'Champion', 4, []);
-
-			expect(randomizer.getSeed()).not.toBe(initialSeed);
 		});
 	});
 

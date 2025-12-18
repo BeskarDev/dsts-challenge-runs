@@ -271,6 +271,7 @@ export class RandomizerService {
 	/**
 	 * Reroll a single slot in the team
 	 * Returns a new Digimon that is not already in the team
+	 * Note: Caller should set the seed before calling this method for deterministic results
 	 * @param onlyHighest - If true, only include the highest available generation
 	 * @param minGeneration - Optional minimum generation to include (for override)
 	 * @param includeNonStandard - If true, include Armor/Hybrid based on equivalent generations
@@ -283,9 +284,6 @@ export class RandomizerService {
 		minGeneration?: EvolutionGeneration,
 		includeNonStandard: boolean = false
 	): Digimon | null {
-		// Generate new seed for this reroll
-		const newSeed = this.generateSeed();
-		this.setSeed(newSeed);
 
 		let allowedGenerations: EvolutionGeneration[];
 
@@ -320,6 +318,7 @@ export class RandomizerService {
 
 	/**
 	 * Generate a new team, excluding current team members
+	 * Note: Caller should set the seed before calling this method for deterministic results
 	 */
 	reroll(
 		allDigimon: Digimon[],
@@ -327,15 +326,12 @@ export class RandomizerService {
 		count: number,
 		currentTeam: string[] = []
 	): Digimon[] {
-		// Generate new seed for reroll
-		const newSeed = this.generateSeed();
-		this.setSeed(newSeed);
-
 		return this.getRandomDigimon(allDigimon, generation, count, currentTeam);
 	}
 
 	/**
 	 * Generate a new team from multiple generations
+	 * Note: Caller should set the seed before calling this method for deterministic results
 	 * @param onlyHighest - If true, only include the highest available generation
 	 * @param minGeneration - Optional minimum generation to include (for override)
 	 * @param includeNonStandard - If true, include Armor/Hybrid based on equivalent generations
@@ -349,10 +345,6 @@ export class RandomizerService {
 		minGeneration?: EvolutionGeneration,
 		includeNonStandard: boolean = false
 	): Digimon[] {
-		// Generate new seed for reroll
-		const newSeed = this.generateSeed();
-		this.setSeed(newSeed);
-
 		return this.getRandomDigimonMultiGeneration(
 			allDigimon,
 			maxGeneration,
