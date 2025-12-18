@@ -13,14 +13,8 @@
 		children?: Snippet;
 	}
 
-	let {
-		digimon,
-		slotIndex,
-		shouldAnimate,
-		allDigimon,
-		onAnimationComplete,
-		children
-	}: Props = $props();
+	let { digimon, slotIndex, shouldAnimate, allDigimon, onAnimationComplete, children }: Props =
+		$props();
 
 	// Animation states
 	let animationState = $state<'idle' | 'spinning' | 'revealing' | 'complete'>('idle');
@@ -48,7 +42,7 @@
 		// Wait for the staggered start delay
 		setTimeout(() => {
 			animationState = 'spinning';
-			
+
 			// Start cycling through random digimon
 			let cycleCount = 0;
 			let cycleSpeed = ANIMATION_TIMING.SLOT_CYCLE_DURATION;
@@ -71,7 +65,7 @@
 					}
 					animationState = 'revealing';
 					currentDisplayDigimon = digimon;
-					
+
 					// Complete after reveal animation
 					setTimeout(() => {
 						animationState = 'complete';
@@ -120,7 +114,9 @@
 		>
 			<!-- Skeleton icon -->
 			<div class="relative">
-				<div class="w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] rounded-md bg-gray-300 dark:bg-gray-600"></div>
+				<div
+					class="w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] rounded-md bg-gray-300 dark:bg-gray-600"
+				></div>
 				<span
 					class="absolute -top-1.5 -left-1.5 sm:-top-2 sm:-left-2 bg-gray-600 dark:bg-muted text-white dark:text-surface-500 text-[10px] sm:text-xs font-bold rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center"
 				>
@@ -134,8 +130,12 @@
 				<!-- Skeleton additional info rows -->
 				<div class="mt-1.5 sm:mt-3 space-y-1 sm:space-y-1.5 flex flex-col items-center">
 					<div class="h-2 sm:h-2.5 w-10 sm:w-14 bg-gray-300 dark:bg-gray-600 rounded"></div>
-					<div class="h-2 sm:h-2.5 w-8 sm:w-12 bg-gray-300 dark:bg-gray-600 rounded hidden sm:block"></div>
-					<div class="h-2 sm:h-2.5 w-12 sm:w-16 bg-gray-300 dark:bg-gray-600 rounded italic hidden sm:block"></div>
+					<div
+						class="h-2 sm:h-2.5 w-8 sm:w-12 bg-gray-300 dark:bg-gray-600 rounded hidden sm:block"
+					></div>
+					<div
+						class="h-2 sm:h-2.5 w-12 sm:w-16 bg-gray-300 dark:bg-gray-600 rounded italic hidden sm:block"
+					></div>
 				</div>
 			</div>
 		</div>
@@ -157,7 +157,9 @@
 				</span>
 			</div>
 			<div class="text-center opacity-50">
-				<div class="font-semibold text-[11px] sm:text-base text-gray-900 dark:text-muted-50 blur-[1px]">
+				<div
+					class="font-semibold text-[11px] sm:text-base text-gray-900 dark:text-muted-50 blur-[1px]"
+				>
 					{currentDisplayDigimon.name}
 				</div>
 				<p class="text-[10px] sm:text-sm text-gray-600 dark:text-muted blur-[1px]">

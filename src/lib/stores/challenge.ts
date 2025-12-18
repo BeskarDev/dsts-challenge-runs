@@ -10,11 +10,11 @@ function getChallengeKey(challengeId: string): string {
 
 function getTotalBossesForState(state: ChallengeRunState): number {
 	// Get all non-optional bosses (required bosses)
-	const requiredBosses = bossesData.filter(boss => !boss.optional);
-	
+	const requiredBosses = bossesData.filter((boss) => !boss.optional);
+
 	// Add DLC bosses if included (boss orders 34, 35, 36)
-	const dlcBosses = bossesData.filter(boss => boss.optional && boss.order >= 34);
-	
+	const dlcBosses = bossesData.filter((boss) => boss.optional && boss.order >= 34);
+
 	const includeDLC = state.includeDLCBosses ?? false; // Default to false if not set
 	return includeDLC ? requiredBosses.length + dlcBosses.length : requiredBosses.length;
 }
@@ -59,7 +59,7 @@ function createChallengeStore() {
 			if (state) {
 				let needsSave = false;
 				const migratedState = state as unknown as Record<string, unknown>;
-				
+
 				if (!('includeDLC' in state)) {
 					migratedState.includeDLC = true;
 					needsSave = true;
@@ -80,7 +80,7 @@ function createChallengeStore() {
 					migratedState.rerollTeamPerBoss = false;
 					needsSave = true;
 				}
-				
+
 				if (needsSave) {
 					storage.saveState(key, state as unknown as ChallengeRunState);
 				}
@@ -94,7 +94,7 @@ function createChallengeStore() {
 		},
 		save: (state: ChallengeRunState) => {
 			const key = getChallengeKey(state.challengeId);
-			
+
 			// Ensure all content filtering fields are set
 			const normalizedState = {
 				...state,
@@ -104,12 +104,13 @@ function createChallengeStore() {
 				includeDLCBosses: state.includeDLCBosses ?? false,
 				rerollTeamPerBoss: state.rerollTeamPerBoss ?? false
 			};
-			
+
 			storage.saveState(key, normalizedState);
 			set(normalizedState);
 
 			// Update history with accurate boss count based on DLC setting
-			const challengeName = challengeNameCache[normalizedState.challengeId] || DEFAULT_CHALLENGE_NAME;
+			const challengeName =
+				challengeNameCache[normalizedState.challengeId] || DEFAULT_CHALLENGE_NAME;
 			const totalBosses = getTotalBossesForState(normalizedState);
 			historyStore.addOrUpdateRun(normalizedState, challengeName, totalBosses);
 		},

@@ -40,14 +40,54 @@
 		{ "startBoss": 1, "endBoss": 1, "label": "Kuwagamon", "generation": "In-Training II" },
 		{ "startBoss": 2, "endBoss": 3, "label": "Raremon + Cyclonemon", "generation": "Rookie" },
 		{ "startBoss": 4, "endBoss": 5, "label": "Vademon + Greymon (Blue)", "generation": "Rookie" },
-		{ "startBoss": 6, "endBoss": 7, "label": "Titamon + Fugamon & Ogremon & Hyogamon", "generation": "Champion" },
-		{ "startBoss": 8, "endBoss": 10, "label": "Parrotmon + UltimateBrachiomon + Vulcanusmon", "generation": "Champion" },
-		{ "startBoss": 11, "endBoss": 14, "label": "Sharkmon + Cherrymon + Okuwamon + Titamon & SkullBaluchimon", "generation": "Ultimate" },
-		{ "startBoss": 15, "endBoss": 19, "label": "SkullSeadramon + Calmaramon + Witchmon + TyrantKabuterimon + Callismon", "generation": "Ultimate" },
-		{ "startBoss": 20, "endBoss": 22, "label": "VenomMyotismon + ZombiePlutomon + Power Loader", "generation": "Mega" },
-		{ "startBoss": 23, "endBoss": 25, "label": "Apollomon + Dianamon + Junomon HM", "generation": "Mega" },
-		{ "startBoss": 26, "endBoss": 29, "label": "Barbamon + Creepymon + Lilithmon + Leviamon", "generation": "Mega +" },
-		{ "startBoss": 30, "endBoss": 33, "label": "Lucemon SM + Beelzemon BM + Belphemon RM + Chronomon", "generation": "Mega +" }
+		{
+			"startBoss": 6,
+			"endBoss": 7,
+			"label": "Titamon + Fugamon & Ogremon & Hyogamon",
+			"generation": "Champion"
+		},
+		{
+			"startBoss": 8,
+			"endBoss": 10,
+			"label": "Parrotmon + UltimateBrachiomon + Vulcanusmon",
+			"generation": "Champion"
+		},
+		{
+			"startBoss": 11,
+			"endBoss": 14,
+			"label": "Sharkmon + Cherrymon + Okuwamon + Titamon & SkullBaluchimon",
+			"generation": "Ultimate"
+		},
+		{
+			"startBoss": 15,
+			"endBoss": 19,
+			"label": "SkullSeadramon + Calmaramon + Witchmon + TyrantKabuterimon + Callismon",
+			"generation": "Ultimate"
+		},
+		{
+			"startBoss": 20,
+			"endBoss": 22,
+			"label": "VenomMyotismon + ZombiePlutomon + Power Loader",
+			"generation": "Mega"
+		},
+		{
+			"startBoss": 23,
+			"endBoss": 25,
+			"label": "Apollomon + Dianamon + Junomon HM",
+			"generation": "Mega"
+		},
+		{
+			"startBoss": 26,
+			"endBoss": 29,
+			"label": "Barbamon + Creepymon + Lilithmon + Leviamon",
+			"generation": "Mega +"
+		},
+		{
+			"startBoss": 30,
+			"endBoss": 33,
+			"label": "Lucemon SM + Beelzemon BM + Belphemon RM + Chronomon",
+			"generation": "Mega +"
+		}
 	],
 	"settings": {
 		"teamSize": 6,

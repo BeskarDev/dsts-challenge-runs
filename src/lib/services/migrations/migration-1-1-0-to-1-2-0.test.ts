@@ -37,11 +37,11 @@ describe('Migration 1.1.0 → 1.2.0', () => {
 
 		// Boss 1 is in its own group (1-1) and should be marked
 		expect(hasAnimationPlayed('random-evolution', 'test-seed-group', 1)).toBe(true);
-		
+
 		// Boss 2-3 are in the same group (2-3), both should be marked
 		expect(hasAnimationPlayed('random-evolution', 'test-seed-group', 2)).toBe(true);
 		expect(hasAnimationPlayed('random-evolution', 'test-seed-group', 3)).toBe(true);
-		
+
 		// Boss 4 is in the next group (4-5) and should NOT be marked
 		expect(hasAnimationPlayed('random-evolution', 'test-seed-group', 4)).toBe(false);
 	});
@@ -111,7 +111,7 @@ describe('Migration 1.1.0 → 1.2.0', () => {
 		expect(hasAnimationPlayed('random-evolution', 'test-seed-midgroup', 5)).toBe(true); // Group 4-5
 		expect(hasAnimationPlayed('random-evolution', 'test-seed-midgroup', 6)).toBe(true); // Group 6-7
 		expect(hasAnimationPlayed('random-evolution', 'test-seed-midgroup', 7)).toBe(true); // Group 6-7 (current)
-		
+
 		// Next group should not be marked
 		expect(hasAnimationPlayed('random-evolution', 'test-seed-midgroup', 8)).toBe(false); // Group 8-10
 	});
@@ -143,10 +143,18 @@ describe('Migration 1.1.0 → 1.2.0', () => {
 	it('should handle invalid or missing challenge data gracefully', () => {
 		// Setup: Add some invalid data
 		localStorage.setItem('dsts:challenge:invalid', 'invalid json');
-		localStorage.setItem('dsts:challenge:missing-fields', JSON.stringify(versioningService.wrap({
-			challengeId: 'test'
-			// Missing seed and currentBossOrder
-		}, '1.1.0')));
+		localStorage.setItem(
+			'dsts:challenge:missing-fields',
+			JSON.stringify(
+				versioningService.wrap(
+					{
+						challengeId: 'test'
+						// Missing seed and currentBossOrder
+					},
+					'1.1.0'
+				)
+			)
+		);
 
 		// Migration should not throw errors
 		expect(() => {

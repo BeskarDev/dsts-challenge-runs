@@ -16,7 +16,9 @@
 	}
 </script>
 
-<div class="border border-gray-200 dark:border-border rounded-lg overflow-hidden transition-all duration-200">
+<div
+	class="border border-gray-200 dark:border-border rounded-lg overflow-hidden transition-all duration-200"
+>
 	<button
 		onclick={toggle}
 		class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-surface-100 hover:bg-gray-100 dark:hover:bg-surface-50 transition-colors duration-150 text-left"
@@ -26,7 +28,9 @@
 		</h3>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			class="h-5 w-5 text-gray-500 dark:text-muted transition-transform duration-200 {open ? 'rotate-180' : ''}"
+			class="h-5 w-5 text-gray-500 dark:text-muted transition-transform duration-200 {open
+				? 'rotate-180'
+				: ''}"
 			fill="none"
 			viewBox="0 0 24 24"
 			stroke="currentColor"

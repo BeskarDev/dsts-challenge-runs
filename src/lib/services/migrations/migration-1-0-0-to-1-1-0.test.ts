@@ -50,19 +50,29 @@ describe('Migration 1.0.0 → 1.1.0', () => {
 
 	it('should handle multiple challenge states', () => {
 		// Setup: Create multiple challenge states
-		const challenge1 = versioningService.wrap({
-			challengeId: 'challenge-1',
-			seed: 'seed-1',
-			currentBossOrder: 2,
-			team: [], bossTeams: {}, rerollHistory: []
-		}, '1.0.0');
+		const challenge1 = versioningService.wrap(
+			{
+				challengeId: 'challenge-1',
+				seed: 'seed-1',
+				currentBossOrder: 2,
+				team: [],
+				bossTeams: {},
+				rerollHistory: []
+			},
+			'1.0.0'
+		);
 
-		const challenge2 = versioningService.wrap({
-			challengeId: 'challenge-2', 
-			seed: 'seed-2',
-			currentBossOrder: 5,
-			team: [], bossTeams: {}, rerollHistory: []
-		}, '1.0.0');
+		const challenge2 = versioningService.wrap(
+			{
+				challengeId: 'challenge-2',
+				seed: 'seed-2',
+				currentBossOrder: 5,
+				team: [],
+				bossTeams: {},
+				rerollHistory: []
+			},
+			'1.0.0'
+		);
 
 		localStorage.setItem('dsts:challenge:challenge-1', JSON.stringify(challenge1));
 		localStorage.setItem('dsts:challenge:challenge-2', JSON.stringify(challenge2));
@@ -88,10 +98,18 @@ describe('Migration 1.0.0 → 1.1.0', () => {
 	it('should handle invalid or missing challenge data gracefully', () => {
 		// Setup: Add some invalid data
 		localStorage.setItem('dsts:challenge:invalid', 'invalid json');
-		localStorage.setItem('dsts:challenge:missing-fields', JSON.stringify(versioningService.wrap({
-			challengeId: 'test'
-			// Missing seed and currentBossOrder
-		}, '1.0.0')));
+		localStorage.setItem(
+			'dsts:challenge:missing-fields',
+			JSON.stringify(
+				versioningService.wrap(
+					{
+						challengeId: 'test'
+						// Missing seed and currentBossOrder
+					},
+					'1.0.0'
+				)
+			)
+		);
 
 		// Migration should not throw errors
 		expect(() => {

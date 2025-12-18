@@ -11,7 +11,7 @@ The animation system implemented in this branch is fully compatible with the new
 The animation system uses **session-based storage** (JavaScript `Map`) instead of `localStorage` for the following reasons:
 
 1. **Correct UX Behavior**: Animations should only play once per browser session, not persist across sessions
-2. **Performance**: No localStorage I/O overhead for animation state tracking  
+2. **Performance**: No localStorage I/O overhead for animation state tracking
 3. **Privacy**: Animation state doesn't need to persist - it's purely ephemeral UI state
 4. **Simplicity**: Avoids unnecessary migration complexity for non-persistent data
 

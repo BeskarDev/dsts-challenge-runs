@@ -10,9 +10,19 @@
 	import BossNavigation from '$lib/components/challenge/BossNavigation.svelte';
 	import { challengeStore } from '$lib/stores/challenge';
 	import { historyStore } from '$lib/stores/history';
-	import { hasAnimationPlayed, markAnimationPlayed, resetAnimationState } from '$lib/stores/animation';
+	import {
+		hasAnimationPlayed,
+		markAnimationPlayed,
+		resetAnimationState
+	} from '$lib/stores/animation';
 	import { RandomizerService } from '$lib/services/randomizer';
-	import type { ChallengeRunState, TeamMember, DigivolutionCheckpoint, BossGroup, BossTeamSnapshot } from '$lib/types/challenge';
+	import type {
+		ChallengeRunState,
+		TeamMember,
+		DigivolutionCheckpoint,
+		BossGroup,
+		BossTeamSnapshot
+	} from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
 	import { filterDigimonByContent } from '$lib/utils/digimon-filters';
 	import { i18n } from '$lib/i18n';
@@ -49,7 +59,7 @@
 	// Find the boss group for a given boss order
 	function getBossGroupForBoss(bossOrder: number): BossGroup | null {
 		const bossGroups = getBossGroups();
-		return bossGroups.find(g => bossOrder >= g.startBoss && bossOrder <= g.endBoss) || null;
+		return bossGroups.find((g) => bossOrder >= g.startBoss && bossOrder <= g.endBoss) || null;
 	}
 
 	// Content filtering settings
@@ -63,13 +73,13 @@
 	// Watch for content filtering setting changes to update challenge state
 	$effect(() => {
 		if (!isInitializingState && challengeState) {
-			const hasChanges = 
+			const hasChanges =
 				challengeState.includeDLC !== includeDLC ||
 				challengeState.includePostGame !== includePostGame ||
 				challengeState.includeNonStandard !== includeNonStandard ||
 				challengeState.includeDLCBosses !== includeDLCBosses ||
 				challengeState.rerollTeamPerBoss !== rerollTeamPerBoss;
-			
+
 			if (hasChanges) {
 				// Only update if there's an actual change to avoid infinite loops
 				challengeStore.update((state) => {
@@ -167,7 +177,7 @@
 				// Update URL with current seed if state exists and no URL seed conflict
 				updateUrlWithSeed(state.seed);
 			}
-			
+
 			// Allow effect to run after sync
 			isInitializingState = false;
 		});
@@ -239,11 +249,7 @@
 	function updateChallengeMetadata() {
 		if (data.challenge) {
 			const totalBosses = getTotalBossCount(includeDLCBosses);
-			challengeStore.setChallengeMetadata(
-				data.challenge.id,
-				data.challenge.name,
-				totalBosses
-			);
+			challengeStore.setChallengeMetadata(data.challenge.id, data.challenge.name, totalBosses);
 		}
 	}
 
@@ -262,7 +268,8 @@
 		// Start at the first required boss (skip optional boss-0)
 		const startBoss = getStartingBossOrder();
 		const checkpoints = getCheckpoints();
-		const initialGeneration = (checkpoints[0]?.unlockedGeneration || 'In-Training II') as EvolutionGeneration;
+		const initialGeneration = (checkpoints[0]?.unlockedGeneration ||
+			'In-Training II') as EvolutionGeneration;
 
 		// Generate initial team for starting boss
 		const initialBossSeed = `${mainSeed}-boss-${startBoss}`;
@@ -365,7 +372,11 @@
 		// reuse the team from that boss group
 		if (!rerollTeamPerBoss && currentBossGroup) {
 			// Look for any cached team within the same boss group
-			for (let bossInGroup = currentBossGroup.startBoss; bossInGroup <= currentBossGroup.endBoss; bossInGroup++) {
+			for (
+				let bossInGroup = currentBossGroup.startBoss;
+				bossInGroup <= currentBossGroup.endBoss;
+				bossInGroup++
+			) {
 				if (challengeState.bossTeams[bossInGroup]) {
 					const savedTeam = challengeState.bossTeams[bossInGroup];
 					// Reuse this team for the current boss
@@ -375,7 +386,7 @@
 						team: savedTeam.team,
 						seed: savedTeam.seed // Use the same seed as the group
 					};
-					
+
 					challengeStore.update((state) => {
 						if (!state) return state;
 						return {
@@ -399,14 +410,12 @@
 		// If boss groups are not defined (both null), fall back to always generating new team
 		// If one is null but not the other, treat as group change
 		// Otherwise compare the group start bosses
-		const bossGroupChanged = 
-			(currentBossGroup && previousBossGroup)
+		const bossGroupChanged =
+			currentBossGroup && previousBossGroup
 				? currentBossGroup.startBoss !== previousBossGroup.startBoss
 				: true; // No boss groups defined or mismatch - generate new team
 
-		const shouldRerollTeam =
-			rerollTeamPerBoss ||
-			bossGroupChanged; // Reroll when entering a new boss group
+		const shouldRerollTeam = rerollTeamPerBoss || bossGroupChanged; // Reroll when entering a new boss group
 
 		const newGeneration = correctGeneration;
 
@@ -624,7 +633,7 @@
 	// Handle team reveal animation trigger
 	function handleRevealTeam() {
 		if (!challengeState || !data.challenge) return;
-		
+
 		// Mark animation as played
 		// If rerollTeamPerBoss is enabled, only mark this specific boss
 		// Otherwise, mark all bosses in the current boss group as revealed
@@ -636,15 +645,23 @@
 			const currentBossGroup = getBossGroupForBoss(challengeState.currentBossOrder);
 			if (currentBossGroup) {
 				// Mark all bosses in this group as revealed
-				for (let bossOrder = currentBossGroup.startBoss; bossOrder <= currentBossGroup.endBoss; bossOrder++) {
+				for (
+					let bossOrder = currentBossGroup.startBoss;
+					bossOrder <= currentBossGroup.endBoss;
+					bossOrder++
+				) {
 					markAnimationPlayed(data.challenge.id, challengeState.seed, bossOrder);
 				}
 			} else {
 				// No boss group, just mark current boss
-				markAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+				markAnimationPlayed(
+					data.challenge.id,
+					challengeState.seed,
+					challengeState.currentBossOrder
+				);
 			}
 		}
-		
+
 		animationPlayedForCurrentBoss = true;
 		pendingTeamReveal = false;
 	}
@@ -656,26 +673,38 @@
 			animationPlayedForCurrentBoss = true;
 			return;
 		}
-		
+
 		// Check if animation has been played
 		// If rerollTeamPerBoss is enabled, check per boss
 		// Otherwise, check for the first boss in the current boss group
 		let played = false;
 		if (rerollTeamPerBoss) {
 			// Check animation for this specific boss
-			played = hasAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+			played = hasAnimationPlayed(
+				data.challenge.id,
+				challengeState.seed,
+				challengeState.currentBossOrder
+			);
 		} else {
 			// Check animation for the first boss in the current boss group
 			const currentBossGroup = getBossGroupForBoss(challengeState.currentBossOrder);
 			if (currentBossGroup) {
 				// Check if animation was played for the first boss in this group
-				played = hasAnimationPlayed(data.challenge.id, challengeState.seed, currentBossGroup.startBoss);
+				played = hasAnimationPlayed(
+					data.challenge.id,
+					challengeState.seed,
+					currentBossGroup.startBoss
+				);
 			} else {
 				// No boss group defined, check current boss
-				played = hasAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+				played = hasAnimationPlayed(
+					data.challenge.id,
+					challengeState.seed,
+					challengeState.currentBossOrder
+				);
 			}
 		}
-		
+
 		animationPlayedForCurrentBoss = played;
 		// Only show pending reveal if this is a new team that hasn't been revealed yet
 		pendingTeamReveal = !played;
@@ -1012,10 +1041,13 @@
 			<Accordion title="Boss Groups (Team Rolls)">
 				<div class="space-y-1.5 text-sm">
 					<p class="text-xs text-gray-500 dark:text-muted-400 mb-2">
-						A new team is rolled when you enter each boss group. Teams persist within the same group.
+						A new team is rolled when you enter each boss group. Teams persist within the same
+						group.
 					</p>
 					{#each getBossGroups() as group (group.startBoss)}
-						{@const isCurrentGroup = challengeState && getBossGroupForBoss(challengeState.currentBossOrder)?.startBoss === group.startBoss}
+						{@const isCurrentGroup =
+							challengeState &&
+							getBossGroupForBoss(challengeState.currentBossOrder)?.startBoss === group.startBoss}
 						<div
 							class="flex items-start gap-2 {isCurrentGroup
 								? 'text-primary-600 dark:text-primary-400 font-medium'

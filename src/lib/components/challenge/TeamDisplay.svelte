@@ -97,7 +97,9 @@
 <div
 	class="rounded-md border border-gray-200 dark:border-border bg-white dark:bg-[rgba(8,14,32,0.80)] backdrop-blur-sm p-3 sm:p-6 shadow-panel-light dark:shadow-panel"
 >
-	<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 mb-3 sm:mb-4">
+	<div
+		class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-3 mb-3 sm:mb-4"
+	>
 		<div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4">
 			<h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-muted-50">Current Team</h2>
 			{#if levelCap || currentGeneration}
@@ -121,8 +123,8 @@
 		</div>
 		<div class="flex items-center gap-2">
 			{#if showRerollButtons && onRerollAll}
-				<Button 
-					variant="secondary" 
+				<Button
+					variant="secondary"
 					onclick={handleRerollAll}
 					disabled={isAnimating || shouldShowOverlayButton}
 				>
@@ -152,8 +154,14 @@
 	<div class="relative">
 		<!-- Overlay button for revealing team -->
 		{#if shouldShowOverlayButton}
-			<div class="absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-surface-500/80 backdrop-blur-sm rounded-md">
-				<Button variant="primary" onclick={handleRevealTeam} class="animate-pulse-subtle shadow-2xl">
+			<div
+				class="absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-surface-500/80 backdrop-blur-sm rounded-md"
+			>
+				<Button
+					variant="primary"
+					onclick={handleRevealTeam}
+					class="animate-pulse-subtle shadow-2xl"
+				>
 					<span class="flex items-center gap-3 px-4 py-2">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -182,88 +190,97 @@
 		{/if}
 
 		{#if shouldAnimate && !isAnimating}
-		<!-- Pending reveal state: show placeholders -->
-		<div class="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4">
-			{#each placeholderSlots as index (index)}
-				<div
-					class="rounded-md border border-gray-200 dark:border-border bg-gray-100 dark:bg-surface-200 p-2 sm:p-4 flex flex-col items-center gap-1.5 sm:gap-3 shadow-panel-light dark:shadow-panel animate-pulse-subtle min-h-[180px] sm:min-h-[300px]"
-				>
-					<!-- Skeleton icon -->
-					<div class="relative">
-						<div class="w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] rounded-md bg-gray-300 dark:bg-gray-400"></div>
-						<span
-							class="absolute -top-1.5 -left-1.5 sm:-top-2 sm:-left-2 bg-gray-400 dark:bg-muted text-white dark:text-surface-500 text-[10px] sm:text-xs font-bold rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center"
-						>
-							{index + 1}
-						</span>
-					</div>
-					<!-- Skeleton text -->
-					<div class="text-center w-full space-y-1 sm:space-y-2">
-						<div class="h-3 sm:h-4 w-16 sm:w-20 bg-gray-300 dark:bg-gray-400 rounded mx-auto"></div>
-						<div class="h-2.5 sm:h-3 w-12 sm:w-16 bg-gray-300 dark:bg-gray-400 rounded mx-auto"></div>
-						<!-- Skeleton additional info rows -->
-						<div class="mt-1.5 sm:mt-3 space-y-1 sm:space-y-1.5 flex flex-col items-center">
-							<div class="h-2 sm:h-2.5 w-10 sm:w-14 bg-gray-300 dark:bg-gray-400 rounded"></div>
-							<div class="h-2 sm:h-2.5 w-8 sm:w-12 bg-gray-300 dark:bg-gray-400 rounded"></div>
-							<div class="h-2 sm:h-2.5 w-12 sm:w-16 bg-gray-300 dark:bg-gray-400 rounded"></div>
+			<!-- Pending reveal state: show placeholders -->
+			<div class="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4">
+				{#each placeholderSlots as index (index)}
+					<div
+						class="rounded-md border border-gray-200 dark:border-border bg-gray-100 dark:bg-surface-200 p-2 sm:p-4 flex flex-col items-center gap-1.5 sm:gap-3 shadow-panel-light dark:shadow-panel animate-pulse-subtle min-h-[180px] sm:min-h-[300px]"
+					>
+						<!-- Skeleton icon -->
+						<div class="relative">
+							<div
+								class="w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] rounded-md bg-gray-300 dark:bg-gray-400"
+							></div>
+							<span
+								class="absolute -top-1.5 -left-1.5 sm:-top-2 sm:-left-2 bg-gray-400 dark:bg-muted text-white dark:text-surface-500 text-[10px] sm:text-xs font-bold rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center"
+							>
+								{index + 1}
+							</span>
+						</div>
+						<!-- Skeleton text -->
+						<div class="text-center w-full space-y-1 sm:space-y-2">
+							<div
+								class="h-3 sm:h-4 w-16 sm:w-20 bg-gray-300 dark:bg-gray-400 rounded mx-auto"
+							></div>
+							<div
+								class="h-2.5 sm:h-3 w-12 sm:w-16 bg-gray-300 dark:bg-gray-400 rounded mx-auto"
+							></div>
+							<!-- Skeleton additional info rows -->
+							<div class="mt-1.5 sm:mt-3 space-y-1 sm:space-y-1.5 flex flex-col items-center">
+								<div class="h-2 sm:h-2.5 w-10 sm:w-14 bg-gray-300 dark:bg-gray-400 rounded"></div>
+								<div class="h-2 sm:h-2.5 w-8 sm:w-12 bg-gray-300 dark:bg-gray-400 rounded"></div>
+								<div class="h-2 sm:h-2.5 w-12 sm:w-16 bg-gray-300 dark:bg-gray-400 rounded"></div>
+							</div>
 						</div>
 					</div>
-				</div>
-			{/each}
-		</div>
-	{:else if isAnimating}
-		<!-- Animating state: show slot machine cards -->
-		<div class="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4">
-			{#each team as digimon, index (digimon.number + '-' + index)}
-				{#if isRerollAnimation && !rerollingSlots.has(index)}
-					<!-- Non-animating slot during re-roll -->
-					<div class="min-h-[180px] sm:min-h-[300px]">
-						<DigimonCard
-							{digimon}
-							slotIndex={index}
-							onReroll={handleRerollSlot}
-							showRerollButton={showRerollButtons}
-							rerollDisabled={true}
-						/>
-					</div>
-				{:else}
-					<!-- Animating slot -->
-					<div class="min-h-[180px] sm:min-h-[300px]">
-						<SlotMachineCard
-							{digimon}
-							slotIndex={index}
-							shouldAnimate={true}
-							{allDigimon}
-							onAnimationComplete={handleSlotAnimationComplete}
-						>
+				{/each}
+			</div>
+		{:else if isAnimating}
+			<!-- Animating state: show slot machine cards -->
+			<div class="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4">
+				{#each team as digimon, index (digimon.number + '-' + index)}
+					{#if isRerollAnimation && !rerollingSlots.has(index)}
+						<!-- Non-animating slot during re-roll -->
+						<div class="min-h-[180px] sm:min-h-[300px]">
 							<DigimonCard
 								{digimon}
 								slotIndex={index}
 								onReroll={handleRerollSlot}
 								showRerollButton={showRerollButtons}
-								rerollDisabled={isAnimating}
+								rerollDisabled={true}
 							/>
-						</SlotMachineCard>
+						</div>
+					{:else}
+						<!-- Animating slot -->
+						<div class="min-h-[180px] sm:min-h-[300px]">
+							<SlotMachineCard
+								{digimon}
+								slotIndex={index}
+								shouldAnimate={true}
+								{allDigimon}
+								onAnimationComplete={handleSlotAnimationComplete}
+							>
+								<DigimonCard
+									{digimon}
+									slotIndex={index}
+									onReroll={handleRerollSlot}
+									showRerollButton={showRerollButtons}
+									rerollDisabled={isAnimating}
+								/>
+							</SlotMachineCard>
+						</div>
+					{/if}
+				{/each}
+			</div>
+		{:else}
+			<!-- Normal state: show regular team display -->
+			<div class="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4">
+				{#each team as digimon, index (digimon.number + '-' + index)}
+					<div
+						class="min-h-[180px] sm:min-h-[300px] {animationPlayed ? '' : 'animate-scale-in'}"
+						style="animation-delay: {index * 50}ms"
+					>
+						<DigimonCard
+							{digimon}
+							slotIndex={index}
+							onReroll={handleRerollSlot}
+							showRerollButton={showRerollButtons}
+							rerollDisabled={isAnimating}
+						/>
 					</div>
-				{/if}
-			{/each}
-		</div>
-	{:else}
-		<!-- Normal state: show regular team display -->
-		<div class="grid grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4">
-			{#each team as digimon, index (digimon.number + '-' + index)}
-				<div class="min-h-[180px] sm:min-h-[300px] {animationPlayed ? '' : 'animate-scale-in'}" style="animation-delay: {index * 50}ms">
-					<DigimonCard
-						{digimon}
-						slotIndex={index}
-						onReroll={handleRerollSlot}
-						showRerollButton={showRerollButtons}
-						rerollDisabled={isAnimating}
-					/>
-				</div>
-			{/each}
-		</div>
-	{/if}
+				{/each}
+			</div>
+		{/if}
 
 		{#if team.length === 0}
 			<div class="text-center py-8 text-gray-500 dark:text-muted">

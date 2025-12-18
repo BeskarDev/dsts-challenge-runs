@@ -42,7 +42,7 @@ function createThemeStore() {
 	// Apply initial theme
 	if (browser) {
 		applyTheme(initialTheme);
-		
+
 		// Ensure the initial theme is persisted to localStorage
 		// This handles the case where getInitialTheme() loaded from storage
 		// or returned the default

@@ -27,7 +27,11 @@ function loadAnimationState(challengeId: string, seed: string): Record<string, b
 /**
  * Save animation state to localStorage for a run
  */
-function saveAnimationState(challengeId: string, seed: string, animationState: Record<string, boolean>): void {
+function saveAnimationState(
+	challengeId: string,
+	seed: string,
+	animationState: Record<string, boolean>
+): void {
 	const key = getAnimationStorageKey(challengeId, seed);
 	storage.saveState(key, animationState);
 }
@@ -46,19 +50,19 @@ export function hasAnimationPlayed(challengeId: string, seed: string, bossOrder:
 	const runKey = `${challengeId}:${seed}`;
 	const bossKey = createKey(bossOrder);
 	const cacheKey = `${runKey}:${bossKey}`;
-	
+
 	// Check cache first
 	if (animationPlayedCache.has(cacheKey)) {
 		return animationPlayedCache.get(cacheKey)!;
 	}
-	
+
 	// Load from localStorage
 	const animationState = loadAnimationState(challengeId, seed);
 	const hasPlayed = animationState[bossKey] === true;
-	
+
 	// Cache result
 	animationPlayedCache.set(cacheKey, hasPlayed);
-	
+
 	return hasPlayed;
 }
 
@@ -69,16 +73,16 @@ export function markAnimationPlayed(challengeId: string, seed: string, bossOrder
 	const runKey = `${challengeId}:${seed}`;
 	const bossKey = createKey(bossOrder);
 	const cacheKey = `${runKey}:${bossKey}`;
-	
+
 	// Load current state
 	const animationState = loadAnimationState(challengeId, seed);
-	
+
 	// Update state
 	animationState[bossKey] = true;
-	
+
 	// Save to localStorage
 	saveAnimationState(challengeId, seed, animationState);
-	
+
 	// Update cache
 	animationPlayedCache.set(cacheKey, true);
 }
@@ -89,7 +93,7 @@ export function markAnimationPlayed(challengeId: string, seed: string, bossOrder
 export function resetAnimationState(challengeId: string, seed: string): void {
 	const key = getAnimationStorageKey(challengeId, seed);
 	storage.clearState(key);
-	
+
 	// Clear cache entries for this run
 	const runKey = `${challengeId}:${seed}`;
 	for (const cacheKey of animationPlayedCache.keys()) {
@@ -105,7 +109,7 @@ export function resetAnimationState(challengeId: string, seed: string): void {
 export function resetAllAnimationState(): void {
 	// Clear cache
 	animationPlayedCache.clear();
-	
+
 	// Clear localStorage entries (this is a destructive operation)
 	// Note: This would require iterating through all localStorage keys
 	// For now, we'll just clear the cache and let individual run resets handle localStorage

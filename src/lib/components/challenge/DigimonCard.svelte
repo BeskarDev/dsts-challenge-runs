@@ -10,7 +10,13 @@
 		rerollDisabled?: boolean;
 	}
 
-	let { digimon, slotIndex, onReroll, showRerollButton = true, rerollDisabled = false }: Props = $props();
+	let {
+		digimon,
+		slotIndex,
+		onReroll,
+		showRerollButton = true,
+		rerollDisabled = false
+	}: Props = $props();
 
 	let imageError = $state(false);
 
@@ -118,10 +124,16 @@
 						title={translatedAttribute}
 					/>
 				{/if}
-				<span class="text-[9px] sm:text-xs text-gray-600 dark:text-muted">{translatedAttribute}</span>
+				<span class="text-[9px] sm:text-xs text-gray-600 dark:text-muted"
+					>{translatedAttribute}</span
+				>
 			</div>
-			<p class="text-[9px] sm:text-xs text-gray-500 dark:text-muted-400 hidden sm:block">{translatedType}</p>
-			<p class="text-[9px] sm:text-xs text-gray-500 dark:text-muted-400 italic hidden sm:block">{digimon.basePersonality}</p>
+			<p class="text-[9px] sm:text-xs text-gray-500 dark:text-muted-400 hidden sm:block">
+				{translatedType}
+			</p>
+			<p class="text-[9px] sm:text-xs text-gray-500 dark:text-muted-400 italic hidden sm:block">
+				{digimon.basePersonality}
+			</p>
 		</div>
 	</div>
 

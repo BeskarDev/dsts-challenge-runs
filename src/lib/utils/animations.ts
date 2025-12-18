@@ -56,7 +56,7 @@ export function getSlotTiming(slotIndex: number): {
 } {
 	const startDelay = slotIndex * ANIMATION_TIMING.SLOT_STAGGER_DELAY;
 	// Later slots spin longer for suspense
-	const spinDuration = ANIMATION_TIMING.SLOT_TOTAL_DURATION + (slotIndex * 100);
+	const spinDuration = ANIMATION_TIMING.SLOT_TOTAL_DURATION + slotIndex * 100;
 	const totalDuration = startDelay + spinDuration;
 
 	return { startDelay, spinDuration, totalDuration };

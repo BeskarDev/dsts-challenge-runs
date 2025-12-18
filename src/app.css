@@ -207,7 +207,8 @@
 
 	/* Subtle pulse for placeholders */
 	@keyframes pulse-subtle {
-		0%, 100% {
+		0%,
+		100% {
 			opacity: 0.6;
 		}
 		50% {

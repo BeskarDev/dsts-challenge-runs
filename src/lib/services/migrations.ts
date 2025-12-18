@@ -8,7 +8,7 @@
  * - Import this file early in the app initialization to register migrations
  * - Test all migrations thoroughly before merging
  * - See spec/versioning.md for detailed guidelines
- * 
+ *
  * Individual migrations are organized in the migrations/ subdirectory for clarity.
  */
 
@@ -24,4 +24,3 @@ migrationRegistry.register(migration_1_1_0_to_1_2_0);
 
 // This file must export something to be a valid module
 export const MIGRATIONS_LOADED = true;
-

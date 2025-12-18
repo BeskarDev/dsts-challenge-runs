@@ -284,7 +284,6 @@ export class RandomizerService {
 		minGeneration?: EvolutionGeneration,
 		includeNonStandard: boolean = false
 	): Digimon | null {
-
 		let allowedGenerations: EvolutionGeneration[];
 
 		if (onlyHighest) {

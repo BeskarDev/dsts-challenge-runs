@@ -1,5 +1,9 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { hasAnimationPlayed, markAnimationPlayed, resetAnimationState } from '$lib/stores/animation';
+import {
+	hasAnimationPlayed,
+	markAnimationPlayed,
+	resetAnimationState
+} from '$lib/stores/animation';
 import { StorageService } from '$lib/services/storage';
 
 /**
@@ -12,7 +16,7 @@ describe('Animation + Versioning Integration', () => {
 		// Clear localStorage before each test
 		localStorage.clear();
 		storage = new StorageService();
-		
+
 		// Reset animation state
 		resetAnimationState('test-challenge', 'test-seed');
 	});
@@ -39,7 +43,7 @@ describe('Animation + Versioning Integration', () => {
 
 			// Simulate clearing the run's animation state
 			resetAnimationState('challenge-1', 'seed-1');
-			
+
 			// Animation should not be marked as played anymore
 			expect(hasAnimationPlayed('challenge-1', 'seed-1', 2)).toBe(false);
 		});

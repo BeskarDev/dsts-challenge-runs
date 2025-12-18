@@ -11,20 +11,25 @@
 			(function () {
 				try {
 					const stored = localStorage.getItem('dsts:theme');
-					
+
 					if (!stored) {
 						return; // Will use default 'dark' from CSS
 					}
 
 					let theme = 'dark';
-					
+
 					try {
 						const parsed = JSON.parse(stored);
-						
+
 						// Check if it's versioned data (has _version and data property)
 						if (parsed && typeof parsed === 'object' && '_version' in parsed && 'data' in parsed) {
 							theme = parsed.data;
-						} else if (parsed && typeof parsed === 'object' && 'data' in parsed && !('_version' in parsed)) {
+						} else if (
+							parsed &&
+							typeof parsed === 'object' &&
+							'data' in parsed &&
+							!('_version' in parsed)
+						) {
 							// Old versioning format without _version field
 							theme = parsed.data;
 						} else if (typeof parsed === 'string') {
@@ -47,7 +52,7 @@
 								? 'dark'
 								: 'light'
 							: theme;
-					
+
 					if (effectiveTheme === 'dark') {
 						document.documentElement.classList.add('dark');
 					}
