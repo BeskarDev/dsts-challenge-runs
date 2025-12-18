@@ -12,7 +12,7 @@
 	import { historyStore } from '$lib/stores/history';
 	import { hasAnimationPlayed, markAnimationPlayed, resetAnimationState } from '$lib/stores/animation';
 	import { RandomizerService } from '$lib/services/randomizer';
-	import type { ChallengeRunState, TeamMember } from '$lib/types/challenge';
+	import type { ChallengeRunState, TeamMember, DigivolutionCheckpoint } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
 	import { filterDigimonByContent } from '$lib/utils/digimon-filters';
 	import { i18n } from '$lib/i18n';
@@ -30,9 +30,15 @@
 	let pendingTeamReveal = $state(false);
 	let animationPlayedForCurrentBoss = $state(true);
 
-	// Evolution pool settings
+	// Digivolution pool settings
 	let onlyHighestGeneration = $state(true); // Default to only highest generation
 	let minGenerationOverride = $state<EvolutionGeneration | null>(null);
+
+	// Helper to get checkpoints (supports both old and new field names for backwards compatibility)
+	function getCheckpoints(): DigivolutionCheckpoint[] {
+		if (!data.challenge) return [];
+		return data.challenge.digivolutionCheckpoints || data.challenge.evolutionCheckpoints || [];
+	}
 
 	// Content filtering settings
 	let includeDLC = $state(true);
@@ -243,8 +249,8 @@
 
 		// Start at the first required boss (skip optional boss-0)
 		const startBoss = getStartingBossOrder();
-		const initialGeneration = data.challenge.evolutionCheckpoints[0]
-			.unlockedGeneration as EvolutionGeneration;
+		const checkpoints = getCheckpoints();
+		const initialGeneration = (checkpoints[0]?.unlockedGeneration || 'In-Training II') as EvolutionGeneration;
 
 		// Generate initial team for starting boss
 		const initialBossSeed = `${mainSeed}-boss-${startBoss}`;
@@ -303,7 +309,8 @@
 		// Find the highest unlocked generation for this boss order
 		// (get the latest checkpoint that is <= current boss order)
 		// Always calculate this first to ensure correct generation even for cached teams
-		const unlockedCheckpoints = data.challenge.evolutionCheckpoints
+		const checkpoints = getCheckpoints();
+		const unlockedCheckpoints = checkpoints
 			.filter((cp) => cp.bossOrder <= bossOrder)
 			.sort((a, b) => b.bossOrder - a.bossOrder);
 
@@ -611,14 +618,14 @@
 		if (!challengeState || !data.bosses) return null;
 		const currentBoss = data.bosses.find((b) => b.order === challengeState!.currentBossOrder);
 		if (!currentBoss) return null;
-		// Level cap is current boss level minus 5
-		return Math.max(1, currentBoss.level - 5);
+		// Level cap is current boss level minus 7 (lowered from minus 5)
+		return Math.max(1, currentBoss.level - 7);
 	}
 
 	function getCurrentCheckpoint() {
 		if (!challengeState || !data.challenge) return null;
 		// Find the checkpoint that matches or is less than current boss order
-		const checkpoints = data.challenge.evolutionCheckpoints;
+		const checkpoints = getCheckpoints();
 		return (
 			checkpoints
 				.filter((cp) => cp.bossOrder <= challengeState!.currentBossOrder)
@@ -675,7 +682,7 @@
 						bind:checked={onlyHighestGeneration}
 						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
 					/>
-					<span>Only use highest available evolution generation (recommended)</span>
+					<span>Only use highest available digivolution generation (recommended)</span>
 				</label>
 			</div>
 
@@ -787,7 +794,7 @@
 						{getLevelCap() || 'No limit'}
 					</p>
 					<p>
-						<strong class="text-gray-900 dark:text-muted-100">Evolution Generation:</strong>
+						<strong class="text-gray-900 dark:text-muted-100">Digivolution Generation:</strong>
 						<span
 							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300"
 						>
@@ -850,9 +857,9 @@
 				</div>
 			</Accordion>
 
-			<Accordion title="Evolution Checkpoints">
+			<Accordion title="Digivolution Checkpoints">
 				<div class="space-y-2">
-					{#each data.challenge?.evolutionCheckpoints || [] as checkpoint (checkpoint.bossOrder)}
+					{#each getCheckpoints() as checkpoint (checkpoint.bossOrder)}
 						{@const boss = data.bosses?.find((b) => b.order === checkpoint.bossOrder)}
 						{@const isUnlocked = challengeState.currentBossOrder >= checkpoint.bossOrder}
 						<div
@@ -890,7 +897,7 @@
 								{/if}
 							</span>
 							<span>
-								{boss?.name || `Boss ${checkpoint.bossOrder}`}:
+								{checkpoint.checkpointLabel || boss?.name || `Boss ${checkpoint.bossOrder}`}:
 								<strong class="text-gray-900 dark:text-muted-50"
 									>{$i18n.t(checkpoint.unlockedGeneration)}</strong
 								>

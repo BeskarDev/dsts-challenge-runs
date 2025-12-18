@@ -29,7 +29,7 @@
 					<strong>Seed-based randomization</strong> for reproducible and shareable challenge runs
 				</li>
 				<li>
-					<strong>Evolution tier restrictions</strong> based on story progress and boss checkpoints
+					<strong>Digivolution tier restrictions</strong> based on story progress and boss checkpoints
 				</li>
 				<li><strong>Boss checkpoint tracking</strong> to monitor your progress through the game</li>
 				<li>
@@ -63,12 +63,12 @@
 			<div class="space-y-3 text-gray-700 dark:text-muted-300">
 				<div>
 					<h3 class="font-semibold text-gray-900 dark:text-muted-100 mb-1">
-						Random Evolution Challenge
+						Random Digivolution Challenge
 					</h3>
 					<p>
 						Build your team from randomly selected Digimon that unlock as you progress through the
 						story. Your team composition changes with each boss checkpoint, and you're restricted to
-						using only the evolution stages available at your current progress point.
+						using only the digivolution stages available at your current progress point.
 					</p>
 				</div>
 				<div>

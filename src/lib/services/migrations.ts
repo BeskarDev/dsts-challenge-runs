@@ -125,6 +125,28 @@ const migration_1_0_0_to_1_1_0: Migration = {
 // Register the migration
 migrationRegistry.register(migration_1_0_0_to_1_1_0);
 
+/**
+ * Migration from 1.1.0 to 1.2.0
+ * Updates to the "digivolution" naming convention and new checkpoint structure.
+ * The challenge ID remains 'random-evolution' for backwards compatibility with URLs and storage.
+ * Only the display name and checkpoints have changed - no data migration needed.
+ */
+const migration_1_1_0_to_1_2_0: Migration = {
+	fromVersion: '1.1.0',
+	toVersion: '1.2.0',
+	description: 'Update to digivolution naming and new checkpoint structure (no data changes needed)',
+	migrate: (data: unknown) => {
+		// No actual data migration needed - the challenge config changes are handled
+		// by the updated JSON file, and the storage keys remain the same.
+		// This migration just updates the version marker.
+		console.info('[Migration 1.1.0 → 1.2.0] Updating to new digivolution naming convention');
+		return data;
+	}
+};
+
+// Register the migration
+migrationRegistry.register(migration_1_1_0_to_1_2_0);
+
 // This file must export something to be a valid module
 export const MIGRATIONS_LOADED = true;
 
