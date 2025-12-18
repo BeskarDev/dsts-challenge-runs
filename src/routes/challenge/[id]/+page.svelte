@@ -12,7 +12,7 @@
 	import { historyStore } from '$lib/stores/history';
 	import { hasAnimationPlayed, markAnimationPlayed, resetAnimationState } from '$lib/stores/animation';
 	import { RandomizerService } from '$lib/services/randomizer';
-	import type { ChallengeRunState, TeamMember, DigivolutionCheckpoint, BossGroup } from '$lib/types/challenge';
+	import type { ChallengeRunState, TeamMember, DigivolutionCheckpoint, BossGroup, BossTeamSnapshot } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
 	import { filterDigimonByContent } from '$lib/utils/digimon-filters';
 	import { i18n } from '$lib/i18n';
@@ -331,7 +331,11 @@
 				? (unlockedCheckpoints[0].unlockedGeneration as EvolutionGeneration)
 				: challengeState.currentGeneration;
 
-		// Check if we already have a team saved for this boss
+		// Determine if we need to generate a new team based on boss groups
+		const currentBossGroup = getBossGroupForBoss(bossOrder);
+		const previousBossGroup = getBossGroupForBoss(challengeState!.currentBossOrder);
+
+		// Check if we already have a team saved for this boss OR any boss in the same group
 		if (challengeState.bossTeams[bossOrder]) {
 			// Restore the saved team for this boss, but use the correct generation
 			// (in case the cached generation was wrong from before the fix)
@@ -357,9 +361,39 @@
 			return;
 		}
 
-		// Determine if we need to generate a new team based on boss groups
-		const currentBossGroup = getBossGroupForBoss(bossOrder);
-		const previousBossGroup = getBossGroupForBoss(challengeState!.currentBossOrder);
+		// If not rerolling per boss and we're in the same boss group as a cached boss,
+		// reuse the team from that boss group
+		if (!rerollTeamPerBoss && currentBossGroup) {
+			// Look for any cached team within the same boss group
+			for (let bossInGroup = currentBossGroup.startBoss; bossInGroup <= currentBossGroup.endBoss; bossInGroup++) {
+				if (challengeState.bossTeams[bossInGroup]) {
+					const savedTeam = challengeState.bossTeams[bossInGroup];
+					// Reuse this team for the current boss
+					const reusedTeam: BossTeamSnapshot = {
+						bossOrder: bossOrder,
+						generation: correctGeneration,
+						team: savedTeam.team,
+						seed: savedTeam.seed // Use the same seed as the group
+					};
+					
+					challengeStore.update((state) => {
+						if (!state) return state;
+						return {
+							...state,
+							currentBossOrder: bossOrder,
+							currentGeneration: correctGeneration,
+							team: savedTeam.team,
+							bossTeams: {
+								...state.bossTeams,
+								[bossOrder]: reusedTeam
+							},
+							updatedAt: new Date().toISOString()
+						};
+					});
+					return;
+				}
+			}
+		}
 
 		// Check if we're entering a new boss group
 		// If boss groups are not defined (both null), fall back to always generating new team
@@ -590,8 +624,27 @@
 	// Handle team reveal animation trigger
 	function handleRevealTeam() {
 		if (!challengeState || !data.challenge) return;
-		// Mark animation as played for this boss
-		markAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+		
+		// Mark animation as played
+		// If rerollTeamPerBoss is enabled, only mark this specific boss
+		// Otherwise, mark all bosses in the current boss group as revealed
+		if (rerollTeamPerBoss) {
+			// Mark only this specific boss
+			markAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+		} else {
+			// Mark all bosses in the current group
+			const currentBossGroup = getBossGroupForBoss(challengeState.currentBossOrder);
+			if (currentBossGroup) {
+				// Mark all bosses in this group as revealed
+				for (let bossOrder = currentBossGroup.startBoss; bossOrder <= currentBossGroup.endBoss; bossOrder++) {
+					markAnimationPlayed(data.challenge.id, challengeState.seed, bossOrder);
+				}
+			} else {
+				// No boss group, just mark current boss
+				markAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+			}
+		}
+		
 		animationPlayedForCurrentBoss = true;
 		pendingTeamReveal = false;
 	}
@@ -604,7 +657,25 @@
 			return;
 		}
 		
-		const played = hasAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+		// Check if animation has been played
+		// If rerollTeamPerBoss is enabled, check per boss
+		// Otherwise, check for the first boss in the current boss group
+		let played = false;
+		if (rerollTeamPerBoss) {
+			// Check animation for this specific boss
+			played = hasAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+		} else {
+			// Check animation for the first boss in the current boss group
+			const currentBossGroup = getBossGroupForBoss(challengeState.currentBossOrder);
+			if (currentBossGroup) {
+				// Check if animation was played for the first boss in this group
+				played = hasAnimationPlayed(data.challenge.id, challengeState.seed, currentBossGroup.startBoss);
+			} else {
+				// No boss group defined, check current boss
+				played = hasAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+			}
+		}
+		
 		animationPlayedForCurrentBoss = played;
 		// Only show pending reveal if this is a new team that hasn't been revealed yet
 		pendingTeamReveal = !played;
