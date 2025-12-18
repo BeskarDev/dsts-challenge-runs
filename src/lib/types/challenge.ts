@@ -8,6 +8,8 @@ export interface ChallengeConfig {
 	/** @deprecated Use digivolutionCheckpoints instead */
 	evolutionCheckpoints?: DigivolutionCheckpoint[];
 	digivolutionCheckpoints?: DigivolutionCheckpoint[];
+	bossGroups?: BossGroup[];
+	challengeClarifications?: string[];
 	settings: ChallengeSettings;
 }
 
@@ -32,6 +34,13 @@ export interface DigivolutionCheckpoint {
 	unlockedGeneration: EvolutionGeneration;
 	allowReroll: boolean;
 	checkpointLabel?: string;
+}
+
+export interface BossGroup {
+	startBoss: number;
+	endBoss: number;
+	label: string;
+	generation: EvolutionGeneration;
 }
 
 export interface ChallengeSettings {

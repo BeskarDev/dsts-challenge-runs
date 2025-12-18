@@ -12,7 +12,7 @@
 	import { historyStore } from '$lib/stores/history';
 	import { hasAnimationPlayed, markAnimationPlayed, resetAnimationState } from '$lib/stores/animation';
 	import { RandomizerService } from '$lib/services/randomizer';
-	import type { ChallengeRunState, TeamMember, DigivolutionCheckpoint } from '$lib/types/challenge';
+	import type { ChallengeRunState, TeamMember, DigivolutionCheckpoint, BossGroup } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
 	import { filterDigimonByContent } from '$lib/utils/digimon-filters';
 	import { i18n } from '$lib/i18n';
@@ -40,12 +40,24 @@
 		return data.challenge.digivolutionCheckpoints || data.challenge.evolutionCheckpoints || [];
 	}
 
+	// Helper to get boss groups
+	function getBossGroups(): BossGroup[] {
+		if (!data.challenge) return [];
+		return data.challenge.bossGroups || [];
+	}
+
+	// Find the boss group for a given boss order
+	function getBossGroupForBoss(bossOrder: number): BossGroup | null {
+		const bossGroups = getBossGroups();
+		return bossGroups.find(g => bossOrder >= g.startBoss && bossOrder <= g.endBoss) || null;
+	}
+
 	// Content filtering settings
 	let includeDLC = $state(true);
 	let includePostGame = $state(false);
 	let includeNonStandard = $state(true); // Armor and Hybrid digimon
 	let includeDLCBosses = $state(false); // DLC bosses (Omnimon Zwart Defeat, etc.)
-	let rerollTeamPerBoss = $state(false); // Generate new team for every boss fight (default: only per quest)
+	let rerollTeamPerBoss = $state(false); // Generate new team for every boss fight (default: only per boss group)
 	let isInitializingState = $state(false); // Flag to prevent effect loops during initial load
 
 	// Watch for content filtering setting changes to update challenge state
@@ -345,23 +357,26 @@
 			return;
 		}
 
-		// Determine if we need to generate a new team
-		const currentBoss = data.bosses.find((b) => b.order === bossOrder);
-		const previousBoss = data.bosses.find((b) => b.order === challengeState!.currentBossOrder);
+		// Determine if we need to generate a new team based on boss groups
+		const currentBossGroup = getBossGroupForBoss(bossOrder);
+		const previousBossGroup = getBossGroupForBoss(challengeState!.currentBossOrder);
 
-		// Check if we're crossing a generation checkpoint
-		const generationChanged = correctGeneration !== challengeState!.currentGeneration;
+		// Check if we're entering a new boss group
+		// If boss groups are not defined (both null), fall back to always generating new team
+		// If one is null but not the other, treat as group change
+		// Otherwise compare the group start bosses
+		const bossGroupChanged = 
+			(currentBossGroup && previousBossGroup)
+				? currentBossGroup.startBoss !== previousBossGroup.startBoss
+				: true; // No boss groups defined or mismatch - generate new team
 
 		const shouldRerollTeam =
 			rerollTeamPerBoss ||
-			!previousBoss ||
-			!currentBoss ||
-			currentBoss.location !== previousBoss.location ||
-			generationChanged; // Always reroll when generation changes
+			bossGroupChanged; // Reroll when entering a new boss group
 
 		const newGeneration = correctGeneration;
 
-		// If not rerolling per boss and location is the same, keep current team
+		// If not rerolling per boss and still in the same boss group, keep current team
 		// but still update the generation to the highest unlocked
 		if (!shouldRerollTeam && challengeState.team.length > 0) {
 			challengeStore.update((state) => {
@@ -754,7 +769,7 @@
 						bind:checked={rerollTeamPerBoss}
 						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
 					/>
-					<span>New team for every boss fight (default: new team per quest)</span>
+					<span>New team for every boss fight (default: new team per boss group)</span>
 				</label>
 			</div>
 
@@ -897,10 +912,60 @@
 								{/if}
 							</span>
 							<span>
-								{checkpoint.checkpointLabel || boss?.name || `Boss ${checkpoint.bossOrder}`}:
+								{boss?.name || `Boss ${checkpoint.bossOrder}`}:
 								<strong class="text-gray-900 dark:text-muted-50"
 									>{$i18n.t(checkpoint.unlockedGeneration)}</strong
 								>
+							</span>
+						</div>
+					{/each}
+				</div>
+			</Accordion>
+		</div>
+
+		<!-- Challenge Info and Boss Groups -->
+		<div class="grid gap-4 md:grid-cols-2 mb-6">
+			<Accordion title="Challenge Clarifications">
+				<div class="space-y-3 text-sm text-gray-700 dark:text-muted-300">
+					{#if data.challenge?.challengeClarifications}
+						{#each data.challenge.challengeClarifications as clarification, index (index)}
+							<p class="flex items-start gap-2">
+								<span class="text-primary-500 mt-0.5">•</span>
+								<span>{clarification}</span>
+							</p>
+						{/each}
+					{/if}
+				</div>
+			</Accordion>
+
+			<Accordion title="Boss Groups (Team Rolls)">
+				<div class="space-y-1.5 text-sm">
+					<p class="text-xs text-gray-500 dark:text-muted-400 mb-2">
+						A new team is rolled when you enter each boss group. Teams persist within the same group.
+					</p>
+					{#each getBossGroups() as group (group.startBoss)}
+						{@const isCurrentGroup = challengeState && getBossGroupForBoss(challengeState.currentBossOrder)?.startBoss === group.startBoss}
+						<div
+							class="flex items-start gap-2 {isCurrentGroup
+								? 'text-primary-600 dark:text-primary-400 font-medium'
+								: 'text-gray-600 dark:text-muted-300'}"
+						>
+							<span class="w-4 h-4 flex items-center justify-center mt-0.5">
+								{#if isCurrentGroup}
+									<span class="w-2 h-2 rounded-full bg-primary-500"></span>
+								{:else}
+									<span class="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-muted"></span>
+								{/if}
+							</span>
+							<span class="flex-1">
+								<span class="text-xs text-gray-400 dark:text-muted-600">
+									{#if group.startBoss === group.endBoss}
+										Boss {group.startBoss}
+									{:else}
+										Boss {group.startBoss}-{group.endBoss}
+									{/if}:
+								</span>
+								{group.label}
 							</span>
 						</div>
 					{/each}

@@ -24,18 +24,30 @@
 			"description": "Only use Digimon up to your current unlocked digivolution generation. New generations unlock at specific boss checkpoints."
 		}
 	],
+	"challengeClarifications": [
+		"If the player cannot get a Digimon from the rolled team: keep Digimon from the previous challenge team, only use Digimon available from the rolled team (cannot add from outside the challenge's roster), or re-roll picks that are impossible (no digivolution/dedigivolution paths accessible).",
+		"Teams persist across multiple bosses within the same boss group. A new team is rolled only when starting a new boss group."
+	],
 	"digivolutionCheckpoints": [
-		{ "bossOrder": 1, "unlockedGeneration": "In-Training II", "allowReroll": true, "checkpointLabel": "Kuwagamon" },
-		{ "bossOrder": 2, "unlockedGeneration": "Rookie", "allowReroll": true, "checkpointLabel": "Raremon + Cyclonemon" },
-		{ "bossOrder": 4, "unlockedGeneration": "Rookie", "allowReroll": true, "checkpointLabel": "Vademon + Greymon (Blue)" },
-		{ "bossOrder": 6, "unlockedGeneration": "Champion", "allowReroll": true, "checkpointLabel": "Titamon + Fugamon & Ogremon & Hyogamon" },
-		{ "bossOrder": 8, "unlockedGeneration": "Champion", "allowReroll": true, "checkpointLabel": "Parrotmon + UltimateBrachiomon + Vulcanusmon" },
-		{ "bossOrder": 11, "unlockedGeneration": "Ultimate", "allowReroll": true, "checkpointLabel": "Sharkmon + Cherrymon + Okuwamon + Titamon & SkullBaluchimon" },
-		{ "bossOrder": 15, "unlockedGeneration": "Ultimate", "allowReroll": true, "checkpointLabel": "SkullSeadramon + Calmaramon + Witchmon + TyrantKabuterimon + Callismon" },
-		{ "bossOrder": 20, "unlockedGeneration": "Mega", "allowReroll": true, "checkpointLabel": "Power Loader: VenomMyotismon" },
-		{ "bossOrder": 23, "unlockedGeneration": "Mega", "allowReroll": true, "checkpointLabel": "Apollomon + Dianamon + Junomon HM" },
-		{ "bossOrder": 26, "unlockedGeneration": "Mega +", "allowReroll": true, "checkpointLabel": "Barbamon + Creepymon + Lilithmon + Leviamon" },
-		{ "bossOrder": 30, "unlockedGeneration": "Mega +", "allowReroll": true, "checkpointLabel": "Lucemon SM + Beelzemon BM + Belphemon RM + Chronomon" }
+		{ "bossOrder": 1, "unlockedGeneration": "In-Training II", "allowReroll": true },
+		{ "bossOrder": 2, "unlockedGeneration": "Rookie", "allowReroll": true },
+		{ "bossOrder": 6, "unlockedGeneration": "Champion", "allowReroll": true },
+		{ "bossOrder": 11, "unlockedGeneration": "Ultimate", "allowReroll": true },
+		{ "bossOrder": 20, "unlockedGeneration": "Mega", "allowReroll": true },
+		{ "bossOrder": 26, "unlockedGeneration": "Mega +", "allowReroll": true }
+	],
+	"bossGroups": [
+		{ "startBoss": 1, "endBoss": 1, "label": "Kuwagamon", "generation": "In-Training II" },
+		{ "startBoss": 2, "endBoss": 3, "label": "Raremon + Cyclonemon", "generation": "Rookie" },
+		{ "startBoss": 4, "endBoss": 5, "label": "Vademon + Greymon (Blue)", "generation": "Rookie" },
+		{ "startBoss": 6, "endBoss": 7, "label": "Titamon + Fugamon & Ogremon & Hyogamon", "generation": "Champion" },
+		{ "startBoss": 8, "endBoss": 10, "label": "Parrotmon + UltimateBrachiomon + Vulcanusmon", "generation": "Champion" },
+		{ "startBoss": 11, "endBoss": 14, "label": "Sharkmon + Cherrymon + Okuwamon + Titamon & SkullBaluchimon", "generation": "Ultimate" },
+		{ "startBoss": 15, "endBoss": 19, "label": "SkullSeadramon + Calmaramon + Witchmon + TyrantKabuterimon + Callismon", "generation": "Ultimate" },
+		{ "startBoss": 20, "endBoss": 22, "label": "VenomMyotismon + ZombiePlutomon + Power Loader", "generation": "Mega" },
+		{ "startBoss": 23, "endBoss": 25, "label": "Apollomon + Dianamon + Junomon HM", "generation": "Mega" },
+		{ "startBoss": 26, "endBoss": 29, "label": "Barbamon + Creepymon + Lilithmon + Leviamon", "generation": "Mega +" },
+		{ "startBoss": 30, "endBoss": 33, "label": "Lucemon SM + Beelzemon BM + Belphemon RM + Chronomon", "generation": "Mega +" }
 	],
 	"settings": {
 		"teamSize": 6,
