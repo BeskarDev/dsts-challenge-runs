@@ -12,7 +12,7 @@
 	import { historyStore } from '$lib/stores/history';
 	import { hasAnimationPlayed, markAnimationPlayed, resetAnimationState } from '$lib/stores/animation';
 	import { RandomizerService } from '$lib/services/randomizer';
-	import type { ChallengeRunState, TeamMember } from '$lib/types/challenge';
+	import type { ChallengeRunState, TeamMember, DigivolutionCheckpoint, BossGroup, BossTeamSnapshot } from '$lib/types/challenge';
 	import type { Digimon, EvolutionGeneration } from '$lib/types/digimon';
 	import { filterDigimonByContent } from '$lib/utils/digimon-filters';
 	import { i18n } from '$lib/i18n';
@@ -30,16 +30,34 @@
 	let pendingTeamReveal = $state(false);
 	let animationPlayedForCurrentBoss = $state(true);
 
-	// Evolution pool settings
+	// Digivolution pool settings
 	let onlyHighestGeneration = $state(true); // Default to only highest generation
 	let minGenerationOverride = $state<EvolutionGeneration | null>(null);
+
+	// Helper to get checkpoints (supports both old and new field names for backwards compatibility)
+	function getCheckpoints(): DigivolutionCheckpoint[] {
+		if (!data.challenge) return [];
+		return data.challenge.digivolutionCheckpoints || data.challenge.evolutionCheckpoints || [];
+	}
+
+	// Helper to get boss groups
+	function getBossGroups(): BossGroup[] {
+		if (!data.challenge) return [];
+		return data.challenge.bossGroups || [];
+	}
+
+	// Find the boss group for a given boss order
+	function getBossGroupForBoss(bossOrder: number): BossGroup | null {
+		const bossGroups = getBossGroups();
+		return bossGroups.find(g => bossOrder >= g.startBoss && bossOrder <= g.endBoss) || null;
+	}
 
 	// Content filtering settings
 	let includeDLC = $state(true);
 	let includePostGame = $state(false);
 	let includeNonStandard = $state(true); // Armor and Hybrid digimon
 	let includeDLCBosses = $state(false); // DLC bosses (Omnimon Zwart Defeat, etc.)
-	let rerollTeamPerBoss = $state(false); // Generate new team for every boss fight (default: only per quest)
+	let rerollTeamPerBoss = $state(false); // Generate new team for every boss fight (default: only per boss group)
 	let isInitializingState = $state(false); // Flag to prevent effect loops during initial load
 
 	// Watch for content filtering setting changes to update challenge state
@@ -243,8 +261,8 @@
 
 		// Start at the first required boss (skip optional boss-0)
 		const startBoss = getStartingBossOrder();
-		const initialGeneration = data.challenge.evolutionCheckpoints[0]
-			.unlockedGeneration as EvolutionGeneration;
+		const checkpoints = getCheckpoints();
+		const initialGeneration = (checkpoints[0]?.unlockedGeneration || 'In-Training II') as EvolutionGeneration;
 
 		// Generate initial team for starting boss
 		const initialBossSeed = `${mainSeed}-boss-${startBoss}`;
@@ -303,7 +321,8 @@
 		// Find the highest unlocked generation for this boss order
 		// (get the latest checkpoint that is <= current boss order)
 		// Always calculate this first to ensure correct generation even for cached teams
-		const unlockedCheckpoints = data.challenge.evolutionCheckpoints
+		const checkpoints = getCheckpoints();
+		const unlockedCheckpoints = checkpoints
 			.filter((cp) => cp.bossOrder <= bossOrder)
 			.sort((a, b) => b.bossOrder - a.bossOrder);
 
@@ -312,7 +331,11 @@
 				? (unlockedCheckpoints[0].unlockedGeneration as EvolutionGeneration)
 				: challengeState.currentGeneration;
 
-		// Check if we already have a team saved for this boss
+		// Determine if we need to generate a new team based on boss groups
+		const currentBossGroup = getBossGroupForBoss(bossOrder);
+		const previousBossGroup = getBossGroupForBoss(challengeState!.currentBossOrder);
+
+		// Check if we already have a team saved for this boss OR any boss in the same group
 		if (challengeState.bossTeams[bossOrder]) {
 			// Restore the saved team for this boss, but use the correct generation
 			// (in case the cached generation was wrong from before the fix)
@@ -338,23 +361,56 @@
 			return;
 		}
 
-		// Determine if we need to generate a new team
-		const currentBoss = data.bosses.find((b) => b.order === bossOrder);
-		const previousBoss = data.bosses.find((b) => b.order === challengeState!.currentBossOrder);
+		// If not rerolling per boss and we're in the same boss group as a cached boss,
+		// reuse the team from that boss group
+		if (!rerollTeamPerBoss && currentBossGroup) {
+			// Look for any cached team within the same boss group
+			for (let bossInGroup = currentBossGroup.startBoss; bossInGroup <= currentBossGroup.endBoss; bossInGroup++) {
+				if (challengeState.bossTeams[bossInGroup]) {
+					const savedTeam = challengeState.bossTeams[bossInGroup];
+					// Reuse this team for the current boss
+					const reusedTeam: BossTeamSnapshot = {
+						bossOrder: bossOrder,
+						generation: correctGeneration,
+						team: savedTeam.team,
+						seed: savedTeam.seed // Use the same seed as the group
+					};
+					
+					challengeStore.update((state) => {
+						if (!state) return state;
+						return {
+							...state,
+							currentBossOrder: bossOrder,
+							currentGeneration: correctGeneration,
+							team: savedTeam.team,
+							bossTeams: {
+								...state.bossTeams,
+								[bossOrder]: reusedTeam
+							},
+							updatedAt: new Date().toISOString()
+						};
+					});
+					return;
+				}
+			}
+		}
 
-		// Check if we're crossing a generation checkpoint
-		const generationChanged = correctGeneration !== challengeState!.currentGeneration;
+		// Check if we're entering a new boss group
+		// If boss groups are not defined (both null), fall back to always generating new team
+		// If one is null but not the other, treat as group change
+		// Otherwise compare the group start bosses
+		const bossGroupChanged = 
+			(currentBossGroup && previousBossGroup)
+				? currentBossGroup.startBoss !== previousBossGroup.startBoss
+				: true; // No boss groups defined or mismatch - generate new team
 
 		const shouldRerollTeam =
 			rerollTeamPerBoss ||
-			!previousBoss ||
-			!currentBoss ||
-			currentBoss.location !== previousBoss.location ||
-			generationChanged; // Always reroll when generation changes
+			bossGroupChanged; // Reroll when entering a new boss group
 
 		const newGeneration = correctGeneration;
 
-		// If not rerolling per boss and location is the same, keep current team
+		// If not rerolling per boss and still in the same boss group, keep current team
 		// but still update the generation to the highest unlocked
 		if (!shouldRerollTeam && challengeState.team.length > 0) {
 			challengeStore.update((state) => {
@@ -568,8 +624,27 @@
 	// Handle team reveal animation trigger
 	function handleRevealTeam() {
 		if (!challengeState || !data.challenge) return;
-		// Mark animation as played for this boss
-		markAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+		
+		// Mark animation as played
+		// If rerollTeamPerBoss is enabled, only mark this specific boss
+		// Otherwise, mark all bosses in the current boss group as revealed
+		if (rerollTeamPerBoss) {
+			// Mark only this specific boss
+			markAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+		} else {
+			// Mark all bosses in the current group
+			const currentBossGroup = getBossGroupForBoss(challengeState.currentBossOrder);
+			if (currentBossGroup) {
+				// Mark all bosses in this group as revealed
+				for (let bossOrder = currentBossGroup.startBoss; bossOrder <= currentBossGroup.endBoss; bossOrder++) {
+					markAnimationPlayed(data.challenge.id, challengeState.seed, bossOrder);
+				}
+			} else {
+				// No boss group, just mark current boss
+				markAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+			}
+		}
+		
 		animationPlayedForCurrentBoss = true;
 		pendingTeamReveal = false;
 	}
@@ -582,7 +657,25 @@
 			return;
 		}
 		
-		const played = hasAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+		// Check if animation has been played
+		// If rerollTeamPerBoss is enabled, check per boss
+		// Otherwise, check for the first boss in the current boss group
+		let played = false;
+		if (rerollTeamPerBoss) {
+			// Check animation for this specific boss
+			played = hasAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+		} else {
+			// Check animation for the first boss in the current boss group
+			const currentBossGroup = getBossGroupForBoss(challengeState.currentBossOrder);
+			if (currentBossGroup) {
+				// Check if animation was played for the first boss in this group
+				played = hasAnimationPlayed(data.challenge.id, challengeState.seed, currentBossGroup.startBoss);
+			} else {
+				// No boss group defined, check current boss
+				played = hasAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+			}
+		}
+		
 		animationPlayedForCurrentBoss = played;
 		// Only show pending reveal if this is a new team that hasn't been revealed yet
 		pendingTeamReveal = !played;
@@ -611,14 +704,14 @@
 		if (!challengeState || !data.bosses) return null;
 		const currentBoss = data.bosses.find((b) => b.order === challengeState!.currentBossOrder);
 		if (!currentBoss) return null;
-		// Level cap is current boss level minus 5
-		return Math.max(1, currentBoss.level - 5);
+		// Level cap is current boss level minus 7 (lowered from minus 5)
+		return Math.max(1, currentBoss.level - 7);
 	}
 
 	function getCurrentCheckpoint() {
 		if (!challengeState || !data.challenge) return null;
 		// Find the checkpoint that matches or is less than current boss order
-		const checkpoints = data.challenge.evolutionCheckpoints;
+		const checkpoints = getCheckpoints();
 		return (
 			checkpoints
 				.filter((cp) => cp.bossOrder <= challengeState!.currentBossOrder)
@@ -675,7 +768,7 @@
 						bind:checked={onlyHighestGeneration}
 						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
 					/>
-					<span>Only use highest available evolution generation (recommended)</span>
+					<span>Only use highest available digivolution generation (recommended)</span>
 				</label>
 			</div>
 
@@ -747,7 +840,7 @@
 						bind:checked={rerollTeamPerBoss}
 						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
 					/>
-					<span>New team for every boss fight (default: new team per quest)</span>
+					<span>New team for every boss fight (default: new team per boss group)</span>
 				</label>
 			</div>
 
@@ -787,7 +880,7 @@
 						{getLevelCap() || 'No limit'}
 					</p>
 					<p>
-						<strong class="text-gray-900 dark:text-muted-100">Evolution Generation:</strong>
+						<strong class="text-gray-900 dark:text-muted-100">Digivolution Generation:</strong>
 						<span
 							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300"
 						>
@@ -850,9 +943,9 @@
 				</div>
 			</Accordion>
 
-			<Accordion title="Evolution Checkpoints">
+			<Accordion title="Digivolution Checkpoints">
 				<div class="space-y-2">
-					{#each data.challenge?.evolutionCheckpoints || [] as checkpoint (checkpoint.bossOrder)}
+					{#each getCheckpoints() as checkpoint (checkpoint.bossOrder)}
 						{@const boss = data.bosses?.find((b) => b.order === checkpoint.bossOrder)}
 						{@const isUnlocked = challengeState.currentBossOrder >= checkpoint.bossOrder}
 						<div
@@ -894,6 +987,56 @@
 								<strong class="text-gray-900 dark:text-muted-50"
 									>{$i18n.t(checkpoint.unlockedGeneration)}</strong
 								>
+							</span>
+						</div>
+					{/each}
+				</div>
+			</Accordion>
+		</div>
+
+		<!-- Challenge Info and Boss Groups -->
+		<div class="grid gap-4 md:grid-cols-2 mb-6">
+			<Accordion title="Challenge Clarifications">
+				<div class="space-y-3 text-sm text-gray-700 dark:text-muted-300">
+					{#if data.challenge?.challengeClarifications}
+						{#each data.challenge.challengeClarifications as clarification, index (index)}
+							<p class="flex items-start gap-2">
+								<span class="text-primary-500 mt-0.5">•</span>
+								<span>{clarification}</span>
+							</p>
+						{/each}
+					{/if}
+				</div>
+			</Accordion>
+
+			<Accordion title="Boss Groups (Team Rolls)">
+				<div class="space-y-1.5 text-sm">
+					<p class="text-xs text-gray-500 dark:text-muted-400 mb-2">
+						A new team is rolled when you enter each boss group. Teams persist within the same group.
+					</p>
+					{#each getBossGroups() as group (group.startBoss)}
+						{@const isCurrentGroup = challengeState && getBossGroupForBoss(challengeState.currentBossOrder)?.startBoss === group.startBoss}
+						<div
+							class="flex items-start gap-2 {isCurrentGroup
+								? 'text-primary-600 dark:text-primary-400 font-medium'
+								: 'text-gray-600 dark:text-muted-300'}"
+						>
+							<span class="w-4 h-4 flex items-center justify-center mt-0.5">
+								{#if isCurrentGroup}
+									<span class="w-2 h-2 rounded-full bg-primary-500"></span>
+								{:else}
+									<span class="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-muted"></span>
+								{/if}
+							</span>
+							<span class="flex-1">
+								<span class="text-xs text-gray-400 dark:text-muted-600">
+									{#if group.startBoss === group.endBoss}
+										Boss {group.startBoss}
+									{:else}
+										Boss {group.startBoss}-{group.endBoss}
+									{/if}:
+								</span>
+								{group.label}
 							</span>
 						</div>
 					{/each}
