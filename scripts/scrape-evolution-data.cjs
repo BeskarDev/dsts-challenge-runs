@@ -227,61 +227,83 @@ function parseEvolutionData(html, digimonName) {
 	const evolvesFrom = [];
 	const evolvesTo = [];
 
-	// Grindosaur uses tables to display evolution data
-	// Look for "Digivolves From" and "Digivolves To" sections
-	const tables = document.querySelectorAll('table');
-
-	tables.forEach((table) => {
-		const caption = table.querySelector('caption');
-		const headings = table.querySelectorAll('th');
-
-		// Check for evolution table by caption or heading text
-		let tableType = null;
-
-		if (caption) {
-			const captionText = caption.textContent.toLowerCase();
-			if (
-				captionText.includes('digivolves from') ||
-				captionText.includes('de-digivolves') ||
-				captionText.includes('pre-digivolution')
-			) {
-				tableType = 'from';
-			} else if (captionText.includes('digivolves to') || captionText.includes('digivolution')) {
-				tableType = 'to';
-			}
-		}
-
-		// Also check heading text
-		headings.forEach((th) => {
-			const thText = th.textContent.toLowerCase();
-			if (
-				thText.includes('digivolves from') ||
-				thText.includes('de-digivolves') ||
-				thText.includes('pre-digivolution')
-			) {
-				tableType = 'from';
-			} else if (thText.includes('digivolves to') || thText.includes('digivolution')) {
-				tableType = 'to';
-			}
-		});
-
-		if (!tableType) return;
-
-		// Extract digimon names from table rows
-		const rows = table.querySelectorAll('tbody tr');
-		rows.forEach((row) => {
-			// Look for links to digimon pages
-			const links = row.querySelectorAll('a[href*="/digimon/"]');
-			links.forEach((link) => {
-				const name = link.textContent.trim();
-				if (name && name !== digimonName) {
-					if (tableType === 'from' && !evolvesFrom.includes(name)) {
-						evolvesFrom.push(name);
-					} else if (tableType === 'to' && !evolvesTo.includes(name)) {
+	// Grindosaur uses h2 headings with specific IDs followed by tables
+	// Look for h2#evolves-to and h2#evolves-from sections
+	
+	// Find "Evolves to" section
+	const evolvesToHeading = document.querySelector('h2#evolves-to');
+	if (evolvesToHeading) {
+		// Get the next sibling box/div that contains the table
+		let nextElement = evolvesToHeading.nextElementSibling;
+		while (nextElement) {
+			const table = nextElement.querySelector('table');
+			if (table) {
+				const links = table.querySelectorAll('tbody tr a[href*="/digimon/"]');
+				links.forEach((link) => {
+					const name = link.textContent.trim();
+					if (name && name !== digimonName && !evolvesTo.includes(name)) {
 						evolvesTo.push(name);
 					}
+				});
+				break;
+			}
+			// Check if we've hit the next section heading
+			if (nextElement.tagName === 'H2') break;
+			nextElement = nextElement.nextElementSibling;
+		}
+	}
+
+	// Find "Evolves from" section  
+	const evolvesFromHeading = document.querySelector('h2#evolves-from');
+	if (evolvesFromHeading) {
+		let nextElement = evolvesFromHeading.nextElementSibling;
+		while (nextElement) {
+			const table = nextElement.querySelector('table');
+			if (table) {
+				const links = table.querySelectorAll('tbody tr a[href*="/digimon/"]');
+				links.forEach((link) => {
+					const name = link.textContent.trim();
+					if (name && name !== digimonName && !evolvesFrom.includes(name)) {
+						evolvesFrom.push(name);
+					}
+				});
+				break;
+			}
+			// Check if we've hit the next section heading
+			if (nextElement.tagName === 'H2') break;
+			nextElement = nextElement.nextElementSibling;
+		}
+	}
+
+	// Fallback: Also check table captions for evolution data
+	const tables = document.querySelectorAll('table');
+	tables.forEach((table) => {
+		const caption = table.querySelector('caption');
+		if (!caption) return;
+		
+		const captionText = caption.textContent.toLowerCase();
+		let tableType = null;
+		
+		if (captionText.includes('evolve') && captionText.includes('from')) {
+			tableType = 'from';
+		} else if (captionText.includes('evolve') && captionText.includes('into')) {
+			tableType = 'to';
+		} else if (captionText.includes('digivolve') && captionText.includes('into')) {
+			tableType = 'to';
+		}
+		
+		if (!tableType) return;
+
+		const links = table.querySelectorAll('tbody tr a[href*="/digimon/"]');
+		links.forEach((link) => {
+			const name = link.textContent.trim();
+			if (name && name !== digimonName) {
+				if (tableType === 'from' && !evolvesFrom.includes(name)) {
+					evolvesFrom.push(name);
+				} else if (tableType === 'to' && !evolvesTo.includes(name)) {
+					evolvesTo.push(name);
 				}
-			});
+			}
 		});
 	});
 

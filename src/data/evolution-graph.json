@@ -1,6 +1,6 @@
 {
-	"description": "Evolution graph data representing connections between Digimon for pathfinding. This is a directed graph where edges represent evolution (digivolution) relationships.",
-	"lastUpdated": "2024-12-19",
+	"description": "Evolution graph data representing connections between Digimon for pathfinding.",
+	"lastUpdated": "2025-12-19",
 	"source": "Grindosaur (https://www.grindosaur.com/en/games/digimon-story-time-stranger)",
 	"notes": [
 		"evolvesFrom: Digimon this can de-digivolve from (going down in evolution)",
@@ -10,351 +10,4791 @@
 	"evolutions": {
 		"Kuramon": {
 			"evolvesFrom": [],
-			"evolvesTo": ["Tsumemon", "Pagumon"]
+			"evolvesTo": [
+				"Pagumon",
+				"Tsumemon"
+			]
 		},
 		"Choromon": {
 			"evolvesFrom": [],
-			"evolvesTo": ["Kapurimon"]
+			"evolvesTo": [
+				"Kapurimon"
+			]
 		},
 		"Dodomon": {
 			"evolvesFrom": [],
-			"evolvesTo": ["Dorimon"]
+			"evolvesTo": [
+				"Wanyamon",
+				"Dorimon"
+			]
 		},
 		"Pabumon": {
 			"evolvesFrom": [],
-			"evolvesTo": ["Motimon", "Tanemon"]
+			"evolvesTo": [
+				"Motimon",
+				"Yokomon",
+				"Tanemon"
+			]
 		},
 		"Punimon": {
 			"evolvesFrom": [],
-			"evolvesTo": ["Tsunomon"]
+			"evolvesTo": [
+				"Tsunomon",
+				"Nyaromon"
+			]
 		},
 		"Botamon": {
 			"evolvesFrom": [],
-			"evolvesTo": ["Koromon"]
+			"evolvesTo": [
+				"Koromon"
+			]
 		},
 		"Poyomon": {
 			"evolvesFrom": [],
-			"evolvesTo": ["Tokomon"]
+			"evolvesTo": [
+				"Bukamon",
+				"Tokomon"
+			]
 		},
 		"Kapurimon": {
-			"evolvesFrom": ["Choromon"],
-			"evolvesTo": ["Kotemon", "Hagurumon", "ToyAgumon"]
+			"evolvesFrom": [
+				"Choromon"
+			],
+			"evolvesTo": [
+				"Hagurumon",
+				"Kokuwamon",
+				"ToyAgumon",
+				"Solarmon"
+			]
 		},
 		"Koromon": {
-			"evolvesFrom": ["Botamon"],
-			"evolvesTo": ["Agumon", "Guilmon"]
+			"evolvesFrom": [
+				"Botamon"
+			],
+			"evolvesTo": [
+				"Agumon",
+				"Guilmon",
+				"Dracomon",
+				"Kotemon",
+				"Betamon",
+				"Shoutmon"
+			]
 		},
 		"Tanemon": {
-			"evolvesFrom": ["Pabumon"],
-			"evolvesTo": ["Palmon", "Floramon"]
+			"evolvesFrom": [
+				"Pabumon"
+			],
+			"evolvesTo": [
+				"FunBeemon",
+				"Lalamon",
+				"Palmon",
+				"Mushroomon",
+				"Floramon"
+			]
 		},
 		"Tsunomon": {
-			"evolvesFrom": ["Punimon"],
-			"evolvesTo": ["Gabumon", "Elecmon"]
+			"evolvesFrom": [
+				"Punimon"
+			],
+			"evolvesTo": [
+				"Goblimon",
+				"Veemon",
+				"Gabumon",
+				"Ryudamon",
+				"Elecmon",
+				"Zubamon"
+			]
 		},
 		"Tsumemon": {
-			"evolvesFrom": ["Kuramon"],
-			"evolvesTo": ["Dracmon", "Keramon"]
+			"evolvesFrom": [
+				"Kuramon"
+			],
+			"evolvesTo": [
+				"Dracmon",
+				"Shamamon",
+				"Keramon",
+				"Agumon (Black)",
+				"Gabumon (Black)"
+			]
 		},
 		"Tokomon": {
-			"evolvesFrom": ["Poyomon"],
-			"evolvesTo": ["Patamon", "Lucemon"]
+			"evolvesFrom": [
+				"Poyomon"
+			],
+			"evolvesTo": [
+				"Patamon",
+				"Coronamon",
+				"Terriermon",
+				"Armadillomon",
+				"Lucemon"
+			]
 		},
 		"Dorimon": {
-			"evolvesFrom": ["Dodomon"],
-			"evolvesTo": ["Dorumon"]
+			"evolvesFrom": [
+				"Dodomon"
+			],
+			"evolvesTo": [
+				"Dorumon",
+				"Monodramon",
+				"SnowGoblimon",
+				"Lopmon"
+			]
 		},
-		"Motimon": {
-			"evolvesFrom": ["Pabumon"],
-			"evolvesTo": ["Tentomon"]
+		"Nyaromon": {
+			"evolvesFrom": [
+				"Punimon"
+			],
+			"evolvesTo": [
+				"Lunamon",
+				"Kudamon",
+				"Salamon",
+				"Huckmon"
+			]
 		},
 		"Pagumon": {
-			"evolvesFrom": ["Kuramon"],
-			"evolvesTo": ["Gazimon", "DemiDevimon"]
+			"evolvesFrom": [
+				"Kuramon"
+			],
+			"evolvesTo": [
+				"Impmon",
+				"DemiDevimon",
+				"Gazimon",
+				"Otamamon"
+			]
+		},
+		"Yokomon": {
+			"evolvesFrom": [
+				"Pabumon"
+			],
+			"evolvesTo": [
+				"Biyomon",
+				"Penmon",
+				"Falcomon",
+				"Hawkmon",
+				"Hyokomon",
+				"Muchomon"
+			]
+		},
+		"Bukamon": {
+			"evolvesFrom": [
+				"Poyomon"
+			],
+			"evolvesTo": [
+				"Kamemon",
+				"Crabmon",
+				"Gomamon",
+				"Gizamon",
+				"Syakomon"
+			]
+		},
+		"Motimon": {
+			"evolvesFrom": [
+				"Pabumon"
+			],
+			"evolvesTo": [
+				"Chuumon",
+				"Tentomon",
+				"Wormmon",
+				"Gotsumon"
+			]
+		},
+		"Wanyamon": {
+			"evolvesFrom": [
+				"Dodomon"
+			],
+			"evolvesTo": [
+				"Gaomon",
+				"Tapirmon",
+				"Bearmon",
+				"Renamon"
+			]
 		},
 		"Agumon": {
-			"evolvesFrom": ["Koromon"],
-			"evolvesTo": ["Greymon", "GeoGreymon", "Tyrannomon"]
+			"evolvesFrom": [
+				"Koromon"
+			],
+			"evolvesTo": [
+				"Raptordramon",
+				"GeoGreymon",
+				"Numemon",
+				"Greymon",
+				"Coredramon (Green)",
+				"Agumon (Bond of Bravery)"
+			]
 		},
-		"Gabumon": {
-			"evolvesFrom": ["Tsunomon"],
-			"evolvesTo": ["Garurumon", "Dorugamon"]
+		"Kudamon": {
+			"evolvesFrom": [
+				"Nyaromon"
+			],
+			"evolvesTo": [
+				"Airdramon",
+				"Reppamon",
+				"Angemon",
+				"Ginryumon",
+				"Lobomon",
+				"Sorcermon"
+			]
 		},
-		"Guilmon": {
-			"evolvesFrom": ["Koromon"],
-			"evolvesTo": ["Growlmon", "Tyrannomon"]
+		"Gomamon": {
+			"evolvesFrom": [
+				"Bukamon"
+			],
+			"evolvesTo": [
+				"Mojyamon",
+				"Ikkakumon",
+				"Frigimon",
+				"Hyogamon",
+				"IceDevimon"
+			]
 		},
-		"Patamon": {
-			"evolvesFrom": ["Tokomon"],
-			"evolvesTo": ["Angemon", "Unimon"]
+		"Coronamon": {
+			"evolvesFrom": [
+				"Tokomon"
+			],
+			"evolvesTo": [
+				"Firamon",
+				"Meramon",
+				"Growlmon",
+				"BaoHuckmon",
+				"Birdramon",
+				"Agunimon"
+			]
 		},
-		"Palmon": {
-			"evolvesFrom": ["Tanemon"],
-			"evolvesTo": ["Togemon", "Sunflowmon"]
+		"Zubamon": {
+			"evolvesFrom": [
+				"Tsunomon"
+			],
+			"evolvesTo": [
+				"Musyamon",
+				"Buraimon",
+				"Tankmon",
+				"ZubaEagermon",
+				"Ankylomon",
+				"Guardromon (Gold)"
+			]
+		},
+		"Solarmon": {
+			"evolvesFrom": [
+				"Kapurimon"
+			],
+			"evolvesTo": [
+				"Starmon",
+				"GoldNumemon",
+				"Meramon",
+				"Guardromon (Gold)"
+			]
+		},
+		"Terriermon": {
+			"evolvesFrom": [
+				"Tokomon"
+			],
+			"evolvesTo": [
+				"Mojyamon",
+				"Lekismon",
+				"Gawappamon",
+				"Gargomon",
+				"Rapidmon (Armor)"
+			]
 		},
 		"Tentomon": {
-			"evolvesFrom": ["Motimon"],
-			"evolvesTo": ["Kabuterimon", "Stingmon"]
-		},
-		"Keramon": {
-			"evolvesFrom": ["Tsumemon"],
-			"evolvesTo": ["Chrysalimon"]
-		},
-		"Dracmon": {
-			"evolvesFrom": ["Tsumemon"],
-			"evolvesTo": ["Sangloupmon"]
-		},
-		"Gazimon": {
-			"evolvesFrom": ["Pagumon"],
-			"evolvesTo": ["Devimon", "BlackGarurumon"]
-		},
-		"DemiDevimon": {
-			"evolvesFrom": ["Pagumon"],
-			"evolvesTo": ["Devimon", "IceDevimon"]
-		},
-		"Lucemon": {
-			"evolvesFrom": ["Tokomon"],
-			"evolvesTo": ["Lucemon FM"]
-		},
-		"Elecmon": {
-			"evolvesFrom": ["Tsunomon"],
-			"evolvesTo": ["Leomon", "Centarumon"]
-		},
-		"Dorumon": {
-			"evolvesFrom": ["Dorimon"],
-			"evolvesTo": ["Dorugamon", "Raptordramon"]
-		},
-		"Kotemon": {
-			"evolvesFrom": ["Kapurimon"],
-			"evolvesTo": ["Dinohumon", "Gladimon"]
-		},
-		"Hagurumon": {
-			"evolvesFrom": ["Kapurimon"],
-			"evolvesTo": ["Guardromon", "Clockmon"]
+			"evolvesFrom": [
+				"Motimon"
+			],
+			"evolvesTo": [
+				"Kabuterimon",
+				"Sunflowmon",
+				"Kuwagamon",
+				"Waspmon",
+				"Snimon"
+			]
 		},
 		"ToyAgumon": {
-			"evolvesFrom": ["Kapurimon"],
-			"evolvesTo": ["Clockmon", "Tankmon"]
+			"evolvesFrom": [
+				"Kapurimon"
+			],
+			"evolvesTo": [
+				"Blimpmon",
+				"Deputymon",
+				"Raremon",
+				"Tankmon",
+				"Gargomon"
+			]
+		},
+		"Tapirmon": {
+			"evolvesFrom": [
+				"Wanyamon"
+			],
+			"evolvesTo": [
+				"Meramon",
+				"Garurumon",
+				"Bakemon",
+				"Unimon",
+				"Kyubimon"
+			]
+		},
+		"Hyokomon": {
+			"evolvesFrom": [
+				"Yokomon"
+			],
+			"evolvesTo": [
+				"Peckmon",
+				"Birdramon",
+				"Dinohyumon",
+				"Buraimon"
+			]
+		},
+		"Biyomon": {
+			"evolvesFrom": [
+				"Yokomon"
+			],
+			"evolvesTo": [
+				"Aquilamon",
+				"Birdramon",
+				"Unimon",
+				"Wizardmon"
+			]
+		},
+		"Falcomon": {
+			"evolvesFrom": [
+				"Yokomon"
+			],
+			"evolvesTo": [
+				"Peckmon",
+				"Ginryumon",
+				"Kiwimon"
+			]
+		},
+		"Salamon": {
+			"evolvesFrom": [
+				"Nyaromon"
+			],
+			"evolvesTo": [
+				"Gatomon",
+				"Sangloupmon",
+				"Dobermon",
+				"Ikkakumon",
+				"Veedramon",
+				"Drimogemon"
+			]
+		},
+		"Bearmon": {
+			"evolvesFrom": [
+				"Wanyamon"
+			],
+			"evolvesTo": [
+				"Grizzlymon",
+				"Gaogamon",
+				"Mojyamon",
+				"Leomon",
+				"Garurumon (Black)"
+			]
+		},
+		"Penmon": {
+			"evolvesFrom": [
+				"Yokomon"
+			],
+			"evolvesTo": [
+				"Peckmon",
+				"Buraimon",
+				"Kiwimon",
+				"Aquilamon"
+			]
+		},
+		"Monodramon": {
+			"evolvesFrom": [
+				"Dorimon"
+			],
+			"evolvesTo": [
+				"Strikedramon",
+				"Raptordramon",
+				"Deltamon",
+				"Kurisarimon",
+				"Cyclonemon"
+			]
+		},
+		"Ryudamon": {
+			"evolvesFrom": [
+				"Tsunomon"
+			],
+			"evolvesTo": [
+				"Reppamon",
+				"Coelamon",
+				"Ginryumon",
+				"Greymon",
+				"Monochromon"
+			]
+		},
+		"Lucemon": {
+			"evolvesFrom": [
+				"Tokomon"
+			],
+			"evolvesTo": [
+				"Lucemon CM"
+			]
+		},
+		"Elecmon": {
+			"evolvesFrom": [
+				"Tsunomon"
+			],
+			"evolvesTo": [
+				"Aegiomon",
+				"Seadramon",
+				"Unimon",
+				"Kuwagamon",
+				"Gekomon"
+			]
+		},
+		"Gaomon": {
+			"evolvesFrom": [
+				"Wanyamon"
+			],
+			"evolvesTo": [
+				"Strikedramon",
+				"Gaogamon",
+				"Leomon",
+				"Nanimon",
+				"Turuiemon"
+			]
+		},
+		"Crabmon": {
+			"evolvesFrom": [
+				"Bukamon"
+			],
+			"evolvesTo": [
+				"Gawappamon",
+				"Octomon",
+				"Shellmon",
+				"Raremon",
+				"Snimon",
+				"Coelamon"
+			]
+		},
+		"Gabumon": {
+			"evolvesFrom": [
+				"Tsunomon"
+			],
+			"evolvesTo": [
+				"Garurumon",
+				"Ikkakumon",
+				"Drimogemon",
+				"Kyubimon",
+				"Geremon",
+				"Gabumon (Bond of Friendship)"
+			]
+		},
+		"Kamemon": {
+			"evolvesFrom": [
+				"Bukamon"
+			],
+			"evolvesTo": [
+				"Gawappamon",
+				"Octomon",
+				"Shellmon",
+				"ShellNumemon",
+				"Dinohyumon",
+				"Sorcermon"
+			]
+		},
+		"Kokuwamon": {
+			"evolvesFrom": [
+				"Kapurimon"
+			],
+			"evolvesTo": [
+				"Centarumon",
+				"Kuwagamon",
+				"Clockmon",
+				"Waspmon",
+				"Mekanorimon"
+			]
+		},
+		"Gotsumon": {
+			"evolvesFrom": [
+				"Motimon"
+			],
+			"evolvesTo": [
+				"Starmon",
+				"Guardromon",
+				"Golemon",
+				"Monochromon",
+				"Icemon",
+				"MudFrigimon"
+			]
+		},
+		"Kotemon": {
+			"evolvesFrom": [
+				"Koromon"
+			],
+			"evolvesTo": [
+				"Turuiemon",
+				"Musyamon",
+				"Deputymon",
+				"Dinohyumon",
+				"Coredramon (Blue)"
+			]
+		},
+		"Shoutmon": {
+			"evolvesFrom": [
+				"Koromon"
+			],
+			"evolvesTo": [
+				"OmniShoutmon",
+				"ZubaEagermon",
+				"Gargomon",
+				"Guardromon (Gold)"
+			]
+		},
+		"Dracomon": {
+			"evolvesFrom": [
+				"Koromon"
+			],
+			"evolvesTo": [
+				"Coredramon (Green)",
+				"Coredramon (Blue)",
+				"Deltamon",
+				"Veedramon",
+				"Seadramon",
+				"Tyrannomon"
+			]
+		},
+		"Dorumon": {
+			"evolvesFrom": [
+				"Dorimon"
+			],
+			"evolvesTo": [
+				"Raptordramon",
+				"Airdramon",
+				"Sangloupmon",
+				"ExVeemon",
+				"Drimogemon",
+				"Dorugamon"
+			]
+		},
+		"Patamon": {
+			"evolvesFrom": [
+				"Tokomon"
+			],
+			"evolvesTo": [
+				"Angemon",
+				"Pegasusmon",
+				"Unimon",
+				"Centarumon"
+			]
+		},
+		"Huckmon": {
+			"evolvesFrom": [
+				"Nyaromon"
+			],
+			"evolvesTo": [
+				"Gatomon",
+				"GeoGreymon",
+				"Growlmon",
+				"BaoHuckmon",
+				"Greymon"
+			]
+		},
+		"Palmon": {
+			"evolvesFrom": [
+				"Tanemon"
+			],
+			"evolvesTo": [
+				"Mojyamon",
+				"Vegiemon",
+				"Togemon",
+				"Woodmon",
+				"Kurisarimon",
+				"PlatinumSukamon"
+			]
 		},
 		"Floramon": {
-			"evolvesFrom": ["Tanemon"],
-			"evolvesTo": ["Kiwimon", "Sunflowmon"]
+			"evolvesFrom": [
+				"Tanemon"
+			],
+			"evolvesTo": [
+				"Vegiemon",
+				"Togemon",
+				"Woodmon",
+				"Sunflowmon",
+				"Kiwimon"
+			]
 		},
-		"Greymon": {
-			"evolvesFrom": ["Agumon"],
-			"evolvesTo": ["MetalGreymon", "SkullGreymon"]
+		"Muchomon": {
+			"evolvesFrom": [
+				"Yokomon"
+			],
+			"evolvesTo": [
+				"Airdramon",
+				"Peckmon",
+				"Birdramon",
+				"Fugamon"
+			]
 		},
-		"GeoGreymon": {
-			"evolvesFrom": ["Agumon"],
-			"evolvesTo": ["RizeGreymon"]
+		"Lalamon": {
+			"evolvesFrom": [
+				"Tanemon"
+			],
+			"evolvesTo": [
+				"Sunflowmon",
+				"Togemon",
+				"Deputymon",
+				"MudFrigimon",
+				"Turuiemon"
+			]
 		},
-		"Tyrannomon": {
-			"evolvesFrom": ["Agumon", "Guilmon"],
-			"evolvesTo": ["MasterTyrannomon", "MetalTyrannomon"]
+		"Lunamon": {
+			"evolvesFrom": [
+				"Nyaromon"
+			],
+			"evolvesTo": [
+				"Lekismon",
+				"Garurumon",
+				"Frigimon",
+				"Hyogamon",
+				"Sorcermon",
+				"Icemon"
+			]
 		},
-		"Garurumon": {
-			"evolvesFrom": ["Gabumon"],
-			"evolvesTo": ["WereGarurumon"]
+		"Renamon": {
+			"evolvesFrom": [
+				"Wanyamon"
+			],
+			"evolvesTo": [
+				"Lekismon",
+				"Sunflowmon",
+				"Reppamon",
+				"Kyubimon",
+				"Garurumon (Black)"
+			]
 		},
-		"Growlmon": {
-			"evolvesFrom": ["Guilmon"],
-			"evolvesTo": ["WarGrowlmon"]
+		"Lopmon": {
+			"evolvesFrom": [
+				"Dorimon"
+			],
+			"evolvesTo": [
+				"Grizzlymon",
+				"Minotarumon",
+				"Leomon",
+				"Turuiemon",
+				"Wendigomon",
+				"MudFrigimon"
+			]
+		},
+		"Impmon": {
+			"evolvesFrom": [
+				"Pagumon"
+			],
+			"evolvesTo": [
+				"Bakemon",
+				"Wizardmon",
+				"Clockmon",
+				"Sangloupmon",
+				"Devimon",
+				"Witchmon"
+			]
+		},
+		"Otamamon": {
+			"evolvesFrom": [
+				"Pagumon"
+			],
+			"evolvesTo": [
+				"Seadramon",
+				"Numemon",
+				"Gekomon",
+				"ShellNumemon",
+				"PlatinumSukamon"
+			]
+		},
+		"Gazimon": {
+			"evolvesFrom": [
+				"Pagumon"
+			],
+			"evolvesTo": [
+				"Sangloupmon",
+				"BlackGatomon",
+				"Gaogamon",
+				"BaoHuckmon",
+				"Dobermon",
+				"Dorugamon"
+			]
+		},
+		"Gizamon": {
+			"evolvesFrom": [
+				"Bukamon"
+			],
+			"evolvesTo": [
+				"Cyclonemon",
+				"Flymon",
+				"ZubaEagermon",
+				"Ankylomon",
+				"Geremon",
+				"Lanamon"
+			]
+		},
+		"Guilmon": {
+			"evolvesFrom": [
+				"Koromon"
+			],
+			"evolvesTo": [
+				"GeoGreymon",
+				"Growlmon",
+				"ExVeemon",
+				"Tyrannomon",
+				"Greymon (Blue)"
+			]
+		},
+		"Goblimon": {
+			"evolvesFrom": [
+				"Tsunomon"
+			],
+			"evolvesTo": [
+				"Golemon",
+				"Wendigomon",
+				"Deltamon",
+				"Tuskmon",
+				"Ogremon"
+			]
+		},
+		"Shamamon": {
+			"evolvesFrom": [
+				"Tsumemon"
+			],
+			"evolvesTo": [
+				"Minotarumon",
+				"Musyamon",
+				"Fugamon",
+				"Witchmon"
+			]
+		},
+		"Syakomon": {
+			"evolvesFrom": [
+				"Bukamon"
+			],
+			"evolvesTo": [
+				"Coelamon",
+				"Shellmon",
+				"ShellNumemon",
+				"Octomon",
+				"Raremon"
+			]
+		},
+		"SnowGoblimon": {
+			"evolvesFrom": [
+				"Dorimon"
+			],
+			"evolvesTo": [
+				"Gatomon",
+				"Monochromon",
+				"Frigimon",
+				"Hyogamon",
+				"IceDevimon",
+				"Icemon"
+			]
+		},
+		"Chuumon": {
+			"evolvesFrom": [
+				"Motimon"
+			],
+			"evolvesTo": [
+				"BlackGatomon",
+				"Sukamon",
+				"Gatomon",
+				"Gekomon",
+				"Geremon",
+				"PlatinumSukamon"
+			]
+		},
+		"Dracmon": {
+			"evolvesFrom": [
+				"Tsumemon"
+			],
+			"evolvesTo": [
+				"Sangloupmon",
+				"Sukamon",
+				"Wizardmon",
+				"Starmon"
+			]
+		},
+		"Hagurumon": {
+			"evolvesFrom": [
+				"Kapurimon"
+			],
+			"evolvesTo": [
+				"Clockmon",
+				"Mekanorimon",
+				"Tankmon",
+				"Guardromon",
+				"Blimpmon"
+			]
+		},
+		"DemiDevimon": {
+			"evolvesFrom": [
+				"Pagumon"
+			],
+			"evolvesTo": [
+				"Bakemon",
+				"IceDevimon",
+				"Devimon",
+				"Ogremon",
+				"Greymon (Blue)"
+			]
+		},
+		"FunBeemon": {
+			"evolvesFrom": [
+				"Tanemon"
+			],
+			"evolvesTo": [
+				"Waspmon",
+				"Flymon",
+				"Dokugumon",
+				"Stingmon",
+				"GoldNumemon",
+				"Kabuterimon"
+			]
+		},
+		"Betamon": {
+			"evolvesFrom": [
+				"Koromon"
+			],
+			"evolvesTo": [
+				"Seadramon",
+				"Coelamon",
+				"Devimon",
+				"Numemon",
+				"Vegiemon",
+				"Tuskmon"
+			]
+		},
+		"Mushroomon": {
+			"evolvesFrom": [
+				"Tanemon"
+			],
+			"evolvesTo": [
+				"Sukamon",
+				"Nanimon",
+				"Woodmon",
+				"Flymon"
+			]
+		},
+		"Armadillomon": {
+			"evolvesFrom": [
+				"Tokomon"
+			],
+			"evolvesTo": [
+				"Digmon",
+				"Submarimon",
+				"Golemon",
+				"Ankylomon"
+			]
+		},
+		"Veemon": {
+			"evolvesFrom": [
+				"Tsunomon"
+			],
+			"evolvesTo": [
+				"ExVeemon",
+				"Veedramon",
+				"Lighdramon",
+				"Magnamon",
+				"Flamedramon"
+			]
+		},
+		"Hawkmon": {
+			"evolvesFrom": [
+				"Yokomon"
+			],
+			"evolvesTo": [
+				"Firamon",
+				"Halsemon",
+				"Shurimon",
+				"Aquilamon"
+			]
+		},
+		"Wormmon": {
+			"evolvesFrom": [
+				"Motimon"
+			],
+			"evolvesTo": [
+				"Stingmon",
+				"Dokugumon",
+				"Snimon"
+			]
+		},
+		"Keramon": {
+			"evolvesFrom": [
+				"Tsumemon"
+			],
+			"evolvesTo": [
+				"Dokugumon",
+				"Wendigomon",
+				"Octomon",
+				"Mekanorimon",
+				"Kurisarimon"
+			]
+		},
+		"Aegiomon": {
+			"evolvesFrom": [
+				"Elecmon"
+			],
+			"evolvesTo": [
+				"Aegiochusmon",
+				"Aegiochusmon: Dark",
+				"Aegiochusmon: Holy",
+				"Aegiochusmon: Blue",
+				"Aegiochusmon: Green"
+			]
+		},
+		"Ikkakumon": {
+			"evolvesFrom": [
+				"Gabumon",
+				"Gomamon",
+				"Salamon"
+			],
+			"evolvesTo": [
+				"Whamon",
+				"MegaSeadramon",
+				"Zudomon",
+				"SkullSeadramon"
+			]
+		},
+		"Airdramon": {
+			"evolvesFrom": [
+				"Kudamon",
+				"Dorumon",
+				"Muchomon"
+			],
+			"evolvesTo": [
+				"Hisyaryumon",
+				"Megadramon",
+				"AeroVeedramon",
+				"Gigadramon"
+			]
 		},
 		"Angemon": {
-			"evolvesFrom": ["Patamon"],
-			"evolvesTo": ["MagnaAngemon", "Piddomon"]
-		},
-		"Togemon": {
-			"evolvesFrom": ["Palmon"],
-			"evolvesTo": ["Lillymon"]
+			"evolvesFrom": [
+				"Kudamon",
+				"Patamon"
+			],
+			"evolvesTo": [
+				"HippoGryphonmon",
+				"MagnaAngemon",
+				"Sirenmon",
+				"Shakkoumon"
+			]
 		},
 		"Kabuterimon": {
-			"evolvesFrom": ["Tentomon"],
-			"evolvesTo": ["MegaKabuterimon"]
+			"evolvesFrom": [
+				"FunBeemon",
+				"Tentomon"
+			],
+			"evolvesTo": [
+				"Lilamon",
+				"MegaKabuterimon",
+				"CannonBeemon",
+				"Kimeramon"
+			]
 		},
-		"Devimon": {
-			"evolvesFrom": ["Gazimon", "DemiDevimon"],
-			"evolvesTo": ["Myotismon", "SkullSatamon"]
+		"Gargomon": {
+			"evolvesFrom": [
+				"Shoutmon",
+				"Terriermon",
+				"ToyAgumon"
+			],
+			"evolvesTo": [
+				"CatchMamemon",
+				"MachGaogamon",
+				"Rapidmon"
+			]
 		},
-		"Chrysalimon": {
-			"evolvesFrom": ["Keramon"],
-			"evolvesTo": ["Infermon"]
+		"Garurumon": {
+			"evolvesFrom": [
+				"Lunamon",
+				"Gabumon",
+				"Tapirmon"
+			],
+			"evolvesTo": [
+				"WereGarurumon",
+				"BlueMeramon",
+				"Taomon",
+				"Kimeramon"
+			]
 		},
-		"Sangloupmon": {
-			"evolvesFrom": ["Dracmon"],
-			"evolvesTo": ["Matadormon"]
+		"Ginryumon": {
+			"evolvesFrom": [
+				"Kudamon",
+				"Ryudamon",
+				"Falcomon"
+			],
+			"evolvesTo": [
+				"Hisyaryumon",
+				"SkullGreymon",
+				"Butenmon"
+			]
+		},
+		"Grizzlymon": {
+			"evolvesFrom": [
+				"Bearmon",
+				"Lopmon"
+			],
+			"evolvesTo": [
+				"WereGarurumon",
+				"GrapLeomon",
+				"GreatGrizzlymon"
+			]
+		},
+		"Greymon": {
+			"evolvesFrom": [
+				"Agumon",
+				"Ryudamon",
+				"Huckmon"
+			],
+			"evolvesTo": [
+				"MetalGreymon",
+				"Megadramon",
+				"SkullGreymon",
+				"Kimeramon"
+			]
+		},
+		"Coredramon (Blue)": {
+			"evolvesFrom": [
+				"Dracomon",
+				"Kotemon",
+				"Agumon (Black)"
+			],
+			"evolvesTo": [
+				"Wingdramon",
+				"AeroVeedramon",
+				"Gigadramon"
+			]
+		},
+		"GeoGreymon": {
+			"evolvesFrom": [
+				"Agumon",
+				"Guilmon",
+				"Huckmon"
+			],
+			"evolvesTo": [
+				"RizeGreymon",
+				"MetalTyrannomon",
+				"Cyberdramon"
+			]
+		},
+		"Strikedramon": {
+			"evolvesFrom": [
+				"Gaomon",
+				"Monodramon",
+				"Agumon (Black)"
+			],
+			"evolvesTo": [
+				"Cyberdramon",
+				"SaviorHuckmon",
+				"Locomon"
+			]
+		},
+		"Snimon": {
+			"evolvesFrom": [
+				"Crabmon",
+				"Tentomon",
+				"Wormmon"
+			],
+			"evolvesTo": [
+				"Okuwamon",
+				"Phantomon",
+				"Arukenimon",
+				"JewelBeemon"
+			]
+		},
+		"ZubaEagermon": {
+			"evolvesFrom": [
+				"Gizamon",
+				"Shoutmon",
+				"Zubamon"
+			],
+			"evolvesTo": [
+				"Grademon",
+				"WarGrowlmon",
+				"Duramon",
+				"Knightmon"
+			]
+		},
+		"Sorcermon": {
+			"evolvesFrom": [
+				"Lunamon",
+				"Kamemon",
+				"Kudamon"
+			],
+			"evolvesTo": [
+				"MagnaAngemon",
+				"Piximon",
+				"Wisemon"
+			]
+		},
+		"Gatomon": {
+			"evolvesFrom": [
+				"Chuumon",
+				"Salamon",
+				"SnowGoblimon",
+				"Huckmon"
+			],
+			"evolvesTo": [
+				"Nefertimon",
+				"Angewomon",
+				"Silphymon"
+			]
+		},
+		"Dobermon": {
+			"evolvesFrom": [
+				"Salamon",
+				"Gazimon",
+				"Gabumon (Black)"
+			],
+			"evolvesTo": [
+				"Matadormon",
+				"DarkSuperStarmon",
+				"Cerberusmon",
+				"Mummymon"
+			]
+		},
+		"Birdramon": {
+			"evolvesFrom": [
+				"Coronamon",
+				"Biyomon",
+				"Hyokomon",
+				"Muchomon"
+			],
+			"evolvesTo": [
+				"Flaremon",
+				"Garudamon",
+				"SkullMeramon",
+				"Parrotmon"
+			]
+		},
+		"Firamon": {
+			"evolvesFrom": [
+				"Coronamon",
+				"Hawkmon"
+			],
+			"evolvesTo": [
+				"Flaremon",
+				"SaviorHuckmon",
+				"Mistymon"
+			]
+		},
+		"Veedramon": {
+			"evolvesFrom": [
+				"Veemon",
+				"Dracomon",
+				"Salamon"
+			],
+			"evolvesTo": [
+				"Wingdramon",
+				"AeroVeedramon",
+				"Cyberdramon",
+				"MetalGreymon (Blue)"
+			]
+		},
+		"Buraimon": {
+			"evolvesFrom": [
+				"Hyokomon",
+				"Penmon",
+				"Zubamon"
+			],
+			"evolvesTo": [
+				"Butenmon",
+				"Duramon",
+				"Garudamon"
+			]
+		},
+		"Peckmon": {
+			"evolvesFrom": [
+				"Hyokomon",
+				"Penmon",
+				"Muchomon",
+				"Falcomon"
+			],
+			"evolvesTo": [
+				"Chirinmon",
+				"Myotismon",
+				"Crowmon"
+			]
+		},
+		"Mojyamon": {
+			"evolvesFrom": [
+				"Bearmon",
+				"Gomamon",
+				"Palmon",
+				"Terriermon"
+			],
+			"evolvesTo": [
+				"Zudomon",
+				"Piximon",
+				"Mistymon",
+				"Mammothmon"
+			]
+		},
+		"Frigimon": {
+			"evolvesFrom": [
+				"Lunamon",
+				"Gomamon",
+				"SnowGoblimon"
+			],
+			"evolvesTo": [
+				"Crescemon",
+				"Angewomon",
+				"IceLeomon",
+				"Meteormon",
+				"Mammothmon"
+			]
+		},
+		"Unimon": {
+			"evolvesFrom": [
+				"Patamon",
+				"Tapirmon",
+				"Biyomon",
+				"Elecmon"
+			],
+			"evolvesTo": [
+				"HippoGryphonmon",
+				"MagnaAngemon",
+				"Chirinmon"
+			]
+		},
+		"Raptordramon": {
+			"evolvesFrom": [
+				"Agumon",
+				"Dorumon",
+				"Monodramon"
+			],
+			"evolvesTo": [
+				"Grademon",
+				"Gigadramon",
+				"Tankdramon"
+			]
+		},
+		"Deputymon": {
+			"evolvesFrom": [
+				"Lalamon",
+				"Kotemon",
+				"ToyAgumon"
+			],
+			"evolvesTo": [
+				"Pandamon",
+				"SuperStarmon",
+				"Wisemon"
+			]
 		},
 		"Leomon": {
-			"evolvesFrom": ["Elecmon"],
-			"evolvesTo": ["GrapLeomon", "SaberLeomon"]
+			"evolvesFrom": [
+				"Gaomon",
+				"Bearmon",
+				"Lopmon"
+			],
+			"evolvesTo": [
+				"Flaremon",
+				"GrapLeomon",
+				"IceLeomon",
+				"LoaderLeomon"
+			]
 		},
-		"Dorugamon": {
-			"evolvesFrom": ["Dorumon", "Gabumon"],
-			"evolvesTo": ["DoruGreymon"]
+		"Reppamon": {
+			"evolvesFrom": [
+				"Kudamon",
+				"Ryudamon",
+				"Renamon"
+			],
+			"evolvesTo": [
+				"Chirinmon",
+				"MegaSeadramon",
+				"Angewomon",
+				"DoruGreymon"
+			]
 		},
-		"Guardromon": {
-			"evolvesFrom": ["Hagurumon"],
-			"evolvesTo": ["Andromon"]
+		"Icemon": {
+			"evolvesFrom": [
+				"Lunamon",
+				"SnowGoblimon",
+				"Gotsumon"
+			],
+			"evolvesTo": [
+				"Crescemon",
+				"Meteormon",
+				"IceLeomon"
+			]
+		},
+		"Wizardmon": {
+			"evolvesFrom": [
+				"Impmon",
+				"Biyomon",
+				"Dracmon"
+			],
+			"evolvesTo": [
+				"Datamon",
+				"Mistymon",
+				"Wisemon"
+			]
+		},
+		"Witchmon": {
+			"evolvesFrom": [
+				"Impmon",
+				"Shamamon"
+			],
+			"evolvesTo": [
+				"LadyDevimon",
+				"Angewomon",
+				"Lillymon"
+			]
+		},
+		"Gaogamon": {
+			"evolvesFrom": [
+				"Gaomon",
+				"Bearmon",
+				"Gazimon"
+			],
+			"evolvesTo": [
+				"MachGaogamon",
+				"SaviorHuckmon",
+				"DarkSuperStarmon"
+			]
+		},
+		"Gawappamon": {
+			"evolvesFrom": [
+				"Kamemon",
+				"Crabmon",
+				"Terriermon"
+			],
+			"evolvesTo": [
+				"Shaujinmon",
+				"Divermon",
+				"ShogunGekomon"
+			]
+		},
+		"Kiwimon": {
+			"evolvesFrom": [
+				"Floramon",
+				"Penmon",
+				"Falcomon"
+			],
+			"evolvesTo": [
+				"Lilamon",
+				"Sirenmon",
+				"Deramon",
+				"Cherrymon"
+			]
+		},
+		"Kyubimon": {
+			"evolvesFrom": [
+				"Gabumon",
+				"Tapirmon",
+				"Renamon"
+			],
+			"evolvesTo": [
+				"BlueMeramon",
+				"Cerberusmon",
+				"Taomon",
+				"Enbarrmon"
+			]
+		},
+		"Clockmon": {
+			"evolvesFrom": [
+				"Hagurumon",
+				"Impmon",
+				"Kokuwamon"
+			],
+			"evolvesTo": [
+				"ExTyrannomon",
+				"Andromon",
+				"Zudomon",
+				"Knightmon"
+			]
+		},
+		"Centarumon": {
+			"evolvesFrom": [
+				"Patamon",
+				"Kokuwamon"
+			],
+			"evolvesTo": [
+				"Andromon",
+				"Datamon",
+				"Rapidmon"
+			]
 		},
 		"Sunflowmon": {
-			"evolvesFrom": ["Palmon", "Floramon"],
-			"evolvesTo": ["Lilamon"]
+			"evolvesFrom": [
+				"Lalamon",
+				"Tentomon",
+				"Renamon",
+				"Floramon"
+			],
+			"evolvesTo": [
+				"Lilamon",
+				"Lillymon",
+				"Deramon",
+				"Pumpkinmon"
+			]
 		},
-		"MetalGreymon": {
-			"evolvesFrom": ["Greymon"],
-			"evolvesTo": ["WarGreymon", "Machinedramon"]
+		"Seadramon": {
+			"evolvesFrom": [
+				"Dracomon",
+				"Betamon",
+				"Elecmon",
+				"Otamamon"
+			],
+			"evolvesTo": [
+				"Whamon",
+				"MegaSeadramon",
+				"WaruSeadramon",
+				"Hisyaryumon",
+				"Sharkmon",
+				"SkullSeadramon"
+			]
 		},
-		"SkullGreymon": {
-			"evolvesFrom": ["Greymon"],
-			"evolvesTo": ["Machinedramon", "BlackWarGreymon"]
+		"Coelamon": {
+			"evolvesFrom": [
+				"Crabmon",
+				"Ryudamon",
+				"Betamon",
+				"Syakomon"
+			],
+			"evolvesTo": [
+				"WaruSeadramon",
+				"MetalTyrannomon",
+				"Scorpiomon",
+				"Divermon",
+				"SkullSeadramon"
+			]
 		},
-		"RizeGreymon": {
-			"evolvesFrom": ["GeoGreymon"],
-			"evolvesTo": ["ShineGreymon"]
+		"Shellmon": {
+			"evolvesFrom": [
+				"Kamemon",
+				"Crabmon",
+				"Syakomon"
+			],
+			"evolvesTo": [
+				"Whamon",
+				"Piximon",
+				"Scorpiomon"
+			]
 		},
-		"WereGarurumon": {
-			"evolvesFrom": ["Garurumon"],
-			"evolvesTo": ["MetalGarurumon"]
+		"Starmon": {
+			"evolvesFrom": [
+				"Dracmon",
+				"Gotsumon",
+				"Solarmon"
+			],
+			"evolvesTo": [
+				"Volcanomon",
+				"SuperStarmon",
+				"DarkSuperStarmon",
+				"Mamemon"
+			]
 		},
-		"WarGrowlmon": {
-			"evolvesFrom": ["Growlmon"],
-			"evolvesTo": ["Gallantmon"]
+		"Tankmon": {
+			"evolvesFrom": [
+				"Hagurumon",
+				"Zubamon",
+				"ToyAgumon"
+			],
+			"evolvesTo": [
+				"BigMamemon",
+				"Locomon",
+				"Tankdramon"
+			]
 		},
-		"MagnaAngemon": {
-			"evolvesFrom": ["Angemon"],
-			"evolvesTo": ["Seraphimon"]
+		"MudFrigimon": {
+			"evolvesFrom": [
+				"Lalamon",
+				"Gotsumon",
+				"Lopmon"
+			],
+			"evolvesTo": [
+				"Deramon",
+				"Garbagemon",
+				"Antylamon"
+			]
 		},
-		"Lillymon": {
-			"evolvesFrom": ["Togemon"],
-			"evolvesTo": ["Rosemon"]
+		"Dinohyumon": {
+			"evolvesFrom": [
+				"Kamemon",
+				"Kotemon",
+				"Hyokomon"
+			],
+			"evolvesTo": [
+				"Shaujinmon",
+				"Grademon",
+				"Knightmon"
+			]
 		},
-		"MegaKabuterimon": {
-			"evolvesFrom": ["Kabuterimon"],
-			"evolvesTo": ["HerculesKabuterimon"]
+		"Tyrannomon": {
+			"evolvesFrom": [
+				"Guilmon",
+				"Dracomon"
+			],
+			"evolvesTo": [
+				"ExTyrannomon",
+				"Groundramon",
+				"MetalGreymon",
+				"MetalTyrannomon"
+			]
 		},
-		"Myotismon": {
-			"evolvesFrom": ["Devimon"],
-			"evolvesTo": ["VenomMyotismon", "MaloMyotismon"]
+		"Turuiemon": {
+			"evolvesFrom": [
+				"Gaomon",
+				"Lalamon",
+				"Kotemon",
+				"Lopmon"
+			],
+			"evolvesTo": [
+				"Matadormon",
+				"MachGaogamon",
+				"Antylamon"
+			]
 		},
-		"Infermon": {
-			"evolvesFrom": ["Chrysalimon"],
-			"evolvesTo": ["Diaboromon"]
+		"Togemon": {
+			"evolvesFrom": [
+				"Lalamon",
+				"Palmon",
+				"Floramon"
+			],
+			"evolvesTo": [
+				"Lillymon",
+				"Cherrymon",
+				"Pumpkinmon"
+			]
 		},
-		"Matadormon": {
-			"evolvesFrom": ["Sangloupmon"],
-			"evolvesTo": ["GranDracmon"]
+		"Drimogemon": {
+			"evolvesFrom": [
+				"Dorumon",
+				"Gabumon",
+				"Salamon"
+			],
+			"evolvesTo": [
+				"Triceramon",
+				"LoaderLeomon",
+				"Brachiomon"
+			]
 		},
-		"DoruGreymon": {
-			"evolvesFrom": ["Dorugamon"],
-			"evolvesTo": ["Dorugoramon", "Alphamon"]
+		"Dorugamon": {
+			"evolvesFrom": [
+				"Dorumon",
+				"Gazimon",
+				"Gabumon (Black)"
+			],
+			"evolvesTo": [
+				"RizeGreymon",
+				"DoruGreymon",
+				"GreatGrizzlymon",
+				"MetalGreymon (Blue)"
+			]
 		},
-		"Lucemon FM": {
-			"evolvesFrom": ["Lucemon"],
-			"evolvesTo": ["Lucemon SM"]
+		"BaoHuckmon": {
+			"evolvesFrom": [
+				"Coronamon",
+				"Gazimon",
+				"Huckmon"
+			],
+			"evolvesTo": [
+				"RizeGreymon",
+				"SaviorHuckmon",
+				"LoaderLeomon"
+			]
 		},
-		"WarGreymon": {
-			"evolvesFrom": ["MetalGreymon"],
-			"evolvesTo": ["Omnimon"]
+		"Blimpmon": {
+			"evolvesFrom": [
+				"Hagurumon",
+				"ToyAgumon"
+			],
+			"evolvesTo": [
+				"Locomon",
+				"MetalMamemon",
+				"MasterBlimpmon"
+			]
 		},
-		"MetalGarurumon": {
-			"evolvesFrom": ["WereGarurumon"],
-			"evolvesTo": ["Omnimon"]
+		"Meramon": {
+			"evolvesFrom": [
+				"Coronamon",
+				"Tapirmon",
+				"Solarmon"
+			],
+			"evolvesTo": [
+				"BigMamemon",
+				"BlueMeramon",
+				"SkullMeramon"
+			]
 		},
-		"ShineGreymon": {
-			"evolvesFrom": ["RizeGreymon"],
+		"Monochromon": {
+			"evolvesFrom": [
+				"Ryudamon",
+				"SnowGoblimon",
+				"Gotsumon"
+			],
+			"evolvesTo": [
+				"Triceramon",
+				"Cerberusmon",
+				"Mammothmon"
+			]
+		},
+		"Lekismon": {
+			"evolvesFrom": [
+				"Lunamon",
+				"Renamon",
+				"Terriermon"
+			],
+			"evolvesTo": [
+				"Crescemon",
+				"WereGarurumon",
+				"GrapLeomon"
+			]
+		},
+		"IceDevimon": {
+			"evolvesFrom": [
+				"DemiDevimon",
+				"Gomamon",
+				"SnowGoblimon"
+			],
+			"evolvesTo": [
+				"Crescemon",
+				"LadyDevimon",
+				"IceLeomon",
+				"Enbarrmon"
+			]
+		},
+		"Wendigomon": {
+			"evolvesFrom": [
+				"Goblimon",
+				"Keramon",
+				"Lopmon"
+			],
+			"evolvesTo": [
+				"Arukenimon",
+				"SkullMeramon",
+				"Antylamon"
+			]
+		},
+		"Woodmon": {
+			"evolvesFrom": [
+				"Palmon",
+				"Mushroomon",
+				"Floramon"
+			],
+			"evolvesTo": [
+				"Cherrymon",
+				"Taomon",
+				"Pumpkinmon"
+			]
+		},
+		"Ogremon": {
+			"evolvesFrom": [
+				"DemiDevimon",
+				"Goblimon"
+			],
+			"evolvesTo": [
+				"SkullSatamon",
+				"Mummymon",
+				"Digitamamon"
+			]
+		},
+		"Octomon": {
+			"evolvesFrom": [
+				"Kamemon",
+				"Crabmon",
+				"Keramon",
+				"Syakomon"
+			],
+			"evolvesTo": [
+				"Dragomon",
+				"Digitamamon",
+				"Divermon"
+			]
+		},
+		"Guardromon": {
+			"evolvesFrom": [
+				"Hagurumon",
+				"Gotsumon"
+			],
+			"evolvesTo": [
+				"CatchMamemon",
+				"Locomon",
+				"Andromon"
+			]
+		},
+		"ShellNumemon": {
+			"evolvesFrom": [
+				"Kamemon",
+				"Otamamon",
+				"Syakomon"
+			],
+			"evolvesTo": [
+				"Orochimon",
+				"WaruSeadramon",
+				"BlackKingNumemon",
+				"Pandamon"
+			]
+		},
+		"Growlmon": {
+			"evolvesFrom": [
+				"Guilmon",
+				"Coronamon",
+				"Huckmon"
+			],
+			"evolvesTo": [
+				"WarGrowlmon",
+				"Groundramon",
+				"DoruGreymon"
+			]
+		},
+		"Kuwagamon": {
+			"evolvesFrom": [
+				"Tentomon",
+				"Elecmon",
+				"Kokuwamon"
+			],
+			"evolvesTo": [
+				"Cherrymon",
+				"Okuwamon",
+				"Scorpiomon",
+				"Kimeramon"
+			]
+		},
+		"Gekomon": {
+			"evolvesFrom": [
+				"Chuumon",
+				"Elecmon",
+				"Otamamon"
+			],
+			"evolvesTo": [
+				"Sirenmon",
+				"ShogunGekomon",
+				"Divermon"
+			]
+		},
+		"Geremon": {
+			"evolvesFrom": [
+				"Chuumon",
+				"Gabumon",
+				"Gizamon"
+			],
+			"evolvesTo": [
+				"CatchMamemon",
+				"SuperStarmon",
+				"Monzaemon"
+			]
+		},
+		"Coredramon (Green)": {
+			"evolvesFrom": [
+				"Agumon",
+				"Dracomon"
+			],
+			"evolvesTo": [
+				"WarGrowlmon",
+				"Groundramon",
+				"SkullGreymon"
+			]
+		},
+		"GoldNumemon": {
+			"evolvesFrom": [
+				"FunBeemon",
+				"Solarmon"
+			],
+			"evolvesTo": [
+				"WaruSeadramon",
+				"Vademon",
+				"BlackKingNumemon"
+			]
+		},
+		"Golemon": {
+			"evolvesFrom": [
+				"Goblimon",
+				"Gotsumon",
+				"Armadillomon"
+			],
+			"evolvesTo": [
+				"Volcanomon",
+				"Mammothmon",
+				"Meteormon"
+			]
+		},
+		"Cyclonemon": {
+			"evolvesFrom": [
+				"Monodramon",
+				"Gizamon"
+			],
+			"evolvesTo": [
+				"Grademon",
+				"Cyberdramon",
+				"Brachiomon"
+			]
+		},
+		"Sangloupmon": {
+			"evolvesFrom": [
+				"Impmon",
+				"Dorumon",
+				"Salamon",
+				"Dracmon",
+				"Gazimon"
+			],
+			"evolvesTo": [
+				"Matadormon",
+				"Myotismon",
+				"Astamon",
+				"WereGarurumon (Black)"
+			]
+		},
+		"Sukamon": {
+			"evolvesFrom": [
+				"Chuumon",
+				"Dracmon",
+				"Mushroomon"
+			],
+			"evolvesTo": [
+				"Monzaemon",
+				"Etemon",
+				"Garbagemon",
+				"Mamemon"
+			]
+		},
+		"Tuskmon": {
+			"evolvesFrom": [
+				"Goblimon",
+				"Betamon",
+				"Agumon (Black)"
+			],
+			"evolvesTo": [
+				"Triceramon",
+				"Groundramon",
+				"Digitamamon"
+			]
+		},
+		"Devimon": {
+			"evolvesFrom": [
+				"Impmon",
+				"DemiDevimon",
+				"Betamon",
+				"Agumon (Black)"
+			],
+			"evolvesTo": [
+				"Myotismon",
+				"LadyDevimon",
+				"Infermon",
+				"SkullSatamon",
+				"Astamon"
+			]
+		},
+		"Deltamon": {
+			"evolvesFrom": [
+				"Goblimon",
+				"Dracomon",
+				"Monodramon"
+			],
+			"evolvesTo": [
+				"Orochimon",
+				"Kimeramon",
+				"SkullBaluchimon",
+				"MetalGreymon",
+				"Sharkmon"
+			]
+		},
+		"Dokugumon": {
+			"evolvesFrom": [
+				"FunBeemon",
+				"Wormmon",
+				"Keramon"
+			],
+			"evolvesTo": [
+				"Arukenimon",
+				"Mummymon",
+				"MegaKabuterimon",
+				"Infermon"
+			]
+		},
+		"Nanimon": {
+			"evolvesFrom": [
+				"Gaomon",
+				"Mushroomon"
+			],
+			"evolvesTo": [
+				"Volcanomon",
+				"SuperStarmon",
+				"Etemon",
+				"Mamemon"
+			]
+		},
+		"Numemon": {
+			"evolvesFrom": [
+				"Agumon",
+				"Betamon",
+				"Otamamon"
+			],
+			"evolvesTo": [
+				"Monzaemon",
+				"DarkSuperStarmon",
+				"Etemon"
+			]
+		},
+		"Bakemon": {
+			"evolvesFrom": [
+				"Impmon",
+				"DemiDevimon",
+				"Tapirmon"
+			],
+			"evolvesTo": [
+				"Myotismon",
+				"BlueMeramon",
+				"Phantomon",
+				"Enbarrmon"
+			]
+		},
+		"Hyogamon": {
+			"evolvesFrom": [
+				"Lunamon",
+				"Gomamon",
+				"SnowGoblimon"
+			],
+			"evolvesTo": [
+				"Zudomon",
+				"Phantomon",
+				"IceLeomon"
+			]
+		},
+		"Fugamon": {
+			"evolvesFrom": [
+				"Shamamon",
+				"Muchomon",
+				"Gabumon (Black)"
+			],
+			"evolvesTo": [
+				"Volcanomon",
+				"SkullSatamon",
+				"Garudamon"
+			]
+		},
+		"Flymon": {
+			"evolvesFrom": [
+				"FunBeemon",
+				"Gizamon",
+				"Mushroomon"
+			],
+			"evolvesTo": [
+				"Megadramon",
+				"MegaKabuterimon",
+				"Okuwamon",
+				"JewelBeemon"
+			]
+		},
+		"PlatinumSukamon": {
+			"evolvesFrom": [
+				"Chuumon",
+				"Palmon",
+				"Otamamon"
+			],
+			"evolvesTo": [
+				"Vademon",
+				"Mamemon",
+				"MetalMamemon"
+			]
+		},
+		"BlackGatomon": {
+			"evolvesFrom": [
+				"Chuumon",
+				"Gazimon",
+				"Gabumon (Black)"
+			],
+			"evolvesTo": [
+				"Pandamon",
+				"LadyDevimon",
+				"SkullBaluchimon",
+				"WereGarurumon (Black)"
+			]
+		},
+		"Vegiemon": {
+			"evolvesFrom": [
+				"Palmon",
+				"Betamon",
+				"Floramon"
+			],
+			"evolvesTo": [
+				"ShogunGekomon",
+				"Garbagemon",
+				"Vademon"
+			]
+		},
+		"Minotarumon": {
+			"evolvesFrom": [
+				"Shamamon",
+				"Lopmon",
+				"Gabumon (Black)"
+			],
+			"evolvesTo": [
+				"Triceramon",
+				"Etemon",
+				"GrapLeomon"
+			]
+		},
+		"Musyamon": {
+			"evolvesFrom": [
+				"Kotemon",
+				"Shamamon",
+				"Zubamon"
+			],
+			"evolvesTo": [
+				"Grademon",
+				"Butenmon",
+				"Hisyaryumon"
+			]
+		},
+		"Mekanorimon": {
+			"evolvesFrom": [
+				"Hagurumon",
+				"Kokuwamon",
+				"Keramon"
+			],
+			"evolvesTo": [
+				"BigMamemon",
+				"Megadramon",
+				"Datamon"
+			]
+		},
+		"Raremon": {
+			"evolvesFrom": [
+				"Crabmon",
+				"ToyAgumon",
+				"Syakomon"
+			],
+			"evolvesTo": [
+				"Dragomon",
+				"BlackKingNumemon",
+				"ShogunGekomon",
+				"ExTyrannomon",
+				"SkullBaluchimon"
+			]
+		},
+		"Waspmon": {
+			"evolvesFrom": [
+				"FunBeemon",
+				"Tentomon",
+				"Kokuwamon"
+			],
+			"evolvesTo": [
+				"Rapidmon",
+				"CannonBeemon",
+				"Tankdramon"
+			]
+		},
+		"Aquilamon": {
+			"evolvesFrom": [
+				"Biyomon",
+				"Penmon",
+				"Hawkmon"
+			],
+			"evolvesTo": [
+				"Garudamon",
+				"Parrotmon",
+				"Silphymon",
+				"Crowmon"
+			]
+		},
+		"Ankylomon": {
+			"evolvesFrom": [
+				"Gizamon",
+				"Zubamon",
+				"Armadillomon"
+			],
+			"evolvesTo": [
+				"Shakkoumon",
+				"Meteormon",
+				"Brachiomon"
+			]
+		},
+		"ExVeemon": {
+			"evolvesFrom": [
+				"Guilmon",
+				"Dorumon",
+				"Veemon"
+			],
+			"evolvesTo": [
+				"Dinobeemon",
+				"RizeGreymon",
+				"Paildramon"
+			]
+		},
+		"Guardromon (Gold)": {
+			"evolvesFrom": [
+				"Shoutmon",
+				"Zubamon",
+				"Solarmon"
+			],
+			"evolvesTo": [
+				"Duramon",
+				"CannonBeemon",
+				"MasterBlimpmon"
+			]
+		},
+		"Stingmon": {
+			"evolvesFrom": [
+				"FunBeemon",
+				"Wormmon"
+			],
+			"evolvesTo": [
+				"Okuwamon",
+				"JewelBeemon",
+				"Dinobeemon",
+				"Paildramon"
+			]
+		},
+		"Kurisarimon": {
+			"evolvesFrom": [
+				"Palmon",
+				"Monodramon",
+				"Keramon"
+			],
+			"evolvesTo": [
+				"Dragomon",
+				"Orochimon",
+				"Arukenimon",
+				"Infermon"
+			]
+		},
+		"Submarimon": {
+			"evolvesFrom": [
+				"Armadillomon"
+			],
 			"evolvesTo": []
 		},
-		"Gallantmon": {
-			"evolvesFrom": ["WarGrowlmon"],
-			"evolvesTo": ["Gallantmon CM"]
+		"Shurimon": {
+			"evolvesFrom": [
+				"Hawkmon"
+			],
+			"evolvesTo": []
+		},
+		"Digmon": {
+			"evolvesFrom": [
+				"Armadillomon"
+			],
+			"evolvesTo": []
+		},
+		"Nefertimon": {
+			"evolvesFrom": [
+				"Gatomon"
+			],
+			"evolvesTo": []
+		},
+		"Flamedramon": {
+			"evolvesFrom": [
+				"Veemon"
+			],
+			"evolvesTo": []
+		},
+		"Pegasusmon": {
+			"evolvesFrom": [
+				"Patamon"
+			],
+			"evolvesTo": []
+		},
+		"Halsemon": {
+			"evolvesFrom": [
+				"Hawkmon"
+			],
+			"evolvesTo": []
+		},
+		"Lighdramon": {
+			"evolvesFrom": [
+				"Veemon"
+			],
+			"evolvesTo": []
+		},
+		"Agunimon": {
+			"evolvesFrom": [
+				"Coronamon",
+				"BurningGreymon"
+			],
+			"evolvesTo": [
+				"Aldamon",
+				"BurningGreymon"
+			]
+		},
+		"Lobomon": {
+			"evolvesFrom": [
+				"Kudamon",
+				"KendoGarurumon"
+			],
+			"evolvesTo": [
+				"Beowolfmon",
+				"KendoGarurumon"
+			]
+		},
+		"Lanamon": {
+			"evolvesFrom": [
+				"Calmaramon",
+				"Gizamon"
+			],
+			"evolvesTo": [
+				"Calmaramon"
+			]
+		},
+		"BurningGreymon": {
+			"evolvesFrom": [
+				"Agunimon"
+			],
+			"evolvesTo": [
+				"Aldamon",
+				"Agunimon"
+			]
+		},
+		"Calmaramon": {
+			"evolvesFrom": [
+				"Lanamon"
+			],
+			"evolvesTo": [
+				"Lanamon"
+			]
+		},
+		"KendoGarurumon": {
+			"evolvesFrom": [
+				"Lobomon"
+			],
+			"evolvesTo": [
+				"Beowolfmon",
+				"Lobomon"
+			]
+		},
+		"Aegiochusmon": {
+			"evolvesFrom": [
+				"Aegiomon"
+			],
+			"evolvesTo": [
+				"Jupitermon"
+			]
+		},
+		"Aegiochusmon: Green": {
+			"evolvesFrom": [
+				"Aegiomon"
+			],
+			"evolvesTo": [
+				"Jupitermon"
+			]
+		},
+		"Aegiochusmon: Dark": {
+			"evolvesFrom": [
+				"Aegiomon"
+			],
+			"evolvesTo": [
+				"Chronomon DM"
+			]
+		},
+		"Aegiochusmon: Blue": {
+			"evolvesFrom": [
+				"Aegiomon"
+			],
+			"evolvesTo": [
+				"Jupitermon"
+			]
+		},
+		"Aegiochusmon: Holy": {
+			"evolvesFrom": [
+				"Aegiomon"
+			],
+			"evolvesTo": [
+				"Jupitermon"
+			]
+		},
+		"MegaKabuterimon": {
+			"evolvesFrom": [
+				"Kabuterimon",
+				"Flymon",
+				"Dokugumon"
+			],
+			"evolvesTo": [
+				"TyrantKabuterimon",
+				"HerculesKabuterimon"
+			]
+		},
+		"Andromon": {
+			"evolvesFrom": [
+				"Guardromon",
+				"Centarumon",
+				"Clockmon"
+			],
+			"evolvesTo": [
+				"HiAndromon",
+				"Boltmon",
+				"Craniamon"
+			]
+		},
+		"Wingdramon": {
+			"evolvesFrom": [
+				"Coredramon (Blue)",
+				"Veedramon",
+				"Greymon (Blue)"
+			],
+			"evolvesTo": [
+				"ShineGreymon",
+				"Varodurumon",
+				"Slayerdramon"
+			]
+		},
+		"AeroVeedramon": {
+			"evolvesFrom": [
+				"Airdramon",
+				"Coredramon (Blue)",
+				"Veedramon"
+			],
+			"evolvesTo": [
+				"Goldramon",
+				"Slayerdramon",
+				"UlforceVeedramon"
+			]
+		},
+		"ExTyrannomon": {
+			"evolvesFrom": [
+				"Tyrannomon",
+				"Clockmon",
+				"Raremon"
+			],
+			"evolvesTo": [
+				"RustTyrannomon",
+				"Belphemon SM",
+				"Cherubimon (Good)"
+			]
+		},
+		"Angewomon": {
+			"evolvesFrom": [
+				"Reppamon",
+				"Gatomon",
+				"Frigimon",
+				"Witchmon"
+			],
+			"evolvesTo": [
+				"Junomon",
+				"Ophanimon",
+				"Magnadramon",
+				"Mastemon"
+			]
+		},
+		"Garudamon": {
+			"evolvesFrom": [
+				"Aquilamon",
+				"Birdramon",
+				"Buraimon",
+				"Fugamon"
+			],
+			"evolvesTo": [
+				"Gryphonmon",
+				"Phoenixmon",
+				"Jesmon"
+			]
+		},
+		"GrapLeomon": {
+			"evolvesFrom": [
+				"Lekismon",
+				"Minotarumon",
+				"Leomon",
+				"Grizzlymon"
+			],
+			"evolvesTo": [
+				"BanchoLeomon",
+				"Marsmon",
+				"SaberLeomon",
+				"Leopardmon"
+			]
+		},
+		"Grademon": {
+			"evolvesFrom": [
+				"Raptordramon",
+				"Musyamon",
+				"Cyclonemon",
+				"Dinohyumon",
+				"ZubaEagermon"
+			],
+			"evolvesTo": [
+				"Alphamon",
+				"Durandamon",
+				"Dynasmon"
+			]
+		},
+		"GreatGrizzlymon": {
+			"evolvesFrom": [
+				"Grizzlymon",
+				"Dorugamon"
+			],
+			"evolvesTo": [
+				"Callismon",
+				"Cherubimon (Black)"
+			]
+		},
+		"Cerberusmon": {
+			"evolvesFrom": [
+				"Dobermon",
+				"Cerberusmon WM",
+				"Monochromon",
+				"Kyubimon"
+			],
+			"evolvesTo": [
+				"Plutomon",
+				"Cerberusmon WM",
+				"SaberLeomon",
+				"MetalGarurumon (Black)"
+			]
+		},
+		"Cerberusmon WM": {
+			"evolvesFrom": [
+				"Cerberusmon"
+			],
+			"evolvesTo": [
+				"Plutomon",
+				"Cerberusmon",
+				"SaberLeomon",
+				"MetalGarurumon (Black)"
+			]
+		},
+		"Cyberdramon": {
+			"evolvesFrom": [
+				"Strikedramon",
+				"GeoGreymon",
+				"Veedramon",
+				"Cyclonemon"
+			],
+			"evolvesTo": [
+				"UlforceVeedramon",
+				"Justimon"
+			]
+		},
+		"JewelBeemon": {
+			"evolvesFrom": [
+				"Stingmon",
+				"Flymon",
+				"Snimon"
+			],
+			"evolvesTo": [
+				"HerculesKabuterimon",
+				"TigerVespamon"
+			]
+		},
+		"Zudomon": {
+			"evolvesFrom": [
+				"Ikkakumon",
+				"Mojyamon",
+				"Clockmon",
+				"Hyogamon"
+			],
+			"evolvesTo": [
+				"Vikemon",
+				"Plesiomon"
+			]
+		},
+		"Chirinmon": {
+			"evolvesFrom": [
+				"Reppamon",
+				"Unimon",
+				"Peckmon"
+			],
+			"evolvesTo": [
+				"Kentaurosmon",
+				"Eaglemon",
+				"Valkyrimon"
+			]
+		},
+		"Duramon": {
+			"evolvesFrom": [
+				"Buraimon",
+				"ZubaEagermon",
+				"Guardromon (Gold)"
+			],
+			"evolvesTo": [
+				"WarGreymon",
+				"Gallantmon",
+				"Durandamon"
+			]
+		},
+		"Parrotmon": {
+			"evolvesFrom": [
+				"Aquilamon",
+				"Birdramon"
+			],
+			"evolvesTo": [
+				"Eaglemon",
+				"Phoenixmon"
+			]
+		},
+		"IceLeomon": {
+			"evolvesFrom": [
+				"Leomon",
+				"Frigimon",
+				"Hyogamon",
+				"IceDevimon",
+				"Icemon"
+			],
+			"evolvesTo": [
+				"MirageGaogamon",
+				"SaberLeomon"
+			]
+		},
+		"Hisyaryumon": {
+			"evolvesFrom": [
+				"Airdramon",
+				"Ginryumon",
+				"Musyamon",
+				"Seadramon"
+			],
+			"evolvesTo": [
+				"Ouryumon",
+				"Gaiomon"
+			]
+		},
+		"Butenmon": {
+			"evolvesFrom": [
+				"Ginryumon",
+				"Musyamon",
+				"Buraimon"
+			],
+			"evolvesTo": [
+				"Chronomon HM",
+				"Chronomon DM",
+				"Gryphonmon",
+				"Gaiomon"
+			]
+		},
+		"Flaremon": {
+			"evolvesFrom": [
+				"Leomon",
+				"Firamon",
+				"Birdramon"
+			],
+			"evolvesTo": [
+				"Apollomon",
+				"Seraphimon",
+				"BlackWarGreymon"
+			]
+		},
+		"Whamon": {
+			"evolvesFrom": [
+				"Ikkakumon",
+				"Seadramon",
+				"Shellmon"
+			],
+			"evolvesTo": [
+				"Leviamon",
+				"Neptunemon",
+				"Plesiomon",
+				"MarineAngemon"
+			]
+		},
+		"MagnaAngemon": {
+			"evolvesFrom": [
+				"Angemon",
+				"Unimon",
+				"Sorcermon"
+			],
+			"evolvesTo": [
+				"Goldramon",
+				"Seraphimon",
+				"ClavisAngemon",
+				"SlashAngemon"
+			]
+		},
+		"Mammothmon": {
+			"evolvesFrom": [
+				"Golemon",
+				"Monochromon",
+				"Frigimon",
+				"Mojyamon"
+			],
+			"evolvesTo": [
+				"Vikemon",
+				"SkullMammothmon"
+			]
+		},
+		"MetalGreymon": {
+			"evolvesFrom": [
+				"Deltamon",
+				"Greymon",
+				"Tyrannomon"
+			],
+			"evolvesTo": [
+				"WarGreymon",
+				"Gaiomon",
+				"BlitzGreymon"
+			]
+		},
+		"Monzaemon": {
+			"evolvesFrom": [
+				"Numemon",
+				"Sukamon",
+				"Geremon"
+			],
+			"evolvesTo": [
+				"KingEtemon",
+				"Callismon"
+			]
+		},
+		"Crowmon": {
+			"evolvesFrom": [
+				"Aquilamon",
+				"Peckmon"
+			],
+			"evolvesTo": [
+				"Varodurumon",
+				"Ravemon",
+				"Kuzuhamon"
+			]
+		},
+		"RizeGreymon": {
+			"evolvesFrom": [
+				"GeoGreymon",
+				"BaoHuckmon",
+				"ExVeemon",
+				"Dorugamon"
+			],
+			"evolvesTo": [
+				"Kentaurosmon",
+				"ShineGreymon",
+				"MagnaKidmon"
+			]
+		},
+		"Rapidmon": {
+			"evolvesFrom": [
+				"Centarumon",
+				"Waspmon",
+				"Gargomon"
+			],
+			"evolvesTo": [
+				"MegaGargomon",
+				"HiAndromon"
+			]
+		},
+		"LoaderLeomon": {
+			"evolvesFrom": [
+				"Leomon",
+				"BaoHuckmon",
+				"Drimogemon"
+			],
+			"evolvesTo": [
+				"BanchoLeomon",
+				"MetalGarurumon",
+				"Chaosdramon"
+			]
+		},
+		"WereGarurumon": {
+			"evolvesFrom": [
+				"Lekismon",
+				"Garurumon",
+				"Grizzlymon"
+			],
+			"evolvesTo": [
+				"Merukimon",
+				"MetalGarurumon",
+				"CresGarurumon"
+			]
+		},
+		"Scorpiomon": {
+			"evolvesFrom": [
+				"Coelamon",
+				"Kuwagamon",
+				"Shellmon"
+			],
+			"evolvesTo": [
+				"Vulcanusmon",
+				"Pukumon"
+			]
+		},
+		"Enbarrmon": {
+			"evolvesFrom": [
+				"Bakemon",
+				"Kyubimon",
+				"IceDevimon"
+			],
+			"evolvesTo": [
+				"Kentaurosmon",
+				"SkullMammothmon",
+				"Craniamon + Enbarrmon"
+			]
+		},
+		"Antylamon": {
+			"evolvesFrom": [
+				"Wendigomon",
+				"Turuiemon",
+				"MudFrigimon"
+			],
+			"evolvesTo": [
+				"Dianamon",
+				"Cherubimon (Good)",
+				"Cherubimon (Black)"
+			]
+		},
+		"Meteormon": {
+			"evolvesFrom": [
+				"Golemon",
+				"Frigimon",
+				"Ankylomon",
+				"Icemon"
+			],
+			"evolvesTo": [
+				"MetalEtemon",
+				"Boltmon"
+			]
+		},
+		"OmniShoutmon": {
+			"evolvesFrom": [
+				"Shoutmon"
+			],
+			"evolvesTo": [
+				"PileVolcanomon",
+				"MagnaKidmon",
+				"Durandamon"
+			]
+		},
+		"Kimeramon": {
+			"evolvesFrom": [
+				"Garurumon",
+				"Deltamon",
+				"Kabuterimon",
+				"Greymon",
+				"Kuwagamon"
+			],
+			"evolvesTo": [
+				"GranDracmon",
+				"Millenniummon",
+				"Machinedramon"
+			]
+		},
+		"CatchMamemon": {
+			"evolvesFrom": [
+				"Guardromon",
+				"Gargomon",
+				"Geremon"
+			],
+			"evolvesTo": [
+				"PlatinumNumemon",
+				"PrinceMamemon",
+				"MetalGarurumon (Black)"
+			]
+		},
+		"Crescemon": {
+			"evolvesFrom": [
+				"Lekismon",
+				"Frigimon",
+				"IceDevimon",
+				"Icemon"
+			],
+			"evolvesTo": [
+				"Dianamon",
+				"Cherubimon (Good)",
+				"LordKnightmon"
+			]
+		},
+		"SuperStarmon": {
+			"evolvesFrom": [
+				"Starmon",
+				"Nanimon",
+				"Deputymon",
+				"Geremon"
+			],
+			"evolvesTo": [
+				"Goldramon",
+				"PrinceMamemon",
+				"Justimon"
+			]
+		},
+		"SkullBaluchimon": {
+			"evolvesFrom": [
+				"BlackGatomon",
+				"Deltamon",
+				"Raremon",
+				"Greymon (Blue)"
+			],
+			"evolvesTo": [
+				"SkullMammothmon",
+				"Titamon + SkullBaluchimon"
+			]
+		},
+		"SaviorHuckmon": {
+			"evolvesFrom": [
+				"Strikedramon",
+				"Gaogamon",
+				"BaoHuckmon",
+				"Firamon"
+			],
+			"evolvesTo": [
+				"Gankoomon",
+				"TigerVespamon",
+				"Jesmon"
+			]
+		},
+		"Sirenmon": {
+			"evolvesFrom": [
+				"Angemon",
+				"Gekomon",
+				"Kiwimon"
+			],
+			"evolvesTo": [
+				"MarineAngemon",
+				"Ceresmon"
+			]
+		},
+		"Taomon": {
+			"evolvesFrom": [
+				"Garurumon",
+				"Woodmon",
+				"Kyubimon"
+			],
+			"evolvesTo": [
+				"Venusmon",
+				"Sakuyamon",
+				"Kuzuhamon"
+			]
+		},
+		"Digitamamon": {
+			"evolvesFrom": [
+				"Octomon",
+				"Ogremon",
+				"Tuskmon"
+			],
+			"evolvesTo": [
+				"Bacchusmon",
+				"Titamon"
+			]
+		},
+		"SkullMeramon": {
+			"evolvesFrom": [
+				"Meramon",
+				"Wendigomon",
+				"Birdramon"
+			],
+			"evolvesTo": [
+				"Beelzemon",
+				"Boltmon",
+				"AvengeKidmon"
+			]
+		},
+		"Deramon": {
+			"evolvesFrom": [
+				"Sunflowmon",
+				"Kiwimon",
+				"MudFrigimon"
+			],
+			"evolvesTo": [
+				"Varodurumon",
+				"Ceresmon",
+				"PlatinumNumemon"
+			]
+		},
+		"Triceramon": {
+			"evolvesFrom": [
+				"Minotarumon",
+				"Monochromon",
+				"Drimogemon",
+				"Tuskmon"
+			],
+			"evolvesTo": [
+				"Breakdramon",
+				"UltimateBrachiomon"
+			]
+		},
+		"DoruGreymon": {
+			"evolvesFrom": [
+				"Reppamon",
+				"Growlmon",
+				"Dorugamon"
+			],
+			"evolvesTo": [
+				"Dorugoramon",
+				"Alphamon"
+			]
+		},
+		"Knightmon": {
+			"evolvesFrom": [
+				"Clockmon",
+				"Dinohyumon",
+				"ZubaEagermon"
+			],
+			"evolvesTo": [
+				"Zanbamon",
+				"SlashAngemon",
+				"LordKnightmon",
+				"Leopardmon"
+			]
+		},
+		"Divermon": {
+			"evolvesFrom": [
+				"Gawappamon",
+				"Coelamon",
+				"Octomon",
+				"Gekomon"
+			],
+			"evolvesTo": [
+				"Neptunemon",
+				"Plesiomon"
+			]
+		},
+		"Pandamon": {
+			"evolvesFrom": [
+				"BlackGatomon",
+				"ShellNumemon",
+				"Deputymon",
+				"Garurumon (Black)"
+			],
+			"evolvesTo": [
+				"Merukimon",
+				"MirageGaogamon",
+				"Justimon"
+			]
+		},
+		"Pumpkinmon": {
+			"evolvesFrom": [
+				"Sunflowmon",
+				"Togemon",
+				"Woodmon"
+			],
+			"evolvesTo": [
+				"Rosemon",
+				"Lotosmon"
+			]
+		},
+		"BigMamemon": {
+			"evolvesFrom": [
+				"Meramon",
+				"Mekanorimon",
+				"Tankmon"
+			],
+			"evolvesTo": [
+				"PlatinumNumemon",
+				"PrinceMamemon",
+				"GroundLocomon"
+			]
+		},
+		"Piximon": {
+			"evolvesFrom": [
+				"Shellmon",
+				"Mojyamon",
+				"Sorcermon"
+			],
+			"evolvesTo": [
+				"Venusmon",
+				"Ophanimon",
+				"ClavisAngemon"
+			]
+		},
+		"HippoGryphonmon": {
+			"evolvesFrom": [
+				"Angemon",
+				"Unimon"
+			],
+			"evolvesTo": [
+				"Gryphonmon",
+				"Eaglemon",
+				"Dynasmon"
+			]
+		},
+		"Brachiomon": {
+			"evolvesFrom": [
+				"Drimogemon",
+				"Cyclonemon",
+				"Ankylomon"
+			],
+			"evolvesTo": [
+				"Ouryumon",
+				"RustTyrannomon",
+				"UltimateBrachiomon"
+			]
+		},
+		"Volcanomon": {
+			"evolvesFrom": [
+				"Golemon",
+				"Starmon",
+				"Nanimon",
+				"Fugamon"
+			],
+			"evolvesTo": [
+				"BanchoLeomon",
+				"PileVolcanomon",
+				"Gankoomon",
+				"Apollomon"
+			]
+		},
+		"MasterBlimpmon": {
+			"evolvesFrom": [
+				"Blimpmon",
+				"Guardromon (Gold)"
+			],
+			"evolvesTo": [
+				"GroundLocomon",
+				"Gundramon"
+			]
+		},
+		"MachGaogamon": {
+			"evolvesFrom": [
+				"Gaogamon",
+				"Turuiemon",
+				"Gargomon"
+			],
+			"evolvesTo": [
+				"MirageGaogamon",
+				"MegaGargomon"
+			]
+		},
+		"Mamemon": {
+			"evolvesFrom": [
+				"Starmon",
+				"Sukamon",
+				"Nanimon",
+				"PlatinumSukamon"
+			],
+			"evolvesTo": [
+				"Pukumon",
+				"PrinceMamemon"
+			]
+		},
+		"MegaSeadramon": {
+			"evolvesFrom": [
+				"Reppamon",
+				"Ikkakumon",
+				"Seadramon"
+			],
+			"evolvesTo": [
+				"JumboGamemon",
+				"Ouryumon",
+				"MetalSeadramon"
+			]
+		},
+		"MetalMamemon": {
+			"evolvesFrom": [
+				"Blimpmon",
+				"PlatinumSukamon"
+			],
+			"evolvesTo": [
+				"MetalGarurumon",
+				"MagnaKidmon"
+			]
+		},
+		"Lilamon": {
+			"evolvesFrom": [
+				"Sunflowmon",
+				"Kabuterimon",
+				"Kiwimon"
+			],
+			"evolvesTo": [
+				"Lilithmon",
+				"Rosemon",
+				"Puppetmon"
+			]
+		},
+		"Lillymon": {
+			"evolvesFrom": [
+				"Sunflowmon",
+				"Togemon",
+				"Witchmon"
+			],
+			"evolvesTo": [
+				"Rosemon",
+				"Ceresmon"
+			]
+		},
+		"Locomon": {
+			"evolvesFrom": [
+				"Strikedramon",
+				"Guardromon",
+				"Blimpmon",
+				"Tankmon"
+			],
+			"evolvesTo": [
+				"GroundLocomon",
+				"HiAndromon"
+			]
+		},
+		"Astamon": {
+			"evolvesFrom": [
+				"Sangloupmon",
+				"Devimon"
+			],
+			"evolvesTo": [
+				"Beelzemon",
+				"Plutomon",
+				"Belphemon SM",
+				"VenomMyotismon"
+			]
+		},
+		"Arukenimon": {
+			"evolvesFrom": [
+				"Wendigomon",
+				"Dokugumon",
+				"Snimon",
+				"Kurisarimon"
+			],
+			"evolvesTo": [
+				"Lilithmon",
+				"TyrantKabuterimon",
+				"Lotosmon"
+			]
+		},
+		"Myotismon": {
+			"evolvesFrom": [
+				"Bakemon",
+				"Sangloupmon",
+				"Devimon",
+				"Peckmon"
+			],
+			"evolvesTo": [
+				"Creepymon",
+				"MaloMyotismon",
+				"VenomMyotismon"
+			]
+		},
+		"Etemon": {
+			"evolvesFrom": [
+				"Minotarumon",
+				"Numemon",
+				"Sukamon",
+				"Nanimon"
+			],
+			"evolvesTo": [
+				"PileVolcanomon",
+				"KingEtemon",
+				"MetalEtemon"
+			]
+		},
+		"Okuwamon": {
+			"evolvesFrom": [
+				"Stingmon",
+				"Kuwagamon",
+				"Flymon",
+				"Snimon"
+			],
+			"evolvesTo": [
+				"TyrantKabuterimon",
+				"HerculesKabuterimon",
+				"GranKuwagamon"
+			]
+		},
+		"Orochimon": {
+			"evolvesFrom": [
+				"Deltamon",
+				"ShellNumemon",
+				"Kurisarimon"
+			],
+			"evolvesTo": [
+				"Bacchusmon",
+				"Gundramon",
+				"Minervamon"
+			]
+		},
+		"Garbagemon": {
+			"evolvesFrom": [
+				"Sukamon",
+				"Vegiemon",
+				"MudFrigimon"
+			],
+			"evolvesTo": [
+				"JumboGamemon",
+				"MetalEtemon"
+			]
+		},
+		"Gigadramon": {
+			"evolvesFrom": [
+				"Airdramon",
+				"Raptordramon",
+				"Coredramon (Blue)"
+			],
+			"evolvesTo": [
+				"Gundramon",
+				"Chaosdramon"
+			]
+		},
+		"CannonBeemon": {
+			"evolvesFrom": [
+				"Kabuterimon",
+				"Waspmon",
+				"Guardromon (Gold)"
+			],
+			"evolvesTo": [
+				"MegaGargomon",
+				"TigerVespamon"
+			]
+		},
+		"Groundramon": {
+			"evolvesFrom": [
+				"Growlmon",
+				"Coredramon (Green)",
+				"Tyrannomon",
+				"Tuskmon"
+			],
+			"evolvesTo": [
+				"Megidramon",
+				"Breakdramon"
+			]
+		},
+		"Sharkmon": {
+			"evolvesFrom": [
+				"Deltamon",
+				"Seadramon"
+			],
+			"evolvesTo": [
+				"Neptunemon",
+				"MetalSeadramon"
+			]
+		},
+		"Shaujinmon": {
+			"evolvesFrom": [
+				"Gawappamon",
+				"Dinohyumon"
+			],
+			"evolvesTo": [
+				"Barbamon",
+				"JumboGamemon",
+				"Puppetmon"
+			]
+		},
+		"Cherrymon": {
+			"evolvesFrom": [
+				"Togemon",
+				"Kuwagamon",
+				"Woodmon",
+				"Kiwimon"
+			],
+			"evolvesTo": [
+				"Puppetmon",
+				"Rosemon",
+				"GranKuwagamon"
+			]
+		},
+		"SkullGreymon": {
+			"evolvesFrom": [
+				"Ginryumon",
+				"Coredramon (Green)",
+				"Greymon"
+			],
+			"evolvesTo": [
+				"Titamon",
+				"SkullMammothmon"
+			]
+		},
+		"SkullSatamon": {
+			"evolvesFrom": [
+				"Devimon",
+				"Ogremon",
+				"Fugamon",
+				"Garurumon (Black)"
+			],
+			"evolvesTo": [
+				"Barbamon",
+				"Piedmon",
+				"Ebemon"
+			]
+		},
+		"SkullSeadramon": {
+			"evolvesFrom": [
+				"Coelamon",
+				"Ikkakumon",
+				"Seadramon"
+			],
+			"evolvesTo": [
+				"Leviamon",
+				"MetalSeadramon"
+			]
+		},
+		"DarkSuperStarmon": {
+			"evolvesFrom": [
+				"Starmon",
+				"Gaogamon",
+				"Numemon",
+				"Dobermon"
+			],
+			"evolvesTo": [
+				"BeelStarmon",
+				"Titamon",
+				"Ravemon"
+			]
+		},
+		"Dragomon": {
+			"evolvesFrom": [
+				"Octomon",
+				"Raremon",
+				"Kurisarimon"
+			],
+			"evolvesTo": [
+				"Vulcanusmon",
+				"Ebemon",
+				"Parallelmon"
+			]
+		},
+		"Tankdramon": {
+			"evolvesFrom": [
+				"Raptordramon",
+				"Waspmon",
+				"Tankmon"
+			],
+			"evolvesTo": [
+				"Gundramon",
+				"Darkdramon"
+			]
+		},
+		"ShogunGekomon": {
+			"evolvesFrom": [
+				"Gawappamon",
+				"Vegiemon",
+				"Gekomon",
+				"Raremon"
+			],
+			"evolvesTo": [
+				"KingEtemon",
+				"Bacchusmon",
+				"Pukumon"
+			]
+		},
+		"Datamon": {
+			"evolvesFrom": [
+				"Centarumon",
+				"Wizardmon",
+				"Mekanorimon"
+			],
+			"evolvesTo": [
+				"Pharaohmon",
+				"Diaboromon"
+			]
+		},
+		"Phantomon": {
+			"evolvesFrom": [
+				"Bakemon",
+				"Hyogamon",
+				"Snimon"
+			],
+			"evolvesTo": [
+				"Sakuyamon",
+				"Piedmon",
+				"Belphemon SM",
+				"Ravemon"
+			]
+		},
+		"BlackKingNumemon": {
+			"evolvesFrom": [
+				"GoldNumemon",
+				"ShellNumemon",
+				"Raremon"
+			],
+			"evolvesTo": [
+				"PlatinumNumemon",
+				"MetalEtemon"
+			]
+		},
+		"BlueMeramon": {
+			"evolvesFrom": [
+				"Meramon",
+				"Garurumon",
+				"Bakemon",
+				"Kyubimon"
+			],
+			"evolvesTo": [
+				"Marsmon",
+				"Pharaohmon"
+			]
+		},
+		"Vademon": {
+			"evolvesFrom": [
+				"GoldNumemon",
+				"Vegiemon",
+				"PlatinumSukamon"
+			],
+			"evolvesTo": [
+				"Ebemon",
+				"AvengeKidmon"
+			]
+		},
+		"Matadormon": {
+			"evolvesFrom": [
+				"Sangloupmon",
+				"Turuiemon",
+				"Dobermon"
+			],
+			"evolvesTo": [
+				"GranDracmon",
+				"SlashAngemon",
+				"Kuzuhamon"
+			]
+		},
+		"Mummymon": {
+			"evolvesFrom": [
+				"Dobermon",
+				"Ogremon",
+				"Dokugumon"
+			],
+			"evolvesTo": [
+				"Pharaohmon",
+				"HiAndromon",
+				"AvengeKidmon"
+			]
+		},
+		"Mistymon": {
+			"evolvesFrom": [
+				"Firamon",
+				"Mojyamon",
+				"Wizardmon"
+			],
+			"evolvesTo": [
+				"ChaosGallantmon",
+				"Zanbamon",
+				"MedievalGallantmon",
+				"Dynasmon"
+			]
+		},
+		"Megadramon": {
+			"evolvesFrom": [
+				"Airdramon",
+				"Greymon",
+				"Flymon",
+				"Mekanorimon"
+			],
+			"evolvesTo": [
+				"Megidramon",
+				"Machinedramon"
+			]
+		},
+		"WarGrowlmon": {
+			"evolvesFrom": [
+				"Growlmon",
+				"Coredramon (Green)",
+				"ZubaEagermon"
+			],
+			"evolvesTo": [
+				"Megidramon",
+				"Gallantmon",
+				"ChaosGallantmon",
+				"Chaosdramon"
+			]
+		},
+		"MetalTyrannomon": {
+			"evolvesFrom": [
+				"GeoGreymon",
+				"Coelamon",
+				"Tyrannomon"
+			],
+			"evolvesTo": [
+				"RustTyrannomon",
+				"Machinedramon",
+				"UltimateBrachiomon"
+			]
+		},
+		"Lucemon CM": {
+			"evolvesFrom": [
+				"Lucemon"
+			],
+			"evolvesTo": [
+				"Lucemon SM"
+			]
+		},
+		"LadyDevimon": {
+			"evolvesFrom": [
+				"BlackGatomon",
+				"Devimon",
+				"Witchmon",
+				"IceDevimon"
+			],
+			"evolvesTo": [
+				"Lilithmon",
+				"BeelStarmon",
+				"Mastemon"
+			]
+		},
+		"Wisemon": {
+			"evolvesFrom": [
+				"Wizardmon",
+				"Deputymon",
+				"Sorcermon"
+			],
+			"evolvesTo": [
+				"Creepymon",
+				"ChaosGallantmon",
+				"AncientWisemon"
+			]
+		},
+		"WaruSeadramon": {
+			"evolvesFrom": [
+				"GoldNumemon",
+				"Coelamon",
+				"Seadramon",
+				"ShellNumemon"
+			],
+			"evolvesTo": [
+				"Leviamon",
+				"Megidramon",
+				"MetalSeadramon"
+			]
+		},
+		"Shakkoumon": {
+			"evolvesFrom": [
+				"Angemon",
+				"Ankylomon"
+			],
+			"evolvesTo": [
+				"Goldramon",
+				"Junomon",
+				"Vikemon",
+				"Magnadramon"
+			]
+		},
+		"Silphymon": {
+			"evolvesFrom": [
+				"Aquilamon",
+				"Gatomon"
+			],
+			"evolvesTo": [
+				"BeelStarmon",
+				"Minervamon",
+				"Valkyrimon"
+			]
+		},
+		"Dinobeemon": {
+			"evolvesFrom": [
+				"Stingmon",
+				"ExVeemon"
+			],
+			"evolvesTo": [
+				"GranKuwagamon",
+				"TigerVespamon"
+			]
+		},
+		"Paildramon": {
+			"evolvesFrom": [
+				"Stingmon",
+				"ExVeemon"
+			],
+			"evolvesTo": [
+				"Dorugoramon",
+				"Imperialdramon DM",
+				"Darkdramon"
+			]
+		},
+		"Infermon": {
+			"evolvesFrom": [
+				"Devimon",
+				"Dokugumon",
+				"Kurisarimon"
+			],
+			"evolvesTo": [
+				"MaloMyotismon",
+				"Diaboromon",
+				"Cherubimon (Black)",
+				"Parallelmon"
+			]
+		},
+		"Aldamon": {
+			"evolvesFrom": [
+				"Agunimon",
+				"BurningGreymon"
+			],
+			"evolvesTo": [
+				"EmperorGreymon"
+			]
+		},
+		"Beowolfmon": {
+			"evolvesFrom": [
+				"Lobomon",
+				"KendoGarurumon"
+			],
+			"evolvesTo": [
+				"MagnaGarurumon"
+			]
+		},
+		"Apollomon": {
+			"evolvesFrom": [
+				"Volcanomon",
+				"Flaremon"
+			],
+			"evolvesTo": [
+				"GraceNovamon"
+			]
+		},
+		"Alphamon": {
+			"evolvesFrom": [
+				"Grademon",
+				"DoruGreymon"
+			],
+			"evolvesTo": [
+				"Alphamon: Ouryuken"
+			]
+		},
+		"UlforceVeedramon": {
+			"evolvesFrom": [
+				"AeroVeedramon",
+				"Cyberdramon"
+			],
+			"evolvesTo": []
+		},
+		"Varodurumon": {
+			"evolvesFrom": [
+				"Wingdramon",
+				"Deramon",
+				"Crowmon"
+			],
+			"evolvesTo": [
+				"Chaosmon: Valdur Arm"
+			]
+		},
+		"Venusmon": {
+			"evolvesFrom": [
+				"Taomon",
+				"Piximon"
+			],
+			"evolvesTo": []
+		},
+		"WarGreymon": {
+			"evolvesFrom": [
+				"MetalGreymon",
+				"Duramon"
+			],
+			"evolvesTo": [
+				"Omnimon"
+			]
+		},
+		"Ouryumon": {
+			"evolvesFrom": [
+				"MegaSeadramon",
+				"Hisyaryumon",
+				"Brachiomon"
+			],
+			"evolvesTo": [
+				"Alphamon: Ouryuken"
+			]
+		},
+		"Ophanimon": {
+			"evolvesFrom": [
+				"Angewomon",
+				"Piximon"
+			],
+			"evolvesTo": []
+		},
+		"ClavisAngemon": {
+			"evolvesFrom": [
+				"MagnaAngemon",
+				"Piximon"
+			],
+			"evolvesTo": []
+		},
+		"Craniamon": {
+			"evolvesFrom": [
+				"Andromon"
+			],
+			"evolvesTo": [
+				"Craniamon + Enbarrmon"
+			]
+		},
+		"Eaglemon": {
+			"evolvesFrom": [
+				"HippoGryphonmon",
+				"Chirinmon",
+				"Parrotmon"
+			],
+			"evolvesTo": []
+		},
+		"Chronomon HM": {
+			"evolvesFrom": [
+				"Butenmon"
+			],
+			"evolvesTo": []
+		},
+		"Cherubimon (Black)": {
+			"evolvesFrom": [
+				"GreatGrizzlymon",
+				"Infermon",
+				"Antylamon",
+				"MetalGreymon (Blue)"
+			],
+			"evolvesTo": []
+		},
+		"Cherubimon (Good)": {
+			"evolvesFrom": [
+				"ExTyrannomon",
+				"Crescemon",
+				"Antylamon"
+			],
+			"evolvesTo": []
+		},
+		"Goldramon": {
+			"evolvesFrom": [
+				"SuperStarmon",
+				"MagnaAngemon",
+				"AeroVeedramon",
+				"Shakkoumon"
+			],
+			"evolvesTo": []
+		},
+		"ShineGreymon": {
+			"evolvesFrom": [
+				"RizeGreymon",
+				"Wingdramon"
+			],
+			"evolvesTo": [
+				"ShineGreymon BM"
+			]
+		},
+		"Justimon": {
+			"evolvesFrom": [
+				"Pandamon",
+				"SuperStarmon",
+				"Cyberdramon"
+			],
+			"evolvesTo": []
+		},
+		"SkullMammothmon": {
+			"evolvesFrom": [
+				"SkullBaluchimon",
+				"SkullGreymon",
+				"Mammothmon",
+				"Enbarrmon"
+			],
+			"evolvesTo": []
+		},
+		"SlashAngemon": {
+			"evolvesFrom": [
+				"Matadormon",
+				"MagnaAngemon",
+				"Knightmon"
+			],
+			"evolvesTo": []
+		},
+		"Kentaurosmon": {
+			"evolvesFrom": [
+				"RizeGreymon",
+				"Chirinmon",
+				"Enbarrmon"
+			],
+			"evolvesTo": []
+		},
+		"Slayerdramon": {
+			"evolvesFrom": [
+				"Wingdramon",
+				"AeroVeedramon"
+			],
+			"evolvesTo": [
+				"Examon"
+			]
 		},
 		"Seraphimon": {
-			"evolvesFrom": ["MagnaAngemon"],
+			"evolvesFrom": [
+				"MagnaAngemon",
+				"Flaremon"
+			],
+			"evolvesTo": []
+		},
+		"MegaGargomon": {
+			"evolvesFrom": [
+				"MachGaogamon",
+				"Rapidmon",
+				"CannonBeemon"
+			],
+			"evolvesTo": []
+		},
+		"Durandamon": {
+			"evolvesFrom": [
+				"Grademon",
+				"OmniShoutmon",
+				"Duramon"
+			],
+			"evolvesTo": []
+		},
+		"Neptunemon": {
+			"evolvesFrom": [
+				"Whamon",
+				"Divermon",
+				"Sharkmon"
+			],
+			"evolvesTo": []
+		},
+		"HiAndromon": {
+			"evolvesFrom": [
+				"Locomon",
+				"Mummymon",
+				"Andromon",
+				"Rapidmon"
+			],
+			"evolvesTo": []
+		},
+		"BanchoLeomon": {
+			"evolvesFrom": [
+				"Volcanomon",
+				"GrapLeomon",
+				"LoaderLeomon"
+			],
+			"evolvesTo": [
+				"Chaosmon: Valdur Arm",
+				"Chaosmon"
+			]
+		},
+		"HerculesKabuterimon": {
+			"evolvesFrom": [
+				"MegaKabuterimon",
+				"Okuwamon",
+				"JewelBeemon"
+			],
+			"evolvesTo": []
+		},
+		"Phoenixmon": {
+			"evolvesFrom": [
+				"Garudamon",
+				"Parrotmon"
+			],
+			"evolvesTo": []
+		},
+		"Magnadramon": {
+			"evolvesFrom": [
+				"Angewomon",
+				"Shakkoumon"
+			],
+			"evolvesTo": []
+		},
+		"Mastemon": {
+			"evolvesFrom": [
+				"LadyDevimon",
+				"Angewomon"
+			],
+			"evolvesTo": []
+		},
+		"MarineAngemon": {
+			"evolvesFrom": [
+				"Whamon",
+				"Sirenmon"
+			],
+			"evolvesTo": []
+		},
+		"Marsmon": {
+			"evolvesFrom": [
+				"BlueMeramon",
+				"GrapLeomon"
+			],
+			"evolvesTo": []
+		},
+		"Jupitermon": {
+			"evolvesFrom": [
+				"Aegiochusmon",
+				"Aegiochusmon: Holy",
+				"Aegiochusmon: Blue",
+				"Aegiochusmon: Green"
+			],
+			"evolvesTo": [
+				"Jupitermon WM"
+			]
+		},
+		"Ravemon": {
+			"evolvesFrom": [
+				"DarkSuperStarmon",
+				"Phantomon",
+				"Crowmon"
+			],
+			"evolvesTo": [
+				"Ravemon BM"
+			]
+		},
+		"UltimateBrachiomon": {
+			"evolvesFrom": [
+				"Triceramon",
+				"MetalTyrannomon",
+				"Brachiomon"
+			],
+			"evolvesTo": []
+		},
+		"Vulcanusmon": {
+			"evolvesFrom": [
+				"Dragomon",
+				"Scorpiomon"
+			],
+			"evolvesTo": []
+		},
+		"Gankoomon": {
+			"evolvesFrom": [
+				"Volcanomon",
+				"SaviorHuckmon"
+			],
+			"evolvesTo": []
+		},
+		"Kuzuhamon": {
+			"evolvesFrom": [
+				"Matadormon",
+				"Taomon",
+				"Crowmon"
+			],
+			"evolvesTo": []
+		},
+		"GroundLocomon": {
+			"evolvesFrom": [
+				"BigMamemon",
+				"Locomon",
+				"MasterBlimpmon"
+			],
+			"evolvesTo": []
+		},
+		"Gryphonmon": {
+			"evolvesFrom": [
+				"HippoGryphonmon",
+				"Garudamon",
+				"Butenmon"
+			],
+			"evolvesTo": []
+		},
+		"Ceresmon": {
+			"evolvesFrom": [
+				"Ceresmon Medium",
+				"Sirenmon",
+				"Lillymon",
+				"Deramon"
+			],
+			"evolvesTo": [
+				"Ceresmon Medium"
+			]
+		},
+		"Ceresmon Medium": {
+			"evolvesFrom": [
+				"Ceresmon"
+			],
+			"evolvesTo": [
+				"Ceresmon"
+			]
+		},
+		"SaberLeomon": {
+			"evolvesFrom": [
+				"Cerberusmon",
+				"Cerberusmon WM",
+				"GrapLeomon",
+				"IceLeomon"
+			],
+			"evolvesTo": []
+		},
+		"Sakuyamon": {
+			"evolvesFrom": [
+				"Taomon",
+				"Phantomon"
+			],
+			"evolvesTo": []
+		},
+		"Jesmon": {
+			"evolvesFrom": [
+				"SaviorHuckmon",
+				"Garudamon"
+			],
+			"evolvesTo": []
+		},
+		"JumboGamemon": {
+			"evolvesFrom": [
+				"Shaujinmon",
+				"MegaSeadramon",
+				"Garbagemon"
+			],
+			"evolvesTo": []
+		},
+		"Dianamon": {
+			"evolvesFrom": [
+				"Crescemon",
+				"Antylamon"
+			],
+			"evolvesTo": [
+				"GraceNovamon"
+			]
+		},
+		"Dynasmon": {
+			"evolvesFrom": [
+				"Grademon",
+				"HippoGryphonmon",
+				"Mistymon"
+			],
+			"evolvesTo": []
+		},
+		"Leopardmon": {
+			"evolvesFrom": [
+				"GrapLeomon",
+				"Knightmon",
+				"Leopardmon LM"
+			],
+			"evolvesTo": [
+				"Leopardmon LM"
+			]
+		},
+		"Leopardmon LM": {
+			"evolvesFrom": [
+				"Leopardmon"
+			],
+			"evolvesTo": [
+				"Leopardmon"
+			]
+		},
+		"Dorugoramon": {
+			"evolvesFrom": [
+				"DoruGreymon",
+				"Paildramon"
+			],
+			"evolvesTo": []
+		},
+		"PileVolcanomon": {
+			"evolvesFrom": [
+				"Volcanomon",
+				"Etemon",
+				"OmniShoutmon",
+				"WereGarurumon (Black)"
+			],
+			"evolvesTo": []
+		},
+		"PrinceMamemon": {
+			"evolvesFrom": [
+				"BigMamemon",
+				"CatchMamemon",
+				"SuperStarmon",
+				"Mamemon"
+			],
+			"evolvesTo": []
+		},
+		"Plesiomon": {
+			"evolvesFrom": [
+				"Whamon",
+				"Zudomon",
+				"Divermon"
+			],
+			"evolvesTo": []
+		},
+		"Boltmon": {
+			"evolvesFrom": [
+				"Andromon",
+				"SkullMeramon",
+				"Meteormon"
+			],
+			"evolvesTo": []
+		},
+		"MirageGaogamon": {
+			"evolvesFrom": [
+				"Pandamon",
+				"MachGaogamon",
+				"IceLeomon"
+			],
+			"evolvesTo": [
+				"MirageGaogamon BM"
+			]
+		},
+		"MetalGarurumon": {
+			"evolvesFrom": [
+				"WereGarurumon",
+				"MetalMamemon",
+				"LoaderLeomon"
+			],
+			"evolvesTo": [
+				"Omnimon"
+			]
+		},
+		"MetalSeadramon": {
+			"evolvesFrom": [
+				"MegaSeadramon",
+				"WaruSeadramon",
+				"Sharkmon",
+				"SkullSeadramon"
+			],
+			"evolvesTo": []
+		},
+		"MedievalGallantmon": {
+			"evolvesFrom": [
+				"Mistymon"
+			],
 			"evolvesTo": []
 		},
 		"Rosemon": {
-			"evolvesFrom": ["Lillymon"],
+			"evolvesFrom": [
+				"Lilamon",
+				"Lillymon",
+				"Cherrymon",
+				"Pumpkinmon"
+			],
+			"evolvesTo": [
+				"Rosemon BM"
+			]
+		},
+		"Lotosmon": {
+			"evolvesFrom": [
+				"Arukenimon",
+				"Pumpkinmon"
+			],
 			"evolvesTo": []
 		},
-		"HerculesKabuterimon": {
-			"evolvesFrom": ["MegaKabuterimon"],
+		"AvengeKidmon": {
+			"evolvesFrom": [
+				"Mummymon",
+				"SkullMeramon",
+				"Vademon"
+			],
+			"evolvesTo": []
+		},
+		"Ebemon": {
+			"evolvesFrom": [
+				"SkullSatamon",
+				"Dragomon",
+				"Vademon"
+			],
 			"evolvesTo": []
 		},
 		"VenomMyotismon": {
-			"evolvesFrom": ["Myotismon"],
+			"evolvesFrom": [
+				"Myotismon",
+				"Astamon"
+			],
 			"evolvesTo": []
 		},
-		"MaloMyotismon": {
-			"evolvesFrom": ["Myotismon"],
+		"AncientWisemon": {
+			"evolvesFrom": [
+				"Wisemon"
+			],
 			"evolvesTo": []
 		},
-		"Diaboromon": {
-			"evolvesFrom": ["Infermon"],
-			"evolvesTo": ["Armageddemon"]
+		"Gaiomon": {
+			"evolvesFrom": [
+				"Hisyaryumon",
+				"MetalGreymon",
+				"Butenmon"
+			],
+			"evolvesTo": []
+		},
+		"ChaosGallantmon": {
+			"evolvesFrom": [
+				"WarGrowlmon",
+				"Mistymon",
+				"Wisemon"
+			],
+			"evolvesTo": []
+		},
+		"Chaosdramon": {
+			"evolvesFrom": [
+				"WarGrowlmon",
+				"Gigadramon",
+				"LoaderLeomon"
+			],
+			"evolvesTo": []
+		},
+		"Callismon": {
+			"evolvesFrom": [
+				"Monzaemon",
+				"GreatGrizzlymon"
+			],
+			"evolvesTo": []
+		},
+		"Gundramon": {
+			"evolvesFrom": [
+				"Orochimon",
+				"Gigadramon",
+				"MasterBlimpmon",
+				"Tankdramon"
+			],
+			"evolvesTo": []
+		},
+		"KingEtemon": {
+			"evolvesFrom": [
+				"Monzaemon",
+				"Etemon",
+				"ShogunGekomon"
+			],
+			"evolvesTo": []
 		},
 		"GranDracmon": {
-			"evolvesFrom": ["Matadormon"],
+			"evolvesFrom": [
+				"Matadormon",
+				"Kimeramon"
+			],
 			"evolvesTo": []
 		},
-		"Alphamon": {
-			"evolvesFrom": ["DoruGreymon"],
+		"Chronomon DM": {
+			"evolvesFrom": [
+				"Aegiochusmon: Dark",
+				"Butenmon"
+			],
 			"evolvesTo": []
 		},
-		"Dorugoramon": {
-			"evolvesFrom": ["DoruGreymon"],
+		"Zanbamon": {
+			"evolvesFrom": [
+				"Mistymon",
+				"Knightmon"
+			],
 			"evolvesTo": []
 		},
-		"Lucemon SM": {
-			"evolvesFrom": ["Lucemon FM"],
+		"ZombiePlutomon": {
+			"evolvesFrom": [
+				"Plutomon"
+			],
 			"evolvesTo": []
 		},
-		"Omnimon": {
-			"evolvesFrom": ["WarGreymon", "MetalGarurumon"],
+		"Darkdramon": {
+			"evolvesFrom": [
+				"Paildramon",
+				"Tankdramon",
+				"MetalGreymon (Blue)"
+			],
+			"evolvesTo": [
+				"Chaosmon"
+			]
+		},
+		"TigerVespamon": {
+			"evolvesFrom": [
+				"Dinobeemon",
+				"SaviorHuckmon",
+				"JewelBeemon",
+				"CannonBeemon"
+			],
 			"evolvesTo": []
 		},
-		"Gallantmon CM": {
-			"evolvesFrom": ["Gallantmon"],
+		"Titamon": {
+			"evolvesFrom": [
+				"DarkSuperStarmon",
+				"Digitamamon",
+				"SkullGreymon"
+			],
+			"evolvesTo": [
+				"Titamon + SkullBaluchimon"
+			]
+		},
+		"TyrantKabuterimon": {
+			"evolvesFrom": [
+				"Arukenimon",
+				"MegaKabuterimon",
+				"Okuwamon"
+			],
 			"evolvesTo": []
 		},
-		"Armageddemon": {
-			"evolvesFrom": ["Diaboromon"],
+		"Creepymon": {
+			"evolvesFrom": [
+				"Myotismon",
+				"Wisemon"
+			],
 			"evolvesTo": []
 		},
-		"BlackGarurumon": {
-			"evolvesFrom": ["Gazimon"],
-			"evolvesTo": ["WereGarurumon (Black)"]
+		"Gallantmon": {
+			"evolvesFrom": [
+				"WarGrowlmon",
+				"Duramon"
+			],
+			"evolvesTo": [
+				"Gallantmon CM"
+			]
 		},
-		"IceDevimon": {
-			"evolvesFrom": ["DemiDevimon"],
-			"evolvesTo": ["SkullSatamon"]
+		"Bacchusmon": {
+			"evolvesFrom": [
+				"Orochimon",
+				"Digitamamon",
+				"ShogunGekomon",
+				"Bacchusmon DM"
+			],
+			"evolvesTo": [
+				"Bacchusmon DM"
+			]
 		},
-		"SkullSatamon": {
-			"evolvesFrom": ["Devimon", "IceDevimon"],
-			"evolvesTo": ["Beelzemon"]
+		"Bacchusmon DM": {
+			"evolvesFrom": [
+				"Bacchusmon"
+			],
+			"evolvesTo": [
+				"Bacchusmon"
+			]
+		},
+		"Barbamon": {
+			"evolvesFrom": [
+				"SkullSatamon",
+				"Shaujinmon"
+			],
+			"evolvesTo": []
+		},
+		"Piedmon": {
+			"evolvesFrom": [
+				"SkullSatamon",
+				"Phantomon"
+			],
+			"evolvesTo": [
+				"Apocalymon"
+			]
+		},
+		"Puppetmon": {
+			"evolvesFrom": [
+				"Lilamon",
+				"Shaujinmon",
+				"Cherrymon"
+			],
+			"evolvesTo": []
+		},
+		"Pharaohmon": {
+			"evolvesFrom": [
+				"BlueMeramon",
+				"Mummymon",
+				"Datamon"
+			],
+			"evolvesTo": []
+		},
+		"Pukumon": {
+			"evolvesFrom": [
+				"ShogunGekomon",
+				"Mamemon",
+				"Scorpiomon"
+			],
+			"evolvesTo": []
+		},
+		"PlatinumNumemon": {
+			"evolvesFrom": [
+				"BigMamemon",
+				"CatchMamemon",
+				"Deramon",
+				"BlackKingNumemon"
+			],
+			"evolvesTo": []
+		},
+		"Plutomon": {
+			"evolvesFrom": [
+				"Cerberusmon",
+				"Cerberusmon WM",
+				"Astamon"
+			],
+			"evolvesTo": [
+				"ZombiePlutomon"
+			]
+		},
+		"Breakdramon": {
+			"evolvesFrom": [
+				"Triceramon",
+				"Groundramon"
+			],
+			"evolvesTo": [
+				"Examon"
+			]
+		},
+		"MaloMyotismon": {
+			"evolvesFrom": [
+				"Myotismon",
+				"Infermon"
+			],
+			"evolvesTo": []
+		},
+		"BeelStarmon": {
+			"evolvesFrom": [
+				"LadyDevimon",
+				"DarkSuperStarmon",
+				"Silphymon"
+			],
+			"evolvesTo": []
 		},
 		"Beelzemon": {
-			"evolvesFrom": ["SkullSatamon"],
-			"evolvesTo": ["Beelzemon BM"]
+			"evolvesFrom": [
+				"Astamon",
+				"SkullMeramon"
+			],
+			"evolvesTo": [
+				"Beelzemon BM"
+			]
 		},
-		"Beelzemon BM": {
-			"evolvesFrom": ["Beelzemon"],
+		"Belphemon SM": {
+			"evolvesFrom": [
+				"ExTyrannomon",
+				"Astamon",
+				"Phantomon"
+			],
+			"evolvesTo": [
+				"Belphemon RM"
+			]
+		},
+		"MagnaKidmon": {
+			"evolvesFrom": [
+				"RizeGreymon",
+				"MetalMamemon",
+				"OmniShoutmon"
+			],
 			"evolvesTo": []
 		},
-		"WereGarurumon (Black)": {
-			"evolvesFrom": ["BlackGarurumon"],
-			"evolvesTo": ["MetalGarurumon (Black)"]
+		"Minervamon": {
+			"evolvesFrom": [
+				"Orochimon",
+				"Silphymon"
+			],
+			"evolvesTo": [
+				"Mervamon"
+			]
 		},
-		"MetalGarurumon (Black)": {
-			"evolvesFrom": ["WereGarurumon (Black)"],
-			"evolvesTo": []
-		},
-		"BlackWarGreymon": {
-			"evolvesFrom": ["SkullGreymon"],
+		"Millenniummon": {
+			"evolvesFrom": [
+				"Kimeramon",
+				"Machinedramon"
+			],
 			"evolvesTo": []
 		},
 		"Machinedramon": {
-			"evolvesFrom": ["MetalGreymon", "SkullGreymon"],
+			"evolvesFrom": [
+				"Kimeramon",
+				"Megadramon",
+				"MetalTyrannomon"
+			],
+			"evolvesTo": [
+				"Millenniummon"
+			]
+		},
+		"Megidramon": {
+			"evolvesFrom": [
+				"WaruSeadramon",
+				"WarGrowlmon",
+				"Groundramon",
+				"Megadramon"
+			],
 			"evolvesTo": []
+		},
+		"MetalEtemon": {
+			"evolvesFrom": [
+				"Etemon",
+				"Garbagemon",
+				"BlackKingNumemon",
+				"Meteormon"
+			],
+			"evolvesTo": []
+		},
+		"Merukimon": {
+			"evolvesFrom": [
+				"Pandamon",
+				"WereGarurumon"
+			],
+			"evolvesTo": []
+		},
+		"Junomon": {
+			"evolvesFrom": [
+				"Angewomon",
+				"Junomon HM",
+				"Shakkoumon"
+			],
+			"evolvesTo": [
+				"Junomon HM"
+			]
+		},
+		"Junomon HM": {
+			"evolvesFrom": [
+				"Junomon"
+			],
+			"evolvesTo": [
+				"Junomon"
+			]
+		},
+		"RustTyrannomon": {
+			"evolvesFrom": [
+				"ExTyrannomon",
+				"MetalTyrannomon",
+				"Brachiomon"
+			],
+			"evolvesTo": []
+		},
+		"Leviamon": {
+			"evolvesFrom": [
+				"Whamon",
+				"WaruSeadramon",
+				"SkullSeadramon"
+			],
+			"evolvesTo": []
+		},
+		"Lilithmon": {
+			"evolvesFrom": [
+				"Lilamon",
+				"LadyDevimon",
+				"Arukenimon"
+			],
+			"evolvesTo": []
+		},
+		"LordKnightmon": {
+			"evolvesFrom": [
+				"Crescemon",
+				"Knightmon"
+			],
+			"evolvesTo": []
+		},
+		"Imperialdramon DM": {
+			"evolvesFrom": [
+				"Paildramon",
+				"Imperialdramon FM"
+			],
+			"evolvesTo": [
+				"Imperialdramon FM",
+				"Imperialdramon PM"
+			]
+		},
+		"Imperialdramon FM": {
+			"evolvesFrom": [
+				"Imperialdramon DM"
+			],
+			"evolvesTo": [
+				"Imperialdramon PM",
+				"Imperialdramon DM"
+			]
+		},
+		"Vikemon": {
+			"evolvesFrom": [
+				"Zudomon",
+				"Mammothmon",
+				"Shakkoumon"
+			],
+			"evolvesTo": []
+		},
+		"Valkyrimon": {
+			"evolvesFrom": [
+				"Chirinmon",
+				"Silphymon"
+			],
+			"evolvesTo": []
+		},
+		"GranKuwagamon": {
+			"evolvesFrom": [
+				"Dinobeemon",
+				"Cherrymon",
+				"Okuwamon"
+			],
+			"evolvesTo": []
+		},
+		"Diaboromon": {
+			"evolvesFrom": [
+				"Datamon",
+				"Infermon"
+			],
+			"evolvesTo": [
+				"Armageddemon"
+			]
+		},
+		"Rapidmon (Armor)": {
+			"evolvesFrom": [
+				"Terriermon"
+			],
+			"evolvesTo": []
+		},
+		"Magnamon": {
+			"evolvesFrom": [
+				"Veemon"
+			],
+			"evolvesTo": []
+		},
+		"EmperorGreymon": {
+			"evolvesFrom": [
+				"Aldamon"
+			],
+			"evolvesTo": [
+				"Susanomon"
+			]
+		},
+		"MagnaGarurumon": {
+			"evolvesFrom": [
+				"Beowolfmon",
+				"MagnaGarurumon (Detached)"
+			],
+			"evolvesTo": [
+				"Susanomon",
+				"MagnaGarurumon (Detached)"
+			]
+		},
+		"MagnaGarurumon (Detached)": {
+			"evolvesFrom": [
+				"MagnaGarurumon"
+			],
+			"evolvesTo": [
+				"MagnaGarurumon"
+			]
+		},
+		"Alphamon: Ouryuken": {
+			"evolvesFrom": [
+				"Ouryumon",
+				"Alphamon"
+			],
+			"evolvesTo": []
+		},
+		"Craniamon + Enbarrmon": {
+			"evolvesFrom": [
+				"Craniamon",
+				"Enbarrmon"
+			],
+			"evolvesTo": []
+		},
+		"Imperialdramon PM": {
+			"evolvesFrom": [
+				"Imperialdramon FM",
+				"Imperialdramon DM"
+			],
+			"evolvesTo": []
+		},
+		"Omnimon": {
+			"evolvesFrom": [
+				"WarGreymon",
+				"MetalGarurumon",
+				"Omnimon Zwart"
+			],
+			"evolvesTo": [
+				"Omnimon Zwart"
+			]
+		},
+		"Omnimon Zwart": {
+			"evolvesFrom": [
+				"Omnimon",
+				"BlackWarGreymon",
+				"MetalGarurumon (Black)"
+			],
+			"evolvesTo": [
+				"Omnimon",
+				"Omnimon Zwart Defeat"
+			]
+		},
+		"Chaosmon": {
+			"evolvesFrom": [
+				"BanchoLeomon",
+				"Darkdramon"
+			],
+			"evolvesTo": []
+		},
+		"Chaosmon: Valdur Arm": {
+			"evolvesFrom": [
+				"BanchoLeomon",
+				"Varodurumon"
+			],
+			"evolvesTo": []
+		},
+		"GraceNovamon": {
+			"evolvesFrom": [
+				"Apollomon",
+				"Dianamon"
+			],
+			"evolvesTo": []
+		},
+		"ShineGreymon BM": {
+			"evolvesFrom": [
+				"ShineGreymon"
+			],
+			"evolvesTo": []
+		},
+		"Susanomon": {
+			"evolvesFrom": [
+				"EmperorGreymon",
+				"MagnaGarurumon"
+			],
+			"evolvesTo": []
+		},
+		"Jupitermon WM": {
+			"evolvesFrom": [
+				"Jupitermon"
+			],
+			"evolvesTo": []
+		},
+		"Ravemon BM": {
+			"evolvesFrom": [
+				"Ravemon"
+			],
+			"evolvesTo": []
+		},
+		"Examon": {
+			"evolvesFrom": [
+				"Slayerdramon",
+				"Breakdramon"
+			],
+			"evolvesTo": []
+		},
+		"MirageGaogamon BM": {
+			"evolvesFrom": [
+				"MirageGaogamon"
+			],
+			"evolvesTo": []
+		},
+		"Rosemon BM": {
+			"evolvesFrom": [
+				"Rosemon"
+			],
+			"evolvesTo": []
+		},
+		"Titamon + SkullBaluchimon": {
+			"evolvesFrom": [
+				"SkullBaluchimon",
+				"Titamon"
+			],
+			"evolvesTo": []
+		},
+		"Gallantmon CM": {
+			"evolvesFrom": [
+				"Gallantmon"
+			],
+			"evolvesTo": []
+		},
+		"Beelzemon BM": {
+			"evolvesFrom": [
+				"Beelzemon"
+			],
+			"evolvesTo": []
+		},
+		"Belphemon RM": {
+			"evolvesFrom": [
+				"Belphemon SM"
+			],
+			"evolvesTo": []
+		},
+		"Mervamon": {
+			"evolvesFrom": [
+				"Minervamon"
+			],
+			"evolvesTo": []
+		},
+		"Lucemon SM": {
+			"evolvesFrom": [
+				"Lucemon CM"
+			],
+			"evolvesTo": []
+		},
+		"Armageddemon": {
+			"evolvesFrom": [
+				"Diaboromon"
+			],
+			"evolvesTo": []
+		},
+		"Agumon (Bond of Bravery)": {
+			"evolvesFrom": [
+				"Agumon"
+			],
+			"evolvesTo": []
+		},
+		"Apocalymon": {
+			"evolvesFrom": [
+				"Piedmon"
+			],
+			"evolvesTo": []
+		},
+		"Gabumon (Bond of Friendship)": {
+			"evolvesFrom": [
+				"Gabumon"
+			],
+			"evolvesTo": []
+		},
+		"CresGarurumon": {
+			"evolvesFrom": [
+				"WereGarurumon"
+			],
+			"evolvesTo": [
+				"Omnimon Alter-S"
+			]
+		},
+		"Parallelmon": {
+			"evolvesFrom": [
+				"Dragomon",
+				"Infermon"
+			],
+			"evolvesTo": []
+		},
+		"BlitzGreymon": {
+			"evolvesFrom": [
+				"MetalGreymon"
+			],
+			"evolvesTo": [
+				"Omnimon Alter-S"
+			]
+		},
+		"Omnimon Alter-B": {
+			"evolvesFrom": [
+				"Omnimon Zwart Defeat",
+				"Omnimon Alter-S"
+			],
+			"evolvesTo": [
+				"Omnimon Alter-S"
+			]
+		},
+		"Omnimon Alter-S": {
+			"evolvesFrom": [
+				"BlitzGreymon",
+				"CresGarurumon",
+				"Omnimon Alter-B"
+			],
+			"evolvesTo": [
+				"Omnimon Alter-B"
+			]
+		},
+		"Omnimon Zwart Defeat": {
+			"evolvesFrom": [
+				"Omnimon Zwart"
+			],
+			"evolvesTo": [
+				"Omnimon Alter-B"
+			]
 		}
 	}
 }
