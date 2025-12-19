@@ -456,7 +456,7 @@ onchange={() => { paths = []; }}
 class="px-3 py-1.5 rounded-lg border border-gray-300 dark:border-border bg-white dark:bg-surface-100 text-gray-900 dark:text-muted-50 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
 >
 <option value="">No limit</option>
-{#each generations as gen}
+{#each generations as gen (gen)}
 <option value={gen}>{gen}</option>
 {/each}
 </select>
