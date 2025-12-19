@@ -229,10 +229,10 @@
 					>{translatedAttribute}</span
 				>
 			</div>
-			<p class="text-[9px] sm:text-xs text-gray-500 dark:text-muted-400 hidden sm:block">
+			<p class="text-[9px] sm:text-xs text-gray-500 dark:text-muted-400 text-center">
 				{translatedType}
 			</p>
-			<p class="text-[9px] sm:text-xs text-gray-500 dark:text-muted-400 italic hidden sm:block">
+			<p class="text-[9px] sm:text-xs text-gray-500 dark:text-muted-400 italic text-center">
 				{digimon.basePersonality}
 			</p>
 		</div>

@@ -956,6 +956,27 @@
 			</div>
 		{/if}
 
+
+		<div class="mb-6">
+			<TeamDisplay
+				team={getTeamDigimon()}
+				allDigimon={data.digimon || []}
+				onRerollSlot={canReroll() ? rerollSlot : undefined}
+				onRerollAll={canReroll() ? rerollAll : undefined}
+				showRerollButtons={canReroll()}
+				levelCap={getLevelCap()}
+				currentGeneration={challengeState.currentGeneration}
+				pendingReveal={pendingTeamReveal}
+				onRevealTeam={handleRevealTeam}
+				animationPlayed={animationPlayedForCurrentBoss}
+			/>
+			{#if !canReroll()}
+				<p class="mt-2 text-sm text-gray-500 dark:text-muted text-center">
+					Re-rolls are not available at this checkpoint.
+				</p>
+			{/if}
+		</div>
+
 		<!-- Progress Info -->
 		<div class="grid gap-4 md:grid-cols-2 mb-6">
 			<Accordion title="Challenge Status">
@@ -1130,27 +1151,6 @@
 					{/each}
 				</div>
 			</Accordion>
-		</div>
-
-		<!-- Team Display -->
-		<div class="mb-6">
-			<TeamDisplay
-				team={getTeamDigimon()}
-				allDigimon={data.digimon || []}
-				onRerollSlot={canReroll() ? rerollSlot : undefined}
-				onRerollAll={canReroll() ? rerollAll : undefined}
-				showRerollButtons={canReroll()}
-				levelCap={getLevelCap()}
-				currentGeneration={challengeState.currentGeneration}
-				pendingReveal={pendingTeamReveal}
-				onRevealTeam={handleRevealTeam}
-				animationPlayed={animationPlayedForCurrentBoss}
-			/>
-			{#if !canReroll()}
-				<p class="mt-2 text-sm text-gray-500 dark:text-muted text-center">
-					Re-rolls are not available at this checkpoint.
-				</p>
-			{/if}
 		</div>
 
 		<!-- Challenge Rules and Actions -->
