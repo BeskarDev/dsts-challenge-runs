@@ -444,34 +444,32 @@
 		const filteredDigimon = getFilteredDigimon();
 		const teamSize = data.challenge.settings.teamSize;
 
-		// Get list of digimon already used - only if rerolling per boss
-		// Otherwise, allow repeats to avoid running out of digimon
-		const usedInGeneration = rerollTeamPerBoss
-			? Object.values(challengeState.bossTeams)
-					.filter((bt) => bt.generation === newGeneration)
-					.flatMap((bt) => bt.team.map((tm) => tm.digimonNumber))
-			: [];
+		// Get list of digimon already used in other teams of the same generation
+		// Always exclude duplicates across teams, regardless of rerollTeamPerBoss setting
+		const usedInOtherTeams = Object.values(challengeState.bossTeams)
+			.filter((bt) => bt.generation === newGeneration && bt.bossOrder !== bossOrder)
+			.flatMap((bt) => bt.team.map((tm) => tm.digimonNumber));
 
 		const newTeamDigimon = randomizer.rerollMultiGeneration(
 			filteredDigimon,
 			newGeneration,
 			teamSize,
-			usedInGeneration,
+			usedInOtherTeams,
 			onlyHighestGeneration,
 			minGenerationOverride || undefined,
 			includeNonStandard,
 			bossOrder // Pass boss progression
 		);
 
-		// If no digimon available (empty pool), retry without exclusions
+		// If not enough digimon available with exclusions, retry without exclusions
 		const finalTeam =
-			newTeamDigimon.length > 0
+			newTeamDigimon.length >= teamSize
 				? newTeamDigimon
 				: randomizer.rerollMultiGeneration(
 						filteredDigimon,
 						newGeneration,
 						teamSize,
-						[], // No exclusions
+						[], // No exclusions - allow duplicates if necessary
 						onlyHighestGeneration,
 						minGenerationOverride || undefined,
 						includeNonStandard,
