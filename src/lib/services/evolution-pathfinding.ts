@@ -47,18 +47,55 @@ interface Neighbor {
 	direction: 'up' | 'down';
 }
 
+/** Options for pathfinding */
+export interface PathfindingOptions {
+	/** Maximum generation level allowed in the path (e.g., 'Champion' means only In-Training I/II, Rookie, and Champion are allowed) */
+	maxGeneration?: string;
+	/** Map of Digimon name to generation (needed for generation filtering) */
+	digimonGenerations?: Map<string, string>;
+}
+
+/** Generation level ordering for comparison */
+const GENERATION_ORDER: Record<string, number> = {
+	'In-Training I': 1,
+	'In-Training II': 2,
+	'Rookie': 3,
+	'Champion': 4,
+	'Ultimate': 5,
+	'Mega': 6,
+	'Mega +': 7,
+	'Armor': 4, // Armor is equivalent to Champion level
+	'Hybrid': 5 // Hybrid is equivalent to Ultimate level
+};
+
+/**
+ * Gets the numeric level of a generation for comparison
+ */
+export function getGenerationLevel(generation: string): number {
+	return GENERATION_ORDER[generation] ?? 0;
+}
+
+/**
+ * Gets all generation names in order
+ */
+export function getAllGenerations(): string[] {
+	return ['In-Training I', 'In-Training II', 'Rookie', 'Champion', 'Ultimate', 'Mega', 'Mega +'];
+}
+
 /**
  * Finds all shortest evolution paths between two Digimon
  *
  * @param source - Starting Digimon name
  * @param target - Target Digimon name
  * @param graph - Evolution graph data
+ * @param options - Optional pathfinding options
  * @returns Array of shortest paths (may be empty if no path exists, may contain multiple paths of equal length)
  */
 export function findShortestPaths(
 	source: string,
 	target: string,
-	graph: EvolutionGraph
+	graph: EvolutionGraph,
+	options?: PathfindingOptions
 ): EvolutionPath[] {
 	// Normalize names for comparison
 	const normalizedSource = source.trim();
@@ -78,6 +115,11 @@ export function findShortestPaths(
 		console.warn(`Target Digimon "${normalizedTarget}" not found in evolution graph`);
 		return [];
 	}
+
+	// Get max generation level if specified
+	const maxGenerationLevel = options?.maxGeneration 
+		? getGenerationLevel(options.maxGeneration) 
+		: undefined;
 
 	// BFS initialization
 	const queue: PathNode[] = [
@@ -101,8 +143,13 @@ export function findShortestPaths(
 			continue;
 		}
 
-		// Get all neighbors
-		const neighbors = getNeighbors(current.digimon, graph);
+		// Get all neighbors (with optional generation filtering)
+		const neighbors = getNeighbors(
+			current.digimon, 
+			graph, 
+			options?.digimonGenerations,
+			maxGenerationLevel
+		);
 
 		for (const neighbor of neighbors) {
 			// Skip if already visited in this path (prevent cycles)
@@ -151,9 +198,16 @@ export function findShortestPaths(
  *
  * @param digimon - Digimon name
  * @param graph - Evolution graph data
+ * @param digimonGenerations - Optional map of digimon name to generation for filtering
+ * @param maxGenerationLevel - Optional maximum generation level allowed
  * @returns Array of neighbors with direction information
  */
-function getNeighbors(digimon: string, graph: EvolutionGraph): Neighbor[] {
+function getNeighbors(
+	digimon: string, 
+	graph: EvolutionGraph, 
+	digimonGenerations?: Map<string, string>,
+	maxGenerationLevel?: number
+): Neighbor[] {
 	const neighbors: Neighbor[] = [];
 	const data = graph[digimon];
 
@@ -164,7 +218,13 @@ function getNeighbors(digimon: string, graph: EvolutionGraph): Neighbor[] {
 	// Can digivolve to (go up)
 	for (const target of data.evolvesTo || []) {
 		if (graph[target]) {
-			// Only add if target exists in graph
+			// Only add if target exists in graph and within generation limit
+			if (maxGenerationLevel && digimonGenerations) {
+				const targetGen = digimonGenerations.get(target);
+				if (targetGen && getGenerationLevel(targetGen) > maxGenerationLevel) {
+					continue; // Skip this neighbor, it's above the allowed generation
+				}
+			}
 			neighbors.push({ name: target, direction: 'up' });
 		}
 	}
@@ -172,7 +232,13 @@ function getNeighbors(digimon: string, graph: EvolutionGraph): Neighbor[] {
 	// Can de-digivolve from (go down)
 	for (const source of data.evolvesFrom || []) {
 		if (graph[source]) {
-			// Only add if source exists in graph
+			// Only add if source exists in graph and within generation limit
+			if (maxGenerationLevel && digimonGenerations) {
+				const sourceGen = digimonGenerations.get(source);
+				if (sourceGen && getGenerationLevel(sourceGen) > maxGenerationLevel) {
+					continue; // Skip this neighbor, it's above the allowed generation
+				}
+			}
 			neighbors.push({ name: source, direction: 'down' });
 		}
 	}
