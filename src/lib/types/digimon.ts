@@ -37,6 +37,10 @@ export interface Digimon {
 	isDLC?: boolean;
 	/** Whether this Digimon is post-game exclusive */
 	isPostGame?: boolean;
+	/** Array of Digimon names this Digimon can evolve from (de-digivolve) */
+	evolvesFrom?: string[];
+	/** Array of Digimon names this Digimon can evolve to (digivolve) */
+	evolvesTo?: string[];
 }
 
 /**
