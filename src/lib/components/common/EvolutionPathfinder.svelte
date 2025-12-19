@@ -117,11 +117,11 @@ const sourceGen = digimonGenerations.get(sourceDigimon);
 const targetGen = digimonGenerations.get(targetDigimon);
 
 if (sourceGen && getGenerationLevel(sourceGen) > maxLevel) {
-searchError = sourceDigimon + ' (' + sourceGen + ') is above the maximum generation limit (' + maxGeneration + ')';
+searchError = `${sourceDigimon} (${sourceGen}) is above the maximum generation limit (${maxGeneration})`;
 return;
 }
 if (targetGen && getGenerationLevel(targetGen) > maxLevel) {
-searchError = targetDigimon + ' (' + targetGen + ') is above the maximum generation limit (' + maxGeneration + ')';
+searchError = `${targetDigimon} (${targetGen}) is above the maximum generation limit (${maxGeneration})`;
 return;
 }
 }
@@ -139,9 +139,9 @@ const foundPaths = findShortestPaths(sourceDigimon, targetDigimon, evolutionGrap
 
 if (foundPaths.length === 0) {
 if (maxGeneration) {
-searchError = 'No evolution path found between ' + sourceDigimon + ' and ' + targetDigimon + ' within ' + maxGeneration + ' generation limit';
+searchError = `No evolution path found between ${sourceDigimon} and ${targetDigimon} within ${maxGeneration} generation limit`;
 } else {
-searchError = 'No evolution path found between ' + sourceDigimon + ' and ' + targetDigimon;
+searchError = `No evolution path found between ${sourceDigimon} and ${targetDigimon}`;
 }
 } else {
 paths = foundPaths;
