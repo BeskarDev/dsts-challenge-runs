@@ -12381,7 +12381,17 @@
 		"type": "Reptile",
 		"basePersonality": "Reckless",
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/agumon-black-icon.png",
-		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/agumon-black"
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/agumon-black",
+		"evolvesFrom": [
+			"Tsumemon"
+		],
+		"evolvesTo": [
+			"Strikedramon",
+			"Tuskmon",
+			"Devimon",
+			"Coredramon (Blue)",
+			"Greymon (Blue)"
+		]
 	},
 	{
 		"number": "469",
@@ -12391,7 +12401,18 @@
 		"type": "Reptile",
 		"basePersonality": "Sly",
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/gabumon-black-icon.png",
-		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/gabumon-black"
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/gabumon-black",
+		"evolvesFrom": [
+			"Tsumemon"
+		],
+		"evolvesTo": [
+			"Minotarumon",
+			"BlackGatomon",
+			"Dobermon",
+			"Dorugamon",
+			"Fugamon",
+			"Garurumon (Black)"
+		]
 	},
 	{
 		"number": "470",
@@ -12401,7 +12422,17 @@
 		"type": "Beast",
 		"basePersonality": "Friendly",
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/garurumon-black-icon.png",
-		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/garurumon-black"
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/garurumon-black",
+		"evolvesFrom": [
+			"Gabumon (Black)",
+			"Renamon",
+			"Bearmon"
+		],
+		"evolvesTo": [
+			"SkullSatamon",
+			"Pandamon",
+			"WereGarurumon (Black)"
+		]
 	},
 	{
 		"number": "471",
@@ -12411,7 +12442,17 @@
 		"type": "Dinosaur",
 		"basePersonality": "Reckless",
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/greymon-blue-icon.png",
-		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/greymon-blue"
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/greymon-blue",
+		"evolvesFrom": [
+			"Agumon (Black)",
+			"Guilmon",
+			"DemiDevimon"
+		],
+		"evolvesTo": [
+			"Wingdramon",
+			"SkullBaluchimon",
+			"MetalGreymon (Blue)"
+		]
 	},
 	{
 		"number": "472",
@@ -12421,7 +12462,17 @@
 		"type": "Android",
 		"basePersonality": "Reckless",
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/metalgreymon-blue-icon.png",
-		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/metalgreymon-blue"
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/metalgreymon-blue",
+		"evolvesFrom": [
+			"Greymon (Blue)",
+			"Dorugamon",
+			"Veedramon"
+		],
+		"evolvesTo": [
+			"BlackWarGreymon",
+			"Darkdramon",
+			"Cherubimon (Black)"
+		]
 	},
 	{
 		"number": "473",
@@ -12431,7 +12482,16 @@
 		"type": "Beast Man",
 		"basePersonality": "Friendly",
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/weregarurumon-black-icon.png",
-		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/weregarurumon-black"
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/weregarurumon-black",
+		"evolvesFrom": [
+			"Garurumon (Black)",
+			"Sangloupmon",
+			"BlackGatomon"
+		],
+		"evolvesTo": [
+			"PileVolcanomon",
+			"MetalGarurumon (Black)"
+		]
 	},
 	{
 		"number": "474",
@@ -12441,7 +12501,14 @@
 		"type": "Dragon Man",
 		"basePersonality": "Reckless",
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/blackwargreymon-icon.png",
-		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/blackwargreymon"
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/blackwargreymon",
+		"evolvesFrom": [
+			"MetalGreymon (Blue)",
+			"Flaremon"
+		],
+		"evolvesTo": [
+			"Omnimon Zwart"
+		]
 	},
 	{
 		"number": "475",
@@ -12451,6 +12518,15 @@
 		"type": "Android",
 		"basePersonality": "Friendly",
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/metalgarurumon-black-icon.png",
-		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/metalgarurumon-black"
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/metalgarurumon-black",
+		"evolvesFrom": [
+			"WereGarurumon (Black)",
+			"CatchMamemon",
+			"Cerberusmon",
+			"Cerberusmon WM"
+		],
+		"evolvesTo": [
+			"Omnimon Zwart"
+		]
 	}
 ]

@@ -4795,6 +4795,98 @@
 			"evolvesTo": [
 				"Omnimon Alter-B"
 			]
+		},
+		"Agumon (Black)": {
+			"evolvesFrom": [
+				"Tsumemon"
+			],
+			"evolvesTo": [
+				"Strikedramon",
+				"Tuskmon",
+				"Devimon",
+				"Coredramon (Blue)",
+				"Greymon (Blue)"
+			]
+		},
+		"Gabumon (Black)": {
+			"evolvesFrom": [
+				"Tsumemon"
+			],
+			"evolvesTo": [
+				"Minotarumon",
+				"BlackGatomon",
+				"Dobermon",
+				"Dorugamon",
+				"Fugamon",
+				"Garurumon (Black)"
+			]
+		},
+		"Garurumon (Black)": {
+			"evolvesFrom": [
+				"Gabumon (Black)",
+				"Renamon",
+				"Bearmon"
+			],
+			"evolvesTo": [
+				"SkullSatamon",
+				"Pandamon",
+				"WereGarurumon (Black)"
+			]
+		},
+		"Greymon (Blue)": {
+			"evolvesFrom": [
+				"Agumon (Black)",
+				"Guilmon",
+				"DemiDevimon"
+			],
+			"evolvesTo": [
+				"Wingdramon",
+				"SkullBaluchimon",
+				"MetalGreymon (Blue)"
+			]
+		},
+		"MetalGreymon (Blue)": {
+			"evolvesFrom": [
+				"Greymon (Blue)",
+				"Dorugamon",
+				"Veedramon"
+			],
+			"evolvesTo": [
+				"BlackWarGreymon",
+				"Darkdramon",
+				"Cherubimon (Black)"
+			]
+		},
+		"WereGarurumon (Black)": {
+			"evolvesFrom": [
+				"Garurumon (Black)",
+				"Sangloupmon",
+				"BlackGatomon"
+			],
+			"evolvesTo": [
+				"PileVolcanomon",
+				"MetalGarurumon (Black)"
+			]
+		},
+		"BlackWarGreymon": {
+			"evolvesFrom": [
+				"MetalGreymon (Blue)",
+				"Flaremon"
+			],
+			"evolvesTo": [
+				"Omnimon Zwart"
+			]
+		},
+		"MetalGarurumon (Black)": {
+			"evolvesFrom": [
+				"WereGarurumon (Black)",
+				"CatchMamemon",
+				"Cerberusmon",
+				"Cerberusmon WM"
+			],
+			"evolvesTo": [
+				"Omnimon Zwart"
+			]
 		}
 	}
 }
