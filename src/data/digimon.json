@@ -12,7 +12,12 @@
 		"evolvesTo": [
 			"Pagumon",
 			"Tsumemon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "002",
@@ -26,7 +31,12 @@
 		"evolvesFrom": [],
 		"evolvesTo": [
 			"Kapurimon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "003",
@@ -41,7 +51,12 @@
 		"evolvesTo": [
 			"Wanyamon",
 			"Dorimon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "004",
@@ -57,7 +72,12 @@
 			"Motimon",
 			"Yokomon",
 			"Tanemon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "005",
@@ -72,7 +92,12 @@
 		"evolvesTo": [
 			"Tsunomon",
 			"Nyaromon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "006",
@@ -86,7 +111,12 @@
 		"evolvesFrom": [],
 		"evolvesTo": [
 			"Koromon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "007",
@@ -101,7 +131,12 @@
 		"evolvesTo": [
 			"Bukamon",
 			"Tokomon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "008",
@@ -120,7 +155,15 @@
 			"Kokuwamon",
 			"ToyAgumon",
 			"Solarmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 140
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "009",
@@ -141,7 +184,16 @@
 			"Kotemon",
 			"Betamon",
 			"Shoutmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 350,
+				"attack": 150
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "010",
@@ -161,7 +213,16 @@
 			"Palmon",
 			"Mushroomon",
 			"Floramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 370,
+				"intelligence": 140
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "011",
@@ -182,7 +243,15 @@
 			"Ryudamon",
 			"Elecmon",
 			"Zubamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 200
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "012",
@@ -202,7 +271,16 @@
 			"Keramon",
 			"Agumon (Black)",
 			"Gabumon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 260,
+				"attack": 170
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "013",
@@ -222,7 +300,15 @@
 			"Terriermon",
 			"Armadillomon",
 			"Lucemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 150
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "014",
@@ -241,7 +327,16 @@
 			"Monodramon",
 			"SnowGoblimon",
 			"Lopmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 350,
+				"attack": 180
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "015",
@@ -260,7 +355,15 @@
 			"Kudamon",
 			"Salamon",
 			"Huckmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 150
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "016",
@@ -279,7 +382,15 @@
 			"DemiDevimon",
 			"Gazimon",
 			"Otamamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 280
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "017",
@@ -300,7 +411,15 @@
 			"Hawkmon",
 			"Hyokomon",
 			"Muchomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 160
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "018",
@@ -320,7 +439,16 @@
 			"Gomamon",
 			"Gizamon",
 			"Syakomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 360,
+				"intelligence": 180
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "019",
@@ -339,7 +467,15 @@
 			"Tentomon",
 			"Wormmon",
 			"Gotsumon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 400
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "020",
@@ -358,7 +494,15 @@
 			"Tapirmon",
 			"Bearmon",
 			"Renamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 250
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "021",
@@ -379,7 +523,15 @@
 			"Greymon",
 			"Coredramon (Green)",
 			"Agumon (Bond of Bravery)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 530
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "022",
@@ -400,7 +552,16 @@
 			"Ginryumon",
 			"Lobomon",
 			"Sorcermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 480,
+				"intelligence": 250
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "023",
@@ -420,7 +581,15 @@
 			"Frigimon",
 			"Hyogamon",
 			"IceDevimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 750
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "024",
@@ -441,7 +610,16 @@
 			"BaoHuckmon",
 			"Birdramon",
 			"Agunimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 220,
+				"defense": 190
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "025",
@@ -462,7 +640,16 @@
 			"ZubaEagermon",
 			"Ankylomon",
 			"Guardromon (Gold)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 280,
+				"defense": 200
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "026",
@@ -481,7 +668,15 @@
 			"GoldNumemon",
 			"Meramon",
 			"Guardromon (Gold)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 200
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "027",
@@ -501,7 +696,16 @@
 			"Gawappamon",
 			"Gargomon",
 			"Rapidmon (Armor)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 380,
+				"attack": 180
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "028",
@@ -521,7 +725,16 @@
 			"Kuwagamon",
 			"Waspmon",
 			"Snimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 170,
+				"intelligence": 250
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "029",
@@ -541,7 +754,15 @@
 			"Raremon",
 			"Tankmon",
 			"Gargomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 460
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "030",
@@ -561,7 +782,16 @@
 			"Bakemon",
 			"Unimon",
 			"Kyubimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 360,
+				"intelligence": 220
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "031",
@@ -580,7 +810,16 @@
 			"Birdramon",
 			"Dinohyumon",
 			"Buraimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 200,
+				"sp": 170
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "032",
@@ -599,7 +838,16 @@
 			"Birdramon",
 			"Unimon",
 			"Wizardmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 270,
+				"intelligence": 240
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "033",
@@ -617,7 +865,16 @@
 			"Peckmon",
 			"Ginryumon",
 			"Kiwimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 230,
+				"sp": 180
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "034",
@@ -638,7 +895,15 @@
 			"Ikkakumon",
 			"Veedramon",
 			"Drimogemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 280
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "035",
@@ -658,7 +923,15 @@
 			"Mojyamon",
 			"Leomon",
 			"Garurumon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 220
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "036",
@@ -677,7 +950,15 @@
 			"Buraimon",
 			"Kiwimon",
 			"Aquilamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 260
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "037",
@@ -697,7 +978,16 @@
 			"Deltamon",
 			"Kurisarimon",
 			"Cyclonemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 530,
+				"attack": 240
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "038",
@@ -717,7 +1007,16 @@
 			"Ginryumon",
 			"Greymon",
 			"Monochromon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 520,
+				"attack": 250
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "039",
@@ -733,7 +1032,15 @@
 		],
 		"evolvesTo": [
 			"Lucemon CM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 430
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "040",
@@ -753,7 +1060,16 @@
 			"Unimon",
 			"Kuwagamon",
 			"Gekomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 200,
+				"intelligence": 160
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "041",
@@ -773,7 +1089,16 @@
 			"Leomon",
 			"Nanimon",
 			"Turuiemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 210,
+				"sp": 210
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "042",
@@ -794,7 +1119,16 @@
 			"Raremon",
 			"Snimon",
 			"Coelamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 150,
+				"defense": 160
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "043",
@@ -815,7 +1149,16 @@
 			"Kyubimon",
 			"Geremon",
 			"Gabumon (Bond of Friendship)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 230,
+				"attack": 250
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "044",
@@ -836,7 +1179,16 @@
 			"ShellNumemon",
 			"Dinohyumon",
 			"Sorcermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 400,
+				"defense": 180
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "045",
@@ -856,7 +1208,16 @@
 			"Clockmon",
 			"Waspmon",
 			"Mekanorimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 420,
+				"attack": 160
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "046",
@@ -877,7 +1238,16 @@
 			"Monochromon",
 			"Icemon",
 			"MudFrigimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 170,
+				"sp": 190
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "047",
@@ -897,7 +1267,16 @@
 			"Deputymon",
 			"Dinohyumon",
 			"Coredramon (Blue)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 220,
+				"sp": 140
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "048",
@@ -916,7 +1295,16 @@
 			"ZubaEagermon",
 			"Gargomon",
 			"Guardromon (Gold)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 500,
+				"attack": 270
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "049",
@@ -937,7 +1325,16 @@
 			"Veedramon",
 			"Seadramon",
 			"Tyrannomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 270,
+				"sp": 170
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "050",
@@ -958,7 +1355,15 @@
 			"ExVeemon",
 			"Drimogemon",
 			"Dorugamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 260
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "051",
@@ -977,7 +1382,16 @@
 			"Pegasusmon",
 			"Unimon",
 			"Centarumon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 600,
+				"intelligence": 360
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "052",
@@ -997,7 +1411,15 @@
 			"Growlmon",
 			"BaoHuckmon",
 			"Greymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 420
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "053",
@@ -1018,7 +1440,16 @@
 			"Woodmon",
 			"Kurisarimon",
 			"PlatinumSukamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 220,
+				"intelligence": 220
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "054",
@@ -1038,7 +1469,16 @@
 			"Woodmon",
 			"Sunflowmon",
 			"Kiwimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 280,
+				"intelligence": 200
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "055",
@@ -1057,7 +1497,16 @@
 			"Peckmon",
 			"Birdramon",
 			"Fugamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 500,
+				"sp": 270
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "056",
@@ -1077,7 +1526,16 @@
 			"Deputymon",
 			"MudFrigimon",
 			"Turuiemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 500,
+				"sp": 160
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "057",
@@ -1098,7 +1556,15 @@
 			"Hyogamon",
 			"Sorcermon",
 			"Icemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 240
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "058",
@@ -1118,7 +1584,16 @@
 			"Reppamon",
 			"Kyubimon",
 			"Garurumon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 380,
+				"intelligence": 230
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "059",
@@ -1139,7 +1614,16 @@
 			"Turuiemon",
 			"Wendigomon",
 			"MudFrigimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 280,
+				"defense": 170
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "060",
@@ -1160,7 +1644,16 @@
 			"Sangloupmon",
 			"Devimon",
 			"Witchmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 400,
+				"intelligence": 270
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "061",
@@ -1180,7 +1673,16 @@
 			"Gekomon",
 			"ShellNumemon",
 			"PlatinumSukamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 150,
+				"defense": 140
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "062",
@@ -1201,7 +1703,16 @@
 			"BaoHuckmon",
 			"Dobermon",
 			"Dorugamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 400,
+				"sp": 230
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "063",
@@ -1222,7 +1733,15 @@
 			"Ankylomon",
 			"Geremon",
 			"Lanamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 210
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "064",
@@ -1242,7 +1761,15 @@
 			"ExVeemon",
 			"Tyrannomon",
 			"Greymon (Blue)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 280
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "065",
@@ -1262,7 +1789,16 @@
 			"Deltamon",
 			"Tuskmon",
 			"Ogremon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 500,
+				"defense": 200
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "066",
@@ -1281,7 +1817,15 @@
 			"Musyamon",
 			"Fugamon",
 			"Witchmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 230
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "067",
@@ -1301,7 +1845,16 @@
 			"ShellNumemon",
 			"Octomon",
 			"Raremon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 440,
+				"defense": 180
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "068",
@@ -1322,7 +1875,15 @@
 			"Hyogamon",
 			"IceDevimon",
 			"Icemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 300
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "069",
@@ -1343,7 +1904,15 @@
 			"Gekomon",
 			"Geremon",
 			"PlatinumSukamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 180
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "070",
@@ -1362,7 +1931,16 @@
 			"Sukamon",
 			"Wizardmon",
 			"Starmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 230,
+				"attack": 270
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "071",
@@ -1382,7 +1960,15 @@
 			"Tankmon",
 			"Guardromon",
 			"Blimpmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 200
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "072",
@@ -1402,7 +1988,16 @@
 			"Devimon",
 			"Ogremon",
 			"Greymon (Blue)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 230,
+				"intelligence": 350
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "073",
@@ -1423,7 +2018,16 @@
 			"Stingmon",
 			"GoldNumemon",
 			"Kabuterimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 200,
+				"sp": 170
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "074",
@@ -1444,7 +2048,15 @@
 			"Numemon",
 			"Vegiemon",
 			"Tuskmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 200
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "075",
@@ -1463,7 +2075,15 @@
 			"Nanimon",
 			"Woodmon",
 			"Flymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 200
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "076",
@@ -1482,7 +2102,15 @@
 			"Submarimon",
 			"Golemon",
 			"Ankylomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 250
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "077",
@@ -1502,7 +2130,16 @@
 			"Lighdramon",
 			"Magnamon",
 			"Flamedramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 280,
+				"sp": 170
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "078",
@@ -1521,7 +2158,16 @@
 			"Halsemon",
 			"Shurimon",
 			"Aquilamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 180,
+				"sp": 180
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "079",
@@ -1539,7 +2185,16 @@
 			"Stingmon",
 			"Dokugumon",
 			"Snimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 190,
+				"sp": 190
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "080",
@@ -1559,7 +2214,16 @@
 			"Octomon",
 			"Mekanorimon",
 			"Kurisarimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 530,
+				"sp": 260
+			},
+			"agentRank": 1,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "081",
@@ -1579,7 +2243,18 @@
 			"Aegiochusmon: Holy",
 			"Aegiochusmon: Blue",
 			"Aegiochusmon: Green"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 470
+			},
+			"agentRank": 9,
+			"agentSkills": {
+				"valor": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "082",
@@ -1600,7 +2275,16 @@
 			"MegaSeadramon",
 			"Zudomon",
 			"SkullSeadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1120,
+				"attack": 440
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "083",
@@ -1621,7 +2305,15 @@
 			"Megadramon",
 			"AeroVeedramon",
 			"Gigadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 380
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "084",
@@ -1641,7 +2333,16 @@
 			"MagnaAngemon",
 			"Sirenmon",
 			"Shakkoumon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 730,
+				"intelligence": 540
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "085",
@@ -1661,7 +2362,15 @@
 			"MegaKabuterimon",
 			"CannonBeemon",
 			"Kimeramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 380
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "086",
@@ -1681,7 +2390,15 @@
 			"CatchMamemon",
 			"MachGaogamon",
 			"Rapidmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 530
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "087",
@@ -1702,7 +2419,16 @@
 			"BlueMeramon",
 			"Taomon",
 			"Kimeramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 300,
+				"sp": 400
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "088",
@@ -1722,7 +2448,15 @@
 			"Hisyaryumon",
 			"SkullGreymon",
 			"Butenmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 460
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "089",
@@ -1741,7 +2475,15 @@
 			"WereGarurumon",
 			"GrapLeomon",
 			"GreatGrizzlymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 460
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "090",
@@ -1762,7 +2504,15 @@
 			"Megadramon",
 			"SkullGreymon",
 			"Kimeramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1120
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "091",
@@ -1782,7 +2532,15 @@
 			"Wingdramon",
 			"AeroVeedramon",
 			"Gigadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1060
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "092",
@@ -1802,7 +2560,15 @@
 			"RizeGreymon",
 			"MetalTyrannomon",
 			"Cyberdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1100
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "093",
@@ -1822,7 +2588,15 @@
 			"Cyberdramon",
 			"SaviorHuckmon",
 			"Locomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1090
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "094",
@@ -1843,7 +2617,15 @@
 			"Phantomon",
 			"Arukenimon",
 			"JewelBeemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 530
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "095",
@@ -1864,7 +2646,15 @@
 			"WarGrowlmon",
 			"Duramon",
 			"Knightmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 540
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "096",
@@ -1884,7 +2674,16 @@
 			"MagnaAngemon",
 			"Piximon",
 			"Wisemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 640,
+				"sp": 480
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "097",
@@ -1905,7 +2704,16 @@
 			"Nefertimon",
 			"Angewomon",
 			"Silphymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 820,
+				"sp": 540
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "098",
@@ -1926,7 +2734,15 @@
 			"DarkSuperStarmon",
 			"Cerberusmon",
 			"Mummymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 620
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "099",
@@ -1948,7 +2764,16 @@
 			"Garudamon",
 			"SkullMeramon",
 			"Parrotmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 540,
+				"intelligence": 540
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "100",
@@ -1967,7 +2792,15 @@
 			"Flaremon",
 			"SaviorHuckmon",
 			"Mistymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 700
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "101",
@@ -1988,7 +2821,16 @@
 			"AeroVeedramon",
 			"Cyberdramon",
 			"MetalGreymon (Blue)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 390,
+				"attack": 480
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "102",
@@ -2008,7 +2850,16 @@
 			"Butenmon",
 			"Duramon",
 			"Garudamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 400,
+				"attack": 530
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "103",
@@ -2029,7 +2880,15 @@
 			"Chirinmon",
 			"Myotismon",
 			"Crowmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 540
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "104",
@@ -2051,7 +2910,15 @@
 			"Piximon",
 			"Mistymon",
 			"Mammothmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1200
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "105",
@@ -2073,7 +2940,16 @@
 			"IceLeomon",
 			"Meteormon",
 			"Mammothmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 960,
+				"sp": 300
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "106",
@@ -2094,7 +2970,15 @@
 			"HippoGryphonmon",
 			"MagnaAngemon",
 			"Chirinmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 300
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "107",
@@ -2114,7 +2998,15 @@
 			"Grademon",
 			"Gigadramon",
 			"Tankdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1090
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "108",
@@ -2134,7 +3026,15 @@
 			"Pandamon",
 			"SuperStarmon",
 			"Wisemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 560
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "109",
@@ -2155,7 +3055,15 @@
 			"GrapLeomon",
 			"IceLeomon",
 			"LoaderLeomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 510
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "110",
@@ -2176,7 +3084,16 @@
 			"MegaSeadramon",
 			"Angewomon",
 			"DoruGreymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 820,
+				"sp": 540
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "111",
@@ -2196,7 +3113,16 @@
 			"Crescemon",
 			"Meteormon",
 			"IceLeomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 460,
+				"sp": 620
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "112",
@@ -2216,7 +3142,16 @@
 			"Datamon",
 			"Mistymon",
 			"Wisemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 500,
+				"intelligence": 630
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "113",
@@ -2235,7 +3170,16 @@
 			"LadyDevimon",
 			"Angewomon",
 			"Lillymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 500,
+				"sp": 490
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "114",
@@ -2255,7 +3199,15 @@
 			"MachGaogamon",
 			"SaviorHuckmon",
 			"DarkSuperStarmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 470
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "115",
@@ -2275,7 +3227,16 @@
 			"Shaujinmon",
 			"Divermon",
 			"ShogunGekomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 940,
+				"sp": 450
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "116",
@@ -2296,7 +3257,15 @@
 			"Sirenmon",
 			"Deramon",
 			"Cherrymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 510
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "117",
@@ -2317,7 +3286,15 @@
 			"Cerberusmon",
 			"Taomon",
 			"Enbarrmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 730
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "118",
@@ -2338,7 +3315,15 @@
 			"Andromon",
 			"Zudomon",
 			"Knightmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 450
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "119",
@@ -2357,7 +3342,16 @@
 			"Andromon",
 			"Datamon",
 			"Rapidmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 550,
+				"sp": 330
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "120",
@@ -2379,7 +3373,16 @@
 			"Lillymon",
 			"Deramon",
 			"Pumpkinmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 480,
+				"intelligence": 630
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "121",
@@ -2403,7 +3406,16 @@
 			"Hisyaryumon",
 			"Sharkmon",
 			"SkullSeadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 890,
+				"intelligence": 420
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "122",
@@ -2426,7 +3438,15 @@
 			"Scorpiomon",
 			"Divermon",
 			"SkullSeadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1060
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "123",
@@ -2446,7 +3466,16 @@
 			"Whamon",
 			"Piximon",
 			"Scorpiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 460,
+				"defense": 430
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "124",
@@ -2467,7 +3496,15 @@
 			"SuperStarmon",
 			"DarkSuperStarmon",
 			"Mamemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 420
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "125",
@@ -2487,7 +3524,16 @@
 			"BigMamemon",
 			"Locomon",
 			"Tankdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 430,
+				"sp": 300
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "126",
@@ -2507,7 +3553,15 @@
 			"Deramon",
 			"Garbagemon",
 			"Antylamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 380
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "127",
@@ -2527,7 +3581,16 @@
 			"Shaujinmon",
 			"Grademon",
 			"Knightmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1740,
+				"attack": 530
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "128",
@@ -2547,7 +3610,15 @@
 			"Groundramon",
 			"MetalGreymon",
 			"MetalTyrannomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 840
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "129",
@@ -2568,7 +3639,17 @@
 			"Matadormon",
 			"MachGaogamon",
 			"Antylamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 820,
+				"sp": 380,
+				"attack": 530
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "130",
@@ -2588,7 +3669,16 @@
 			"Lillymon",
 			"Cherrymon",
 			"Pumpkinmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 840,
+				"defense": 410
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "131",
@@ -2608,7 +3698,16 @@
 			"Triceramon",
 			"LoaderLeomon",
 			"Brachiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 450,
+				"defense": 300
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "132",
@@ -2629,7 +3728,15 @@
 			"DoruGreymon",
 			"GreatGrizzlymon",
 			"MetalGreymon (Blue)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1060
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "133",
@@ -2649,7 +3756,16 @@
 			"RizeGreymon",
 			"SaviorHuckmon",
 			"LoaderLeomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 700,
+				"sp": 540
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "134",
@@ -2668,7 +3784,15 @@
 			"Locomon",
 			"MetalMamemon",
 			"MasterBlimpmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1000
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "135",
@@ -2688,7 +3812,16 @@
 			"BigMamemon",
 			"BlueMeramon",
 			"SkullMeramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 530,
+				"sp": 450
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "136",
@@ -2708,7 +3841,15 @@
 			"Triceramon",
 			"Cerberusmon",
 			"Mammothmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 510
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "137",
@@ -2728,7 +3869,15 @@
 			"Crescemon",
 			"WereGarurumon",
 			"GrapLeomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 640
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "138",
@@ -2749,7 +3898,16 @@
 			"LadyDevimon",
 			"IceLeomon",
 			"Enbarrmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 400,
+				"sp": 300
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "139",
@@ -2769,7 +3927,15 @@
 			"Arukenimon",
 			"SkullMeramon",
 			"Antylamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 610
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "140",
@@ -2789,7 +3955,15 @@
 			"Cherrymon",
 			"Taomon",
 			"Pumpkinmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1100
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "141",
@@ -2808,7 +3982,16 @@
 			"SkullSatamon",
 			"Mummymon",
 			"Digitamamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 440,
+				"defense": 290
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "142",
@@ -2829,7 +4012,16 @@
 			"Dragomon",
 			"Digitamamon",
 			"Divermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1010,
+				"defense": 430
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "143",
@@ -2848,7 +4040,15 @@
 			"CatchMamemon",
 			"Locomon",
 			"Andromon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 440
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "144",
@@ -2869,7 +4069,16 @@
 			"WaruSeadramon",
 			"BlackKingNumemon",
 			"Pandamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 390,
+				"defense": 300
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "145",
@@ -2889,7 +4098,15 @@
 			"WarGrowlmon",
 			"Groundramon",
 			"DoruGreymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1100
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "146",
@@ -2910,7 +4127,15 @@
 			"Okuwamon",
 			"Scorpiomon",
 			"Kimeramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 550
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "147",
@@ -2930,7 +4155,15 @@
 			"Sirenmon",
 			"ShogunGekomon",
 			"Divermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 490
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "148",
@@ -2950,7 +4183,15 @@
 			"CatchMamemon",
 			"SuperStarmon",
 			"Monzaemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 750
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "149",
@@ -2969,7 +4210,15 @@
 			"WarGrowlmon",
 			"Groundramon",
 			"SkullGreymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 830
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "150",
@@ -2988,7 +4237,16 @@
 			"WaruSeadramon",
 			"Vademon",
 			"BlackKingNumemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 300,
+				"sp": 300
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "151",
@@ -3008,7 +4266,15 @@
 			"Volcanomon",
 			"Mammothmon",
 			"Meteormon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 480
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "152",
@@ -3027,7 +4293,16 @@
 			"Grademon",
 			"Cyberdramon",
 			"Brachiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1020,
+				"sp": 460
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "153",
@@ -3050,7 +4325,15 @@
 			"Myotismon",
 			"Astamon",
 			"WereGarurumon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 620
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "154",
@@ -3071,7 +4354,15 @@
 			"Etemon",
 			"Garbagemon",
 			"Mamemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 300
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "155",
@@ -3091,7 +4382,15 @@
 			"Triceramon",
 			"Groundramon",
 			"Digitamamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 540
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "156",
@@ -3114,7 +4413,15 @@
 			"Infermon",
 			"SkullSatamon",
 			"Astamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 430
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "157",
@@ -3136,7 +4443,15 @@
 			"SkullBaluchimon",
 			"MetalGreymon",
 			"Sharkmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1100
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "158",
@@ -3157,7 +4472,16 @@
 			"Mummymon",
 			"MegaKabuterimon",
 			"Infermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 460,
+				"attack": 380
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "159",
@@ -3177,7 +4501,16 @@
 			"SuperStarmon",
 			"Etemon",
 			"Mamemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 840,
+				"defense": 280
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "160",
@@ -3197,7 +4530,15 @@
 			"Monzaemon",
 			"DarkSuperStarmon",
 			"Etemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 330
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "161",
@@ -3218,7 +4559,15 @@
 			"BlueMeramon",
 			"Phantomon",
 			"Enbarrmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 400
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "162",
@@ -3238,7 +4587,16 @@
 			"Zudomon",
 			"Phantomon",
 			"IceLeomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1010,
+				"attack": 380
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "163",
@@ -3258,7 +4616,16 @@
 			"Volcanomon",
 			"SkullSatamon",
 			"Garudamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 380,
+				"attack": 640
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "164",
@@ -3279,7 +4646,15 @@
 			"MegaKabuterimon",
 			"Okuwamon",
 			"JewelBeemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 620
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "165",
@@ -3299,7 +4674,15 @@
 			"Vademon",
 			"Mamemon",
 			"MetalMamemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 550
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "166",
@@ -3320,7 +4703,15 @@
 			"LadyDevimon",
 			"SkullBaluchimon",
 			"WereGarurumon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 530
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "167",
@@ -3340,7 +4731,15 @@
 			"ShogunGekomon",
 			"Garbagemon",
 			"Vademon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 800
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "168",
@@ -3360,7 +4759,15 @@
 			"Triceramon",
 			"Etemon",
 			"GrapLeomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 660
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "169",
@@ -3380,7 +4787,15 @@
 			"Grademon",
 			"Butenmon",
 			"Hisyaryumon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 560
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "170",
@@ -3400,7 +4815,16 @@
 			"BigMamemon",
 			"Megadramon",
 			"Datamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 870,
+				"defense": 430
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "171",
@@ -3422,7 +4846,15 @@
 			"ShogunGekomon",
 			"ExTyrannomon",
 			"SkullBaluchimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 900
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "172",
@@ -3442,7 +4874,16 @@
 			"Rapidmon",
 			"CannonBeemon",
 			"Tankdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 800,
+				"attack": 520
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "173",
@@ -3463,7 +4904,16 @@
 			"Parrotmon",
 			"Silphymon",
 			"Crowmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 300,
+				"sp": 470
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "174",
@@ -3483,7 +4933,16 @@
 			"Shakkoumon",
 			"Meteormon",
 			"Brachiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 450,
+				"sp": 420
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "175",
@@ -3503,7 +4962,15 @@
 			"Dinobeemon",
 			"RizeGreymon",
 			"Paildramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 610
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "176",
@@ -3523,7 +4990,16 @@
 			"Duramon",
 			"CannonBeemon",
 			"MasterBlimpmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 500,
+				"sp": 380
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "177",
@@ -3543,7 +5019,16 @@
 			"JewelBeemon",
 			"Dinobeemon",
 			"Paildramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 500,
+				"sp": 590
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "178",
@@ -3564,7 +5049,15 @@
 			"Orochimon",
 			"Arukenimon",
 			"Infermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1170
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "179",
@@ -3578,7 +5071,12 @@
 		"evolvesFrom": [
 			"Armadillomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Digi-Egg of Reliability",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "180",
@@ -3592,7 +5090,12 @@
 		"evolvesFrom": [
 			"Hawkmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Digi-Egg of Sincerity",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "181",
@@ -3606,7 +5109,12 @@
 		"evolvesFrom": [
 			"Armadillomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Digi-Egg of Knowledge",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "182",
@@ -3620,7 +5128,12 @@
 		"evolvesFrom": [
 			"Gatomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Digi-Egg of Light",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "183",
@@ -3634,7 +5147,12 @@
 		"evolvesFrom": [
 			"Veemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Digi-Egg of Courage",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "184",
@@ -3648,7 +5166,12 @@
 		"evolvesFrom": [
 			"Patamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Digi-Egg of Hope",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "185",
@@ -3662,7 +5185,12 @@
 		"evolvesFrom": [
 			"Hawkmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Digi-Egg of Love",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "186",
@@ -3676,7 +5204,12 @@
 		"evolvesFrom": [
 			"Veemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Digi-Egg of Friendship",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "187",
@@ -3694,7 +5227,12 @@
 		"evolvesTo": [
 			"Aldamon",
 			"BurningGreymon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Human Spirit of Flame",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "188",
@@ -3712,7 +5250,12 @@
 		"evolvesTo": [
 			"Beowolfmon",
 			"KendoGarurumon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Human Spirit of Light",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "189",
@@ -3729,7 +5272,16 @@
 		],
 		"evolvesTo": [
 			"Calmaramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1580,
+				"intelligence": 1130
+			},
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "190",
@@ -3746,7 +5298,12 @@
 		"evolvesTo": [
 			"Aldamon",
 			"Agunimon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Beast Spirit of Flame",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "191",
@@ -3762,7 +5319,12 @@
 		],
 		"evolvesTo": [
 			"Lanamon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "192",
@@ -3779,7 +5341,12 @@
 		"evolvesTo": [
 			"Beowolfmon",
 			"Lobomon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Beast Spirit of Light",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "193",
@@ -3795,7 +5362,19 @@
 		],
 		"evolvesTo": [
 			"Jupitermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1100,
+				"sp": 1090
+			},
+			"agentRank": 9,
+			"agentSkills": {
+				"valor": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "194",
@@ -3811,7 +5390,20 @@
 		],
 		"evolvesTo": [
 			"Jupitermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 4620,
+				"sp": 2910
+			},
+			"agentRank": 9,
+			"agentSkills": {
+				"valor": 46,
+				"wisdom": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "195",
@@ -3827,7 +5419,21 @@
 		],
 		"evolvesTo": [
 			"Chronomon DM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 3070,
+				"intelligence": 2980
+			},
+			"agentRank": 9,
+			"agentSkills": {
+				"valor": 46,
+				"amicability": 46,
+				"wisdom": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "196",
@@ -3843,7 +5449,20 @@
 		],
 		"evolvesTo": [
 			"Jupitermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1820,
+				"attack": 3070
+			},
+			"agentRank": 9,
+			"agentSkills": {
+				"valor": 46,
+				"amicability": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "197",
@@ -3859,7 +5478,20 @@
 		],
 		"evolvesTo": [
 			"Jupitermon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 2980,
+				"sp": 2890
+			},
+			"agentRank": 9,
+			"agentSkills": {
+				"valor": 46,
+				"amicability": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "198",
@@ -3878,7 +5510,16 @@
 		"evolvesTo": [
 			"TyrantKabuterimon",
 			"HerculesKabuterimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 620,
+				"defense": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "199",
@@ -3898,7 +5539,16 @@
 			"HiAndromon",
 			"Boltmon",
 			"Craniamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 810,
+				"sp": 1040
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "200",
@@ -3918,7 +5568,16 @@
 			"ShineGreymon",
 			"Varodurumon",
 			"Slayerdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1760,
+				"sp": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "201",
@@ -3938,7 +5597,17 @@
 			"Goldramon",
 			"Slayerdramon",
 			"UlforceVeedramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1580,
+				"attack": 1130,
+				"sp": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "202",
@@ -3958,7 +5627,16 @@
 			"RustTyrannomon",
 			"Belphemon SM",
 			"Cherubimon (Good)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1610,
+				"sp": 1010
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "203",
@@ -3980,7 +5658,16 @@
 			"Ophanimon",
 			"Magnadramon",
 			"Mastemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 970,
+				"sp": 910
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "204",
@@ -4001,7 +5688,16 @@
 			"Gryphonmon",
 			"Phoenixmon",
 			"Jesmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 1060,
+				"sp": 980
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "205",
@@ -4023,7 +5719,16 @@
 			"Marsmon",
 			"SaberLeomon",
 			"Leopardmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1080,
+				"attack": 940
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "206",
@@ -4045,7 +5750,16 @@
 			"Alphamon",
 			"Durandamon",
 			"Dynasmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 960,
+				"sp": 960
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "207",
@@ -4063,7 +5777,16 @@
 		"evolvesTo": [
 			"Callismon",
 			"Cherubimon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 1050,
+				"sp": 970
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "208",
@@ -4085,7 +5808,16 @@
 			"Cerberusmon WM",
 			"SaberLeomon",
 			"MetalGarurumon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 890,
+				"attack": 940
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "209",
@@ -4104,7 +5836,12 @@
 			"Cerberusmon",
 			"SaberLeomon",
 			"MetalGarurumon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "210",
@@ -4124,7 +5861,17 @@
 		"evolvesTo": [
 			"UlforceVeedramon",
 			"Justimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 510,
+				"attack": 960,
+				"defense": 790
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "211",
@@ -4143,7 +5890,16 @@
 		"evolvesTo": [
 			"HerculesKabuterimon",
 			"TigerVespamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1200,
+				"attack": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "212",
@@ -4163,7 +5919,17 @@
 		"evolvesTo": [
 			"Vikemon",
 			"Plesiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1730,
+				"attack": 930,
+				"defense": 940
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "213",
@@ -4183,7 +5949,17 @@
 			"Kentaurosmon",
 			"Eaglemon",
 			"Valkyrimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 900,
+				"intelligence": 900,
+				"sp": 1100
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "214",
@@ -4203,7 +5979,17 @@
 			"WarGreymon",
 			"Gallantmon",
 			"Durandamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1900,
+				"attack": 1060,
+				"defense": 960
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "215",
@@ -4221,7 +6007,16 @@
 		"evolvesTo": [
 			"Eaglemon",
 			"Phoenixmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 980,
+				"sp": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "216",
@@ -4242,7 +6037,15 @@
 		"evolvesTo": [
 			"MirageGaogamon",
 			"SaberLeomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 890
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "217",
@@ -4262,7 +6065,16 @@
 		"evolvesTo": [
 			"Ouryumon",
 			"Gaiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 900,
+				"defense": 960
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "218",
@@ -4283,7 +6095,15 @@
 			"Chronomon DM",
 			"Gryphonmon",
 			"Gaiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1040
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "219",
@@ -4303,7 +6123,17 @@
 			"Apollomon",
 			"Seraphimon",
 			"BlackWarGreymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1860,
+				"attack": 980,
+				"defense": 890
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "220",
@@ -4324,7 +6154,17 @@
 			"Neptunemon",
 			"Plesiomon",
 			"MarineAngemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1800,
+				"intelligence": 990,
+				"sp": 960
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "221",
@@ -4345,7 +6185,16 @@
 			"Seraphimon",
 			"ClavisAngemon",
 			"SlashAngemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 910,
+				"intelligence": 1270
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "222",
@@ -4365,7 +6214,16 @@
 		"evolvesTo": [
 			"Vikemon",
 			"SkullMammothmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1940,
+				"attack": 820
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "223",
@@ -4385,7 +6243,16 @@
 			"WarGreymon",
 			"Gaiomon",
 			"BlitzGreymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1480,
+				"attack": 1300
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "224",
@@ -4404,7 +6271,16 @@
 		"evolvesTo": [
 			"KingEtemon",
 			"Callismon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2080,
+				"sp": 1140
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "225",
@@ -4423,7 +6299,16 @@
 			"Varodurumon",
 			"Ravemon",
 			"Kuzuhamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 1020,
+				"sp": 1050
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "226",
@@ -4444,7 +6329,16 @@
 			"Kentaurosmon",
 			"ShineGreymon",
 			"MagnaKidmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 940,
+				"sp": 980
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "227",
@@ -4463,7 +6357,15 @@
 		"evolvesTo": [
 			"MegaGargomon",
 			"HiAndromon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "228",
@@ -4483,7 +6385,16 @@
 			"BanchoLeomon",
 			"MetalGarurumon",
 			"Chaosdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 840,
+				"sp": 1010
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "229",
@@ -4503,7 +6414,17 @@
 			"Merukimon",
 			"MetalGarurumon",
 			"CresGarurumon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1840,
+				"attack": 990,
+				"sp": 1090
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "230",
@@ -4522,7 +6443,16 @@
 		"evolvesTo": [
 			"Vulcanusmon",
 			"Pukumon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 920,
+				"defense": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "231",
@@ -4542,7 +6472,17 @@
 			"Kentaurosmon",
 			"SkullMammothmon",
 			"Craniamon + Enbarrmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1140,
+				"defense": 820,
+				"sp": 840
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "232",
@@ -4562,7 +6502,15 @@
 			"Dianamon",
 			"Cherubimon (Good)",
 			"Cherubimon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 990
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "233",
@@ -4582,7 +6530,16 @@
 		"evolvesTo": [
 			"MetalEtemon",
 			"Boltmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 980,
+				"sp": 970
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "234",
@@ -4600,7 +6557,16 @@
 			"PileVolcanomon",
 			"MagnaKidmon",
 			"Durandamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1070,
+				"sp": 320
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "235",
@@ -4622,7 +6588,16 @@
 			"GranDracmon",
 			"Millenniummon",
 			"Machinedramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2030,
+				"attack": 1350
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "236",
@@ -4642,7 +6617,16 @@
 			"PlatinumNumemon",
 			"PrinceMamemon",
 			"MetalGarurumon (Black)"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 620,
+				"defense": 940
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "237",
@@ -4663,7 +6647,16 @@
 			"Dianamon",
 			"Cherubimon (Good)",
 			"LordKnightmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1530,
+				"sp": 890
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "238",
@@ -4684,7 +6677,17 @@
 			"Goldramon",
 			"PrinceMamemon",
 			"Justimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 980,
+				"defense": 1020,
+				"sp": 980
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "239",
@@ -4704,7 +6707,16 @@
 		"evolvesTo": [
 			"SkullMammothmon",
 			"Titamon + SkullBaluchimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 1100,
+				"sp": 740
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "240",
@@ -4725,7 +6737,16 @@
 			"Gankoomon",
 			"TigerVespamon",
 			"Jesmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1020,
+				"sp": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "241",
@@ -4744,7 +6765,16 @@
 		"evolvesTo": [
 			"MarineAngemon",
 			"Ceresmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1530,
+				"sp": 910
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "242",
@@ -4764,7 +6794,16 @@
 			"Venusmon",
 			"Sakuyamon",
 			"Kuzuhamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 860,
+				"intelligence": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "243",
@@ -4783,7 +6822,16 @@
 		"evolvesTo": [
 			"Bacchusmon",
 			"Titamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 1100,
+				"sp": 870
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "244",
@@ -4803,7 +6851,17 @@
 			"Beelzemon",
 			"Boltmon",
 			"AvengeKidmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1720,
+				"attack": 1020,
+				"defense": 820
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "245",
@@ -4823,7 +6881,16 @@
 			"Varodurumon",
 			"Ceresmon",
 			"PlatinumNumemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1700,
+				"sp": 650
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "246",
@@ -4843,7 +6910,16 @@
 		"evolvesTo": [
 			"Breakdramon",
 			"UltimateBrachiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 970,
+				"defense": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "247",
@@ -4862,7 +6938,16 @@
 		"evolvesTo": [
 			"Dorugoramon",
 			"Alphamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1370,
+				"attack": 850
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "248",
@@ -4883,7 +6968,16 @@
 			"SlashAngemon",
 			"LordKnightmon",
 			"Leopardmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 1040,
+				"sp": 950
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "249",
@@ -4903,7 +6997,17 @@
 		"evolvesTo": [
 			"Neptunemon",
 			"Plesiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1610,
+				"attack": 860,
+				"sp": 830
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "250",
@@ -4924,7 +7028,17 @@
 			"Merukimon",
 			"MirageGaogamon",
 			"Justimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 860,
+				"intelligence": 850,
+				"sp": 900
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "251",
@@ -4943,7 +7057,16 @@
 		"evolvesTo": [
 			"Rosemon",
 			"Lotosmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1610,
+				"intelligence": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "252",
@@ -4963,7 +7086,16 @@
 			"PlatinumNumemon",
 			"PrinceMamemon",
 			"GroundLocomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1650,
+				"defense": 940
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "253",
@@ -4983,7 +7115,17 @@
 			"Venusmon",
 			"Ophanimon",
 			"ClavisAngemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1600,
+				"intelligence": 980,
+				"sp": 930
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "254",
@@ -5002,7 +7144,16 @@
 			"Gryphonmon",
 			"Eaglemon",
 			"Dynasmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 1050,
+				"sp": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "255",
@@ -5022,7 +7173,16 @@
 			"Ouryumon",
 			"RustTyrannomon",
 			"UltimateBrachiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1650,
+				"sp": 1010
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "256",
@@ -5044,7 +7204,16 @@
 			"PileVolcanomon",
 			"Gankoomon",
 			"Apollomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2080,
+				"attack": 980
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "257",
@@ -5062,7 +7231,16 @@
 		"evolvesTo": [
 			"GroundLocomon",
 			"Gundramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2000,
+				"sp": 920
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "258",
@@ -5081,7 +7259,16 @@
 		"evolvesTo": [
 			"MirageGaogamon",
 			"MegaGargomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1800,
+				"sp": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "259",
@@ -5101,7 +7288,17 @@
 		"evolvesTo": [
 			"Pukumon",
 			"PrinceMamemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1720,
+				"sp": 580,
+				"defense": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "260",
@@ -5121,7 +7318,16 @@
 			"JumboGamemon",
 			"Ouryumon",
 			"MetalSeadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 900,
+				"intelligence": 1040
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "261",
@@ -5139,7 +7345,16 @@
 		"evolvesTo": [
 			"MetalGarurumon",
 			"MagnaKidmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 820,
+				"intelligence": 630
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "262",
@@ -5159,7 +7374,16 @@
 			"Lilithmon",
 			"Rosemon",
 			"Puppetmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 880,
+				"intelligence": 1260
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "263",
@@ -5178,7 +7402,15 @@
 		"evolvesTo": [
 			"Rosemon",
 			"Ceresmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 830
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "264",
@@ -5198,7 +7430,16 @@
 		"evolvesTo": [
 			"GroundLocomon",
 			"HiAndromon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1650,
+				"defense": 980
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "265",
@@ -5218,7 +7459,17 @@
 			"Plutomon",
 			"Belphemon SM",
 			"VenomMyotismon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1070,
+				"intelligence": 1030,
+				"sp": 940
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "266",
@@ -5239,7 +7490,16 @@
 			"Lilithmon",
 			"TyrantKabuterimon",
 			"Lotosmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1110,
+				"sp": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "267",
@@ -5260,7 +7520,16 @@
 			"Creepymon",
 			"MaloMyotismon",
 			"VenomMyotismon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1650,
+				"intelligence": 950
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "268",
@@ -5281,7 +7550,16 @@
 			"PileVolcanomon",
 			"KingEtemon",
 			"MetalEtemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1730,
+				"sp": 860
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "269",
@@ -5302,7 +7580,16 @@
 			"TyrantKabuterimon",
 			"HerculesKabuterimon",
 			"GranKuwagamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1170,
+				"defense": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "270",
@@ -5322,7 +7609,16 @@
 			"Bacchusmon",
 			"Gundramon",
 			"Minervamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1960,
+				"attack": 780
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "271",
@@ -5341,7 +7637,16 @@
 		"evolvesTo": [
 			"JumboGamemon",
 			"MetalEtemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1880,
+				"sp": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "272",
@@ -5360,7 +7665,17 @@
 		"evolvesTo": [
 			"Gundramon",
 			"Chaosdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1130,
+				"defense": 990,
+				"sp": 860
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "273",
@@ -5379,7 +7694,16 @@
 		"evolvesTo": [
 			"MegaGargomon",
 			"TigerVespamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 540,
+				"attack": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "274",
@@ -5399,7 +7723,17 @@
 		"evolvesTo": [
 			"Megidramon",
 			"Breakdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2120,
+				"attack": 740,
+				"defense": 870
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "275",
@@ -5417,7 +7751,17 @@
 		"evolvesTo": [
 			"Neptunemon",
 			"MetalSeadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1690,
+				"sp": 960,
+				"attack": 1100
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "276",
@@ -5436,7 +7780,16 @@
 			"Barbamon",
 			"JumboGamemon",
 			"Puppetmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1630,
+				"sp": 980
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "277",
@@ -5457,7 +7810,16 @@
 			"Puppetmon",
 			"Rosemon",
 			"GranKuwagamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 980,
+				"defense": 950
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "278",
@@ -5476,7 +7838,16 @@
 		"evolvesTo": [
 			"Titamon",
 			"SkullMammothmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1250,
+				"defense": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "279",
@@ -5497,7 +7868,16 @@
 			"Barbamon",
 			"Piedmon",
 			"Ebemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 870,
+				"sp": 960
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "280",
@@ -5516,7 +7896,16 @@
 		"evolvesTo": [
 			"Leviamon",
 			"MetalSeadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1350,
+				"intelligence": 1230
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "281",
@@ -5537,7 +7926,16 @@
 			"BeelStarmon",
 			"Titamon",
 			"Ravemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 970,
+				"attack": 900
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "282",
@@ -5557,7 +7955,16 @@
 			"Vulcanusmon",
 			"Ebemon",
 			"Parallelmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 940,
+				"intelligence": 930
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "283",
@@ -5576,7 +7983,16 @@
 		"evolvesTo": [
 			"Gundramon",
 			"Darkdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1150,
+				"defense": 900
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "284",
@@ -5597,7 +8013,17 @@
 			"KingEtemon",
 			"Bacchusmon",
 			"Pukumon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1630,
+				"defense": 940,
+				"sp": 940
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "285",
@@ -5616,7 +8042,16 @@
 		"evolvesTo": [
 			"Pharaohmon",
 			"Diaboromon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1530,
+				"intelligence": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "286",
@@ -5637,7 +8072,16 @@
 			"Piedmon",
 			"Belphemon SM",
 			"Ravemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1530,
+				"sp": 1010
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "287",
@@ -5656,7 +8100,16 @@
 		"evolvesTo": [
 			"PlatinumNumemon",
 			"MetalEtemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1720,
+				"defense": 900
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "288",
@@ -5676,7 +8129,16 @@
 		"evolvesTo": [
 			"Marsmon",
 			"Pharaohmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1370,
+				"sp": 1020
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "289",
@@ -5695,7 +8157,16 @@
 		"evolvesTo": [
 			"Ebemon",
 			"AvengeKidmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 700,
+				"intelligence": 860
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "290",
@@ -5715,7 +8186,15 @@
 			"GranDracmon",
 			"SlashAngemon",
 			"Kuzuhamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1100
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "291",
@@ -5735,7 +8214,16 @@
 			"Pharaohmon",
 			"HiAndromon",
 			"AvengeKidmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 870,
+				"defense": 920
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "292",
@@ -5756,7 +8244,16 @@
 			"Zanbamon",
 			"MedievalGallantmon",
 			"Dynasmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 890,
+				"intelligence": 900
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "293",
@@ -5776,7 +8273,16 @@
 		"evolvesTo": [
 			"Megidramon",
 			"Machinedramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1050,
+				"sp": 940
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "294",
@@ -5797,7 +8303,16 @@
 			"Gallantmon",
 			"ChaosGallantmon",
 			"Chaosdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1730,
+				"defense": 1060
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "295",
@@ -5817,7 +8332,17 @@
 			"RustTyrannomon",
 			"Machinedramon",
 			"UltimateBrachiomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 740,
+				"defense": 1060,
+				"sp": 820
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "296",
@@ -5833,7 +8358,16 @@
 		],
 		"evolvesTo": [
 			"Lucemon SM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 920,
+				"intelligence": 1820
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "297",
@@ -5854,7 +8388,17 @@
 			"Lilithmon",
 			"BeelStarmon",
 			"Mastemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1290,
+				"intelligence": 770,
+				"sp": 830
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "298",
@@ -5874,7 +8418,16 @@
 			"Creepymon",
 			"ChaosGallantmon",
 			"AncientWisemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1100,
+				"intelligence": 1650
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "299",
@@ -5895,7 +8448,16 @@
 			"Leviamon",
 			"Megidramon",
 			"MetalSeadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1680,
+				"intelligence": 1200
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "300",
@@ -5915,7 +8477,12 @@
 			"Junomon",
 			"Vikemon",
 			"Magnadramon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "301",
@@ -5934,7 +8501,12 @@
 			"BeelStarmon",
 			"Minervamon",
 			"Valkyrimon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "302",
@@ -5952,7 +8524,12 @@
 		"evolvesTo": [
 			"GranKuwagamon",
 			"TigerVespamon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "303",
@@ -5971,7 +8548,12 @@
 			"Dorugoramon",
 			"Imperialdramon DM",
 			"Darkdramon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "304",
@@ -5992,7 +8574,16 @@
 			"Diaboromon",
 			"Cherubimon (Black)",
 			"Parallelmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 930,
+				"attack": 1110
+			},
+			"agentRank": 5,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "305",
@@ -6009,7 +8600,12 @@
 		],
 		"evolvesTo": [
 			"EmperorGreymon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 5,
+			"requiredItem": "Beast Spirit of Flame",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "306",
@@ -6026,7 +8622,12 @@
 		],
 		"evolvesTo": [
 			"MagnaGarurumon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 5,
+			"requiredItem": "Beast Spirit of Light",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "307",
@@ -6043,7 +8644,16 @@
 		],
 		"evolvesTo": [
 			"GraceNovamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 2220,
+				"sp": 1810
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "308",
@@ -6060,7 +8670,17 @@
 		],
 		"evolvesTo": [
 			"Alphamon: Ouryuken"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2200,
+				"defense": 1580,
+				"sp": 1580
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "309",
@@ -6075,7 +8695,16 @@
 			"AeroVeedramon",
 			"Cyberdramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2960,
+				"sp": 1980
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "310",
@@ -6093,7 +8722,16 @@
 		],
 		"evolvesTo": [
 			"Chaosmon: Valdur Arm"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 1800,
+				"sp": 1640
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "311",
@@ -6108,7 +8746,15 @@
 			"Taomon",
 			"Piximon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 2040
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "312",
@@ -6125,7 +8771,16 @@
 		],
 		"evolvesTo": [
 			"Omnimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2350,
+				"attack": 2430
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "313",
@@ -6143,7 +8798,17 @@
 		],
 		"evolvesTo": [
 			"Alphamon: Ouryuken"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1850,
+				"attack": 2150,
+				"defense": 1860
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "314",
@@ -6158,7 +8823,16 @@
 			"Angewomon",
 			"Piximon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 2450,
+				"sp": 2010
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "315",
@@ -6173,7 +8847,16 @@
 			"MagnaAngemon",
 			"Piximon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1540,
+				"intelligence": 2450
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "316",
@@ -6189,7 +8872,17 @@
 		],
 		"evolvesTo": [
 			"Craniamon + Enbarrmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2380,
+				"defense": 1850,
+				"sp": 1540
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "317",
@@ -6205,7 +8898,17 @@
 			"Chirinmon",
 			"Parrotmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2260,
+				"defense": 1720,
+				"sp": 2060
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "318",
@@ -6219,7 +8922,17 @@
 		"evolvesFrom": [
 			"Butenmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 10,
+			"agentSkills": {
+				"valor": 46,
+				"amicability": 46,
+				"wisdom": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "319",
@@ -6236,7 +8949,16 @@
 			"Antylamon",
 			"MetalGreymon (Blue)"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1600,
+				"intelligence": 2280
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "320",
@@ -6252,7 +8974,16 @@
 			"Crescemon",
 			"Antylamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1600,
+				"intelligence": 2140
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "321",
@@ -6269,7 +9000,17 @@
 			"AeroVeedramon",
 			"Shakkoumon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2690,
+				"intelligence": 1660,
+				"sp": 1380
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "322",
@@ -6286,7 +9027,16 @@
 		],
 		"evolvesTo": [
 			"ShineGreymon BM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2300,
+				"attack": 2360
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "323",
@@ -6302,7 +9052,16 @@
 			"SuperStarmon",
 			"Cyberdramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 2060,
+				"sp": 1960
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "324",
@@ -6319,7 +9078,17 @@
 			"Mammothmon",
 			"Enbarrmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2570,
+				"attack": 1580,
+				"defense": 1650
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "325",
@@ -6335,7 +9104,16 @@
 			"MagnaAngemon",
 			"Knightmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 2050,
+				"sp": 1060
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "326",
@@ -6351,7 +9129,17 @@
 			"Chirinmon",
 			"Enbarrmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 1730,
+				"intelligence": 1800,
+				"sp": 2060
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "327",
@@ -6368,7 +9156,16 @@
 		],
 		"evolvesTo": [
 			"Examon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 2280,
+				"sp": 2280
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "328",
@@ -6383,7 +9180,16 @@
 			"MagnaAngemon",
 			"Flaremon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1730,
+				"intelligence": 1990
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "329",
@@ -6399,7 +9205,17 @@
 			"Rapidmon",
 			"CannonBeemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2500,
+				"sp": 1070,
+				"attack": 1780
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "330",
@@ -6415,7 +9231,17 @@
 			"OmniShoutmon",
 			"Duramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2360,
+				"attack": 1580,
+				"defense": 1740
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "331",
@@ -6431,7 +9257,16 @@
 			"Divermon",
 			"Sharkmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1710,
+				"attack": 1940
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "332",
@@ -6448,7 +9283,16 @@
 			"Andromon",
 			"Rapidmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2500,
+				"sp": 1780
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "333",
@@ -6467,7 +9311,16 @@
 		"evolvesTo": [
 			"Chaosmon: Valdur Arm",
 			"Chaosmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2620,
+				"attack": 2290
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "334",
@@ -6483,7 +9336,16 @@
 			"Okuwamon",
 			"JewelBeemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 2280,
+				"intelligence": 1570
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "335",
@@ -6498,7 +9360,16 @@
 			"Garudamon",
 			"Parrotmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1260,
+				"intelligence": 2350
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "336",
@@ -6513,7 +9384,17 @@
 			"Angewomon",
 			"Shakkoumon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2740,
+				"sp": 1100,
+				"intelligence": 1370
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "337",
@@ -6528,7 +9409,12 @@
 			"LadyDevimon",
 			"Angewomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "338",
@@ -6543,7 +9429,16 @@
 			"Whamon",
 			"Sirenmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 1800,
+				"sp": 2040
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "339",
@@ -6558,7 +9453,16 @@
 			"BlueMeramon",
 			"GrapLeomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 960,
+				"attack": 2220
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "340",
@@ -6578,7 +9482,17 @@
 		],
 		"evolvesTo": [
 			"Jupitermon WM"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 9,
+			"agentSkills": {
+				"valor": 46,
+				"amicability": 46,
+				"wisdom": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "341",
@@ -6596,7 +9510,15 @@
 		],
 		"evolvesTo": [
 			"Ravemon BM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1820
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "342",
@@ -6612,7 +9534,17 @@
 			"MetalTyrannomon",
 			"Brachiomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2900,
+				"defense": 2130,
+				"sp": 1570
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "343",
@@ -6627,7 +9559,16 @@
 			"Dragomon",
 			"Scorpiomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 1700,
+				"sp": 1820
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "344",
@@ -6642,7 +9583,16 @@
 			"Volcanomon",
 			"SaviorHuckmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 1860,
+				"sp": 1720
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "345",
@@ -6658,7 +9608,16 @@
 			"Taomon",
 			"Crowmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1290,
+				"intelligence": 1860
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "346",
@@ -6674,7 +9633,16 @@
 			"Locomon",
 			"MasterBlimpmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 2250,
+				"sp": 1850
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "347",
@@ -6690,7 +9658,15 @@
 			"Garudamon",
 			"Butenmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1750
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "348",
@@ -6709,7 +9685,16 @@
 		],
 		"evolvesTo": [
 			"Ceresmon Medium"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2470,
+				"sp": 2190
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "349",
@@ -6725,7 +9710,16 @@
 		],
 		"evolvesTo": [
 			"Ceresmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1670,
+				"intelligence": 2500
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "350",
@@ -6742,7 +9736,17 @@
 			"GrapLeomon",
 			"IceLeomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2400,
+				"attack": 1930,
+				"sp": 1860
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "351",
@@ -6757,7 +9761,16 @@
 			"Taomon",
 			"Phantomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 2710,
+				"sp": 1990
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "352",
@@ -6772,7 +9785,17 @@
 			"SaviorHuckmon",
 			"Garudamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1730,
+				"defense": 1730,
+				"sp": 1650
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "353",
@@ -6788,7 +9811,17 @@
 			"MegaSeadramon",
 			"Garbagemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2010,
+				"defense": 1740,
+				"sp": 1870
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "354",
@@ -6805,7 +9838,16 @@
 		],
 		"evolvesTo": [
 			"GraceNovamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 1670,
+				"intelligence": 2100
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "355",
@@ -6821,7 +9863,17 @@
 			"HippoGryphonmon",
 			"Mistymon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2500,
+				"attack": 1940,
+				"sp": 1660
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "356",
@@ -6839,7 +9891,17 @@
 		],
 		"evolvesTo": [
 			"Leopardmon LM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2570,
+				"intelligence": 2130,
+				"sp": 1890
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "357",
@@ -6855,7 +9917,12 @@
 		],
 		"evolvesTo": [
 			"Leopardmon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "358",
@@ -6870,7 +9937,16 @@
 			"DoruGreymon",
 			"Paildramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2700,
+				"attack": 2220
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "359",
@@ -6887,7 +9963,17 @@
 			"OmniShoutmon",
 			"WereGarurumon (Black)"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1430,
+				"defense": 1790,
+				"sp": 1730
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "360",
@@ -6904,7 +9990,16 @@
 			"SuperStarmon",
 			"Mamemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2140,
+				"defense": 1530
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "361",
@@ -6920,7 +10015,17 @@
 			"Zudomon",
 			"Divermon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2680,
+				"intelligence": 1830,
+				"sp": 1660
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "362",
@@ -6936,7 +10041,17 @@
 			"SkullMeramon",
 			"Meteormon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2380,
+				"attack": 1570,
+				"defense": 2010
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "363",
@@ -6954,7 +10069,16 @@
 		],
 		"evolvesTo": [
 			"MirageGaogamon BM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2470,
+				"sp": 1790
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "364",
@@ -6972,7 +10096,16 @@
 		],
 		"evolvesTo": [
 			"Omnimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1850,
+				"attack": 960
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "365",
@@ -6989,7 +10122,16 @@
 			"Sharkmon",
 			"SkullSeadramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1430,
+				"intelligence": 1530
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "366",
@@ -7003,7 +10145,16 @@
 		"evolvesFrom": [
 			"Mistymon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 2050,
+				"sp": 1790
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "367",
@@ -7022,7 +10173,17 @@
 		],
 		"evolvesTo": [
 			"Rosemon BM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 2350,
+				"attack": 1290,
+				"intelligence": 1500
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "368",
@@ -7037,7 +10198,17 @@
 			"Arukenimon",
 			"Pumpkinmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2380,
+				"sp": 1100,
+				"intelligence": 1980
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "369",
@@ -7053,7 +10224,16 @@
 			"SkullMeramon",
 			"Vademon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2500,
+				"attack": 1940
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "370",
@@ -7069,7 +10249,16 @@
 			"Dragomon",
 			"Vademon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1570,
+				"intelligence": 2420
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "371",
@@ -7084,7 +10273,16 @@
 			"Myotismon",
 			"Astamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2080,
+				"attack": 2140
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "372",
@@ -7098,7 +10296,16 @@
 		"evolvesFrom": [
 			"Wisemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 3100,
+				"sp": 2090
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "373",
@@ -7114,7 +10321,16 @@
 			"MetalGreymon",
 			"Butenmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2820,
+				"attack": 2430
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "374",
@@ -7130,7 +10346,16 @@
 			"Mistymon",
 			"Wisemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1870,
+				"intelligence": 1430
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "375",
@@ -7146,7 +10371,17 @@
 			"Gigadramon",
 			"LoaderLeomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2100,
+				"attack": 2130,
+				"defense": 1700
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "376",
@@ -7161,7 +10396,17 @@
 			"Monzaemon",
 			"GreatGrizzlymon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2820,
+				"attack": 1930,
+				"sp": 1540
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "377",
@@ -7178,7 +10423,16 @@
 			"MasterBlimpmon",
 			"Tankdramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1300,
+				"attack": 2130
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "378",
@@ -7194,7 +10448,16 @@
 			"Etemon",
 			"ShogunGekomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1640,
+				"defense": 1790
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "379",
@@ -7209,7 +10472,17 @@
 			"Matadormon",
 			"Kimeramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1140,
+				"attack": 1300,
+				"intelligence": 1590
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "380",
@@ -7224,7 +10497,17 @@
 			"Aegiochusmon: Dark",
 			"Butenmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 10,
+			"agentSkills": {
+				"valor": 46,
+				"amicability": 46,
+				"wisdom": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "381",
@@ -7239,7 +10522,17 @@
 			"Mistymon",
 			"Knightmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2380,
+				"attack": 1960,
+				"sp": 1060
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "382",
@@ -7253,7 +10546,16 @@
 		"evolvesFrom": [
 			"Plutomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 2500,
+				"intelligence": 1900
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "383",
@@ -7271,7 +10573,16 @@
 		],
 		"evolvesTo": [
 			"Chaosmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2400,
+				"attack": 2220
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "384",
@@ -7288,7 +10599,17 @@
 			"JewelBeemon",
 			"CannonBeemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2820,
+				"attack": 1900,
+				"sp": 1600
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "385",
@@ -7306,7 +10627,16 @@
 		],
 		"evolvesTo": [
 			"Titamon + SkullBaluchimon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 3220,
+				"attack": 1680
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "386",
@@ -7322,7 +10652,17 @@
 			"MegaKabuterimon",
 			"Okuwamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2500,
+				"attack": 1490,
+				"sp": 1620
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "387",
@@ -7337,7 +10677,17 @@
 			"Myotismon",
 			"Wisemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2000,
+				"attack": 1970,
+				"intelligence": 1900
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "388",
@@ -7354,7 +10704,16 @@
 		],
 		"evolvesTo": [
 			"Gallantmon CM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1800,
+				"sp": 2240
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "389",
@@ -7373,7 +10732,17 @@
 		],
 		"evolvesTo": [
 			"Bacchusmon DM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2880,
+				"attack": 1790,
+				"intelligence": 1510
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "390",
@@ -7389,7 +10758,16 @@
 		],
 		"evolvesTo": [
 			"Bacchusmon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 4250,
+				"attack": 2850
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "391",
@@ -7404,7 +10782,16 @@
 			"SkullSatamon",
 			"Shaujinmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1060,
+				"intelligence": 2290
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "392",
@@ -7421,7 +10808,16 @@
 		],
 		"evolvesTo": [
 			"Apocalymon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1190,
+				"intelligence": 1860
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "393",
@@ -7437,7 +10833,16 @@
 			"Shaujinmon",
 			"Cherrymon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 1430,
+				"sp": 1430
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "394",
@@ -7453,7 +10858,17 @@
 			"Mummymon",
 			"Datamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2460,
+				"intelligence": 1360,
+				"sp": 1820
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "395",
@@ -7469,7 +10884,16 @@
 			"Mamemon",
 			"Scorpiomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2690,
+				"attack": 1790
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "396",
@@ -7486,7 +10910,15 @@
 			"Deramon",
 			"BlackKingNumemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 2220
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "397",
@@ -7504,7 +10936,17 @@
 		],
 		"evolvesTo": [
 			"ZombiePlutomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2460,
+				"attack": 2500,
+				"intelligence": 1700
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "398",
@@ -7521,7 +10963,17 @@
 		],
 		"evolvesTo": [
 			"Examon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 1920,
+				"attack": 1920,
+				"defense": 1570
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "399",
@@ -7536,7 +10988,17 @@
 			"Myotismon",
 			"Infermon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2200,
+				"attack": 2140,
+				"intelligence": 2770
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "400",
@@ -7552,7 +11014,17 @@
 			"DarkSuperStarmon",
 			"Silphymon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2200,
+				"sp": 1380,
+				"attack": 1600
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "401",
@@ -7569,7 +11041,17 @@
 		],
 		"evolvesTo": [
 			"Beelzemon BM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2500,
+				"attack": 2340,
+				"sp": 1330
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "402",
@@ -7587,7 +11069,16 @@
 		],
 		"evolvesTo": [
 			"Belphemon RM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1540,
+				"intelligence": 1740
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "403",
@@ -7603,7 +11094,16 @@
 			"MetalMamemon",
 			"OmniShoutmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1200,
+				"attack": 1940
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "404",
@@ -7620,7 +11120,16 @@
 		],
 		"evolvesTo": [
 			"Mervamon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2360,
+				"attack": 1940
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "405",
@@ -7635,7 +11144,12 @@
 			"Kimeramon",
 			"Machinedramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "406",
@@ -7653,7 +11167,16 @@
 		],
 		"evolvesTo": [
 			"Millenniummon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1700,
+				"defense": 2140
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "407",
@@ -7670,7 +11193,16 @@
 			"Groundramon",
 			"Megadramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2960,
+				"attack": 2290
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "408",
@@ -7687,7 +11219,16 @@
 			"BlackKingNumemon",
 			"Meteormon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2470,
+				"defense": 2010
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "409",
@@ -7702,7 +11243,16 @@
 			"Pandamon",
 			"WereGarurumon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 1150,
+				"sp": 2100
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "410",
@@ -7720,7 +11270,16 @@
 		],
 		"evolvesTo": [
 			"Junomon HM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1100,
+				"intelligence": 1370
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "411",
@@ -7736,7 +11295,16 @@
 		],
 		"evolvesTo": [
 			"Junomon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 3380,
+				"sp": 2920
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "412",
@@ -7752,7 +11320,17 @@
 			"MetalTyrannomon",
 			"Brachiomon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2830,
+				"attack": 1860,
+				"defense": 2050
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "413",
@@ -7768,7 +11346,17 @@
 			"WaruSeadramon",
 			"SkullSeadramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2860,
+				"attack": 2000,
+				"defense": 1430
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "414",
@@ -7784,7 +11372,16 @@
 			"LadyDevimon",
 			"Arukenimon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1860,
+				"intelligence": 2180
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "415",
@@ -7799,7 +11396,15 @@
 			"Crescemon",
 			"Knightmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 2060
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "416",
@@ -7817,7 +11422,16 @@
 		"evolvesTo": [
 			"Imperialdramon FM",
 			"Imperialdramon PM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2890,
+				"sp": 1180
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "417",
@@ -7834,7 +11448,15 @@
 		"evolvesTo": [
 			"Imperialdramon PM",
 			"Imperialdramon DM"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 2500
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "418",
@@ -7850,7 +11472,16 @@
 			"Mammothmon",
 			"Shakkoumon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 3180,
+				"attack": 1930
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "419",
@@ -7865,7 +11496,15 @@
 			"Chirinmon",
 			"Silphymon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1650
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "420",
@@ -7881,7 +11520,16 @@
 			"Cherrymon",
 			"Okuwamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2770,
+				"defense": 2290
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "421",
@@ -7898,7 +11546,16 @@
 		],
 		"evolvesTo": [
 			"Armageddemon"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2690,
+				"attack": 2250
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "422",
@@ -7912,7 +11569,12 @@
 		"evolvesFrom": [
 			"Terriermon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": "Digi-Egg of Destiny",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "423",
@@ -7926,7 +11588,12 @@
 		"evolvesFrom": [
 			"Veemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": "Digi-Egg of Miracles",
+			"minBossOrder": 10
+		}
 	},
 	{
 		"number": "424",
@@ -7942,7 +11609,12 @@
 		],
 		"evolvesTo": [
 			"Susanomon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "425",
@@ -7960,7 +11632,12 @@
 		"evolvesTo": [
 			"Susanomon",
 			"MagnaGarurumon (Detached)"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "426",
@@ -7976,7 +11653,12 @@
 		],
 		"evolvesTo": [
 			"MagnaGarurumon"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "427",
@@ -7991,7 +11673,12 @@
 			"Ouryumon",
 			"Alphamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "428",
@@ -8006,7 +11693,12 @@
 			"Craniamon",
 			"Enbarrmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "429",
@@ -8021,7 +11713,16 @@
 			"Imperialdramon FM",
 			"Imperialdramon DM"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 4680,
+				"sp": 2740
+			},
+			"agentRank": 8,
+			"requiredItem": "Omni Blade",
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "430",
@@ -8039,7 +11740,12 @@
 		],
 		"evolvesTo": [
 			"Omnimon Zwart"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "431",
@@ -8058,7 +11764,12 @@
 		"evolvesTo": [
 			"Omnimon",
 			"Omnimon Zwart Defeat"
-		]
+		],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "432",
@@ -8073,7 +11784,12 @@
 			"BanchoLeomon",
 			"Darkdramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "433",
@@ -8088,7 +11804,12 @@
 			"BanchoLeomon",
 			"Varodurumon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "434",
@@ -8103,7 +11824,12 @@
 			"Apollomon",
 			"Dianamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "435",
@@ -8117,7 +11843,16 @@
 		"evolvesFrom": [
 			"ShineGreymon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 4900,
+				"sp": 2810
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "436",
@@ -8132,7 +11867,12 @@
 			"EmperorGreymon",
 			"MagnaGarurumon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "437",
@@ -8147,7 +11887,16 @@
 		"evolvesFrom": [
 			"Jupitermon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 4020,
+				"attack": 3200
+			},
+			"agentRank": 9,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "438",
@@ -8161,7 +11910,15 @@
 		"evolvesFrom": [
 			"Ravemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 3390
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "439",
@@ -8176,7 +11933,12 @@
 			"Slayerdramon",
 			"Breakdramon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "440",
@@ -8190,7 +11952,16 @@
 		"evolvesFrom": [
 			"MirageGaogamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 3100,
+				"sp": 3100
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "441",
@@ -8204,7 +11975,16 @@
 		"evolvesFrom": [
 			"Rosemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"intelligence": 3170,
+				"sp": 2700
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "442",
@@ -8219,7 +11999,12 @@
 			"SkullBaluchimon",
 			"Titamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "443",
@@ -8233,7 +12018,16 @@
 		"evolvesFrom": [
 			"Gallantmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 2810,
+				"intelligence": 3170
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "444",
@@ -8247,7 +12041,16 @@
 		"evolvesFrom": [
 			"Beelzemon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 3760,
+				"sp": 2960
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "445",
@@ -8261,7 +12064,16 @@
 		"evolvesFrom": [
 			"Belphemon SM"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 4680,
+				"attack": 2070
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "446",
@@ -8275,7 +12087,16 @@
 		"evolvesFrom": [
 			"Minervamon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 3470,
+				"sp": 2960
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "447",
@@ -8289,7 +12110,17 @@
 		"evolvesFrom": [
 			"Lucemon CM"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2350,
+				"intelligence": 3090,
+				"sp": 1880
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "448",
@@ -8303,7 +12134,16 @@
 		"evolvesFrom": [
 			"Diaboromon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 4450,
+				"attack": 3980
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "449",
@@ -8318,7 +12158,18 @@
 		"evolvesFrom": [
 			"Agumon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 3630
+			},
+			"agentRank": 8,
+			"agentSkills": {
+				"valor": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "450",
@@ -8332,7 +12183,16 @@
 		"evolvesFrom": [
 			"Piedmon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 2660,
+				"intelligence": 3100
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "451",
@@ -8347,7 +12207,18 @@
 		"evolvesFrom": [
 			"Gabumon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"defense": 2260
+			},
+			"agentRank": 8,
+			"agentSkills": {
+				"amicability": 46
+			},
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "452",
@@ -8363,7 +12234,15 @@
 		],
 		"evolvesTo": [
 			"Omnimon Alter-S"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1960
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "453",
@@ -8378,7 +12257,17 @@
 			"Dragomon",
 			"Infermon"
 		],
-		"evolvesTo": []
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 4840,
+				"attack": 2420,
+				"sp": 1800
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "454",
@@ -8394,7 +12283,16 @@
 		],
 		"evolvesTo": [
 			"Omnimon Alter-S"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 2280,
+				"intelligence": 1670
+			},
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "455",
@@ -8411,7 +12309,17 @@
 		],
 		"evolvesTo": [
 			"Omnimon Alter-S"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"attack": 2280,
+				"intelligence": 2190,
+				"sp": 1730
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "456",
@@ -8429,7 +12337,17 @@
 		],
 		"evolvesTo": [
 			"Omnimon Alter-B"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"hp": 2620,
+				"attack": 2620,
+				"sp": 1650
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "457",
@@ -8445,7 +12363,15 @@
 		],
 		"evolvesTo": [
 			"Omnimon Alter-B"
-		]
+		],
+		"evolutionRequirements": {
+			"stats": {
+				"sp": 1900
+			},
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
 	},
 	{
 		"number": "468",

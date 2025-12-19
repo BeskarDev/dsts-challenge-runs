@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { Digimon } from '$lib/types/digimon';
 	import { i18n } from '$lib/i18n';
+	import { portal } from '$lib/actions/portal';
 
 	interface Props {
 		digimon: Digimon;
@@ -19,6 +21,10 @@
 	}: Props = $props();
 
 	let imageError = $state(false);
+	let showItemPopup = $state(false);
+	let popupPosition = $state({ top: 0, left: 0 });
+	let buttonEl: HTMLButtonElement | undefined = $state();
+	let menuEl: HTMLDivElement | undefined = $state();
 
 	// Reactive translations that update when language changes
 	let translatedName = $derived($i18n.t(digimon.name));
@@ -35,6 +41,76 @@
 			onReroll(slotIndex);
 		}
 	}
+
+	function updatePopupPosition() {
+		if (buttonEl && menuEl) {
+			const rect = buttonEl.getBoundingClientRect();
+			const menuWidth = menuEl.offsetWidth;
+			const menuHeight = menuEl.offsetHeight;
+			const viewportWidth = window.innerWidth;
+			const viewportHeight = window.innerHeight;
+			const spacing = 8;
+
+			// Calculate initial position (below button, slightly offset)
+			let top = rect.bottom + spacing;
+			let left = rect.left;
+
+			// Adjust horizontal position if overflows
+			if (left + menuWidth > viewportWidth - spacing) {
+				left = viewportWidth - menuWidth - spacing;
+			}
+			if (left < spacing) {
+				left = spacing;
+			}
+
+			// Flip to above if overflows bottom
+			if (top + menuHeight > viewportHeight - spacing) {
+				const topAlt = rect.top - menuHeight - spacing;
+				if (topAlt >= spacing) {
+					top = topAlt;
+				}
+			}
+
+			popupPosition = { top, left };
+		}
+	}
+
+	function handleItemInfoClick(event: MouseEvent, button: HTMLButtonElement) {
+		event.stopPropagation();
+		buttonEl = button;
+		showItemPopup = !showItemPopup;
+		if (showItemPopup) {
+			// Wait for DOM to update before calculating position
+			setTimeout(() => {
+				updatePopupPosition();
+			}, 0);
+		}
+	}
+
+	function closeItemPopup() {
+		showItemPopup = false;
+	}
+
+	function handleClickOutside(event: MouseEvent) {
+		if (showItemPopup && buttonEl && menuEl) {
+			const target = event.target as Node;
+			if (!buttonEl.contains(target) && !menuEl.contains(target)) {
+				closeItemPopup();
+			}
+		}
+	}
+
+	onMount(() => {
+		window.addEventListener('click', handleClickOutside);
+		window.addEventListener('scroll', updatePopupPosition, true);
+		window.addEventListener('resize', updatePopupPosition);
+
+		return () => {
+			window.removeEventListener('click', handleClickOutside);
+			window.removeEventListener('scroll', updatePopupPosition, true);
+			window.removeEventListener('resize', updatePopupPosition);
+		};
+	});
 
 	// Map attribute names to icon URLs from GrindoSaur CDN
 	function getAttributeIconUrl(attribute: string): string {
@@ -100,6 +176,31 @@
 		>
 			{slotIndex + 1}
 		</span>
+		
+		<!-- Info icon for digimon requiring special items -->
+		{#if digimon.evolutionRequirements?.requiredItem}
+			<button
+				onclick={(e) => handleItemInfoClick(e as MouseEvent, e.currentTarget as HTMLButtonElement)}
+				class="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 bg-blue-500 hover:bg-blue-600 text-white text-[8px] sm:text-xs rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center shadow-md cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 z-10"
+				title="Click for evolution requirements"
+				aria-label="Show evolution requirements for {digimon.name}"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-2.5 w-2.5 sm:h-3 sm:w-3"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+					/>
+				</svg>
+			</button>
+		{/if}
 	</div>
 
 	<div class="text-center">
@@ -162,3 +263,85 @@
 		</button>
 	{/if}
 </div>
+
+{#if showItemPopup && digimon.evolutionRequirements?.requiredItem}
+	<div 
+		bind:this={menuEl}
+		use:portal={'body'}
+		class="fixed bg-white dark:bg-surface border border-gray-200 dark:border-border rounded-lg shadow-xl p-4 max-w-sm w-80 z-[9999]"
+		style="top: {popupPosition.top}px; left: {popupPosition.left}px; pointer-events: auto;"
+		role="dialog"
+		aria-modal="true"
+		aria-label="Evolution requirements for {translatedName}"
+	>
+		<!-- Header -->
+		<div class="flex items-start justify-between mb-3">
+			<div class="flex items-center gap-2">
+				<div class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+					</svg>
+				</div>
+				<h3 class="font-semibold text-sm text-gray-900 dark:text-muted-50">Evolution Requirement</h3>
+			</div>
+			<button 
+				onclick={closeItemPopup}
+				class="text-gray-400 hover:text-gray-600 dark:hover:text-muted-200 transition-colors"
+				aria-label="Close evolution requirements popup"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+		</div>
+
+		<!-- Content -->
+		<div class="text-xs space-y-3">
+			<div>
+				<span class="text-gray-500 dark:text-muted-400">Digimon:</span>
+				<p class="font-medium text-gray-900 dark:text-muted-50">{translatedName}</p>
+			</div>
+
+			<div>
+				<span class="text-gray-500 dark:text-muted-400">Required Item:</span>
+				<p class="font-medium text-blue-600 dark:text-blue-400">{digimon.evolutionRequirements.requiredItem}</p>
+			</div>
+
+			{#if digimon.evolutionRequirements.agentRank || digimon.evolutionRequirements.stats || digimon.evolutionRequirements.agentSkills}
+				<div class="border-t border-gray-200 dark:border-border pt-2">
+					<span class="text-gray-500 dark:text-muted-400">Requirements:</span>
+					<div class="mt-1 space-y-1 text-gray-700 dark:text-muted-300">
+						{#if digimon.evolutionRequirements.agentRank}
+							<div>• Agent Rank: <span class="font-medium">{digimon.evolutionRequirements.agentRank}</span></div>
+						{/if}
+						{#if digimon.evolutionRequirements.agentSkills}
+							<div>• Agent Skills:</div>
+							{#if digimon.evolutionRequirements.agentSkills.valor}
+								<div class="ml-4"><span class="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 px-1.5 py-0.5 rounded text-xs font-medium">Valor {digimon.evolutionRequirements.agentSkills.valor}</span></div>
+							{/if}
+							{#if digimon.evolutionRequirements.agentSkills.philanthropy}
+								<div class="ml-4"><span class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-1.5 py-0.5 rounded text-xs font-medium">Philanthropy {digimon.evolutionRequirements.agentSkills.philanthropy}</span></div>
+							{/if}
+							{#if digimon.evolutionRequirements.agentSkills.amicability}
+								<div class="ml-4"><span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-1.5 py-0.5 rounded text-xs font-medium">Amicability {digimon.evolutionRequirements.agentSkills.amicability}</span></div>
+							{/if}
+							{#if digimon.evolutionRequirements.agentSkills.wisdom}
+								<div class="ml-4"><span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 px-1.5 py-0.5 rounded text-xs font-medium">Wisdom {digimon.evolutionRequirements.agentSkills.wisdom}</span></div>
+							{/if}
+						{/if}
+						{#if digimon.evolutionRequirements.stats && Object.keys(digimon.evolutionRequirements.stats).length > 0}
+							<div>• Stats: {Object.entries(digimon.evolutionRequirements.stats).map(([stat, value]) => `${stat} ${value}`).join(', ')}</div>
+						{/if}
+					</div>
+				</div>
+			{/if}
+
+			{#if digimon.evolutionRequirements.minBossOrder}
+				<div class="border-t border-gray-200 dark:border-border pt-2">
+					<span class="text-gray-500 dark:text-muted-400">Story Progress:</span>
+					<p class="mt-1 text-gray-600 dark:text-muted-400">Available at Boss Order #{digimon.evolutionRequirements.minBossOrder}</p>
+				</div>
+			{/if}
+		</div>
+	</div>
+{/if}

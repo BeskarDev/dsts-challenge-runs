@@ -9,7 +9,11 @@
 
 	let { title, isOpen = false, children }: Props = $props();
 
-	let open = $state(isOpen);
+	let open = $state(false);
+
+	$effect(() => {
+		open = isOpen;
+	});
 
 	function toggle() {
 		open = !open;

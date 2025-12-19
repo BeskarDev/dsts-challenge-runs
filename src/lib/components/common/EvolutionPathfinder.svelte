@@ -55,6 +55,11 @@ let targetFilter = $state('');
 let showSourceDropdown = $state(false);
 let showTargetDropdown = $state(false);
 let maxGeneration = $state(''); // Empty means no limit
+let showItemPopup = $state(false);
+let popupDigimon = $state<Digimon | null>(null);
+let popupPosition = $state({ top: 0, left: 0 });
+let popupButtonEl: HTMLButtonElement | undefined = $state();
+let popupMenuEl: HTMLDivElement | undefined = $state();
 
 // Refs for dropdown closing
 let sourceInputRef: HTMLInputElement | null = null;
@@ -269,9 +274,78 @@ names.push(step.to);
 }
 return names;
 });
+
+// Handle item requirement popup
+function updatePopupPosition() {
+	if (popupButtonEl && popupMenuEl) {
+		const rect = popupButtonEl.getBoundingClientRect();
+		const menuWidth = popupMenuEl.offsetWidth;
+		const menuHeight = popupMenuEl.offsetHeight;
+		const viewportWidth = window.innerWidth;
+		const viewportHeight = window.innerHeight;
+		const spacing = 8;
+
+		// Calculate initial position (centered below button)
+		let top = rect.bottom + spacing;
+		let left = rect.left + (rect.width / 2) - (menuWidth / 2);
+
+		// Adjust horizontal position if it overflows viewport
+		if (left + menuWidth > viewportWidth) {
+			left = viewportWidth - menuWidth - spacing;
+		}
+		if (left < spacing) {
+			left = spacing;
+		}
+
+		// Flip to above button if it overflows bottom
+		if (top + menuHeight > viewportHeight && rect.top - menuHeight - spacing > 0) {
+			top = rect.top - menuHeight - spacing;
+		}
+
+		popupPosition = { top, left };
+	}
+}
+
+function handleItemInfoClick(event: MouseEvent, digimon: Digimon, buttonEl: HTMLButtonElement) {
+	event.stopPropagation();
+	popupDigimon = digimon;
+	popupButtonEl = buttonEl;
+	showItemPopup = !showItemPopup;
+	if (showItemPopup) {
+		setTimeout(() => {
+			updatePopupPosition();
+		}, 0);
+	}
+}
+
+function closeItemPopup() {
+	showItemPopup = false;
+	popupDigimon = null;
+}
+
+function handleClickOutside(event: MouseEvent) {
+	if (showItemPopup && popupButtonEl && popupMenuEl) {
+		const target = event.target as Node;
+		if (!popupButtonEl.contains(target) && !popupMenuEl.contains(target)) {
+			closeItemPopup();
+		}
+	}
+}
+
+onMount(() => {
+	window.addEventListener('click', handleClickOutside);
+	window.addEventListener('scroll', updatePopupPosition);
+	window.addEventListener('resize', updatePopupPosition);
+
+	return () => {
+		window.removeEventListener('click', handleClickOutside);
+		window.removeEventListener('scroll', updatePopupPosition);
+		window.removeEventListener('resize', updatePopupPosition);
+	};
+});
 </script>
 
-<svelte:window onkeydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} on:click={handleClickOutside} />
 
 {#if isOpen}
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -285,6 +359,7 @@ class="w-full max-w-4xl max-h-[95vh] rounded-xl border border-gray-200 dark:bord
 role="dialog"
 aria-modal="true"
 aria-label="Evolution Pathfinder"
+tabindex="-1"
 onclick={(e) => e.stopPropagation()}
 >
 <!-- Header -->
@@ -554,6 +629,7 @@ aria-label="Next path"
 
 <!-- Compact Digimon Card -->
 <div class="flex-shrink-0 w-16 md:w-20 p-1.5 md:p-2 rounded-lg bg-white dark:bg-surface border border-gray-200 dark:border-border shadow-sm text-center {index === 0 ? 'ring-2 ring-blue-500' : ''} {index === pathDigimon().length - 1 ? 'ring-2 ring-green-500' : ''}">
+<div class="relative">
 {#if info?.iconUrl}
 <a href={info.detailsUrl} target="_blank" rel="noopener noreferrer" class="block hover:opacity-80 transition-opacity">
 <img src={info.iconUrl} alt={digimonName} class="w-10 h-10 md:w-12 md:h-12 mx-auto rounded-md bg-gray-100 dark:bg-surface-200" />
@@ -561,22 +637,51 @@ aria-label="Next path"
 {:else}
 <div class="w-10 h-10 md:w-12 md:h-12 mx-auto rounded-md bg-gray-200 dark:bg-surface-200"></div>
 {/if}
+
+<!-- Info icon for digimon requiring special items -->
+{#if info?.evolutionRequirements?.requiredItem}
+	<button
+		onclick={(e) => {
+			const btn = e.currentTarget as HTMLButtonElement;
+			handleItemInfoClick(e as MouseEvent, info, btn);
+		}}
+		class="absolute -top-1 -right-1 bg-blue-500 hover:bg-blue-600 text-white text-[6px] md:text-[8px] rounded-full w-3 h-3 md:w-4 md:h-4 flex items-center justify-center shadow-md cursor-pointer transition-colors focus:outline-none focus:ring-1 focus:ring-blue-400"
+		title="Click for evolution requirements"
+		aria-label="Show evolution requirements for {digimonName}"
+	>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="h-1.5 w-1.5 md:h-2 md:w-2"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke="currentColor"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+			/>
+		</svg>
+	</button>
+{/if}
+</div>
 <div class="mt-1 font-medium text-[10px] md:text-xs text-gray-900 dark:text-muted-50 truncate" title={$i18n.t(digimonName)}>
-{$i18n.t(digimonName)}
+	{$i18n.t(digimonName)}
 </div>
 {#if info}
 <div class="text-[9px] md:text-[10px] text-gray-500 dark:text-muted-400 truncate">
-{$i18n.t(info.generation)}
+	{$i18n.t(info.generation)}
 </div>
 <div class="flex items-center justify-center gap-0.5 mt-0.5">
-{#if getAttributeIconUrl(info.attribute)}
-<img src={getAttributeIconUrl(info.attribute)} alt={info.attribute} class="w-2.5 h-2.5 md:w-3 md:h-3 dark:invert-0 invert" />
-{/if}
-<span class="text-[8px] md:text-[9px] text-gray-500 dark:text-muted-400 truncate">{$i18n.t(info.attribute)}</span>
+	{#if getAttributeIconUrl(info.attribute)}
+		<img src={getAttributeIconUrl(info.attribute)} alt={info.attribute} class="w-2.5 h-2.5 md:w-3 md:h-3 dark:invert-0 invert" />
+	{/if}
+	<span class="text-[8px] md:text-[9px] text-gray-500 dark:text-muted-400 truncate">{$i18n.t(info.attribute)}</span>
 </div>
 <!-- Base Personality -->
 <div class="text-[8px] md:text-[9px] text-purple-600 dark:text-purple-400 truncate mt-0.5" title="Base Personality">
-{info.basePersonality}
+	{info.basePersonality}
 </div>
 {/if}
 </div>
@@ -605,6 +710,88 @@ aria-label="Next path"
 <p class="text-xs md:text-sm mt-2">The algorithm considers both digivolution and de-digivolution as valid steps.</p>
 </div>
 {/if}
+
+<!-- Portal: Item Requirement Popup -->
+{#if showItemPopup && popupDigimon?.evolutionRequirements?.requiredItem}
+	<div 
+		bind:this={popupMenuEl}
+			class="fixed z-[9999] bg-white dark:bg-surface border border-gray-200 dark:border-border rounded-lg shadow-xl p-4 max-w-sm w-80"
+			style="top: {popupPosition.top}px; left: {popupPosition.left}px;"
+			role="menu"
+			tabindex="-1"
+		>
+			<!-- Header -->
+			<div class="flex items-start justify-between mb-3">
+				<div class="flex items-center gap-2">
+					<div class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+					</div>
+					<h3 class="font-semibold text-sm text-gray-900 dark:text-muted-50">Evolution Requirement</h3>
+				</div>
+				<button 
+					onclick={closeItemPopup}
+					class="text-gray-400 hover:text-gray-600 dark:hover:text-muted-200 transition-colors"
+					aria-label="Close evolution requirements popup"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+
+			<!-- Content -->
+			<div class="text-xs space-y-3">
+				<div>
+					<span class="text-gray-500 dark:text-muted-400">Digimon:</span>
+					<p class="font-medium text-gray-900 dark:text-muted-50">{popupDigimon.name}</p>
+				</div>
+
+				<div>
+					<span class="text-gray-500 dark:text-muted-400">Required Item:</span>
+					<p class="font-medium text-blue-600 dark:text-blue-400">{popupDigimon.evolutionRequirements.requiredItem}</p>
+				</div>
+
+				{#if popupDigimon.evolutionRequirements.agentRank || popupDigimon.evolutionRequirements.stats || popupDigimon.evolutionRequirements.agentSkills}
+					<div class="border-t border-gray-200 dark:border-border pt-2">
+						<span class="text-gray-500 dark:text-muted-400">Requirements:</span>
+						<div class="mt-1 space-y-1 text-gray-700 dark:text-muted-300">
+							{#if popupDigimon.evolutionRequirements.agentRank}
+								<div>• Agent Rank: <span class="font-medium">{popupDigimon.evolutionRequirements.agentRank}</span></div>
+							{/if}
+							{#if popupDigimon.evolutionRequirements.agentSkills}
+								<div>• Agent Skills:</div>
+								{#if popupDigimon.evolutionRequirements.agentSkills.valor}
+									<div class="ml-4"><span class="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 px-1.5 py-0.5 rounded text-xs font-medium">Valor {popupDigimon.evolutionRequirements.agentSkills.valor}</span></div>
+								{/if}
+								{#if popupDigimon.evolutionRequirements.agentSkills.philanthropy}
+									<div class="ml-4"><span class="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-1.5 py-0.5 rounded text-xs font-medium">Philanthropy {popupDigimon.evolutionRequirements.agentSkills.philanthropy}</span></div>
+								{/if}
+								{#if popupDigimon.evolutionRequirements.agentSkills.amicability}
+									<div class="ml-4"><span class="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-1.5 py-0.5 rounded text-xs font-medium">Amicability {popupDigimon.evolutionRequirements.agentSkills.amicability}</span></div>
+								{/if}
+								{#if popupDigimon.evolutionRequirements.agentSkills.wisdom}
+									<div class="ml-4"><span class="bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 px-1.5 py-0.5 rounded text-xs font-medium">Wisdom {popupDigimon.evolutionRequirements.agentSkills.wisdom}</span></div>
+								{/if}
+							{/if}
+							{#if popupDigimon.evolutionRequirements.stats && Object.keys(popupDigimon.evolutionRequirements.stats).length > 0}
+								<div>• Stats: {Object.entries(popupDigimon.evolutionRequirements.stats).map(([stat, value]) => `${stat} ${value}`).join(', ')}</div>
+							{/if}
+						</div>
+					</div>
+				{/if}
+
+				{#if popupDigimon.evolutionRequirements.minBossOrder}
+					<div class="border-t border-gray-200 dark:border-border pt-2">
+						<span class="text-gray-500 dark:text-muted-400">Story Progress:</span>
+						<p class="mt-1 text-gray-600 dark:text-muted-400">Available at Boss Order #{popupDigimon.evolutionRequirements.minBossOrder}</p>
+					</div>
+				{/if}
+			</div>
+	</div>
+{/if}
+
 </div>
 </div>
 </div>

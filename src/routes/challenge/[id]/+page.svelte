@@ -286,7 +286,8 @@
 				[],
 				onlyHighestGeneration,
 				minGenerationOverride || undefined,
-				includeNonStandard
+				includeNonStandard,
+				startBoss // Pass boss progression
 			)
 			.map((digimon: Digimon, index: number) => ({
 				digimonNumber: digimon.number,
@@ -458,7 +459,8 @@
 			usedInGeneration,
 			onlyHighestGeneration,
 			minGenerationOverride || undefined,
-			includeNonStandard
+			includeNonStandard,
+			bossOrder // Pass boss progression
 		);
 
 		// If no digimon available (empty pool), retry without exclusions
@@ -472,7 +474,8 @@
 						[], // No exclusions
 						onlyHighestGeneration,
 						minGenerationOverride || undefined,
-						includeNonStandard
+						includeNonStandard,
+						bossOrder // Pass boss progression
 					);
 
 		const newTeam: TeamMember[] = finalTeam.map((digimon: Digimon, index: number) => ({
@@ -510,8 +513,9 @@
 		const currentTeamNumbers = challengeState.team.map((m) => m.digimonNumber);
 		const filteredDigimon = getFilteredDigimon();
 
-		// Generate sub-seed for this reroll
-		const rerollSeed = `${challengeState.seed}-boss-${challengeState.currentBossOrder}-reroll-${Date.now()}`;
+		// Generate sub-seed for this reroll using deterministic counter
+		const rerollCount = challengeState.rerollHistory.length;
+		const rerollSeed = `${challengeState.seed}-boss-${challengeState.currentBossOrder}-reroll-${rerollCount}`;
 		randomizer.setSeed(rerollSeed);
 
 		const newDigimon = randomizer.rerollSlot(
@@ -520,7 +524,8 @@
 			currentTeamNumbers,
 			onlyHighestGeneration,
 			minGenerationOverride || undefined,
-			includeNonStandard
+			includeNonStandard,
+			challengeState.currentBossOrder // Pass boss progression
 		);
 
 		if (!newDigimon) return;
@@ -572,8 +577,9 @@
 		const teamSize = data.challenge.settings.teamSize;
 		const filteredDigimon = getFilteredDigimon();
 
-		// Generate sub-seed for this reroll
-		const rerollSeed = `${challengeState.seed}-boss-${challengeState.currentBossOrder}-rerollall-${Date.now()}`;
+		// Generate sub-seed for this reroll using deterministic counter
+		const rerollCount = challengeState.rerollHistory.length;
+		const rerollSeed = `${challengeState.seed}-boss-${challengeState.currentBossOrder}-rerollall-${rerollCount}`;
 		randomizer.setSeed(rerollSeed);
 
 		const newTeamDigimon = randomizer.rerollMultiGeneration(
@@ -583,7 +589,8 @@
 			[], // Don't exclude previous team for full reroll
 			onlyHighestGeneration,
 			minGenerationOverride || undefined,
-			includeNonStandard
+			includeNonStandard,
+			challengeState.currentBossOrder // Pass boss progression
 		);
 
 		const newTeam: TeamMember[] = newTeamDigimon.map((digimon: Digimon, index: number) => ({

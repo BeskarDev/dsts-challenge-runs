@@ -13,6 +13,38 @@ export type EvolutionGeneration =
 	| 'Hybrid';
 
 /**
+ * Digivolution requirements for evolving to a specific Digimon
+ */
+export interface DigivolutionRequirement {
+	/** Required stats for digivolution */
+	stats?: {
+		hp?: number;
+		sp?: number;
+		attack?: number;
+		defense?: number;
+		intelligence?: number;
+		speed?: number;
+	};
+
+	/** Required agent rank */
+	agentRank?: number;
+
+	/** Required agent skills for digivolution */
+	agentSkills?: {
+		valor?: number;
+		philanthropy?: number;
+		amicability?: number;
+		wisdom?: number;
+	};
+
+	/** Required item (e.g., "Human Spirit of Light", "Digi-Egg of Courage") */
+	requiredItem?: string;
+
+	/** Minimum boss order required to unlock this digimon */
+	minBossOrder?: number;
+}
+
+/**
  * Digimon data interface matching the comprehensive table structure
  * All fields are directly sourced from the authoritative digimon-table data
  */
@@ -41,6 +73,8 @@ export interface Digimon {
 	evolvesFrom?: string[];
 	/** Array of Digimon names this Digimon can evolve to (digivolve) */
 	evolvesTo?: string[];
+	/** Digivolution requirements for obtaining this Digimon */
+	evolutionRequirements?: DigivolutionRequirement;
 }
 
 /**

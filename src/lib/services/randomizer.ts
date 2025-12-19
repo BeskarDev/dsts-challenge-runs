@@ -1,5 +1,6 @@
 import type { Digimon, EvolutionGeneration } from '../types/digimon';
 import { getNonStandardEquivalent } from '../utils/generation-equivalents';
+import { filterDigimonByBossProgression } from '../utils/boss-progression';
 
 /**
  * Evolution generation hierarchy for standard evolution filtering.
@@ -63,15 +64,23 @@ export function getGenerationsUpTo(
  * @param maxGenIndex - Index of max generation in hierarchy (for non-standard filtering)
  * @param includeNonStandard - Whether to include Armor/Hybrid based on equivalents
  * @param exclude - Digimon numbers to exclude
+ * @param currentBossOrder - Current boss progression for special item requirements
  */
 function filterDigimonByGenerations(
 	allDigimon: Digimon[],
 	allowedGenerations: EvolutionGeneration[],
 	maxGenIndex: number,
 	includeNonStandard: boolean,
-	exclude: string[] = []
+	exclude: string[] = [],
+	currentBossOrder?: number
 ): Digimon[] {
-	return allDigimon.filter((d) => {
+	// First apply boss progression filter if boss order is provided
+	let filteredDigimon = allDigimon;
+	if (currentBossOrder !== undefined) {
+		filteredDigimon = filterDigimonByBossProgression(allDigimon, currentBossOrder);
+	}
+
+	return filteredDigimon.filter((d) => {
 		if (exclude.includes(d.number)) return false;
 
 		// Check for special generation equivalents (Lucemon, Armor, Hybrid)
@@ -184,16 +193,31 @@ export class RandomizerService {
 	}
 
 	/**
+	 * Filter Digimon by boss progression requirements
+	 * This method applies boss progression filtering to ensure only unlocked Digimon are available
+	 */
+	filterByBossProgression(digimon: Digimon[], currentBossOrder: number): Digimon[] {
+		return filterDigimonByBossProgression(digimon, currentBossOrder);
+	}
+
+	/**
 	 * Get random Digimon from a pool, filtering by generation and excluding specified Digimon
 	 */
 	getRandomDigimon(
 		allDigimon: Digimon[],
 		generation: EvolutionGeneration,
 		count: number,
-		exclude: string[] = []
+		exclude: string[] = [],
+		currentBossOrder?: number
 	): Digimon[] {
+		// Apply boss progression filter first if provided
+		let filteredDigimon = allDigimon;
+		if (currentBossOrder !== undefined) {
+			filteredDigimon = this.filterByBossProgression(allDigimon, currentBossOrder);
+		}
+
 		// Filter by generation and exclude list
-		const available = allDigimon.filter(
+		const available = filteredDigimon.filter(
 			(d) => d.generation === generation && !exclude.includes(d.number)
 		);
 
@@ -217,6 +241,7 @@ export class RandomizerService {
 	 * @param onlyHighest - If true, only include the highest available generation
 	 * @param minGeneration - Optional minimum generation to include (for override)
 	 * @param includeNonStandard - If true, include Armor/Hybrid based on equivalent generations
+	 * @param currentBossOrder - Current boss progression for special item requirements
 	 */
 	getRandomDigimonMultiGeneration(
 		allDigimon: Digimon[],
@@ -225,7 +250,8 @@ export class RandomizerService {
 		exclude: string[] = [],
 		onlyHighest: boolean = false,
 		minGeneration?: EvolutionGeneration,
-		includeNonStandard: boolean = false
+		includeNonStandard: boolean = false,
+		currentBossOrder?: number
 	): Digimon[] {
 		let allowedGenerations: EvolutionGeneration[];
 
@@ -245,13 +271,14 @@ export class RandomizerService {
 		// Get the max generation index for non-standard filtering
 		const maxGenIndex = GENERATION_HIERARCHY.indexOf(maxGeneration);
 
-		// Filter by allowed generations and exclude list
+		// Filter by allowed generations and exclude list, including boss progression
 		const available = filterDigimonByGenerations(
 			allDigimon,
 			allowedGenerations,
 			maxGenIndex,
 			includeNonStandard,
-			exclude
+			exclude,
+			currentBossOrder
 		);
 
 		if (available.length === 0) {
@@ -275,6 +302,7 @@ export class RandomizerService {
 	 * @param onlyHighest - If true, only include the highest available generation
 	 * @param minGeneration - Optional minimum generation to include (for override)
 	 * @param includeNonStandard - If true, include Armor/Hybrid based on equivalent generations
+	 * @param currentBossOrder - Current boss progression for special item requirements
 	 */
 	rerollSlot(
 		allDigimon: Digimon[],
@@ -282,7 +310,8 @@ export class RandomizerService {
 		currentTeamNumbers: string[],
 		onlyHighest: boolean = false,
 		minGeneration?: EvolutionGeneration,
-		includeNonStandard: boolean = false
+		includeNonStandard: boolean = false,
+		currentBossOrder?: number
 	): Digimon | null {
 		let allowedGenerations: EvolutionGeneration[];
 
@@ -299,13 +328,14 @@ export class RandomizerService {
 		// Get the max generation index for non-standard filtering
 		const maxGenIndex = GENERATION_HIERARCHY.indexOf(maxGeneration);
 
-		// Filter by allowed generations and exclude current team members
+		// Filter by allowed generations and exclude current team members, including boss progression
 		const available = filterDigimonByGenerations(
 			allDigimon,
 			allowedGenerations,
 			maxGenIndex,
 			includeNonStandard,
-			currentTeamNumbers
+			currentTeamNumbers,
+			currentBossOrder
 		);
 
 		if (available.length === 0) {
@@ -323,9 +353,10 @@ export class RandomizerService {
 		allDigimon: Digimon[],
 		generation: EvolutionGeneration,
 		count: number,
-		currentTeam: string[] = []
+		currentTeam: string[] = [],
+		currentBossOrder?: number
 	): Digimon[] {
-		return this.getRandomDigimon(allDigimon, generation, count, currentTeam);
+		return this.getRandomDigimon(allDigimon, generation, count, currentTeam, currentBossOrder);
 	}
 
 	/**
@@ -334,6 +365,7 @@ export class RandomizerService {
 	 * @param onlyHighest - If true, only include the highest available generation
 	 * @param minGeneration - Optional minimum generation to include (for override)
 	 * @param includeNonStandard - If true, include Armor/Hybrid based on equivalent generations
+	 * @param currentBossOrder - Current boss progression for special item requirements
 	 */
 	rerollMultiGeneration(
 		allDigimon: Digimon[],
@@ -342,7 +374,8 @@ export class RandomizerService {
 		currentTeam: string[] = [],
 		onlyHighest: boolean = false,
 		minGeneration?: EvolutionGeneration,
-		includeNonStandard: boolean = false
+		includeNonStandard: boolean = false,
+		currentBossOrder?: number
 	): Digimon[] {
 		return this.getRandomDigimonMultiGeneration(
 			allDigimon,
@@ -351,7 +384,8 @@ export class RandomizerService {
 			currentTeam,
 			onlyHighest,
 			minGeneration,
-			includeNonStandard
+			includeNonStandard,
+			currentBossOrder
 		);
 	}
 }

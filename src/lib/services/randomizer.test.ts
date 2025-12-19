@@ -398,4 +398,193 @@ describe('RandomizerService', () => {
 			expect(lucemonIncluded).toBe(false);
 		});
 	});
+
+	describe('Boss Progression Integration', () => {
+		let digimonWithRequirements: Digimon[];
+
+		beforeEach(() => {
+			digimonWithRequirements = [
+				// Regular digimon with no boss requirements
+				{
+					number: '001',
+					name: 'Kuramon',
+					generation: 'In-Training I',
+					attribute: 'No Data',
+					type: 'Unidentified',
+					basePersonality: 'Sly',
+					iconUrl: 'test.png',
+					detailsUrl: 'test.html'
+				},
+				// Armor digimon requiring digi-egg (boss 10+)
+				{
+					number: '179',
+					name: 'Submarimon',
+					generation: 'Armor',
+					attribute: 'Free',
+					type: 'Aquatic',
+					basePersonality: 'Overprotective',
+					iconUrl: 'test.png',
+					detailsUrl: 'test.html',
+					evolutionRequirements: {
+						requiredItem: 'Digi-Egg of Knowledge'
+					}
+				},
+				// Hybrid digimon requiring spirit (boss 10+)
+				{
+					number: '187',
+					name: 'Agunimon',
+					generation: 'Hybrid',
+					attribute: 'Variable',
+					type: 'Wizard',
+					basePersonality: 'Zealous',
+					iconUrl: 'test.png',
+					detailsUrl: 'test.html',
+					evolutionRequirements: {
+						requiredItem: 'Human Spirit of Fire'
+					}
+				},
+				// Regular champion
+				{
+					number: '021',
+					name: 'Greymon',
+					generation: 'Champion',
+					attribute: 'Vaccine',
+					type: 'Dinosaur',
+					basePersonality: 'Brave',
+					iconUrl: 'test.png',
+					detailsUrl: 'test.html'
+				}
+			];
+		});
+
+		describe('filterByBossProgression', () => {
+			it('should return boss progression filtered digimon', () => {
+				// Early boss - should only get non-special digimon
+				const earlyFiltered = randomizer.filterByBossProgression(digimonWithRequirements, 5);
+				expect(earlyFiltered).toHaveLength(2);
+				expect(earlyFiltered.map(d => d.name)).toEqual(['Kuramon', 'Greymon']);
+
+				// Vulcanusmon boss - should include armor/hybrid
+				const vulcanusFiltered = randomizer.filterByBossProgression(digimonWithRequirements, 10);
+				expect(vulcanusFiltered).toHaveLength(4);
+			});
+		});
+
+		describe('getRandomDigimon with boss progression', () => {
+			it('should respect boss progression in single generation selection', () => {
+				// Before Vulcanusmon - no Armor digimon should be selected
+				const earlyResult = randomizer.getRandomDigimon(
+					digimonWithRequirements, 
+					'Armor', 
+					10, 
+					[], 
+					5 // Boss order 5
+				);
+				expect(earlyResult).toHaveLength(0);
+
+				// After Vulcanusmon - Armor digimon should be available
+				const lateResult = randomizer.getRandomDigimon(
+					digimonWithRequirements, 
+					'Armor', 
+					10, 
+					[], 
+					10 // Boss order 10
+				);
+				expect(lateResult).toHaveLength(1);
+				expect(lateResult[0].name).toBe('Submarimon');
+			});
+		});
+
+		describe('getRandomDigimonMultiGeneration with boss progression', () => {
+			it('should include boss progression filtering', () => {
+				// Before Vulcanusmon
+				const earlyResult = randomizer.getRandomDigimonMultiGeneration(
+					digimonWithRequirements,
+					'Champion',
+					10,
+					[],
+					false,
+					undefined,
+					true, // include non-standard
+					5 // Boss order 5
+				);
+				
+				// Should not include armor/hybrid digimon
+				const hasArmor = earlyResult.some(d => d.generation === 'Armor');
+				const hasHybrid = earlyResult.some(d => d.generation === 'Hybrid');
+				expect(hasArmor).toBe(false);
+				expect(hasHybrid).toBe(false);
+
+				// After Vulcanusmon
+				const lateResult = randomizer.getRandomDigimonMultiGeneration(
+					digimonWithRequirements,
+					'Champion',
+					10,
+					[],
+					false,
+					undefined,
+					true, // include non-standard
+					10 // Boss order 10
+				);
+				
+				// Should potentially include armor/hybrid digimon (if they're equivalent to Champion)
+				// We can't guarantee they'll be selected due to randomness, but pool should include them
+				expect(lateResult.length).toBeGreaterThan(0);
+			});
+		});
+
+		describe('rerollSlot with boss progression', () => {
+			it('should respect boss progression when rerolling slots', () => {
+				// Test with higher boss order first to ensure digimon are available
+				const result = randomizer.rerollSlot(
+					digimonWithRequirements,
+					'Champion',
+					['001'], // Exclude Kuramon
+					false,
+					undefined,
+					true, // include non-standard
+					10 // Boss order 10
+				);
+				
+				expect(result).not.toBeNull();
+				if (result) {
+					expect(result.number).not.toBe('001'); // Should not be excluded digimon
+				}
+			});
+		});
+
+		describe('rerollMultiGeneration with boss progression', () => {
+			it('should use boss progression in multi-generation reroll', () => {
+				const result = randomizer.rerollMultiGeneration(
+					digimonWithRequirements,
+					'Champion',
+					2,
+					[],
+					false,
+					undefined,
+					true, // include non-standard
+					10 // Boss order 10
+				);
+				
+				expect(result).toHaveLength(2);
+				// With boss progression, more digimon should be available
+			});
+		});
+
+		describe('Backwards compatibility', () => {
+			it('should work without boss progression parameter', () => {
+				// All existing methods should work without the new parameter
+				const result1 = randomizer.getRandomDigimon(digimonWithRequirements, 'Champion', 2);
+				const result2 = randomizer.getRandomDigimonMultiGeneration(digimonWithRequirements, 'Champion', 2);
+				const result3 = randomizer.rerollSlot(digimonWithRequirements, 'Champion', []);
+				const result4 = randomizer.rerollMultiGeneration(digimonWithRequirements, 'Champion', 2);
+
+				// Should not throw errors and return valid results
+				expect(Array.isArray(result1)).toBe(true);
+				expect(Array.isArray(result2)).toBe(true);
+				expect(result3 === null || typeof result3 === 'object').toBe(true);
+				expect(Array.isArray(result4)).toBe(true);
+			});
+		});
+	});
 });
