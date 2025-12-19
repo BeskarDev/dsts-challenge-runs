@@ -510,23 +510,51 @@
 		if (!challengeState || !data.digimon) return;
 
 		const oldDigimonNumber = challengeState.team[slotIndex].digimonNumber;
-		const currentTeamNumbers = challengeState.team.map((m) => m.digimonNumber);
 		const filteredDigimon = getFilteredDigimon();
+
+		// Build exclusion list: include digimon from other teams of the same generation
+		// but exclude the digimon being rerolled (so it becomes available again)
+		const currentGeneration = challengeState.currentGeneration;
+		const usedInGeneration = Object.values(challengeState.bossTeams)
+			.filter((bt) => bt.generation === currentGeneration)
+			.flatMap((bt) => bt.team.map((tm) => tm.digimonNumber));
+
+		// Remove the old digimon from exclusion list (make it available again)
+		// and include all other current team members
+		const currentTeamNumbers = challengeState.team.map((m) => m.digimonNumber);
+		const exclusionList = [...new Set([...usedInGeneration, ...currentTeamNumbers])].filter(
+			(num) => num !== oldDigimonNumber
+		);
 
 		// Generate sub-seed for this reroll using deterministic counter
 		const rerollCount = challengeState.rerollHistory.length;
 		const rerollSeed = `${challengeState.seed}-boss-${challengeState.currentBossOrder}-reroll-${rerollCount}`;
 		randomizer.setSeed(rerollSeed);
 
-		const newDigimon = randomizer.rerollSlot(
+		let newDigimon = randomizer.rerollSlot(
 			filteredDigimon,
 			challengeState.currentGeneration,
-			currentTeamNumbers,
+			exclusionList,
 			onlyHighestGeneration,
 			minGenerationOverride || undefined,
 			includeNonStandard,
 			challengeState.currentBossOrder // Pass boss progression
 		);
+
+		// If no digimon available with exclusions, retry without exclusions
+		if (!newDigimon) {
+			// Reset seed for deterministic retry
+			randomizer.setSeed(rerollSeed);
+			newDigimon = randomizer.rerollSlot(
+				filteredDigimon,
+				challengeState.currentGeneration,
+				currentTeamNumbers.filter((num) => num !== oldDigimonNumber), // Only exclude current team except the slot being rerolled
+				onlyHighestGeneration,
+				minGenerationOverride || undefined,
+				includeNonStandard,
+				challengeState.currentBossOrder
+			);
+		}
 
 		if (!newDigimon) return;
 
@@ -577,6 +605,14 @@
 		const teamSize = data.challenge.settings.teamSize;
 		const filteredDigimon = getFilteredDigimon();
 
+		// Build exclusion list: include digimon from other teams of the same generation
+		// but exclude the current team (making them available for reroll)
+		const currentGeneration = challengeState.currentGeneration;
+		const currentBossOrder = challengeState.currentBossOrder;
+		const usedInOtherTeams = Object.values(challengeState.bossTeams)
+			.filter((bt) => bt.generation === currentGeneration && bt.bossOrder !== currentBossOrder)
+			.flatMap((bt) => bt.team.map((tm) => tm.digimonNumber));
+
 		// Generate sub-seed for this reroll using deterministic counter
 		const rerollCount = challengeState.rerollHistory.length;
 		const rerollSeed = `${challengeState.seed}-boss-${challengeState.currentBossOrder}-rerollall-${rerollCount}`;
@@ -586,14 +622,29 @@
 			filteredDigimon,
 			challengeState.currentGeneration,
 			teamSize,
-			[], // Don't exclude previous team for full reroll
+			usedInOtherTeams, // Exclude digimon used in other teams
 			onlyHighestGeneration,
 			minGenerationOverride || undefined,
 			includeNonStandard,
 			challengeState.currentBossOrder // Pass boss progression
 		);
 
-		const newTeam: TeamMember[] = newTeamDigimon.map((digimon: Digimon, index: number) => ({
+		// If not enough digimon available with exclusions, retry without exclusions
+		const finalTeam =
+			newTeamDigimon.length >= teamSize
+				? newTeamDigimon
+				: randomizer.rerollMultiGeneration(
+						filteredDigimon,
+						challengeState.currentGeneration,
+						teamSize,
+						[], // No exclusions - allow duplicates if necessary
+						onlyHighestGeneration,
+						minGenerationOverride || undefined,
+						includeNonStandard,
+						challengeState.currentBossOrder // Pass boss progression
+					);
+
+		const newTeam: TeamMember[] = finalTeam.map((digimon: Digimon, index: number) => ({
 			digimonNumber: digimon.number,
 			slotIndex: index,
 			rolledAtCheckpoint: challengeState!.currentBossOrder
