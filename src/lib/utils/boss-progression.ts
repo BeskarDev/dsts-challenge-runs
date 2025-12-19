@@ -1,4 +1,4 @@
-import type { Digimon, DigivolutionRequirement } from '../types/digimon';
+import type { Digimon } from '../types/digimon';
 
 /**
  * Boss progression logic for determining digimon availability

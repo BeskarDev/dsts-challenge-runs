@@ -62,8 +62,8 @@ let popupButtonEl: HTMLButtonElement | undefined = $state();
 let popupMenuEl: HTMLDivElement | undefined = $state();
 
 // Refs for dropdown closing
-let sourceInputRef: HTMLInputElement | null = null;
-let targetInputRef: HTMLInputElement | null = null;
+let sourceInputRef: HTMLInputElement | null = $state(null);
+let targetInputRef: HTMLInputElement | null = $state(null);
 
 // Search relevance scoring - exact match gets highest score, startsWith next, then includes
 function getSearchRelevance(digimonName: string, searchTerm: string): number {

@@ -226,7 +226,7 @@ function parseStatValue(text) {
 }
 
 // Parse digivolution requirements from HTML content
-function parseDigivolutionRequirements(html, digimonName) {
+function parseDigivolutionRequirements(html) {
 	if (!JSDOM) {
 		JSDOM = require('jsdom').JSDOM;
 	}
@@ -553,7 +553,7 @@ async function scrapeDigivolutionRequirements(options) {
 			if (options.debug) {
 				saveDebugHtml(html, 'single-test', debugDir);
 			}
-			const requirementsData = parseDigivolutionRequirements(html, 'Unknown');
+			const requirementsData = parseDigivolutionRequirements(html);
 			console.log('\nDigivolution requirements:');
 			console.log(JSON.stringify(requirementsData, null, 2));
 		} catch (err) {
@@ -612,7 +612,7 @@ async function scrapeDigivolutionRequirements(options) {
 				saveDebugHtml(html, digimon.name, debugDir);
 			}
 
-			const requirementsData = parseDigivolutionRequirements(html, digimon.name);
+			const requirementsData = parseDigivolutionRequirements(html);
 
 			// Only add requirements if we found valid data
 			if (hasValidRequirements(requirementsData)) {

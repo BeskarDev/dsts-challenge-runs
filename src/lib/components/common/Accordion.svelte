@@ -7,6 +7,7 @@
 		children?: Snippet;
 	}
 
+	/* eslint-disable svelte/prefer-writable-derived */
 	let { title, isOpen = false, children }: Props = $props();
 
 	let open = $state(false);
