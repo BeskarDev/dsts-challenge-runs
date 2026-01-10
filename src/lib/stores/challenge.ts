@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 import type { ChallengeRunState } from '../types/challenge';
 import { storage } from '../services/storage';
 import { historyStore } from './history';
+import { migrateAnimationState } from './animation';
 import bossesData from '../../data/bosses.json';
 
 function getChallengeKey(challengeId: string): string {
@@ -80,6 +81,12 @@ function createChallengeStore() {
 					migratedState.rerollTeamPerBoss = false;
 					needsSave = true;
 				}
+				if (!('revealedBosses' in state)) {
+					// Migrate animation state from old storage location
+					const legacyRevealedBosses = migrateAnimationState(challengeId, state.seed);
+					migratedState.revealedBosses = legacyRevealedBosses;
+					needsSave = true;
+				}
 
 				if (needsSave) {
 					storage.saveState(key, state as unknown as ChallengeRunState);
@@ -102,7 +109,8 @@ function createChallengeStore() {
 				includePostGame: state.includePostGame ?? false,
 				includeNonStandard: state.includeNonStandard ?? true,
 				includeDLCBosses: state.includeDLCBosses ?? false,
-				rerollTeamPerBoss: state.rerollTeamPerBoss ?? false
+				rerollTeamPerBoss: state.rerollTeamPerBoss ?? false,
+				revealedBosses: state.revealedBosses ?? {}
 			};
 
 			storage.saveState(key, normalizedState);
@@ -172,6 +180,26 @@ function createChallengeStore() {
 		},
 		reset: () => {
 			set(null);
+		},
+		// Animation state management - now integrated into challenge state
+		markBossRevealed: (bossOrder: number) => {
+			update((state) => {
+				if (!state) return state;
+				const newState = {
+					...state,
+					revealedBosses: {
+						...(state.revealedBosses || {}),
+						[bossOrder]: true
+					},
+					updatedAt: new Date().toISOString()
+				};
+				storage.saveState(getChallengeKey(state.challengeId), newState);
+				return newState;
+			});
+		},
+		isBossRevealed: (state: ChallengeRunState | null, bossOrder: number): boolean => {
+			if (!state) return false;
+			return state.revealedBosses?.[bossOrder] === true;
 		}
 	};
 }

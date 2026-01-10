@@ -10,11 +10,7 @@
 	import BossNavigation from '$lib/components/challenge/BossNavigation.svelte';
 	import { challengeStore } from '$lib/stores/challenge';
 	import { historyStore } from '$lib/stores/history';
-	import {
-		hasAnimationPlayed,
-		markAnimationPlayed,
-		resetAnimationState
-	} from '$lib/stores/animation';
+	import { resetAnimationState } from '$lib/stores/animation';
 	import { RandomizerService } from '$lib/services/randomizer';
 	import type {
 		ChallengeRunState,
@@ -690,12 +686,12 @@
 	function handleRevealTeam() {
 		if (!challengeState || !data.challenge) return;
 
-		// Mark animation as played
+		// Mark bosses as revealed in the challenge state
 		// If rerollTeamPerBoss is enabled, only mark this specific boss
 		// Otherwise, mark all bosses in the current boss group as revealed
 		if (rerollTeamPerBoss) {
 			// Mark only this specific boss
-			markAnimationPlayed(data.challenge.id, challengeState.seed, challengeState.currentBossOrder);
+			challengeStore.markBossRevealed(challengeState.currentBossOrder);
 		} else {
 			// Mark all bosses in the current group
 			const currentBossGroup = getBossGroupForBoss(challengeState.currentBossOrder);
@@ -706,15 +702,11 @@
 					bossOrder <= currentBossGroup.endBoss;
 					bossOrder++
 				) {
-					markAnimationPlayed(data.challenge.id, challengeState.seed, bossOrder);
+					challengeStore.markBossRevealed(bossOrder);
 				}
 			} else {
 				// No boss group, just mark current boss
-				markAnimationPlayed(
-					data.challenge.id,
-					challengeState.seed,
-					challengeState.currentBossOrder
-				);
+				challengeStore.markBossRevealed(challengeState.currentBossOrder);
 			}
 		}
 
@@ -730,34 +722,22 @@
 			return;
 		}
 
-		// Check if animation has been played
+		// Check if animation has been played using the challenge state
 		// If rerollTeamPerBoss is enabled, check per boss
 		// Otherwise, check for the first boss in the current boss group
 		let played = false;
 		if (rerollTeamPerBoss) {
 			// Check animation for this specific boss
-			played = hasAnimationPlayed(
-				data.challenge.id,
-				challengeState.seed,
-				challengeState.currentBossOrder
-			);
+			played = challengeStore.isBossRevealed(challengeState, challengeState.currentBossOrder);
 		} else {
 			// Check animation for the first boss in the current boss group
 			const currentBossGroup = getBossGroupForBoss(challengeState.currentBossOrder);
 			if (currentBossGroup) {
 				// Check if animation was played for the first boss in this group
-				played = hasAnimationPlayed(
-					data.challenge.id,
-					challengeState.seed,
-					currentBossGroup.startBoss
-				);
+				played = challengeStore.isBossRevealed(challengeState, currentBossGroup.startBoss);
 			} else {
 				// No boss group defined, check current boss
-				played = hasAnimationPlayed(
-					data.challenge.id,
-					challengeState.seed,
-					challengeState.currentBossOrder
-				);
+				played = challengeStore.isBossRevealed(challengeState, challengeState.currentBossOrder);
 			}
 		}
 

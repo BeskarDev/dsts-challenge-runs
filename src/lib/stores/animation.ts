@@ -2,6 +2,9 @@
  * Store for tracking UI animation state across the app
  * This allows us to track which animations have already been played
  * and avoid replaying them on navigation. Now persists to localStorage per run.
+ * 
+ * @deprecated Animation state is now stored in the challenge state itself.
+ * These functions are kept for backwards compatibility and migration.
  */
 
 import { storage } from '../services/storage';
@@ -26,6 +29,7 @@ function loadAnimationState(challengeId: string, seed: string): Record<string, b
 
 /**
  * Save animation state to localStorage for a run
+ * @deprecated Use challengeStore.markBossRevealed instead
  */
 function saveAnimationState(
 	challengeId: string,
@@ -44,7 +48,33 @@ function createKey(bossOrder: number): string {
 }
 
 /**
+ * Migrate legacy animation state to challenge state
+ * This function loads old animation state and returns it so it can be merged
+ * into the challenge state.
+ */
+export function migrateAnimationState(
+	challengeId: string,
+	seed: string
+): Record<number, boolean> {
+	const animationState = loadAnimationState(challengeId, seed);
+	const revealedBosses: Record<number, boolean> = {};
+
+	// Convert boss:X keys to numeric keys
+	for (const [key, value] of Object.entries(animationState)) {
+		if (key.startsWith('boss:') && value === true) {
+			const bossOrder = parseInt(key.substring(5), 10);
+			if (!isNaN(bossOrder)) {
+				revealedBosses[bossOrder] = true;
+			}
+		}
+	}
+
+	return revealedBosses;
+}
+
+/**
  * Check if animation has been played for a specific boss in a run
+ * @deprecated Use challengeStore.isBossRevealed instead
  */
 export function hasAnimationPlayed(challengeId: string, seed: string, bossOrder: number): boolean {
 	const runKey = `${challengeId}:${seed}`;
@@ -68,6 +98,7 @@ export function hasAnimationPlayed(challengeId: string, seed: string, bossOrder:
 
 /**
  * Mark animation as played for a specific boss in a run
+ * @deprecated Use challengeStore.markBossRevealed instead
  */
 export function markAnimationPlayed(challengeId: string, seed: string, bossOrder: number): void {
 	const runKey = `${challengeId}:${seed}`;
