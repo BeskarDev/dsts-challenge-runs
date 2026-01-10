@@ -58,6 +58,21 @@
 		return bossGroups.find((g) => bossOrder >= g.startBoss && bossOrder <= g.endBoss) || null;
 	}
 
+	// Get all boss orders in the same group as the given boss order
+	function getBossOrdersInGroup(bossOrder: number): number[] {
+		const bossGroup = getBossGroupForBoss(bossOrder);
+		if (!bossGroup) {
+			// If no boss group is defined, return just the current boss
+			return [bossOrder];
+		}
+		// Return all boss orders in the group
+		const orders: number[] = [];
+		for (let order = bossGroup.startBoss; order <= bossGroup.endBoss; order++) {
+			orders.push(order);
+		}
+		return orders;
+	}
+
 	// Content filtering settings
 	let includeDLC = $state(true);
 	let includePostGame = $state(false);
@@ -574,18 +589,24 @@
 
 		challengeStore.update((state) => {
 			if (!state) return state;
-			// Update both current team and boss team snapshot
+			
+			// Update team snapshots for all bosses in the current boss group
+			const bossOrdersInGroup = getBossOrdersInGroup(state.currentBossOrder);
+			const updatedBossTeams = { ...state.bossTeams };
+			
+			for (const bossOrder of bossOrdersInGroup) {
+				updatedBossTeams[bossOrder] = {
+					bossOrder,
+					generation: state.currentGeneration,
+					team: newTeam,
+					seed: rerollSeed
+				};
+			}
+			
 			return {
 				...state,
 				team: newTeam,
-				bossTeams: {
-					...state.bossTeams,
-					[state.currentBossOrder]: {
-						...state.bossTeams[state.currentBossOrder],
-						team: newTeam,
-						seed: rerollSeed
-					}
-				},
+				bossTeams: updatedBossTeams,
 				rerollHistory: [...state.rerollHistory, rerollEvent],
 				updatedAt: new Date().toISOString()
 			};
@@ -655,18 +676,24 @@
 
 		challengeStore.update((state) => {
 			if (!state) return state;
-			// Update both current team and boss team snapshot
+			
+			// Update team snapshots for all bosses in the current boss group
+			const bossOrdersInGroup = getBossOrdersInGroup(state.currentBossOrder);
+			const updatedBossTeams = { ...state.bossTeams };
+			
+			for (const bossOrder of bossOrdersInGroup) {
+				updatedBossTeams[bossOrder] = {
+					bossOrder,
+					generation: state.currentGeneration,
+					team: newTeam,
+					seed: rerollSeed
+				};
+			}
+			
 			return {
 				...state,
 				team: newTeam,
-				bossTeams: {
-					...state.bossTeams,
-					[state.currentBossOrder]: {
-						...state.bossTeams[state.currentBossOrder],
-						team: newTeam,
-						seed: rerollSeed
-					}
-				},
+				bossTeams: updatedBossTeams,
 				rerollHistory: [...state.rerollHistory, rerollEvent],
 				updatedAt: new Date().toISOString()
 			};
