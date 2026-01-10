@@ -58,6 +58,7 @@ export interface ChallengeRunState {
 	team: TeamMember[];
 	rerollHistory: RerollEvent[];
 	bossTeams: Record<number, BossTeamSnapshot>; // Store team snapshot per boss
+	revealedBosses?: Record<number, boolean>; // Track which bosses have had their teams revealed
 	// Content filtering settings
 	includeDLC: boolean;
 	includePostGame: boolean;
