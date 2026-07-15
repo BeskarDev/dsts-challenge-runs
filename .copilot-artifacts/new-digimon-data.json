@@ -1,0 +1,267 @@
+{
+  "newDigimon": [
+    {
+      "number": "458",
+      "name": "BanchoMamemon",
+      "generation": "Mega",
+      "attribute": "Data",
+      "type": "Mutant",
+      "basePersonality": "Reckless",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/banchomamemon-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/banchomamemon",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "Mamemon"
+      ],
+      "evolvesTo": [],
+      "evolutionRequirements": {
+        "agentRank": 7,
+        "requiredItem": null,
+        "minBossOrder": null
+      }
+    },
+    {
+      "number": "459",
+      "name": "BanchoLillymon",
+      "generation": "Mega",
+      "attribute": "Data",
+      "type": "Pixie",
+      "basePersonality": "Daring",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/bancholillymon-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/bancholillymon",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "Lillymon"
+      ],
+      "evolvesTo": [],
+      "evolutionRequirements": {
+        "agentRank": 7,
+        "requiredItem": null,
+        "minBossOrder": null
+      }
+    },
+    {
+      "number": "460",
+      "name": "BanchoGolemon",
+      "generation": "Mega",
+      "attribute": "Virus",
+      "type": "Mineral",
+      "basePersonality": "Daring",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/banchogolemon-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/banchogolemon",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "Golemon"
+      ],
+      "evolvesTo": [],
+      "evolutionRequirements": {
+        "agentRank": 7,
+        "requiredItem": null,
+        "minBossOrder": null
+      }
+    },
+    {
+      "number": "461",
+      "name": "BanchoStingmon",
+      "generation": "Mega",
+      "attribute": "Free",
+      "type": "Insectoid",
+      "basePersonality": "Zealous",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/banchostingmon-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/banchostingmon",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "JewelBeemon"
+      ],
+      "evolvesTo": [],
+      "evolutionRequirements": {
+        "agentRank": 7,
+        "requiredItem": null,
+        "minBossOrder": null
+      }
+    },
+    {
+      "number": "462",
+      "name": "Omnimon MM",
+      "generation": "Mega +",
+      "attribute": "Vaccine",
+      "type": "Holy Knight",
+      "basePersonality": "Reckless",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/omnimon-mm-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/omnimon-mm",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "Omnimon"
+      ],
+      "evolvesTo": [],
+      "evolutionRequirements": {
+        "agentRank": 8,
+        "requiredItem": null,
+        "minBossOrder": null
+      }
+    },
+    {
+      "number": "463",
+      "name": "UlforceVeedramon (X Antibody)",
+      "generation": "Mega",
+      "attribute": "Vaccine",
+      "type": "Holy Knight",
+      "basePersonality": "Zealous",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/ulforceveedramon-x-antibody-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/ulforceveedramon-x-antibody",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "UlforceVeedramon"
+      ],
+      "evolvesTo": [
+        "UlforceVeedramon"
+      ],
+      "evolutionRequirements": {
+        "agentRank": 7,
+        "requiredItem": null,
+        "minBossOrder": null
+      }
+    },
+    {
+      "number": "464",
+      "name": "Magnamon (X Antibody)",
+      "generation": "Mega",
+      "attribute": "Vaccine",
+      "type": "Holy Knight",
+      "basePersonality": "Zealous",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/magnamon-x-antibody-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/magnamon-x-antibody",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "Magnamon"
+      ],
+      "evolvesTo": [
+        "Magnamon"
+      ],
+      "evolutionRequirements": {
+        "agentRank": 3,
+        "requiredItem": "Digi-Egg of Miracles",
+        "minBossOrder": null
+      }
+    },
+    {
+      "number": "465",
+      "name": "Jesmon (X Antibody)",
+      "generation": "Mega",
+      "attribute": "Data",
+      "type": "Holy Knight",
+      "basePersonality": "Friendly",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/jesmon-x-antibody-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/jesmon-x-antibody",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "Jesmon"
+      ],
+      "evolvesTo": [
+        "Jesmon"
+      ],
+      "evolutionRequirements": {
+        "agentRank": 7,
+        "requiredItem": null,
+        "minBossOrder": null
+      }
+    },
+    {
+      "number": "466",
+      "name": "Gallantmon (X Antibody)",
+      "generation": "Mega",
+      "attribute": "Virus",
+      "type": "Holy Knight",
+      "basePersonality": "Daring",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/gallantmon-x-antibody-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/gallantmon-x-antibody",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "Gallantmon"
+      ],
+      "evolvesTo": [
+        "Gallantmon"
+      ],
+      "evolutionRequirements": {
+        "agentRank": 7,
+        "requiredItem": null,
+        "minBossOrder": null
+      }
+    },
+    {
+      "number": "467",
+      "name": "Omnimon (X Antibody)",
+      "generation": "Mega +",
+      "attribute": "Vaccine",
+      "type": "Holy Knight",
+      "basePersonality": "Daring",
+      "iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/omnimon-x-antibody-icon.png",
+      "detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/omnimon-x-antibody",
+      "isDLC": true,
+      "isPostGame": false,
+      "evolvesFrom": [
+        "Omnimon"
+      ],
+      "evolvesTo": [
+        "Omnimon"
+      ],
+      "evolutionRequirements": {
+        "agentRank": 7,
+        "requiredItem": null,
+        "minBossOrder": null
+      }
+    }
+  ],
+  "dlcStatus468to475": {
+    "468": {
+      "name": "Agumon (Black)",
+      "isDLC": false,
+      "isPostGame": false
+    },
+    "469": {
+      "name": "Gabumon (Black)",
+      "isDLC": false,
+      "isPostGame": false
+    },
+    "470": {
+      "name": "Garurumon (Black)",
+      "isDLC": false,
+      "isPostGame": false
+    },
+    "471": {
+      "name": "Greymon (Blue)",
+      "isDLC": false,
+      "isPostGame": false
+    },
+    "472": {
+      "name": "MetalGreymon (Blue)",
+      "isDLC": false,
+      "isPostGame": false
+    },
+    "473": {
+      "name": "WereGarurumon (Black)",
+      "isDLC": false,
+      "isPostGame": false
+    },
+    "474": {
+      "name": "BlackWarGreymon",
+      "isDLC": false,
+      "isPostGame": false
+    },
+    "475": {
+      "name": "MetalGarurumon (Black)",
+      "isDLC": false,
+      "isPostGame": false
+    }
+  },
+  "notes": "Grindosaur listing page was fetched successfully. The environment forbids writing to /tmp, so the requested outputs were saved under .copilot-artifacts/ instead. No explicit DLC or post-game text indicator was found in the fetched detail-page HTML for 458-475. Entries 458-467 are marked isDLC=true based on the user request describing them as new DLC Digimon; 468-475 are marked false because their detail pages showed no DLC/post-game indicator. All requested detail pages were fetched successfully with a 500ms delay between requests."
+}

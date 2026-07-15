@@ -899,7 +899,7 @@
 						bind:checked={includeDLC}
 						class="rounded border-gray-300 dark:border-border text-primary-600 focus:ring-primary-500"
 					/>
-					<span>Include DLC Digimon (Episode Packs 1-3*)</span>
+					<span>Include DLC Digimon (Episode Packs 1-3)</span>
 					<span>*<i>only includes already released packs</i></span>
 				</label>
 				<label class="flex items-center gap-2 text-sm text-gray-700 dark:text-muted-100 mb-2">

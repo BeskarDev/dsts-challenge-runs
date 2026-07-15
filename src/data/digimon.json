@@ -4265,7 +4265,8 @@
 		"evolvesTo": [
 			"Volcanomon",
 			"Mammothmon",
-			"Meteormon"
+			"Meteormon",
+			"BanchoGolemon"
 		],
 		"evolutionRequirements": {
 			"stats": {
@@ -5889,7 +5890,8 @@
 		],
 		"evolvesTo": [
 			"HerculesKabuterimon",
-			"TigerVespamon"
+			"TigerVespamon",
+			"BanchoStingmon"
 		],
 		"evolutionRequirements": {
 			"stats": {
@@ -7287,7 +7289,8 @@
 		],
 		"evolvesTo": [
 			"Pukumon",
-			"PrinceMamemon"
+			"PrinceMamemon",
+			"BanchoMamemon"
 		],
 		"evolutionRequirements": {
 			"stats": {
@@ -7401,7 +7404,8 @@
 		],
 		"evolvesTo": [
 			"Rosemon",
-			"Ceresmon"
+			"Ceresmon",
+			"BanchoLillymon"
 		],
 		"evolutionRequirements": {
 			"stats": {
@@ -9471,7 +9475,6 @@
 		"attribute": "Vaccine",
 		"type": "Deity",
 		"basePersonality": "Friendly",
-		"postgame": true,
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/jupitermon-icon.png",
 		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/jupitermon",
 		"evolvesFrom": [
@@ -9492,7 +9495,8 @@
 			},
 			"requiredItem": null,
 			"minBossOrder": null
-		}
+		},
+		"isPostGame": true
 	},
 	{
 		"number": "341",
@@ -11881,7 +11885,6 @@
 		"attribute": "Vaccine",
 		"type": "Deity",
 		"basePersonality": "Friendly",
-		"postgame": true,
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/jupitermon-wm-icon.png",
 		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/jupitermon-wm",
 		"evolvesFrom": [
@@ -11896,7 +11899,8 @@
 			"agentRank": 9,
 			"requiredItem": null,
 			"minBossOrder": null
-		}
+		},
+		"isPostGame": true
 	},
 	{
 		"number": "438",
@@ -12152,7 +12156,6 @@
 		"attribute": "Unknown",
 		"type": "Unidentified",
 		"basePersonality": "Brave",
-		"postgame": true,
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/agumon-bond-of-bravery-icon.png",
 		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/agumon-bond-of-bravery",
 		"evolvesFrom": [
@@ -12169,7 +12172,8 @@
 			},
 			"requiredItem": null,
 			"minBossOrder": null
-		}
+		},
+		"isPostGame": true
 	},
 	{
 		"number": "450",
@@ -12201,7 +12205,6 @@
 		"attribute": "Unknown",
 		"type": "Unidentified",
 		"basePersonality": "Compassionate",
-		"postgame": true,
 		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/gabumon-bond-of-friendship-icon.png",
 		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/gabumon-bond-of-friendship",
 		"evolvesFrom": [
@@ -12218,7 +12221,8 @@
 			},
 			"requiredItem": null,
 			"minBossOrder": null
-		}
+		},
+		"isPostGame": true
 	},
 	{
 		"number": "452",
@@ -12242,7 +12246,8 @@
 			"agentRank": 7,
 			"requiredItem": null,
 			"minBossOrder": null
-		}
+		},
+		"isDLC": true
 	},
 	{
 		"number": "453",
@@ -12267,7 +12272,8 @@
 			"agentRank": 8,
 			"requiredItem": null,
 			"minBossOrder": null
-		}
+		},
+		"isDLC": true
 	},
 	{
 		"number": "454",
@@ -12292,7 +12298,8 @@
 			"agentRank": 7,
 			"requiredItem": null,
 			"minBossOrder": null
-		}
+		},
+		"isDLC": true
 	},
 	{
 		"number": "455",
@@ -12319,7 +12326,8 @@
 			"agentRank": 8,
 			"requiredItem": null,
 			"minBossOrder": null
-		}
+		},
+		"isDLC": true
 	},
 	{
 		"number": "456",
@@ -12347,7 +12355,8 @@
 			"agentRank": 8,
 			"requiredItem": null,
 			"minBossOrder": null
-		}
+		},
+		"isDLC": true
 	},
 	{
 		"number": "457",
@@ -12369,6 +12378,227 @@
 				"sp": 1900
 			},
 			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		},
+		"isDLC": true
+	},
+	{
+		"number": "458",
+		"name": "BanchoMamemon",
+		"generation": "Mega",
+		"attribute": "Data",
+		"type": "Mutant",
+		"basePersonality": "Reckless",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/banchomamemon-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/banchomamemon",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"Mamemon"
+		],
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
+	},
+	{
+		"number": "459",
+		"name": "BanchoLillymon",
+		"generation": "Mega",
+		"attribute": "Data",
+		"type": "Pixie",
+		"basePersonality": "Daring",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/bancholillymon-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/bancholillymon",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"Lillymon"
+		],
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
+	},
+	{
+		"number": "460",
+		"name": "BanchoGolemon",
+		"generation": "Mega",
+		"attribute": "Virus",
+		"type": "Mineral",
+		"basePersonality": "Daring",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/banchogolemon-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/banchogolemon",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"Golemon"
+		],
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
+	},
+	{
+		"number": "461",
+		"name": "BanchoStingmon",
+		"generation": "Mega",
+		"attribute": "Free",
+		"type": "Insectoid",
+		"basePersonality": "Zealous",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/banchostingmon-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/banchostingmon",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"JewelBeemon"
+		],
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
+	},
+	{
+		"number": "462",
+		"name": "Omnimon MM",
+		"generation": "Mega +",
+		"attribute": "Vaccine",
+		"type": "Holy Knight",
+		"basePersonality": "Reckless",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/omnimon-mm-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/omnimon-mm",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"Omnimon"
+		],
+		"evolvesTo": [],
+		"evolutionRequirements": {
+			"agentRank": 8,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
+	},
+	{
+		"number": "463",
+		"name": "UlforceVeedramon (X Antibody)",
+		"generation": "Mega",
+		"attribute": "Vaccine",
+		"type": "Holy Knight",
+		"basePersonality": "Zealous",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/ulforceveedramon-x-antibody-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/ulforceveedramon-x-antibody",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"UlforceVeedramon"
+		],
+		"evolvesTo": [
+			"UlforceVeedramon"
+		],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
+	},
+	{
+		"number": "464",
+		"name": "Magnamon (X Antibody)",
+		"generation": "Mega",
+		"attribute": "Vaccine",
+		"type": "Holy Knight",
+		"basePersonality": "Zealous",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/magnamon-x-antibody-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/magnamon-x-antibody",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"Magnamon"
+		],
+		"evolvesTo": [
+			"Magnamon"
+		],
+		"evolutionRequirements": {
+			"agentRank": 3,
+			"requiredItem": "Digi-Egg of Miracles",
+			"minBossOrder": null
+		}
+	},
+	{
+		"number": "465",
+		"name": "Jesmon (X Antibody)",
+		"generation": "Mega",
+		"attribute": "Data",
+		"type": "Holy Knight",
+		"basePersonality": "Friendly",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/jesmon-x-antibody-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/jesmon-x-antibody",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"Jesmon"
+		],
+		"evolvesTo": [
+			"Jesmon"
+		],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
+	},
+	{
+		"number": "466",
+		"name": "Gallantmon (X Antibody)",
+		"generation": "Mega",
+		"attribute": "Virus",
+		"type": "Holy Knight",
+		"basePersonality": "Daring",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/gallantmon-x-antibody-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/gallantmon-x-antibody",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"Gallantmon"
+		],
+		"evolvesTo": [
+			"Gallantmon"
+		],
+		"evolutionRequirements": {
+			"agentRank": 7,
+			"requiredItem": null,
+			"minBossOrder": null
+		}
+	},
+	{
+		"number": "467",
+		"name": "Omnimon (X Antibody)",
+		"generation": "Mega +",
+		"attribute": "Vaccine",
+		"type": "Holy Knight",
+		"basePersonality": "Daring",
+		"iconUrl": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/omnimon-x-antibody-icon.png",
+		"detailsUrl": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/omnimon-x-antibody",
+		"isDLC": true,
+		"isPostGame": false,
+		"evolvesFrom": [
+			"Omnimon"
+		],
+		"evolvesTo": [
+			"Omnimon"
+		],
+		"evolutionRequirements": {
+			"agentRank": 7,
 			"requiredItem": null,
 			"minBossOrder": null
 		}
