@@ -678,7 +678,12 @@ aria-label="Next path"
 {/if}
 <!-- Jogress partner chip: shown when this Digimon requires a second Digimon to fuse with -->
 {#if step?.jogressPartner}
-<div class="mt-0.5 px-0.5 py-px rounded text-[7px] md:text-[8px] bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 truncate leading-tight" title="Also needs {step.jogressPartner} for jogress">
+<div
+	class="mt-0.5 px-0.5 py-px rounded text-[7px] md:text-[8px] bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 truncate leading-tight"
+	title="Requires jogress with: {step.jogressPartner}"
+	aria-label="Requires jogress with: {step.jogressPartner}"
+	role="note"
+>
 	+{step.jogressPartner}
 </div>
 {/if}

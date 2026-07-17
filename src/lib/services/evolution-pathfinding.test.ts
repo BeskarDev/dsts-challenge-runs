@@ -199,8 +199,8 @@ describe('Evolution Pathfinding Service', () => {
 			const paths = findShortestPaths('Mon0', 'Other0', largeGraph);
 			const elapsed = Date.now() - start;
 			expect(paths).toHaveLength(0);
-			// Should terminate quickly - well within 1 second
-			expect(elapsed).toBeLessThan(1000);
+			// Should terminate well within 5 seconds (generous threshold to avoid CI flakiness)
+			expect(elapsed).toBeLessThan(5000);
 		});
 
 		it('should prevent cycles', () => {

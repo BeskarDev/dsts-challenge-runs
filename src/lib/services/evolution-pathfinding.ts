@@ -193,7 +193,10 @@ export function findShortestPaths(
 				// Continue exploring if this path could still be shortest
 				if (newPath.length < minPathLength) {
 					// Global deduplication: skip if we have already reached this node
-					// with equal or fewer steps (prevents exponential blowup)
+					// with fewer steps (prevents exponential blowup).
+					// We use strict `>` (not `>=`) so that multiple paths arriving at
+					// the same node with equal length are all explored — this is required
+					// to find ALL shortest paths, not just one.
 					const existingMinDist = minDistToNode.get(neighbor.name) ?? Infinity;
 					if (newPath.length > existingMinDist) {
 						continue;
