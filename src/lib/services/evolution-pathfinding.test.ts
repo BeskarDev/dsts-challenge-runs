@@ -67,6 +67,30 @@ describe('Evolution Pathfinding Service', () => {
 		}
 	};
 
+	// Graph with a jogress/fusion Digimon (name contains " + ")
+	const jogressGraph: EvolutionGraph = {
+		Craniamon: {
+			evolvesFrom: ['SomeUltimateMon'],
+			evolvesTo: ['Craniamon + Enbarrmon']
+		},
+		Enbarrmon: {
+			evolvesFrom: ['AnotherUltimateMon'],
+			evolvesTo: ['Craniamon + Enbarrmon']
+		},
+		'Craniamon + Enbarrmon': {
+			evolvesFrom: ['Craniamon', 'Enbarrmon'],
+			evolvesTo: []
+		},
+		SomeUltimateMon: {
+			evolvesFrom: [],
+			evolvesTo: ['Craniamon']
+		},
+		AnotherUltimateMon: {
+			evolvesFrom: [],
+			evolvesTo: ['Enbarrmon']
+		}
+	};
+
 	describe('findShortestPaths', () => {
 		it('should return empty path when source equals target', () => {
 			const paths = findShortestPaths('Dracmon', 'Dracmon', testGraph);
@@ -153,6 +177,32 @@ describe('Evolution Pathfinding Service', () => {
 			expect(paths).toHaveLength(0);
 		});
 
+		it('should terminate quickly for large disconnected graphs (no path)', () => {
+			// Create a large graph with two isolated subgraphs to verify BFS terminates
+			const largeGraph: EvolutionGraph = {};
+			// Build a chain of 50 Digimon in one subgraph
+			for (let i = 0; i < 50; i++) {
+				largeGraph[`Mon${i}`] = {
+					evolvesFrom: i > 0 ? [`Mon${i - 1}`] : [],
+					evolvesTo: i < 49 ? [`Mon${i + 1}`] : []
+				};
+			}
+			// Build another isolated chain of 50 Digimon
+			for (let i = 0; i < 50; i++) {
+				largeGraph[`Other${i}`] = {
+					evolvesFrom: i > 0 ? [`Other${i - 1}`] : [],
+					evolvesTo: i < 49 ? [`Other${i + 1}`] : []
+				};
+			}
+			// These two chains are not connected
+			const start = Date.now();
+			const paths = findShortestPaths('Mon0', 'Other0', largeGraph);
+			const elapsed = Date.now() - start;
+			expect(paths).toHaveLength(0);
+			// Should terminate well within 5 seconds (generous threshold to avoid CI flakiness)
+			expect(elapsed).toBeLessThan(5000);
+		});
+
 		it('should prevent cycles', () => {
 			// With the test graph, there's no cycle but let's verify paths don't revisit nodes
 			const paths = findShortestPaths('Dracmon', 'Gazimon', testGraph);
@@ -169,6 +219,44 @@ describe('Evolution Pathfinding Service', () => {
 		it('should handle whitespace in names', () => {
 			const paths = findShortestPaths('  Dracmon  ', 'Sangloupmon', testGraph);
 			expect(paths).toHaveLength(1);
+		});
+
+		it('should detect jogress partner when digivolving to a fusion Digimon', () => {
+			// Path: Craniamon → "Craniamon + Enbarrmon"
+			const paths = findShortestPaths('Craniamon', 'Craniamon + Enbarrmon', jogressGraph);
+			expect(paths).toHaveLength(1);
+			expect(paths[0].length).toBe(1);
+			const step = paths[0].steps[0];
+			expect(step.direction).toBe('up');
+			expect(step.jogressPartner).toBe('Enbarrmon');
+		});
+
+		it('should detect jogress partner for the other parent', () => {
+			// Path: Enbarrmon → "Craniamon + Enbarrmon"
+			const paths = findShortestPaths('Enbarrmon', 'Craniamon + Enbarrmon', jogressGraph);
+			expect(paths).toHaveLength(1);
+			const step = paths[0].steps[0];
+			expect(step.direction).toBe('up');
+			expect(step.jogressPartner).toBe('Craniamon');
+		});
+
+		it('should not set jogress partner for non-fusion Digimon steps', () => {
+			const paths = findShortestPaths('Dracmon', 'Sangloupmon', testGraph);
+			expect(paths).toHaveLength(1);
+			const step = paths[0].steps[0];
+			expect(step.jogressPartner).toBeUndefined();
+		});
+
+		it('should detect jogress partner in multi-step path through fusion Digimon', () => {
+			// Path: SomeUltimateMon → Craniamon → "Craniamon + Enbarrmon"
+			const paths = findShortestPaths('SomeUltimateMon', 'Craniamon + Enbarrmon', jogressGraph);
+			expect(paths).toHaveLength(1);
+			expect(paths[0].length).toBe(2);
+			// Second step is the jogress step
+			const jogressStep = paths[0].steps[1];
+			expect(jogressStep.from).toBe('Craniamon');
+			expect(jogressStep.to).toBe('Craniamon + Enbarrmon');
+			expect(jogressStep.jogressPartner).toBe('Enbarrmon');
 		});
 	});
 
