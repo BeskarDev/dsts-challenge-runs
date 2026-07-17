@@ -8699,7 +8699,9 @@
 			"AeroVeedramon",
 			"Cyberdramon"
 		],
-		"evolvesTo": [],
+		"evolvesTo": [
+			"UlforceVeedramon (X Antibody)"
+		],
 		"evolutionRequirements": {
 			"stats": {
 				"hp": 2960,
@@ -9789,7 +9791,9 @@
 			"SaviorHuckmon",
 			"Garudamon"
 		],
-		"evolvesTo": [],
+		"evolvesTo": [
+			"Jesmon (X Antibody)"
+		],
 		"evolutionRequirements": {
 			"stats": {
 				"attack": 1730,
@@ -10707,7 +10711,8 @@
 			"Duramon"
 		],
 		"evolvesTo": [
-			"Gallantmon CM"
+			"Gallantmon CM",
+			"Gallantmon (X Antibody)"
 		],
 		"evolutionRequirements": {
 			"stats": {
@@ -11592,7 +11597,9 @@
 		"evolvesFrom": [
 			"Veemon"
 		],
-		"evolvesTo": [],
+		"evolvesTo": [
+			"Magnamon (X Antibody)"
+		],
 		"evolutionRequirements": {
 			"agentRank": 7,
 			"requiredItem": "Digi-Egg of Miracles",
@@ -11743,7 +11750,9 @@
 			"Omnimon Zwart"
 		],
 		"evolvesTo": [
-			"Omnimon Zwart"
+			"Omnimon Zwart",
+			"Omnimon MM",
+			"Omnimon (X Antibody)"
 		],
 		"evolutionRequirements": {
 			"agentRank": 8,

@@ -15,6 +15,8 @@ export interface EvolutionStep {
 	to: string;
 	/** Direction: 'up' = digivolve, 'down' = de-digivolve */
 	direction: 'up' | 'down';
+	/** For jogress/fusion steps: the other Digimon required to combine with the source */
+	jogressPartner?: string;
 }
 
 /** Represents a complete evolution path */
@@ -47,6 +49,8 @@ interface PathNode {
 interface Neighbor {
 	name: string;
 	direction: 'up' | 'down';
+	/** For jogress/fusion steps: the other Digimon required to combine with the traversal node */
+	jogressPartner?: string;
 }
 
 /** Options for pathfinding */
@@ -135,6 +139,13 @@ export function findShortestPaths(
 	const results: EvolutionPath[] = [];
 	let minPathLength = Infinity;
 
+	// Global minimum distance map for deduplication.
+	// Tracks the shortest path length found to each node so far.
+	// Prevents exponential exploration when no path exists by ensuring each
+	// node is only explored at its minimum distance, not at every longer path length.
+	const minDistToNode = new Map<string, number>();
+	minDistToNode.set(normalizedSource, 0);
+
 	// BFS loop
 	while (queue.length > 0) {
 		const current = queue.shift();
@@ -162,7 +173,8 @@ export function findShortestPaths(
 			const newStep: EvolutionStep = {
 				from: current.digimon,
 				to: neighbor.name,
-				direction: neighbor.direction
+				direction: neighbor.direction,
+				jogressPartner: neighbor.jogressPartner
 			};
 			const newPath = [...current.path, newStep];
 
@@ -180,6 +192,14 @@ export function findShortestPaths(
 			} else {
 				// Continue exploring if this path could still be shortest
 				if (newPath.length < minPathLength) {
+					// Global deduplication: skip if we have already reached this node
+					// with equal or fewer steps (prevents exponential blowup)
+					const existingMinDist = minDistToNode.get(neighbor.name) ?? Infinity;
+					if (newPath.length > existingMinDist) {
+						continue;
+					}
+					minDistToNode.set(neighbor.name, newPath.length);
+
 					const newVisited = new Set(current.visited);
 					newVisited.add(neighbor.name);
 					queue.push({
@@ -227,7 +247,17 @@ function getNeighbors(
 					continue; // Skip this neighbor, it's above the allowed generation
 				}
 			}
-			neighbors.push({ name: target, direction: 'up' });
+			// Detect jogress/fusion: a Digimon whose name contains " + " requires both
+			// parents listed in evolvesFrom to combine. Identify the jogress partner
+			// (the other required Digimon that the user also needs).
+			let jogressPartner: string | undefined;
+			if (target.includes(' + ')) {
+				const targetData = graph[target];
+				if (targetData?.evolvesFrom?.length === 2) {
+					jogressPartner = targetData.evolvesFrom.find((p) => p !== digimon);
+				}
+			}
+			neighbors.push({ name: target, direction: 'up', jogressPartner });
 		}
 	}
 
