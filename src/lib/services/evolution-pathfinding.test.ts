@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
+	buildEvolutionGraphFromDigimon,
 	findShortestPaths,
 	formatPath,
 	getAvailableDigimon,
@@ -7,6 +8,7 @@ import {
 	type EvolutionGraph,
 	type EvolutionPath
 } from './evolution-pathfinding';
+import type { Digimon } from '../types/digimon';
 
 describe('Evolution Pathfinding Service', () => {
 	// Sample evolution graph for testing
@@ -221,6 +223,60 @@ describe('Evolution Pathfinding Service', () => {
 		it('should return empty array for empty graph', () => {
 			const available = getAvailableDigimon({});
 			expect(available).toEqual([]);
+		});
+	});
+
+	describe('buildEvolutionGraphFromDigimon', () => {
+		it('should include every Digimon entry even when evolution arrays are missing', () => {
+			const digimon: Digimon[] = [
+				{
+					number: '001',
+					name: 'Agumon',
+					generation: 'Rookie',
+					attribute: 'Vaccine',
+					type: 'Reptile',
+					basePersonality: 'Daring',
+					iconUrl: 'agumon.png',
+					detailsUrl: 'agumon.html',
+					evolvesTo: ['Greymon']
+				},
+				{
+					number: '450',
+					name: 'Omnimon (X Antibody)',
+					generation: 'Mega +',
+					attribute: 'Vaccine',
+					type: 'Holy Warrior',
+					basePersonality: 'Cool',
+					iconUrl: 'omnimon-x.png',
+					detailsUrl: 'omnimon-x.html',
+					evolvesFrom: ['Omnimon'],
+					evolvesTo: ['Omnimon']
+				},
+				{
+					number: '451',
+					name: 'BanchoMamemon',
+					generation: 'Mega',
+					attribute: 'Data',
+					type: 'Mutant',
+					basePersonality: 'Lively',
+					iconUrl: 'banchomamemon.png',
+					detailsUrl: 'banchomamemon.html'
+				}
+			];
+
+			const graph = buildEvolutionGraphFromDigimon(digimon);
+
+			expect(Object.keys(graph).sort()).toEqual([
+				'Agumon',
+				'BanchoMamemon',
+				'Omnimon (X Antibody)'
+			]);
+			expect(graph['Agumon']).toEqual({ evolvesFrom: [], evolvesTo: ['Greymon'] });
+			expect(graph['Omnimon (X Antibody)']).toEqual({
+				evolvesFrom: ['Omnimon'],
+				evolvesTo: ['Omnimon']
+			});
+			expect(graph['BanchoMamemon']).toEqual({ evolvesFrom: [], evolvesTo: [] });
 		});
 	});
 

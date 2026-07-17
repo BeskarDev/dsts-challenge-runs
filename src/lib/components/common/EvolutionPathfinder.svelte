@@ -1,12 +1,12 @@
 <script lang="ts">
 import { onMount } from 'svelte';
 import digimonData from '$lib/../data/digimon.json';
-import evolutionGraphData from '$lib/../data/evolution-graph.json';
 import {
+buildEvolutionGraphFromDigimon,
 findShortestPaths,
 getAllGenerations,
+getAvailableDigimon,
 getGenerationLevel,
-type EvolutionGraph,
 type EvolutionPath
 } from '$lib/services/evolution-pathfinding';
 import type { Digimon } from '$lib/types/digimon';
@@ -19,26 +19,18 @@ onClose: () => void;
 
 let { isOpen, onClose }: Props = $props();
 
-// Extract evolution graph from JSON data with runtime validation
-const rawEvolutionData = evolutionGraphData as { evolutions?: EvolutionGraph };
-const evolutionGraph: EvolutionGraph = rawEvolutionData.evolutions ?? {};
+// Use digimon.json as the single source of truth for planner evolution data
+const allDigimon = digimonData as Digimon[];
+const evolutionGraph = buildEvolutionGraphFromDigimon(allDigimon);
 
 // Build lookup map using functional approach (immutable after initialization)
-const digimonByName: Map<string, Digimon> = new Map(
-(digimonData as Digimon[]).map((d) => [d.name, d])
-);
+const digimonByName: Map<string, Digimon> = new Map(allDigimon.map((d) => [d.name, d]));
 
 // Build generation lookup map for pathfinding
-const digimonGenerations: Map<string, string> = new Map(
-(digimonData as Digimon[]).map((d) => [d.name, d.generation])
-);
+const digimonGenerations: Map<string, string> = new Map(allDigimon.map((d) => [d.name, d.generation]));
 
-// Get available digimon that exist in both datasets
-const availableDigimon = $derived(
-Object.keys(evolutionGraph)
-.filter((name) => digimonByName.has(name))
-.sort()
-);
+// Get available digimon from the authoritative dataset-backed graph
+const availableDigimon = $derived(getAvailableDigimon(evolutionGraph));
 
 // Available generations for filtering
 const generations = getAllGenerations();

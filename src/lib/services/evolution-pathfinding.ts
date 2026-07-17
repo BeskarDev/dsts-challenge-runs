@@ -1,3 +1,5 @@
+import type { Digimon } from '../types/digimon';
+
 /**
  * Evolution Pathfinding Service
  *
@@ -264,6 +266,24 @@ export function formatPath(path: EvolutionPath): string {
 	}
 
 	return parts.join(' ');
+}
+
+/**
+ * Builds an evolution graph from Digimon dataset entries.
+ *
+ * @param digimon - Digimon dataset
+ * @returns Evolution graph keyed by Digimon name
+ */
+export function buildEvolutionGraphFromDigimon(digimon: Digimon[]): EvolutionGraph {
+	return Object.fromEntries(
+		digimon.map((entry) => [
+			entry.name,
+			{
+				evolvesFrom: entry.evolvesFrom ?? [],
+				evolvesTo: entry.evolvesTo ?? []
+			}
+		])
+	);
 }
 
 /**
